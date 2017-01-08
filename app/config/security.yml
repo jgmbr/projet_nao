@@ -1,11 +1,17 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,7 +20,17 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern:                  ^/
+            switch_user:
+                provider:             ~
+                parameter:            _switch_user
+                role:                 ROLE_ALLOWED_TO_SWITCH
+            form_login:
+                provider:             fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                use_referer:          false
+                success_handler:      authentication_success_handler
+
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +38,13 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/account/, role: ROLE_USER }
