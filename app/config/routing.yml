@@ -1,3 +1,10 @@
 nb_graphics_core:
     resource: "@NBGraphicsCoreBundle/Resources/config/routing.yml"
     prefix:   /
+
+nb_graphics_user:
+    resource: "@NBGraphicsUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -17,7 +17,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             //Our new bundles go below
+            new FOS\UserBundle\FOSUserBundle(),
             new NBGraphics\CoreBundle\NBGraphicsCoreBundle(),
+            new NBGraphics\UserBundle\NBGraphicsUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
