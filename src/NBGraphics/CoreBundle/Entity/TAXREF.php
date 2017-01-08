@@ -105,6 +105,11 @@ class TAXREF
     private $habitat;
 
     /**
+     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Observation", mappedBy="taxref", cascade={"persist"})
+     */
+    private $observations;
+
+    /**
      * @return mixed
      */
     public function getId()

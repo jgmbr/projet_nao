@@ -80,9 +80,15 @@ class Observation
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist"})
      */
     private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="NBGraphics\CoreBundle\Entity\TAXREF", inversedBy="observations", cascade={"persist"})
+     */
+    private $taxref;
+
 
     /**
      * @return mixed

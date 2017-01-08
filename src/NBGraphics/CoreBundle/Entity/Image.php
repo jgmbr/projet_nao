@@ -45,7 +45,7 @@ class Image
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Observation", inversedBy="image", cascade={"persist"})
      */
     private $observation;
 
