@@ -1,3 +1,7 @@
+nb_graphics_core:
+    resource: "@NBGraphicsCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
