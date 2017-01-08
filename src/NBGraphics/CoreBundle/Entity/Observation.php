@@ -89,6 +89,10 @@ class Observation
      */
     private $taxref;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="NBGraphics\UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
+     */
+    private $user;
 
     /**
      * @return mixed
@@ -288,5 +292,53 @@ class Observation
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Set taxref
+     *
+     * @param \NBGraphics\CoreBundle\Entity\TAXREF $taxref
+     *
+     * @return Observation
+     */
+    public function setTaxref(\NBGraphics\CoreBundle\Entity\TAXREF $taxref = null)
+    {
+        $this->taxref = $taxref;
+
+        return $this;
+    }
+
+    /**
+     * Get taxref
+     *
+     * @return \NBGraphics\CoreBundle\Entity\TAXREF
+     */
+    public function getTaxref()
+    {
+        return $this->taxref;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \NBGraphics\UserBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\NBGraphics\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \NBGraphics\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

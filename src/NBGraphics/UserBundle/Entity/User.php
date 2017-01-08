@@ -46,6 +46,10 @@ class User extends BaseUser
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Observation", mappedBy="user", cascade={"persist"})
+     */
+    private $observations;
 
     public function __construct()
     {
@@ -167,5 +171,39 @@ class User extends BaseUser
     public function onPreUpdate()
     {
         $this->updatedAt = new \DateTime("now");
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Observation $observation
+     *
+     * @return User
+     */
+    public function addObservation(\NBGraphics\CoreBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\NBGraphics\CoreBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
     }
 }
