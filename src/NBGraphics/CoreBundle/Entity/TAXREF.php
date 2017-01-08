@@ -372,4 +372,45 @@ class TAXREF
     {
         $this->habitat = $habitat;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Observation $observation
+     *
+     * @return TAXREF
+     */
+    public function addObservation(\NBGraphics\CoreBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\NBGraphics\CoreBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
 }
