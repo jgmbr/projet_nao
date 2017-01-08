@@ -25,11 +25,6 @@ class Observation
     private $id;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $quantity;
@@ -83,6 +78,11 @@ class Observation
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $image;
 
     /**
      * @return mixed
