@@ -16,28 +16,23 @@
     </head>
     <body class="">
 
-    <h1> Home from NBGraphicsCoreBundle (à remplacer par la home de FrontSiteBundle) </h1>
-
-    <p> Hello World!  </p>
-
-    {% if app.user %}
-        <p> Bonjour {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a> </p>
+    <h1>
         {% if is_granted('ROLE_ADMIN') %}
-            <p> <a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a> </p>
+            ESPACE ADMINISTRATION
         {% else %}
-            <p> <a href="{{ path('account_page') }}"> Aller sur Espace Mon Compte </a> </p>
+            ESPACE MON COMPTE
         {% endif %}
-    {% else %}
+    </h1>
 
-        <p>
-            <a href="{{ path('fos_user_security_login') }}"> Connexion </a>
-        </p>
+    <p> Bonjour {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a> </p>
 
-        <p>
-            <a href="{{ path('fos_user_registration_register') }}"> Inscription </a>
-        </p>
+    {% block menu %}{% endblock %}
 
-    {% endif %}
+    {% block header %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
 
     </body>
 </html>

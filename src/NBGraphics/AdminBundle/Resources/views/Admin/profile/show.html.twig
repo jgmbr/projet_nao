@@ -1,0 +1,53 @@
+{% extends "NBGraphicsAdminBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block header %}
+    Profil
+{% endblock %}
+
+{% block menu %}
+    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="box box-default">
+        <div class="box-body box-profile">
+
+            <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+
+            <p class="text-muted text-center"> &nbsp; </p>
+
+            <table class="table table-responsive">
+                <tbody>
+                <tr>
+                    <th> {{ 'profile.show.username'|trans }} </th>
+                    <td> {{ user.username }} </td>
+                </tr>
+                <tr>
+                    <th> {{ 'profile.show.email'|trans }} </th>
+                    <td> {{ user.email }} </td>
+                </tr>
+                <tr>
+                    <th> {{ 'profile.show.lastname'|trans }} </th>
+                    <td> {{ user.lastname }} </td>
+                </tr>
+                <tr>
+                    <th> {{ 'profile.show.firstname'|trans }} </th>
+                    <td> {{ user.firstname }} </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+    <div class="actions">
+        <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning pull-right">
+            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+        </a>
+    </div>
+
+{% endblock %}

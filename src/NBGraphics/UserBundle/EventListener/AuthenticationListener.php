@@ -27,12 +27,12 @@ class AuthenticationListener implements AuthenticationSuccessHandlerInterface
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        $url = 'home_page';
+        $url = 'nb_graphics_core_homepage';
 
         if (false === $this->security->isGranted('ROLE_ADMIN')) {
-            $url = 'account_home_page';
+            $url = 'account_page';
         } else {
-            $url = 'admin_home_page';
+            $url = 'admin_page';
         }
 
         $response = new RedirectResponse($this->router->generate($url));

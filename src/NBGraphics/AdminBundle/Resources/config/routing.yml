@@ -1,0 +1,23 @@
+admin_page:
+    path:     /admin/index
+    defaults: { _controller: NBGraphicsAdminBundle:Admin/Admin:index }
+
+admin_profil:
+    path:     /admin/profil
+    defaults: { _controller: NBGraphicsAdminBundle:Admin/Profile:show }
+
+admin_profil_edit:
+    path:     /admin/profil/edit
+    defaults: { _controller: NBGraphicsAdminBundle:Admin/Profile:edit }
+
+account_page:
+    path:     /account/index
+    defaults: { _controller: NBGraphicsAdminBundle:Account/Account:index }
+
+account_profil:
+    path:     /account/profil
+    defaults: { _controller: NBGraphicsAdminBundle:Account/Profile:show }
+
+account_profil_edit:
+    path:     /account/profil/edit
+    defaults: { _controller: NBGraphicsAdminBundle:Account/Profile:edit }

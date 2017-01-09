@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Justine GAMBIER
- * Date: 12/12/2016
- * Time: 20:54
- */
 
 namespace NBGraphics\UserBundle\Controller;
 
@@ -64,9 +58,9 @@ class RegistrationController extends BaseController
                     $url = $this->generateUrl('fos_user_registration_confirmed');
 
                     if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-                        $url = $this->generateUrl('admin_home_page');
+                        $url = $this->generateUrl('admin_page');
                     } else {
-                        $url = $this->generateUrl('account_home_page');
+                        $url = $this->generateUrl('account_page');
                     }
 
                     $response = new RedirectResponse($url);
