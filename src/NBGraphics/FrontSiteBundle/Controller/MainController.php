@@ -17,4 +17,19 @@ class MainController extends Controller
     {
         return $this->render('@NBGraphicsFrontSite/main/homepage.html.twig');
     }
+
+    public function researchProgramAction()
+    {
+        return $this->render('@NBGraphicsFrontSite/main/researchprogram.html.twig');
+    }
+
+    public function termsAction()
+    {
+        return $this->render('@NBGraphicsFrontSite/main/terms.html.twig');
+    }
+
+    public function creditsAction()
+    {
+        return $this->render('@NBGraphicsFrontSite/main/credits.html.twig');
+    }
 }

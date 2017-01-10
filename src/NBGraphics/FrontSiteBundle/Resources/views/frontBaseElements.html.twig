@@ -18,8 +18,6 @@
 
 <h1> Home from FrontSiteBundle </h1>
 
-<p> Hello World!  </p>
-
 {% if app.user %}
     <p> Bonjour {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a> </p>
     {% if is_granted('ROLE_ADMIN') %}
@@ -44,11 +42,21 @@
             <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
             <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
             <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
+            <li><a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a></li>
         </ul>
     </nav>
 
 
     {% block body %}{% endblock %}
+
+
+    <footer>
+        <ul>
+            <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
+            <li><a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a></li>
+            <li><a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a></li>
+        </ul>
+    </footer>
 
 </body>
 </html>

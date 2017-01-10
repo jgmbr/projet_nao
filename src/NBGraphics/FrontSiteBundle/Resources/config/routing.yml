@@ -7,5 +7,21 @@ nb_graphics_front_site_interactivewebmap:
     defaults: { _controller: NBGraphicsFrontSiteBundle:InteractiveWebMap:indexInteractiveWebMap }
 
 nb_graphics_front_site_submitobservation:
-    path:     /submitObservations
+    path:     /submit-an-observation
     defaults: { _controller: NBGraphicsFrontSiteBundle:SubmitObservation:submitObservation }
+
+nb_graphics_front_site_researchprogramm:
+    path:     /program-of-research
+    defaults: { _controller: NBGraphicsFrontSiteBundle:Main:researchProgram }
+
+nb_graphics_front_site_terms:
+    path:    /terms
+    defaults: { _controller: NBGraphicsFrontSiteBundle:Main:terms }
+
+nb_graphics_front_site_contactform:
+    path:    /contact-us
+    defaults: { _controller: NBGraphicsFrontSiteBundle:Contact:contactForm }
+
+nb_graphics_front_site_credits:
+    path:    /credits
+    defaults: { _controller: NBGraphicsFrontSiteBundle:Main:credits }
