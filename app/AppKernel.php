@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new NBGraphics\CoreBundle\NBGraphicsCoreBundle(),
             new NBGraphics\UserBundle\NBGraphicsUserBundle(),
             new NBGraphics\AdminBundle\NBGraphicsAdminBundle(),
+            new NBGraphics\FrontSiteBundle\NBGraphicsFrontSiteBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
