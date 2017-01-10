@@ -1,0 +1,3 @@
+nb_graphics_front_site_homepage:
+    path:     /
+    defaults: { _controller: NBGraphicsFrontSiteBundle:Main:homePage }
