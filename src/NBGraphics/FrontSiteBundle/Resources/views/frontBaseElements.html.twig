@@ -39,5 +39,16 @@
 
 {% endif %}
 
+    <nav>
+        <ul>
+            <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
+            <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
+            <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
+        </ul>
+    </nav>
+
+
+    {% block body %}{% endblock %}
+
 </body>
 </html>
