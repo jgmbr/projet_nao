@@ -1,14 +1,8 @@
-{% extends "NBGraphicsAdminBundle::layout.html.twig" %}
-
-{% block header %}
-    Administration
-{% endblock %}
-
-{% block menu %}
-    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
-{% endblock %}
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
 
 {% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
 
     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam. </p>
 

@@ -16,31 +16,15 @@
 </head>
 <body class="">
 
-<h1> Home from FrontSiteBundle </h1>
-
-{% if app.user %}
-    <p> Bonjour {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a> </p>
-    {% if is_granted('ROLE_ADMIN') %}
-        <p> <a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a> </p>
-    {% else %}
-        <p> <a href="{{ path('account_page') }}"> Aller sur Espace Mon Compte </a> </p>
-    {% endif %}
-{% else %}
-
-
-    <p>
-        <a href="{{ path('nb_graphics_front_site_homepage') }}"> Accueil </a>
-    </p>
-
-    <p>
-        <a href="{{ path('fos_user_security_login') }}"> Connexion </a>
-    </p>
-
-    <p>
-        <a href="{{ path('fos_user_registration_register') }}"> Inscription </a>
-    </p>
-
-{% endif %}
+    <header>
+        <h1> HEADER › Home from FrontSiteBundle </h1>
+        {% if app.user %}
+            <p>
+                Bonjour {{ app.user.username }}
+                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
+            </p>
+        {% endif %}
+    </header>
 
     <nav>
         <ul>
@@ -48,20 +32,31 @@
             <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
             <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
             <li><a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a></li>
+            {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
+                {% else %}
+                    <li><a href="{{ path('account_page') }}"> Aller sur Espace Mon Compte </a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}"> Connexion </a></li>
+                <li><a href="{{ path('fos_user_registration_register') }}"> Inscription </a></li>
+            {% endif %}
         </ul>
     </nav>
 
-
     {% block body %}{% endblock %}
 
-
     <footer>
+        <h1> FOOTER </h1>
         <ul>
             <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
             <li><a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a></li>
             <li><a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a></li>
         </ul>
     </footer>
+
+    {% block javascripts %}{% endblock %}
 
 </body>
 </html>

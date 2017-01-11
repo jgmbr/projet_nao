@@ -1,16 +1,10 @@
-{% extends "NBGraphicsAdminBundle::layout.html.twig" %}
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block header %}
-    Profil
-{% endblock %}
-
-{% block menu %}
-    {% include 'NBGraphicsAdminBundle:Account:menu.html.twig' %}
-{% endblock %}
-
 {% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Account:menu.html.twig' %}
 
     <div class="box box-default">
         {{ form_start(form, { 'action': path('account_profil_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}

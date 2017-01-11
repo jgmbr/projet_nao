@@ -14,25 +14,11 @@
         <![endif]-->
         {% block stylesheets %}{% endblock %}
     </head>
-    <body class="">
+    <body>
 
-    <h1>
-        {% if is_granted('ROLE_ADMIN') %}
-            ESPACE ADMINISTRATION
-        {% else %}
-            ESPACE MON COMPTE
-        {% endif %}
-    </h1>
 
-    <p> Bonjour {{ app.user.username }} <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a> </p>
 
-    {% block menu %}{% endblock %}
 
-    {% block header %}{% endblock %}
-
-    {% block body %}{% endblock %}
-
-    {% block javascripts %}{% endblock %}
 
     </body>
 </html>
