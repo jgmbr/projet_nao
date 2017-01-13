@@ -1,0 +1,83 @@
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
+
+{% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Account:menu.html.twig' %}
+
+    <div class="box box-default">
+        <div class="box-header"> <i class="fa fa-eye" aria-hidden="true"></i> <h3 class="box-title"> Fiche candidature </h3> </div>
+        <div class="box-body box-application">
+            <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <th>Observateur</th>
+                    <td>{{ observation.user.username }} <a href="{{ path('user_show',{ 'id': observation.user.id }) }}">Voir fiche</a> </td>
+                </tr>
+                <tr>
+                    <th>Date d'observation</th>
+                    <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Heure d'observation</th>
+                    <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Quantité</th>
+                    <td>{{ observation.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>Espèce</th>
+                    <td> [nom espèce] </td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ observation.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ observation.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Département</th>
+                    <td>{{ observation.departement }}</td>
+                </tr>
+                <tr>
+                    <th>Localisation</th>
+                    <td>
+                        <div id="map"> [map] </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Commentaire</th>
+                    <td>{{ observation.comment }}</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>{{ observation.status }}</td>
+                </tr>
+                <tr>
+                    <th>Date de création</th>
+                    <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Date de modification</th>
+                    <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a href="{{ path('account_observation_show') }}" class="btn btn-primary pull-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+        </a>
+        <a href="{{ path('account_observation_delete', { 'id': observation.id }) }}" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
+        </a>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
