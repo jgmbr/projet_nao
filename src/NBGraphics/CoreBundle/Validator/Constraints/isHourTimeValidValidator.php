@@ -28,7 +28,7 @@ class isHourTimeValidValidator extends ConstraintValidator
         $daySelectedAt = $this->context->getRoot()->get('dateAt')->getData();
         $daySelectedDayMonthYearFormat = $daySelectedAt->format('Y-m-d');
 
-        // On compare le tout
+        // On effectue la vérif
         if (($todayDayMonthYearFormat === $daySelectedDayMonthYearFormat) && ($hourMinutesObservationFormat > $todayHourFormat)) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
