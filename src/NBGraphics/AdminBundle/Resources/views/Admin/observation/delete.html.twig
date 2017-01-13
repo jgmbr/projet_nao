@@ -1,0 +1,30 @@
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
+
+{% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
+
+    <div class="box box-default">
+        <div class="box-body box-contract">
+
+    <p>
+        Etes-vous certain de vouloir supprimer l'observation {{ observation.id }} ?
+    </p>
+
+    <div class="well">
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Oui, je confirme la suppression" class="btn btn-success" />
+        {{ form_rest(delete_form) }}
+    {{ form_end(delete_form) }}
+    </div>
+
+        </div>
+    </div>
+
+    <div class="actions">
+        <a href="{{ path('observation_index') }}" class="btn btn-primary pull-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+        </a>
+    </div>
+
+{% endblock %}

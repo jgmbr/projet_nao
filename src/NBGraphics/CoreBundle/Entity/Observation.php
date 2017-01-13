@@ -8,12 +8,12 @@
 
 namespace NBGraphics\CoreBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="observation")
+ * @ORM\Entity(repositoryClass="NBGraphics\CoreBundle\Repository\ObservationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Observation
@@ -61,12 +61,12 @@ class Observation
     private $comment;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $status;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $public;
 
@@ -76,7 +76,7 @@ class Observation
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 

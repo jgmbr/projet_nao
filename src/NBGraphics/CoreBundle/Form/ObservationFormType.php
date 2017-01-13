@@ -85,10 +85,10 @@ class ObservationFormType extends AbstractType
                     New NotBlank([
                         'message' => "Vous ne pouvez pas soumettre votre observation sans un message d'explication."
                     ]),
-                    new GreaterThanOrEqual([
-                        'value' => 50,
-                        'message' => 'Votre observation doit au moins comprendre 50 caractères.'
-                    ])
+//                    new GreaterThanOrEqual([
+//                        'value' => 50,
+//                        'message' => 'Votre observation doit au moins comprendre 50 caractères.'
+//                    ])
                 ]
             ])
         ;

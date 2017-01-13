@@ -65,6 +65,22 @@ class UserController extends Controller
     }
 
     /**
+     * Finds and displays a user entity.
+     *
+     * @Route("/{id}", name="user_show")
+     * @Method("GET")
+     */
+    public function showAction(User $user)
+    {
+        $deleteForm = $this->createDeleteForm($user);
+
+        return $this->render('NBGraphicsAdminBundle:Admin/user:show.html.twig', array(
+            'user' => $user,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing user entity.
      *
      * @Route("/{id}/edit", name="user_edit")
