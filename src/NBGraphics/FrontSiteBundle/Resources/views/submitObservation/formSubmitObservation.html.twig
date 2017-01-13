@@ -4,4 +4,12 @@
     <h2>
         Vous souhaitez soumettre une observation ?
     </h2>
+    <div>
+        {{ form_start(observationForm) }}
+            {{ form_widget(observationForm) }}
+            <button type="submit">
+                Valider votre observation
+            </button>
+        {{ form_end(observationForm) }}
+    </div>
 {% endblock %}

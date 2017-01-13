@@ -9,12 +9,33 @@
 namespace NBGraphics\FrontSiteBundle\Controller;
 
 
+use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class SubmitObservationController extends Controller
 {
-    public function submitObservationAction()
+    public function submitObservationAction(Request $request)
     {
-        return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig');
+        $observation = new Observation();
+        $observationForm = $this->createForm(ObservationFormType::class, $observation);
+
+
+        $observationForm->handleRequest($request);
+        if ($observationForm->isSubmitted() && $observationForm->isValid()) {
+            $observation = $observationForm->getData();
+
+            /*
+              Ici :
+                ->Contrôles complémentaires si besoin
+                ->Enregistrement en BDD
+                ->Redirection
+            */
+        }
+
+        return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig', [
+            'observationForm' => $observationForm->createView(),
+        ]);
     }
 }
