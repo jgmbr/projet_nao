@@ -59,7 +59,8 @@ class ObservationFormType extends AbstractType
             ])
             //Regarder pour utiliser un ClassType spécial
             ->add('image', FileType::class, [
-                'label' => "Ajouter votre photo : "
+                'label' => "Ajouter votre photo : ",
+                'required' => false,
                 // Ajouter des contraintes spécifiques aux photos.
             ])
             //Faire un ChoiceType avec tous les départements

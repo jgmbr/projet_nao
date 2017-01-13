@@ -81,7 +81,7 @@ class Observation
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist"};)
+     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist"})
      */
     private $image;
 
