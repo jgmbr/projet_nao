@@ -3,8 +3,14 @@ nb_graphics_front_site:
     prefix:   /
 
 nb_graphics_admin:
-    resource: "@NBGraphicsAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@NBGraphicsAdminBundle/Controller/Admin/"
+    type:     annotation
+    prefix:   /admin
+
+nb_graphics_account:
+    resource: "@NBGraphicsAdminBundle/Controller/Account/"
+    type:     annotation
+    prefix:   /account
 
 nb_graphics_core:
     resource: "@NBGraphicsCoreBundle/Resources/config/routing.yml"

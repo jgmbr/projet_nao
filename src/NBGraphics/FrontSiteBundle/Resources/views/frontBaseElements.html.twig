@@ -18,6 +18,11 @@
 
     <header>
         <h1> HEADER › Home from FrontSiteBundle </h1>
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
+            </a>
+        {% endif %}
         {% if app.user %}
             <p>
                 Bonjour {{ app.user.username }}

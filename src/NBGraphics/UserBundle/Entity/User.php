@@ -51,10 +51,30 @@ class User extends BaseUser
      */
     private $observations;
 
+    private $role;
+
+    private $superAdmin;
+
     public function __construct()
     {
         parent::__construct();
         $this->createdAt    = new \Datetime();
+    }
+
+    public function getRole()
+    {
+        if (!$this->roles)
+            return parent::ROLE_DEFAULT;
+        else
+            return $this->roles[0];
+    }
+
+    public function setRole($role)
+    {
+        foreach ($this->getRoles() as $currentRole)
+            $this->removeRole($currentRole);
+
+        $this->addRole($role);
     }
 
     /**

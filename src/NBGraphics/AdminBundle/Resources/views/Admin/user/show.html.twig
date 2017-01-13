@@ -1,0 +1,42 @@
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
+
+{% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
+    <div class="box box-default">
+        <div class="box-body box-user">
+
+            <p class="text-muted text-center"> &nbsp; </p>
+
+            <table class="table table-responsive">
+                <tbody>
+                <tr>
+                    <th> Nom utilisateur </th>
+                    <td> {{ user.username }} </td>
+                </tr>
+                <tr>
+                    <th> Email </th>
+                    <td> {{ user.email }} </td>
+                </tr>
+                <tr>
+                    <th> Nom </th>
+                    <td> {{ user.lastname }} </td>
+                </tr>
+                <tr>
+                    <th> Prénom </th>
+                    <td> {{ user.firstname }} </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>
+                <a href="{{ path('user_edit',{ 'id': user.id }) }}" class="btn btn-warning pull-right">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+                </a>
+            </p>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+{% endblock %}
