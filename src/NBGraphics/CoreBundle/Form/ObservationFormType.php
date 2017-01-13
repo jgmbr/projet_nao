@@ -2,16 +2,19 @@
 
 namespace NBGraphics\CoreBundle\Form;
 
+use NBGraphics\CoreBundle\Validator\Constraints\isHourTimeValid;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 
@@ -45,7 +48,11 @@ class ObservationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Vous devez renseigner la date de l\'observation.'
                     ]),
-                    // A partir de quand peut-on renseigner une observation ?
+                    new LessThanOrEqual([
+                        'value' => 'today',
+                        'message' => "Vous ne pouvez pas soumettre une observation ultérieure à aujourd'hui."
+                    ])
+                    // On peut renseigner une observation uniquement à partir de l'année en cours.
                 ]
             ])
             ->add('hourAt', TimeType::class, [
@@ -54,7 +61,9 @@ class ObservationFormType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez renseigner l\'horaire de l\'observation.'
-                    ])
+                    ]),
+                    //Custom validators
+                    
                 ]
             ])
             //Regarder pour utiliser un ClassType spécial
@@ -62,6 +71,19 @@ class ObservationFormType extends AbstractType
                 'label' => "Ajouter votre photo : ",
                 'required' => false,
                 // Ajouter des contraintes spécifiques aux photos.
+            ])
+            /*
+            ->add('address', TextType::class, [
+                'label' => 'Veuillez saisir votre adresse',
+                'required' => false,
+            ])
+            */
+            // Coordonnées GPS :
+            ->add('latitude', TextType::class, [
+                'label' => 'Votre latitude'
+            ])
+            ->add('longitude', TextType::class, [
+                'label' => 'Votre longitude'
             ])
             //Faire un ChoiceType avec tous les départements
             ->add('departement', ChoiceType::class, [
@@ -71,14 +93,6 @@ class ObservationFormType extends AbstractType
                     "95 Val d'Oise" => 95
                 ]
             ])
-            // Coordonnées GPS :
-            ->add('latitude', TextType::class, [
-                'label' => 'Votre latitude'
-            ])
-            ->add('longitude', TextType::class, [
-                'label' => 'Votre longitude'
-            ])
-
             ->add('comment', TextareaType::class, [
                 'label' => "Veuillez compléter votre observation",
                 'constraints' => [
