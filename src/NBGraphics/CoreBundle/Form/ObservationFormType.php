@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -45,6 +46,13 @@ class ObservationFormType extends AbstractType
                     '75 Paris' => '75',
                     "95 Val d'Oise" => '95'
                 ]
+            ])
+            // Coordonnées GPS :
+            ->add('latitude', TextType::class, [
+                'label' => 'Votre latitude'
+            ])
+            ->add('longitude', TextType::class, [
+                'label' => 'Votre longitude'
             ])
 
             ->add('comment', TextareaType::class, [
