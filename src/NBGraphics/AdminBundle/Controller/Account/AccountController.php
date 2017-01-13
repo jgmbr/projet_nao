@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AccountController extends Controller
 {
+    /**
+     * @Route("/index", name="account_page")
+     */
     public function indexAction()
     {
         $user = $this->getUser();

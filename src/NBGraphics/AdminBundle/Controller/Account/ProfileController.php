@@ -19,8 +19,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
+/**
+ * Profil controller.
+ *
+ * @Route("profil")
+ */
 class ProfileController extends BaseController
 {
+    /**
+     * @Route("/", name="account_profil")
+     */
     public function showAction()
     {
         $user = $this->getUser();
@@ -34,6 +42,9 @@ class ProfileController extends BaseController
         ));
     }
 
+    /**
+     * @Route("/", name="account_profil_edit")
+     */
     public function editAction(Request $request)
     {
         $user = $this->getUser();

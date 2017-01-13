@@ -9,12 +9,17 @@
 <ul class="sidebar-menu">
     <li class="{% if app.request.attributes.get('_route') == "account_page" %}active{% endif %}">
         <a href="{{ path('account_page') }}">
-            <i class="fa fa-home" aria-hidden="true"></i> <span> Tableau de bord Mon Compte </span>
+            <i class="fa fa-home" aria-hidden="true"></i> <span> Accueil </span>
         </a>
     </li>
     <li class="{% if app.request.attributes.get('_route') == "account_profil" %}active{% endif %}">
         <a href="{{ path('account_profil') }}">
             <i class="fa fa-home" aria-hidden="true"></i> <span> Mon profil </span>
+        </a>
+    </li>
+    <li class="{% if app.request.attributes.get('_route') == "account_observations" %}active{% endif %}">
+        <a href="#">
+            <i class="fa fa-camera" aria-hidden="true"></i> <span> Mes observations </span>
         </a>
     </li>
 </ul>
