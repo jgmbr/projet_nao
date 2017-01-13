@@ -26,12 +26,9 @@ class SubmitObservationController extends Controller
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
             $observation = $observationForm->getData();
 
-            /*
-              Ici :
-                ->Contrôles complémentaires si besoin
-                ->Enregistrement en BDD
-                ->Redirection
-            */
+
+
+
         }
 
         return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig', [
