@@ -1,0 +1,3 @@
+nb_graphics_core_homepage:
+    path:     /
+    defaults: { _controller: NBGraphicsCoreBundle:Default:index }
