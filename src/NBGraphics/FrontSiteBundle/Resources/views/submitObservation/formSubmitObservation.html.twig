@@ -6,10 +6,29 @@
     </h2>
     <div>
         {{ form_start(observationForm) }}
-            {{ form_widget(observationForm) }}
-            <button type="submit">
-                Valider votre observation
-            </button>
+            {{ form_row(observationForm.quantity) }}
+            {{ form_row(observationForm.matureStage) }}
+            {{ form_row(observationForm.plumage) }}
+            {{ form_row(observationForm.nidification) }}
+            {{ form_row(observationForm.dateAt) }}
+            {{ form_row(observationForm.hourAt) }}
+            {{ form_row(observationForm.image) }}
+        <h3>
+            Choix 1 : Je ne connais pas les coordonées GPS, mais je connais l'adresse
+        </h3>
+            <hr>
+        <h3>
+            Choix 2 : je souhaite me géolocaliser
+        </h3>
+            {{ form_row(observationForm.latitude) }}
+            {{ form_row(observationForm.longitude) }}
+        <a>Me géolocaliser</a>
+            {{ form_row(observationForm.departement) }}
+            {{ form_row(observationForm.comment) }}
+
+        <button type="submit">
+            Valider votre observation
+        </button>
         {{ form_end(observationForm) }}
     </div>
 {% endblock %}
