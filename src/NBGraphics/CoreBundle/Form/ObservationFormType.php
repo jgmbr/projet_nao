@@ -42,6 +42,45 @@ class ObservationFormType extends AbstractType
                     ])
                 ]
             ])
+            ->add('matureStage', ChoiceType::class, [
+                'label' => "Stade de maturité de l'oiseau observé",
+                'choices' => [
+                    'Stade possible : jeune, premier hiver ou adulte ?' => null,
+                    'Spécimen jeune' => 'Jeune',
+                    'Premier hiver du spécimen' => 'Premier Hiver',
+                    'Spécimen adulte' => 'adulte',
+                ],
+                'constraints' => [
+                    new NotNull([
+                        'message' => 'Vous devez choisir un stade de maturité',
+                    ])
+                ]
+            ])
+            ->add('plumage', ChoiceType::class, [
+                'label' => "Quel était le plumage de l'oiseau observé ?",
+                'choices' => [
+                    'Plumage possible' => null,
+                    'Plumage nuptial' => 'nuptial',
+                    'Plumage normal' => 'normal',
+                ],
+                'constraints' => [
+                    new NotNull([
+                        'message' => 'Vous devez choisir un plumage'
+                    ])
+                ]
+            ])
+            ->add('nidification', ChoiceType::class, [
+                'label' => 'Nidification',
+                'choices' => [
+                    'oui' => true,
+                    'non' => false,
+                ],
+                'constraints' => [
+                    new NotNull([
+                        'message' => 'Vous devez renseigner la nidification ?'
+                    ])
+                ]
+            ])
             ->add('dateAt', DateType::class, [
                 'label' => "Date de l'observation : ",
                 'data'  => new \DateTime(),

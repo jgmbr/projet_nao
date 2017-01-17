@@ -30,7 +30,6 @@ class Observation
      */
     private $matureStage;
 
-
     /**
      * @ORM\Column(type="string")
      */
