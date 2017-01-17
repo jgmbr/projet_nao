@@ -50,6 +50,11 @@ class Image
      */
     private $observation;
 
+    public function __construct()
+    {
+        $this->createdAt    = new \Datetime();
+    }
+
     /**
      * @return mixed
      */

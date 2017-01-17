@@ -61,11 +61,6 @@ class Observation
     private $comment;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $status;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $public;
@@ -81,6 +76,11 @@ class Observation
     private $updatedAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="NBGraphics\CoreBundle\Entity\Status", cascade={"persist"})
+     */
+    private $status;
+
+    /**
      * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist"})
      */
     private $image;
@@ -94,6 +94,11 @@ class Observation
      * @ORM\ManyToOne(targetEntity="NBGraphics\UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->createdAt = new \Datetime();
+    }
 
     /**
      * @return mixed
@@ -234,22 +239,6 @@ class Observation
     /**
      * @return mixed
      */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getPublic()
     {
         return $this->public;
@@ -293,6 +282,30 @@ class Observation
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Status $status
+     *
+     * @return Observation
+     */
+    public function setStatus(\NBGraphics\CoreBundle\Entity\Status $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \NBGraphics\CoreBundle\Entity\Status
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**

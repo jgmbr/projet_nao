@@ -44,6 +44,7 @@ class ObservationFormType extends AbstractType
             ])
             ->add('dateAt', DateType::class, [
                 'label' => "Date de l'observation : ",
+                'data'  => new \DateTime(),
                 //Modifier l'implémentation de la date après
                 'widget' => 'choice',
                 'constraints' => [
@@ -60,6 +61,7 @@ class ObservationFormType extends AbstractType
             ])
             ->add('hourAt', TimeType::class, [
                 'label' => "Heure de l'observation : ",
+                'data'  => new \DateTime(),
                 'input' => 'datetime',
                 'constraints' => [
                     new NotBlank([
@@ -75,18 +77,14 @@ class ObservationFormType extends AbstractType
                 'required' => false,
                 // Ajouter des contraintes spécifiques aux photos.
             ])
-            /*
-            ->add('address', TextType::class, [
-                'label' => 'Veuillez saisir votre adresse',
-                'required' => false,
-            ])
-            */
             // Coordonnées GPS :
             ->add('latitude', TextType::class, [
-                'label' => 'Votre latitude'
+                'label' => 'Votre latitude',
+                'required' => true
             ])
             ->add('longitude', TextType::class, [
-                'label' => 'Votre longitude'
+                'label' => 'Votre longitude',
+                'required' => true
             ])
             //Faire un ChoiceType avec tous les départements
             ->add('departement', ChoiceType::class, [
@@ -98,6 +96,7 @@ class ObservationFormType extends AbstractType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => "Veuillez compléter votre observation",
+                'required' => true,
                 'constraints' => [
                     New NotBlank([
                         'message' => "Vous ne pouvez pas soumettre votre observation sans un message d'explication."

@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <th>Observateur</th>
-                    <td>{{ observation.user.username }} <a href="{{ path('user_show',{ 'id': observation.user.id }) }}">Voir fiche</a> </td>
+                    <td>{{ observation.user.username }} </td>
                 </tr>
                 <tr>
                     <th>Date d'observation</th>
@@ -53,7 +53,10 @@
                 </tr>
                 <tr>
                     <th>Statut</th>
-                    <td>{{ observation.status }}</td>
+                    <td>
+                        <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
+                        {{ observation.status.name }}
+                    </td>
                 </tr>
                 <tr>
                     <th>Date de création</th>
@@ -69,7 +72,7 @@
     </div>
 
     <div class="actions">
-        <a href="{{ path('account_observation_show') }}" class="btn btn-primary pull-left">
+        <a href="{{ path('account_observation') }}" class="btn btn-primary pull-left">
             <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
         </a>
         <a href="{{ path('account_observation_delete', { 'id': observation.id }) }}" class="btn btn-danger">

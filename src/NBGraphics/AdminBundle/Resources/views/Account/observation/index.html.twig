@@ -32,13 +32,16 @@
                                 <tbody>
                                 {% for observation in observations %}
                                     <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                                        <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
+                                        <td><a href="{{ path('account_observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
                                         <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
                                         <td>{{ observation.quantity }}</td>
                                         <td><img src="{{ observation.image }}" /></td>
                                         <td> [nom espece] </td>
                                         <td>{{ observation.latitude }},{{ observation.longitude }}</td>
-                                        <td>{{ observation.status }}</td>
+                                        <td>
+                                            <i class="fa {{ observation.status.icon }}" aria-hidden="true"></i>
+                                            {{ observation.status.name }}
+                                        </td>
                                         <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
                                         <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
                                         <td>

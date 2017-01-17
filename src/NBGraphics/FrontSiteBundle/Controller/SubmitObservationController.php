@@ -8,7 +8,6 @@
 
 namespace NBGraphics\FrontSiteBundle\Controller;
 
-
 use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,19 +19,32 @@ class SubmitObservationController extends Controller
     {
         $observation = new Observation();
         $observationForm = $this->createForm(ObservationFormType::class, $observation);
-
-
         $observationForm->handleRequest($request);
+
+        $user = $this->getUser();
+
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
-            $observation = $observationForm->getData();
 
+            $em = $this->getDoctrine()->getManager();
 
+            $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
 
+            $observation->setStatus($statut);
+
+            $observation->setUser($user);
+            $user->addObservation($observation);
+
+            $em->persist($observation);
+            $em->flush($observation);
+
+            $request->getSession()->getFlashBag()->add('success', 'Candidature ajoutée avec succès !');
+            return $this->redirectToRoute('account_observation');
 
         }
 
-        return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig', [
-            'observationForm' => $observationForm->createView(),
-        ]);
+        return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig', array(
+            'observation'       => $observation,
+            'observationForm'   => $observationForm->createView(),
+        ));
     }
 }
