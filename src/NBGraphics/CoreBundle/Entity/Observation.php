@@ -108,21 +108,6 @@ class Observation
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
 
     /**
      * @return mixed
@@ -282,6 +267,30 @@ class Observation
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Image $image
+     *
+     * @return Observation
+     */
+    public function setImage(\NBGraphics\CoreBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \NBGraphics\CoreBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
