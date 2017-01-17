@@ -28,6 +28,23 @@ class Observation
     /**
      * @ORM\Column(type="string")
      */
+    private $matureStage;
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $plumage;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $nidification;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     private $quantity;
 
     /**
@@ -106,6 +123,54 @@ class Observation
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatureStage()
+    {
+        return $this->matureStage;
+    }
+
+    /**
+     * @param mixed $matureStage
+     */
+    public function setMatureStage($matureStage)
+    {
+        $this->matureStage = $matureStage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlumage()
+    {
+        return $this->plumage;
+    }
+
+    /**
+     * @param mixed $plumage
+     */
+    public function setPlumage($plumage)
+    {
+        $this->plumage = $plumage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNidification()
+    {
+        return $this->nidification;
+    }
+
+    /**
+     * @param mixed $nidification
+     */
+    public function setNidification($nidification)
+    {
+        $this->nidification = $nidification;
     }
 
 
