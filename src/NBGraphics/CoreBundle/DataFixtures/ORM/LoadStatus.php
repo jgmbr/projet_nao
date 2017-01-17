@@ -19,7 +19,7 @@ class LoadStatus implements FixtureInterface
         $status2 = new Status();
         $status2->setName('Validée');
         $status2->setIcon('fa-check');
-        $status2->setRole('VALID');
+        $status2->setRole('VALIDED');
         $manager->persist($status2);
 
         $status3 = new Status();

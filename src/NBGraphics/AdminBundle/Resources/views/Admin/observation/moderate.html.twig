@@ -1,0 +1,102 @@
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
+
+{% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
+
+    <div class="box box-default">
+        <div class="box-header"> <i class="fa fa-eye" aria-hidden="true"></i> <h3 class="box-title"> Modération observation </h3> </div>
+        <div class="box-body box-application">
+            <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <th>Observateur</th>
+                    <td>{{ observation.user.username }} <a href="{{ path('user_show',{ 'id': observation.user.id }) }}">Voir fiche</a> </td>
+                </tr>
+                <tr>
+                    <th>Date d'observation</th>
+                    <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Heure d'observation</th>
+                    <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Quantité</th>
+                    <td>{{ observation.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>Espèce</th>
+                    <td> [nom espèce] </td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ observation.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ observation.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Département</th>
+                    <td>{{ observation.departement }}</td>
+                </tr>
+                <tr>
+                    <th>Localisation</th>
+                    <td>
+                        <div id="map"> [map] </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Commentaire</th>
+                    <td>{{ observation.comment }}</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>
+                        <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
+                        {{ observation.status.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date de création</th>
+                    <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Date de modification</th>
+                    <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="actions">
+        <a href="{{ path('observation_moderate_choice',{'id': observation.id ,'state': 1}) }}" class="btn btn-primary pull-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Valider l'observation
+        </a>
+        <a href="{{ path('observation_moderate_choice',{'id': observation.id ,'state': 0}) }}" class="btn btn-warning">
+            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Refuser l'observation
+        </a>
+    </div>
+
+    <br />
+
+    <div class="actions">
+        <a href="{{ path('observation_index') }}" class="btn btn-primary pull-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+        </a>
+        <a href="{{ path('observation_edit', { 'id': observation.id }) }}" class="btn btn-warning">
+            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+        </a>
+        <a href="{{ path('observation_delete', { 'id': observation.id }) }}" class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
+        </a>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
