@@ -12,63 +12,68 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('web/assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    {% endblock %}
 </head>
-<body class="">
-
-    <header>
-        <h1> HEADER › Home from FrontSiteBundle </h1>
-        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-            <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
-                <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
-            </a>
-        {% endif %}
-        {% if app.user %}
-            <p>
-                Bonjour {{ app.user.username }}
-                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
-            </p>
-        {% endif %}
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
-            <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
-            <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
-            <li><a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a></li>
-            {% if app.user %}
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
-                {% else %}
-                    <li><a href="{{ path('account_page') }}"> Aller sur Espace Mon Compte </a></li>
-                {% endif %}
-            {% else %}
-                <li><a href="{{ path('fos_user_security_login') }}"> Connexion </a></li>
-                <li><a href="{{ path('fos_user_registration_register') }}"> Inscription </a></li>
+<body>
+    <div class="container">
+        <header>
+            <h1> HEADER › Home from FrontSiteBundle </h1>
+            {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
+                </a>
             {% endif %}
-        </ul>
-    </nav>
+            {% if app.user %}
+                <p>
+                    Bonjour {{ app.user.username }}
+                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
+                </p>
+            {% endif %}
+        </header>
 
-    {% block body %}{% endblock %}
+        <nav>
+            <ul>
+                <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
+                <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
+                <li><a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a></li>
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
+                    {% else %}
+                        <li><a href="{{ path('account_page') }}"> Aller sur Espace Mon Compte </a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{ path('fos_user_security_login') }}"> Connexion </a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}"> Inscription </a></li>
+                {% endif %}
+            </ul>
+        </nav>
 
-    <footer>
-        <h2> FOOTER </h2>
-        <ul>
-            <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
-            <li><a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a></li>
-            <li><a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a></li>
-        </ul>
-        <h2> Réseaux sociaux </h2>
-        <ul>
-            <li><a href="https://www.facebook.com/" target="_blank">Notre page Facebook</a></li>
-            <li><a href="https://twitter.com/" target="_blank">Notre page Twitter</a></li>
-            <li><a href="https://www.youtube.com/" target="_blank">Notre page Youtube</a></li>
-            <li><a href="https://www.instagram.com/" target="_blank">Notre page Instagram</a></li>
-        </ul>
-    </footer>
+        {% block body %}{% endblock %}
 
-    {% block javascripts %}{% endblock %}
+        <footer>
+            <h2> FOOTER </h2>
+            <ul>
+                <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
+                <li><a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a></li>
+                <li><a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a></li>
+            </ul>
+            <h2> Réseaux sociaux </h2>
+            <ul>
+                <li><a href="https://www.facebook.com/" target="_blank">Notre page Facebook</a></li>
+                <li><a href="https://twitter.com/" target="_blank">Notre page Twitter</a></li>
+                <li><a href="https://www.youtube.com/" target="_blank">Notre page Youtube</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank">Notre page Instagram</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('web/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    {% endblock %}
 
 </body>
 </html>
