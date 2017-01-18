@@ -1,5 +1,6 @@
 nb_graphics_front_site:
-    resource: "@NBGraphicsFrontSiteBundle/Resources/config/routing.yml"
+    resource: "@NBGraphicsFrontSiteBundle/Controller/"
+    type:     annotation
     prefix:   /
 
 nb_graphics_admin:

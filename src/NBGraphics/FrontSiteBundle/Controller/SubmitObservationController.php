@@ -12,9 +12,14 @@ use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class SubmitObservationController extends Controller
 {
+    /**
+     * @Route("/submit-observation", name="nb_graphics_front_site_submitobservation")
+     */
     public function submitObservationAction(Request $request)
     {
         $observation = new Observation();

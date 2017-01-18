@@ -1,8 +1,17 @@
 {% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
 
 {% block body %}
-    {{ form_start(form, {'attr': {'class': '', 'role': 'form'}}) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" class="btn btn-success" />
-    {{ form_end(form) }}
+    <div class="col-sm-12">
+        <div class="box box-default">
+            <div class="box-header with-border"> <h3 class="box-title">Inscription à la newsletter</h3> </div>
+            <div class="box-body box-newsletter">
+                <div class="well">
+                    {{ form_start(formNewsletter, {'attr': {'class': ''}}) }}
+                    {{ form_widget(formNewsletter) }}
+                    <input type="submit" value="Valdier" class="btn btn-primary" />
+                    {{ form_end(formNewsletter) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
