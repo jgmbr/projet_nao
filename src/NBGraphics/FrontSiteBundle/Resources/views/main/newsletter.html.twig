@@ -1,0 +1,8 @@
+{% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'class': '', 'role': 'form'}}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Créer" class="btn btn-success" />
+    {{ form_end(form) }}
+{% endblock %}
