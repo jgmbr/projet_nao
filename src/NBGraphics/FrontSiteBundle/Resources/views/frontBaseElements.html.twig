@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs/css/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/growl/stylesheets/jquery.growl.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -13,12 +18,11 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     {% endblock %}
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="col-sm-12">
             <h1> HEADER › Home from FrontSiteBundle </h1>
             {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                 <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
@@ -33,7 +37,7 @@
             {% endif %}
         </header>
 
-        <nav>
+        <nav class="col-sm-12">
             <ul>
                 <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
                 <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
@@ -54,7 +58,7 @@
 
         {% block body %}{% endblock %}
 
-        <footer>
+        <footer class="col-sm-12">
             <h2> FOOTER </h2>
             <ul>
                 <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
@@ -71,8 +75,14 @@
         </footer>
     </div>
 
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/growl/javascripts/jquery.growl.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
     {% block javascripts %}
-        <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     {% endblock %}
 
 </body>

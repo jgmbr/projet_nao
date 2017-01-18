@@ -183,9 +183,11 @@ class ObservationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
+            $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
+
+            $observation->setStatus($statut);
+
             $observation->setUser($user);
-            $observation->setStatus('En attente');
-            $observation->setPublic(true);
             $user->addObservation($observation);
 
             $em->persist($observation);

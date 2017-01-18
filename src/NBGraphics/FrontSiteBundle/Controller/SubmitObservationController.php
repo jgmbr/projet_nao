@@ -37,7 +37,7 @@ class SubmitObservationController extends Controller
             $em->persist($observation);
             $em->flush($observation);
 
-            $request->getSession()->getFlashBag()->add('success', 'Candidature ajoutée avec succès !');
+            $request->getSession()->getFlashBag()->add('success', 'Observation ajoutée avec succès !');
             return $this->redirectToRoute('account_observation');
 
         }

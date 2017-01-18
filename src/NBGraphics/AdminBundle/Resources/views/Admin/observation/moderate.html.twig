@@ -4,6 +4,7 @@
 
     {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
 
+    <div class="col-sm-12 col-md-9">
     <div class="box box-default">
         <div class="box-header"> <i class="fa fa-eye" aria-hidden="true"></i> <h3 class="box-title"> Modération observation </h3> </div>
         <div class="box-body box-application">
@@ -94,6 +95,7 @@
         <a href="{{ path('observation_delete', { 'id': observation.id }) }}" class="btn btn-danger">
             <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
         </a>
+    </div>
     </div>
 
 {% endblock %}

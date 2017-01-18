@@ -4,6 +4,7 @@
 
     {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
 
+    <div class="col-sm-12 col-md-9">
     <div class="actions">
         <a href="{{ path('user_new') }}" class="btn btn-success">
             <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Ajouter un membre
@@ -47,13 +48,13 @@
                                         <td>
                                             {% if app.user.id != admin.id %}
                                                 <a href="{{ path('admin_home_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
-                                                    <i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter en tant que
+                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
-                                                    <i class="fa fa-eye-slash" aria-hidden="true"></i> Modifier
+                                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </a>
                                             {% endif %}
                                         </td>
@@ -115,13 +116,13 @@
                                         <td> {{ user.updatedAt|date('d/m/Y à H:i') }} </td>
                                         <td>
                                             <a href="{{ path('account_page', {'_switch_user': user.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
-                                                <i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter en tant que
+                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
                                             </a>
                                             <a href="{{ path('user_edit', { 'id': user.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
-                                                <i class="fa fa-eye-slash" aria-hidden="true"></i> Modifier
+                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                             </a>
                                             <a href="{{ path('user_delete', { 'id': user.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -145,6 +146,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 {% endblock %}

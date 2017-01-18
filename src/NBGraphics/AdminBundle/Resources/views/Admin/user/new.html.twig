@@ -4,6 +4,10 @@
 
     {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
 
+    <div class="col-sm-12 col-md-9">
+    <div class="box box-default">
+    <div class="box-header with-border"> <h3 class="box-title">Nouvel utilisateur</h3> </div>
+    <div class="box-body box-new">
     <div class="well">
     {{ form_start(form, {'attr': {'class': ''}}) }}
         {{ form_widget(form) }}
@@ -12,5 +16,8 @@
     </div>
 
     <p> <a href="{{ path('user_index') }}" class="btn btn-default">Retour à la liste des membres</a> </p>
+    </div>
+    </div>
+    </div>
 
 {% endblock %}
