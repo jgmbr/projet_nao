@@ -1,6 +1,6 @@
 <?php
 
-namespace NBGraphics\AdminBundle\Controller\Admin;
+namespace NBGraphics\AdminBundle\Controller;
 
 use NBGraphics\UserBundle\Entity\User;
 use NBGraphics\UserBundle\Form\UserType;
@@ -25,6 +25,8 @@ class UserController extends Controller
 
         $administrators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllAdmin();
 
+        $collaborators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllCollaborators();
+
         $deleteForms = array();
 
         foreach ($users as $user) {
@@ -34,6 +36,7 @@ class UserController extends Controller
         return $this->render('NBGraphicsAdminBundle:Admin/user:index.html.twig',array(
             'users' => $users,
             'administrators' => $administrators,
+            'collaborators' => $collaborators,
             'deleteForms' => $deleteForms
         ));
     }
@@ -67,7 +70,7 @@ class UserController extends Controller
     /**
      * Finds and displays a user entity.
      *
-     * @Route("/{id}", name="user_show")
+     * @Route("/{id}/show", name="user_show")
      * @Method("GET")
      */
     public function showAction(User $user)

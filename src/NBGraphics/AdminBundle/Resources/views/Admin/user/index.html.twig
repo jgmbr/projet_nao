@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Admin:menu.html.twig' %}
+    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
     <div class="col-sm-12 col-md-9">
     <div class="actions">
@@ -115,7 +115,7 @@
                                         <td> {{ user.createdAt|date('d/m/Y à H:i') }} </td>
                                         <td> {{ user.updatedAt|date('d/m/Y à H:i') }} </td>
                                         <td>
-                                            <a href="{{ path('account_page', {'_switch_user': user.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
+                                            <a href="{{ path('admin_page', {'_switch_user': user.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
                                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                             </a>
                                             <a href="{{ path('user_edit', { 'id': user.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
@@ -147,6 +147,73 @@
             </div>
         </div>
     </div>
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Collaborateurs</h3>
+            </div>
+            <div class="box-body">
+                <div id="collaborator_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if collaborators is defined and collaborators|length > 0 %}
+                                <table id="collaborator" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="collaborator_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th> Id </th>
+                                        <th> Email </th>
+                                        <th> Actif </th>
+                                        <th> Date de création </th>
+                                        <th> Date de modification </th>
+                                        <th> Actions </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for collaborator in collaborators %}
+                                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                            <td> {{ collaborator.id }} </td>
+                                            <td> {{ collaborator.email }} </td>
+                                            <td> {% if collaborator.enabled %}Oui{% else %}Non{% endif %} </td>
+                                            <td> {{ collaborator.createdAt|date('d/m/Y à H:i') }} </td>
+                                            <td> {{ collaborator.updatedAt|date('d/m/Y à H:i') }} </td>
+                                            <td>
+                                                <a href="{{ path('admin_page', {'_switch_user': collaborator.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
+                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('user_edit', { 'id': collaborator.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('user_delete', { 'id': collaborator.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th> Id </th>
+                                        <th> Email </th>
+                                        <th> Actif </th>
+                                        <th> Date de création </th>
+                                        <th> Date de modification </th>
+                                        <th> Actions </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            {% else %}
+                                <p> Pas de collaborateurs. </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 {% endblock %}

@@ -1,0 +1,117 @@
+<h2>
+    {% if is_granted('ROLE_ADMIN') %}
+        ESPACE ADMINISTRATION
+    {% elseif is_granted('ROLE_COLLABORATOR') %}
+        ESPACE COLLABORATEUR
+    {% else %}
+        ESPACE MON COMPTE
+    {% endif %}
+</h2>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="col-sm-12 col-md-3">
+        <ul class="sidebar-menu">
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                <a href="{{ path('admin_page') }}">
+                    <i class="fa fa-home" aria-hidden="true"></i> <span> Accueil </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
+                <a href="{{ path('admin_profil') }}">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span> Mon Profil </span>
+                </a>
+            </li>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li class="treeview {% if app.request.attributes.get('_route') == "user_index" %}active{% endif %}">
+                <a href="{{ path('user_index') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i> <span> Membres </span>
+                </a>
+            </li>
+            {% endif %}
+            <li class="treeview {% if app.request.attributes.get('_route') == "observation_index" %}active{% endif %}">
+                <a href="#">
+                    <i class="fa fa-camera" aria-hidden="true"></i> <span> Observations </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ path('observation_new') }}">
+                            <i class="fa fa-plus" aria-hidden="true"></i> <span> Ajouter </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('observation_index') }}">
+                            <i class="fa fa-list-ul" aria-hidden="true"></i> <span> Liste </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('observation_waiting') }}">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> <span> En attente </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('observation_valided') }}">
+                            <i class="fa fa-check" aria-hidden="true"></i> <span> Validées </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('observation_refused') }}">
+                            <i class="fa fa-times" aria-hidden="true"></i> <span> Refusées </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li class="treeview {% if app.request.attributes.get('_route') == "news_index" %}active{% endif %}">
+                <a href="#">
+                    <i class="fa fa-file-text" aria-hidden="true"></i> <span> Actualités </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
+                <a href="{{ path('newsletter_index') }}">
+                    <i class="fa fa-at" aria-hidden="true"></i> <span> Newsletter </span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+{% elseif is_granted('ROLE_COLLABORATOR') %}
+    <div class="col-sm-12 col-md-3">
+        <ul class="sidebar-menu">
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                <a href="{{ path('admin_page') }}">
+                    <i class="fa fa-home" aria-hidden="true"></i> <span> Accueil </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
+                <a href="{{ path('admin_profil') }}">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span> Mon Profil </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "news_index" %}active{% endif %}">
+                <a href="#">
+                    <i class="fa fa-file-text" aria-hidden="true"></i> <span> Actualités </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% else %}
+    <div class="col-sm-12 col-md-3">
+        <ul class="sidebar-menu">
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                <a href="{{ path('admin_page') }}">
+                    <i class="fa fa-home" aria-hidden="true"></i> <span> Accueil </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
+                <a href="{{ path('admin_profil') }}">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span> Mon Profil </span>
+                </a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == "my_observation_index" %}active{% endif %}">
+                <a href="{{ path('my_observation_index') }}">
+                    <i class="fa fa-camera" aria-hidden="true"></i> <span> Mes Observations </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

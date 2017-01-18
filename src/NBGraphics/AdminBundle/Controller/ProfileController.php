@@ -1,6 +1,6 @@
 <?php
 
-namespace NBGraphics\AdminBundle\Controller\Admin;
+namespace NBGraphics\AdminBundle\Controller;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
@@ -37,7 +37,7 @@ class ProfileController extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('NBGraphicsAdminBundle:Admin:profile/show.html.twig', array(
+        return $this->render('NBGraphicsAdminBundle:Common:profile/show.html.twig', array(
             'user' => $user,
         ));
     }
@@ -90,7 +90,7 @@ class ProfileController extends BaseController
             return $response;
         }
 
-        return $this->render('NBGraphicsAdminBundle:Admin:profile/edit.html.twig', array(
+        return $this->render('NBGraphicsAdminBundle:Common:profile/edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }

@@ -55,13 +55,15 @@ class RegistrationController extends BaseController
 
                 if (null === $response = $event->getResponse()) {
 
-                    $url = $this->generateUrl('fos_user_registration_confirmed');
+                    /*$url = $this->generateUrl('fos_user_registration_confirmed');
 
                     if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
                         $url = $this->generateUrl('admin_page');
                     } else {
                         $url = $this->generateUrl('account_page');
-                    }
+                    }*/
+
+                    $url = $this->generateUrl('admin_page');
 
                     $response = new RedirectResponse($url);
                 }

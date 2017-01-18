@@ -1,6 +1,6 @@
 <?php
 
-namespace NBGraphics\AdminBundle\Controller\Admin;
+namespace NBGraphics\AdminBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
@@ -19,7 +19,7 @@ class ObservationController extends Controller
     /**
      * Lists all observation entities.
      *
-     * @Route("/", name="observation_index")
+     * @Route("/list", name="observation_index")
      * @Method("GET")
      */
     public function indexAction()

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Account:menu.html.twig' %}
+    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
     <div class="col-sm-12 col-md-9">
         <div class="box box-default">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="actions">
-        <a href="{{ path('account_observation') }}" class="btn btn-primary pull-left">
+        <a href="{{ path('my_observation_index') }}" class="btn btn-primary pull-left">
             <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
         </a>
     </div>

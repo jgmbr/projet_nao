@@ -1,6 +1,6 @@
 <?php
 
-namespace NBGraphics\AdminBundle\Controller\Admin;
+namespace NBGraphics\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,10 +12,10 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $user               = $this->getUser();
+        $user = $this->getUser();
 
-        return $this->render('NBGraphicsAdminBundle:Admin:index.html.twig',array(
-            'user'              => $user,
+        return $this->render('NBGraphicsAdminBundle:Common:index.html.twig',array(
+            'user' => $user,
         ));
     }
 }

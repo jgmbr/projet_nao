@@ -1,6 +1,6 @@
 <?php
 
-namespace NBGraphics\AdminBundle\Controller\Admin;
+namespace NBGraphics\AdminBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Newsletter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
