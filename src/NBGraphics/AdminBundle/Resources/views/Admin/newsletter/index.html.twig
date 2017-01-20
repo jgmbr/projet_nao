@@ -4,7 +4,9 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <a href="{{ path('newsletter_export') }}" class="btn btn-info"> <i class="fa fa-download" aria-hidden="true"></i> Exporter </a>
+    {% if newsletters is defined and newsletters|length > 0 %}
+        <a href="{{ path('newsletter_export') }}" class="btn btn-info"> <i class="fa fa-download" aria-hidden="true"></i> Exporter </a>
+    {% endif %}
 
     <div class="col-sm-12 col-md-9">
         <div class="box box-default">
