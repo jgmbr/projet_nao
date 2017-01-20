@@ -147,4 +147,19 @@ class Newsletter
     {
         $this->updatedAt = new \DateTime("now");
     }
+
+    public function toArray()
+    {
+        return array(
+            $this->id,
+            $this->email,
+        );
+    }
+
+    public function toCsv()
+    {
+        return array(
+            $this->email,
+        );
+    }
 }

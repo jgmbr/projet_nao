@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Newsletter controller.
@@ -29,6 +30,38 @@ class NewsletterController extends Controller
 
         return $this->render('NBGraphicsAdminBundle:Admin/newsletter:index.html.twig', array(
             'newsletters' => $newsletters,
+        ));
+    }
+
+    /**
+     * Export newsletter entities.
+     *
+     * @Route("/export", name="newsletter_export")
+     * @Method("GET")
+     */
+    public function exportAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $delimiter = ";";
+        $iterableResult = $em->getRepository('NBGraphicsCoreBundle:Newsletter')->createQueryBuilder('a')->getQuery()->iterate();
+        $handle = fopen('php://memory', 'r+');
+        $header = array('id','email');
+
+        fputcsv($handle, $header, $delimiter);
+
+        while (false !== ($row = $iterableResult->next())) {
+            fputcsv($handle, $row[0]->toArray(), $delimiter);
+            $em->detach($row[0]);
+        }
+
+        rewind($handle);
+        $content = stream_get_contents($handle);
+        fclose($handle);
+
+        return new Response($content, 200, array(
+            'Content-Type' => 'application/force-download',
+            'Content-Disposition' => 'attachment; filename="export-newsletter-'.date('YmdHis').'.csv"'
         ));
     }
 
