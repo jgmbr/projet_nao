@@ -48,6 +48,11 @@ class ResettingController extends BaseController
         $event = new GetResponseNullableUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_INITIALIZE, $event);
 
+        if (!$user) {
+            $request->getSession()->getFlashBag()->add('error', 'Utilisateur inconnu');
+            return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
+        }
+
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }

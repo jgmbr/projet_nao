@@ -41,28 +41,9 @@ class NewsletterController extends Controller
      */
     public function exportAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $exportWS = $this->get('app.export');
 
-        $delimiter = ";";
-        $iterableResult = $em->getRepository('NBGraphicsCoreBundle:Newsletter')->createQueryBuilder('a')->getQuery()->iterate();
-        $handle = fopen('php://memory', 'r+');
-        $header = array('id','email');
-
-        fputcsv($handle, $header, $delimiter);
-
-        while (false !== ($row = $iterableResult->next())) {
-            fputcsv($handle, $row[0]->toArray(), $delimiter);
-            $em->detach($row[0]);
-        }
-
-        rewind($handle);
-        $content = stream_get_contents($handle);
-        fclose($handle);
-
-        return new Response($content, 200, array(
-            'Content-Type' => 'application/force-download',
-            'Content-Disposition' => 'attachment; filename="export-newsletter-'.date('YmdHis').'.csv"'
-        ));
+        return $exportWS->export('NBGraphicsCoreBundle:Newsletter', array('id','email'), 'exportAll', 'newsletter');
     }
 
     /**

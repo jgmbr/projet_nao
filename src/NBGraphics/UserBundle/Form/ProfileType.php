@@ -12,6 +12,7 @@
 namespace NBGraphics\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -19,6 +20,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ProfileType extends AbstractType
 {
@@ -56,8 +59,38 @@ class ProfileType extends AbstractType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('lastname', null, array('label' => 'form.lastname', 'translation_domain' => 'FOSUserBundle'))
-            ->add('firstname', null, array('label' => 'form.firstname', 'translation_domain' => 'FOSUserBundle'))
+            ->add('lastname', TextType::class, array(
+                'label' => 'form.lastname',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => false,
+            ))
+            ->add('firstname', TextType::class, array(
+                'label' => 'form.firstname',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => false,
+            ))
+            ->add('phone', TextType::class, array(
+                'label' => 'form.phone',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => false,
+                'constraints' => array(
+                    new Length(array(
+                        'min' => 10,
+                        'minMessage' => 'Nombre de caractères minimal requis 10',
+                        'max' => 10,
+                        'maxMessage' => 'Nombre de caractères maximal requis 10',
+                    )),
+                    new Regex(array(
+                        'pattern' => '^0[0-9]([-. ]?\d{2}){4}[-. ]?$^',
+                        'message' => 'Format numéro de mobile incorrect'
+                    ))
+                )
+            ))
+            ->add('enableCampaigns', CheckboxType::class, array(
+                'label' => 'Autoriser Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => false,
+            ))
         ;
 
     }

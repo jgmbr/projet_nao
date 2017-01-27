@@ -28,6 +28,20 @@
                     <th> {{ 'profile.show.firstname'|trans }} </th>
                     <td> {{ user.firstname }} </td>
                 </tr>
+                <tr>
+                    <th> {{ 'profile.show.phone'|trans }} </th>
+                    <td> {{ user.phone }} </td>
+                </tr>
+                <tr>
+                    <th> Autorisation(s) </th>
+                    <td>
+                        {% if user.enableCampaigns %}
+                            J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing
+                        {% else %}
+                            Je n'autorise pas Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing
+                        {% endif %}
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

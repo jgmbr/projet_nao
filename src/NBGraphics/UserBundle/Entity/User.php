@@ -33,6 +33,16 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @ORM\Column(name="phone", type="string", length=10, nullable=true)
+     */
+    protected $phone;
+
+    /**
+     * @ORM\Column(name="enable_campaigns", type="boolean", nullable=true)
+     */
+    protected $enableCampaigns;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -126,6 +136,54 @@ class User extends BaseUser
     }
 
     /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set enableCampaigns
+     *
+     * @param boolean $enableCampaigns
+     *
+     * @return User
+     */
+    public function setEnableCampaigns($enableCampaigns)
+    {
+        $this->enableCampaigns = $enableCampaigns;
+
+        return $this;
+    }
+
+    /**
+     * Get enableCampaigns
+     *
+     * @return boolean
+     */
+    public function getEnableCampaigns()
+    {
+        return $this->enableCampaigns;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -174,26 +232,6 @@ class User extends BaseUser
     }
 
     /**
-     * Triggered on insert
-
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->createdAt = new \DateTime("now");
-    }
-
-    /**
-     * Triggered on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updatedAt = new \DateTime("now");
-    }
-
-    /**
      * Add observation
      *
      * @param \NBGraphics\CoreBundle\Entity\Observation $observation
@@ -225,5 +263,46 @@ class User extends BaseUser
     public function getObservations()
     {
         return $this->observations;
+    }
+
+    /**
+     * Triggered on insert
+
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->createdAt = new \DateTime("now");
+    }
+
+    /**
+     * Triggered on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updatedAt = new \DateTime("now");
+    }
+
+    public function toArray()
+    {
+        return array(
+            $this->id,
+            utf8_decode($this->username),
+            utf8_decode($this->email),
+            utf8_decode($this->enabled),
+            utf8_decode($this->lastname),
+            utf8_decode($this->firstname),
+            utf8_decode($this->phone),
+            utf8_decode($this->enableCampaigns)
+        );
+    }
+
+    public function toPhone()
+    {
+        return array(
+            $this->phone,
+        );
     }
 }

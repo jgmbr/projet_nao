@@ -10,4 +10,12 @@ namespace NBGraphics\CoreBundle\Repository;
  */
 class NewsletterRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function exportAll()
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->getQuery()
+            ->iterate()
+        ;
+    }
 }

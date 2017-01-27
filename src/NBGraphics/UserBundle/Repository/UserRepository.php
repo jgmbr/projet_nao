@@ -98,4 +98,15 @@ class UserRepository extends EntityRepository
             ->getSingleScalarResult()
         ;
     }
+
+    public function exportAllPhoneAllowed()
+    {
+        return $this
+            ->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.enableCampaigns = 1')
+            ->getQuery()
+            ->iterate()
+        ;
+    }
 }

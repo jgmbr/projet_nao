@@ -21,6 +21,8 @@ profile:
         email: 'Adresse e-mail'
         lastname: 'Nom'
         firstname: 'Prénom'
+        phone: 'Mobile'
+        campaigns: 'Autoriser Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing'
     edit:
         submit: 'Mettre à jour'
         lastname: 'Nom'
@@ -84,6 +86,8 @@ form:
     new_password: 'Nouveau mot de passe'
     new_password_confirmation: 'Répéter le nouveau mot de passe'
     firstname: 'Prénom'
+    enableCampaigns: ''
+    phone: 'Mobile'
     lastname: 'Nom'
     enabled: 'Actif'
     role: 'Rôle'

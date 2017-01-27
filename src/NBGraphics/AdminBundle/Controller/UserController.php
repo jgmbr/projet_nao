@@ -42,6 +42,16 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/export/phones", name="user_export_phones")
+     */
+    public function exportPhonesAction()
+    {
+        $exportWS = $this->get('app.export');
+
+        return $exportWS->export('NBGraphicsUserBundle:User', array('phone'), 'exportAllPhoneAllowed', 'sms', 'toPhone');
+    }
+
+    /**
      * @Route("/new", name="user_new")
      */
     public function newAction(Request $request)
