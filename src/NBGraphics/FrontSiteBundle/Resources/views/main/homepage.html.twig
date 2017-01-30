@@ -5,7 +5,44 @@
 {% endblock %}
 
 {% block body %}
-    <h2>
-        L'association Nos Amis Les Oiseaux vous souhaitent la bienvenue
-    </h2>
+    <div class="home-page-wrapper">
+        <video class="video" autoplay muted loop>
+            <source src="https://s3.amazonaws.com/codecademy-content/projects/excursion/bg.mp4" type="video/mp4">
+        </video>
+        <h2>Notre programme d'observation</h2>
+        <p>
+            <a href="{{ path('nb_graphics_front_site_submitobservation') }}">Participer</a>
+        </p>
+    </div>
+
+    <main class="home-page-main">
+        <h2>Un super titre trop vendeur</h2>
+        <section>
+            <img src="../../../{{ asset('images/portfolio-6.png') }}" alt="Image à changer">
+            <div class="desktop-container">
+                <h3>La carte interactive</h3>
+                <p>
+                    Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar.
+                </p>
+            </div>
+        </section>
+        <section>
+            <img src="{{ asset('images/portfolio-11.png') }}" alt="Image à changer">
+            <div class="desktop-container">
+                <h3>Transmettez vos observations facilement</h3>
+                <p>
+                    Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
+                </p>
+            </div>
+        </section>
+        <section>
+            <img src="{{ asset('images/portfolio-14.png') }}" alt="Image à changer">
+            <div class="desktop-container">
+                <h3>Un programme ambitieux</h3>
+                <p>
+                    Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
+                </p>
+            </div>
+        </section>
+    </main>
 {% endblock %}

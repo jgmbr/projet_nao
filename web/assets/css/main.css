@@ -415,6 +415,10 @@ a {
   text-decoration: none;
   color: #374a5b; }
 
+a:hover,
+a:focus {
+  text-decoration: none; }
+
 ul {
   padding-left: 0; }
 
@@ -540,7 +544,8 @@ li {
   padding: 5px 10px;
   transition: .4s;
   text-transform: capitalize;
-  font-size: 1em; }
+  font-size: 1em;
+  opacity: .8; }
 
 .main-nav li a:hover {
   background-color: #374a5b;
@@ -548,7 +553,8 @@ li {
   @media (min-width: 768px) {
     .main-nav li a:hover {
       background-color: unset;
-      color: #374a5b; } }
+      color: #222222;
+      opacity: 1; } }
 
 .main-footer {
   padding: 10px;
@@ -675,7 +681,7 @@ li {
 
 @media (max-width: 1024px) {
   .home-page-wrapper {
-    background: url("../images/owl.jpg");
+    background: url("../../../images/owl.jpg");
     padding-top: 400px;
     height: 600px;
     background-size: cover;
