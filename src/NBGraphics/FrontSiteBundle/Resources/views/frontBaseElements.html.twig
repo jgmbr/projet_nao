@@ -45,7 +45,27 @@
             </ul>
             <img class="hamburger" src="{{ asset('images/menu.png') }}" alt="Voir le menu">
         </header>
-    </div>
+
+
+        <nav class="main-nav">
+            <ul>
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a>
+                </li>
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a>
+                </li>
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a>
+                </li>
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </div><!-- END: header-wrapper  -->
 
 
 
@@ -92,22 +112,55 @@
 
         {% block body %}{% endblock %}
 
-        <footer class="col-sm-12">
-            <h2> FOOTER </h2>
-            <ul>
-                <li><a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a></li>
-            </ul>
-            <h2> Réseaux sociaux </h2>
-            <ul>
-                <li><a href="https://www.facebook.com/" target="_blank">Notre page Facebook</a></li>
-                <li><a href="https://twitter.com/" target="_blank">Notre page Twitter</a></li>
-                <li><a href="https://www.youtube.com/" target="_blank">Notre page Youtube</a></li>
-                <li><a href="https://www.instagram.com/" target="_blank">Notre page Instagram</a></li>
-            </ul>
-        </footer>
     </div>
+
+
+        <footer class="main-footer">
+            <section>
+                <h3>Réseaux sociaux</h3>
+                <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les réseaux sociaux">
+                <ul class="social-links">
+                    <li class="facebook">
+                        <a href="#">Facebook</a>
+                    </li>
+                    <li class="twitter">
+                        <a href="#">Twitter</a>
+                    </li>
+                    <li class="instagram">
+                        <a href="#">Instagram</a>
+                    </li>
+                    <li class="youtube">
+                        <a href="#">Youtube</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Liens complémentaires</h3>
+                <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les liens complémentaires">
+                <ul>
+                    <li>
+                        <a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('nb_graphics_front_site_contactform') }}">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('nb_graphics_front_site_credits') }}">Crédits</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Copyright</h3>
+                <p>
+                    &copy; Association Nos Amis Les Oiseaux
+                    <br>
+                    11, rue de la pie qui chante
+                    <br>
+                    01234 Donaldville
+                </p>
+            </section>
+        </footer>
+
 
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>

@@ -514,6 +514,7 @@ li {
   @media (min-width: 768px) {
     .main-nav ul {
       display: flex !important;
+      margin-top: 10px;
       align-items: center; } }
   @media (min-width: 1024px) {
     .main-nav ul {
