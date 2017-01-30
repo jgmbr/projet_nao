@@ -90,11 +90,6 @@
 
         <nav class="col-sm-12">
             <ul>
-                <li><a href="{{ path('nb_graphics_front_site_homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte intéractive</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a></li>
-                <li><a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a></li>
                 {% if app.user %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
