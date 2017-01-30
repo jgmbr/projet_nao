@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/Ionicons/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs/css/dataTables.bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/growl/stylesheets/jquery.growl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -21,6 +22,34 @@
     {% endblock %}
 </head>
 <body>
+    <div class="header-wrapper">
+        <header class="main-header">
+            <ul>
+                <li class="logo">
+                    <a href="{{ path('nb_graphics_front_site_homepage') }}">
+                        <img src="{{ asset('images/logoOK-bleu.svg') }}" alt="Logo du site">
+                    </a>
+                </li>
+                <li class="header-title">
+                    <a href="{{ path('nb_graphics_front_site_homepage') }}">Nos Amis Les Oiseaux</a>
+                </li>
+                <li class="connect">
+                    <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                </li>
+                <li class="connect">
+                    <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                </li>
+                <li class="connect newletter">
+                    <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
+                </li>
+            </ul>
+            <img class="hamburger" src="{{ asset('images/menu.png') }}" alt="Voir le menu">
+        </header>
+    </div>
+
+
+
+
 
 
     <div class="container">
