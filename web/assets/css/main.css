@@ -779,7 +779,6 @@ li {
 .observation-form-container form textarea {
   width: 100%;
   margin: 10px 0 20px;
-  padding: 10px;
   cursor: pointer; }
 
 .observation-form-container #map {
