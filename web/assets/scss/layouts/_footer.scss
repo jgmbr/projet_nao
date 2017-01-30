@@ -1,0 +1,73 @@
+// Main Footer
+.main-footer {
+  padding: 10px;
+  background-color: #2c3e50;
+  color: #fff;
+  @media #{$desktop} {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10px 20px;
+  }
+}
+
+.main-footer section {
+  border-bottom: 1px solid #bbb;
+  position: relative;
+  @media #{$desktop} {
+    width: 32%;
+    border-bottom: none;
+    border-left: 1px solid #bbb;
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+}
+
+.main-footer section:last-child {
+  border-bottom: none;
+  @media #{$desktop} {
+    border-left: none;
+  }
+}
+
+.main-footer section h3 {
+  text-align: left;
+  font-size: 1em;
+}
+
+.main-footer section img {
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: -7px;
+  opacity: .7;
+  cursor: pointer;
+  @media #{$tablet} {
+    display: none;
+  }
+}
+
+.main-footer section img:hover {
+  opacity: 1;
+}
+
+.main-footer section ul {
+  display: none;
+  @media #{$tablet} {
+    display: block !important;
+  }
+}
+
+.main-footer section p {
+  text-align: justify;
+  font-size: .9em;
+}
+
+.main-footer section a {
+  color: #fff;
+  font-size: .9em;
+  opacity: .7;
+}
+
+.main-footer section a:hover {
+  opacity: 1;
+}

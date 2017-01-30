@@ -1,0 +1,42 @@
+// Observation Form Container
+.observation-form-container {
+  width: 96%;
+  margin: auto;
+}
+
+.observation-form-container h2 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.observation-form-container fieldset {
+  border: none;
+  padding: 0;
+}
+
+.observation-form-container fieldset legend {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+.observation-form-container fieldset label {
+  font-weight: lighter;
+  font-size: 1.1em;
+}
+
+.observation-form-container form input,
+.observation-form-container form select,
+.observation-form-container form textarea {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.observation-form-container #map {
+  height: 300px;
+  width: 50%;
+}

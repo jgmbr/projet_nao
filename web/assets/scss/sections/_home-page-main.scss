@@ -1,0 +1,71 @@
+// Home page Main Section
+.home-page-main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto 15px;
+  text-align: center;
+  @media #{$desktop} {
+    text-align: left;
+    margin-top: 80px;
+  }
+}
+
+.home-page-main h2 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @media #{$desktop} {
+    font-size: 2em;
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.home-page-main section {
+  padding-top: 15px;
+  border-bottom: 1px solid #ccc;
+  @media #{$desktop} {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.home-page-main section:nth-of-type(odd) {
+  flex-direction: row-reverse;
+}
+
+
+.home-page-main section:nth-of-type(even) .desktop-container {
+  margin-left: 10px;
+}
+
+.home-page-main section:first-child {
+  padding-top: 0;
+}
+
+.home-page-main section:last-child {
+  border-bottom: none;
+}
+
+.home-page-main h3 {
+  margin-bottom: 0;
+  font-size: 1.1em;
+  @media #{$desktop} {
+    font-size: 1.3em;
+  }
+}
+
+.home-page-main p {
+  font-weight: lighter;
+}
+
+.home-page-main img {
+  width: 100%;
+  max-width: 500px;
+  @media #{$desktop} {
+    max-width: 450px;
+  }
+}
