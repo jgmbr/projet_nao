@@ -51,7 +51,7 @@ class RegistrationType extends AbstractType
                 )
             ))
             ->add('enableCampaigns', CheckboxType::class, array(
-                'label' => 'Autoriser Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing',
+                'label' => 'form.enableCampaigns',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
             ))

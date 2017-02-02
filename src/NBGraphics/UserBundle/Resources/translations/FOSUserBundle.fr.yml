@@ -86,7 +86,7 @@ form:
     new_password: 'Nouveau mot de passe'
     new_password_confirmation: 'Répéter le nouveau mot de passe'
     firstname: 'Prénom'
-    enableCampaigns: ''
+    enableCampaigns: 'Autoriser Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing'
     phone: 'Mobile'
     lastname: 'Nom'
     enabled: 'Actif'
