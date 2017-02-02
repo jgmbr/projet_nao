@@ -16,22 +16,31 @@
         <h3>
             Choix 1 : Je ne connais pas les coordonées GPS, mais je connais l'adresse
         </h3>
-        <label for="address">Adresse</label>
-        <input type="text" id="address" name="obs_address">
-        <br>
+        <div class="form-group">
+            <label for="address">Adresse</label>
+            <input type="text" id="address" name="obs_address" class="form-control">
+        </div>
         <h3>
             Choix 2 : je souhaite me géolocaliser
         </h3>
             {{ form_row(observationForm.latitude) }}
             {{ form_row(observationForm.longitude) }}
-        <a id="localize" type="button" name="obs_button">Me localiser</a>
-        <div id="map"></div>
+
+        <div class="form-group">
+            <a id="localize" name="obs_button" class="btn btn-info">
+                <i class="fa fa-map-marker" aria-hidden="true"></i> Me localiser
+            </a>
+        </div>
+
+        <div class="form-group">
+            <div id="map"></div>
+        </div>
 
             {{ form_row(observationForm.departement) }}
             {{ form_row(observationForm.comment) }}
 
-        <button type="submit">
-            Valider votre observation
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-check" aria-hidden="true"></i> Envoyer mon observation
         </button>
         {{ form_end(observationForm) }}
     </main>
