@@ -26,10 +26,18 @@ class Image
      */
     private $id;
 
+
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(name="url", type="string")
      */
-    private $source;
+    private $url;
+
+    /**
+     * @ORM\Column(name="alt", type="string")
+     */
+    private $alt;
+
+    private $file;
 
     /**
      * @ORM\Column(type="datetime")
@@ -37,7 +45,7 @@ class Image
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -51,6 +59,31 @@ class Image
         $this->createdAt    = new \Datetime();
     }
 
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        $name = $this->file->getClientOriginalName();
+
+        $this->file->move($this->getUploadRootDir(), $name);
+
+        $this->url = $name;
+        $this->alt = $name;
+        return $this;
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/img';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
     /**
      * @return mixed
      */
@@ -62,17 +95,49 @@ class Image
     /**
      * @return mixed
      */
-    public function getSource()
+    public function getUrl()
     {
-        return $this->source;
+        return $this->url;
     }
 
     /**
-     * @param mixed $source
+     * @param mixed $url
      */
-    public function setSource($source)
+    public function setUrl($url)
     {
-        $this->source = $source;
+        $this->url = $url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * @param mixed $alt
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
     }
 
     /**
