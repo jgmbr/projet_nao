@@ -2,10 +2,12 @@
 
 namespace NBGraphics\CoreBundle\Form;
 
+use NBGraphics\CoreBundle\Entity\Image;
 use NBGraphics\CoreBundle\Validator\Constraints\isHourTimeValid;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYear;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYearValid;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYearValidValidator;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -15,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -111,10 +114,9 @@ class ObservationFormType extends AbstractType
                 ]
             ])
             //Regarder pour utiliser un ClassType spécial
-            ->add('image', FileType::class, [
+            ->add('image', ImageType::class, [
                 'label' => "Ajouter votre photo : ",
                 'required' => false,
-                // Ajouter des contraintes spécifiques aux photos.
             ])
             // Coordonnées GPS :
             ->add('latitude', TextType::class, [

@@ -8,9 +8,11 @@
 
 namespace NBGraphics\FrontSiteBundle\Controller;
 
+use NBGraphics\CoreBundle\Entity\Image;
 use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,12 +25,23 @@ class SubmitObservationController extends Controller
     public function submitObservationAction(Request $request)
     {
         $observation = new Observation();
+        $image = new Image();
         $observationForm = $this->createForm(ObservationFormType::class, $observation);
         $observationForm->handleRequest($request);
 
         $user = $this->getUser();
 
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
+
+
+            if ($observation->getImage() !== null) {
+                $image = $observation->getImage();
+                $image->setObservation($observation);
+                $observation->setImage($image);
+                $observation->getImage()->upload();
+            }
+
+
 
             $em = $this->getDoctrine()->getManager();
 
@@ -40,10 +53,10 @@ class SubmitObservationController extends Controller
             $user->addObservation($observation);
 
             $em->persist($observation);
-            $em->flush($observation);
+            $em->flush();
 
             $request->getSession()->getFlashBag()->add('success', 'Observation ajoutée avec succès !');
-            return $this->redirectToRoute('account_observation');
+            return $this->redirectToRoute('nb_graphics_user_homepage');
 
         }
 
