@@ -37,6 +37,7 @@ class Image
      */
     private $alt;
 
+
     private $file;
 
     /**
