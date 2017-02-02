@@ -43,7 +43,9 @@ class ObservationFormType extends AbstractType
                     new NotNull([
                         'message' => 'Vous devez renseigner ce champ.'
                     ])
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             ->add('matureStage', ChoiceType::class, [
                 'label' => "Stade de maturité de l'oiseau observé",
@@ -57,7 +59,9 @@ class ObservationFormType extends AbstractType
                     new NotNull([
                         'message' => 'Vous devez choisir un stade de maturité',
                     ])
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             ->add('plumage', ChoiceType::class, [
                 'label' => "Quel était le plumage de l'oiseau observé ?",
@@ -70,7 +74,9 @@ class ObservationFormType extends AbstractType
                     new NotNull([
                         'message' => 'Vous devez choisir un plumage'
                     ])
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             ->add('nidification', ChoiceType::class, [
                 'label' => 'Nidification',
@@ -82,7 +88,9 @@ class ObservationFormType extends AbstractType
                     new NotNull([
                         'message' => 'Vous devez renseigner la nidification ?'
                     ])
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             ->add('dateAt', DateType::class, [
                 'label' => "Date de l'observation : ",
@@ -99,7 +107,9 @@ class ObservationFormType extends AbstractType
                     ]),
                     // Custom validators
                     new isThisYearValid([]),
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             ->add('hourAt', TimeType::class, [
                 'label' => "Heure de l'observation : ",
@@ -111,21 +121,26 @@ class ObservationFormType extends AbstractType
                     ]),
                     //Custom validators
                     new isHourTimeValid([]),
-                ]
+                ],
+                'required'      => true,
+                'translation_domain' => false,
             ])
             //Regarder pour utiliser un ClassType spécial
             ->add('image', ImageType::class, [
                 'label' => "Ajouter votre photo : ",
                 'required' => false,
+                'translation_domain' => false,
             ])
             // Coordonnées GPS :
             ->add('latitude', TextType::class, [
                 'label' => 'Votre latitude',
-                'required' => true
+                'required' => true,
+                'translation_domain' => false,
             ])
             ->add('longitude', TextType::class, [
                 'label' => 'Votre longitude',
-                'required' => true
+                'required' => true,
+                'translation_domain' => false,
             ])
             //Faire un ChoiceType avec tous les départements
             ->add('departement', ChoiceType::class, [
@@ -133,7 +148,9 @@ class ObservationFormType extends AbstractType
                 'choices' => [
                     '75 Paris' => 75,
                     "95 Val d'Oise" => 95
-                ]
+                ],
+                'required' => true,
+                'translation_domain' => false,
             ])
             ->add('comment', TextareaType::class, [
                 'label' => "Veuillez compléter votre observation",
@@ -146,7 +163,9 @@ class ObservationFormType extends AbstractType
                         'min' => 50,
                         'minMessage' => 'Votre observation doit comporter au moins 50 caractères.'
                     ])
-                ]
+                ],
+                'required' => false,
+                'translation_domain' => false,
             ])
         ;
     }

@@ -22,7 +22,8 @@ class ImageType extends AbstractType
                             'image/jpeg'
                         ],
                     ])
-                ]
+                ],
+                'translation_domain' => false,
             ]);
     }
 

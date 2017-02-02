@@ -30,15 +30,18 @@ class SearchFormType extends AbstractType
                 'query_builder' => function (TAXREFRepository $repository) {
                     return $repository->findDistinctFamilleQB();
                 },
-                'required' => false
+                'required'      => false,
+                'translation_domain' => false,
             ))
             ->add('step', StepType::class, array(
                 'label' => false,
-                'data' => 'OU'
+                'data' => 'OU',
+                'translation_domain' => false,
             ))
             ->add('oiseau', TextType::class, array(
                 'label' => 'Par nom d\'oiseau',
-                'required' => false,
+                'required'      => false,
+                'translation_domain' => false,
                 'attr' => array(
                     'placeholder' => 'Saisir le nom de l\'oiseau'
                 )
@@ -50,7 +53,8 @@ class SearchFormType extends AbstractType
                 'id'    => 'btnSearch',
                 'class' => 'btn btn-primary',
                 'fa'    => 'search',
-                'title' => 'Rechercher un oiseau'
+                'title' => 'Rechercher un oiseau',
+                'translation_domain' => false,
             ))
         ;
     }

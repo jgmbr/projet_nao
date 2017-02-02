@@ -31,11 +31,13 @@ class CriteriaMapsFormType extends AbstractType
                 'query_builder' => function (ObservationRepository $repository) {
                     return $repository->findDistinctDepartementQB();
                 },
-                'required' => false
+                'required'      => false,
+                'translation_domain' => false,
             ))
             ->add('step', StepType::class, array(
                 'label' => false,
-                'data' => 'OU'
+                'data' => 'OU',
+                'translation_domain' => false,
             ))
             ->add('geoloc', CustomButtonType::class, array(
                 'label' => false,
@@ -44,7 +46,8 @@ class CriteriaMapsFormType extends AbstractType
                 'id'    => 'btnGeoloc',
                 'class' => 'btn btn-info',
                 'fa'    => 'map-marker',
-                'title' => 'Me localiser'
+                'title' => 'Me localiser',
+                'translation_domain' => false,
             ))
         ;
     }
