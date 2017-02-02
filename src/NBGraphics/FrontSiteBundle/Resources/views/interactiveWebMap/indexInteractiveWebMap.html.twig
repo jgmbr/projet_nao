@@ -4,4 +4,23 @@
     <h2>
         Bienvenue sur notre carte intéractive
     </h2>
+
+    <section id="search">
+    <h3>Rechercher un oiseau</h3>
+    {{ form_start(searchForm, {'attr': {'class': '', 'role': 'form'}}) }}
+    {{ form_widget(searchForm) }}
+    {{ form_end(searchForm) }}
+    </section>
+
+    <section id="criteria">
+        <h3>Affiner la carte interactive</h3>
+        {{ form_start(criteriaMapsForm, {'attr': {'class': '', 'role': 'form'}}) }}
+        {{ form_widget(criteriaMapsForm) }}
+        {{ form_end(criteriaMapsForm) }}
+    </section>
+
+    <section id="map">
+        <p> [ carte google maps ] </p>
+    </section>
+
 {% endblock%}

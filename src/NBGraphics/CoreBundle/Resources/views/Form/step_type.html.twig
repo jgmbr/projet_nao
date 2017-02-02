@@ -1,0 +1,7 @@
+{% block step_widget %}
+    {% spaceless %}
+        {% if data is not null %}
+            <span class="step_data" style="display: block; border: 2px solid #000; width: 40px; height: 40px; line-height: 38px; text-align: center; border-radius: 50%; font-size: .8em; font-weight: bold;"> {{ data }} </span>
+         {% endif %}
+    {% endspaceless %}
+{% endblock %}

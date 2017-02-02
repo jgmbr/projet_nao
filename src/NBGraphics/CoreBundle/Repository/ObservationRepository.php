@@ -12,6 +12,15 @@ use NBGraphics\CoreBundle\Entity\Observation;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findDistinctDepartementQB()
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->groupBy('o.departement')
+        ;
+    }
+
+
     public function myObservationsFromQB($user)
     {
         return $this

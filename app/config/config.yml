@@ -42,6 +42,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - bootstrap_3_layout.html.twig
+        - 'NBGraphicsCoreBundle:Form:step_type.html.twig'
+        - 'NBGraphicsCoreBundle:Form:custombutton_type.html.twig'
 
 # Doctrine Configuration
 doctrine:

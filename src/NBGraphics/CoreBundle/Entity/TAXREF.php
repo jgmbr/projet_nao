@@ -15,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="taxref")
+ * @ORM\Entity(repositoryClass="NBGraphics\CoreBundle\Repository\TAXREFRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class TAXREF
 {

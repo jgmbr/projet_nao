@@ -1,0 +1,12 @@
+{% block custom_button_widget %}
+    {% spaceless %}
+        {% if type is not null %}
+                <button name="{{ name }}" id="{{ id }}" type="{{ type }}" class="{{ class }}">
+                    {% if fa is not null %}
+                        <i class="fa fa-{{ fa }}" aria-hidden="true"></i>
+                    {% endif %}
+                    {{ title }}
+                </button>
+         {% endif %}
+    {% endspaceless %}
+{% endblock %}
