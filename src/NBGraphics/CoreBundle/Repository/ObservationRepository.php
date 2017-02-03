@@ -12,6 +12,20 @@ use NBGraphics\CoreBundle\Entity\Observation;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByFamily($taxref, $status)
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->leftJoin('o.taxref', 't')
+            ->where('t.famille = :famille')
+            ->andWhere('o.status = :status')
+            ->setParameter('famille', $taxref->getFamille())
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findDistinctDepartementQB()
     {
         return $this
@@ -19,7 +33,6 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('o.departement')
         ;
     }
-
 
     public function myObservationsFromQB($user)
     {

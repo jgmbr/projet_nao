@@ -6,6 +6,7 @@ use NBGraphics\CoreBundle\Entity\TAXREF;
 use NBGraphics\CoreBundle\Form\Type\CustomButtonType;
 use NBGraphics\CoreBundle\Form\Type\StepType;
 use NBGraphics\CoreBundle\Repository\TAXREFRepository;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -38,8 +39,9 @@ class SearchFormType extends AbstractType
                 'data' => 'OU',
                 'translation_domain' => false,
             ))
-            ->add('oiseau', TextType::class, array(
+            ->add('oiseau', AutocompleteType::class, array(
                 'label' => 'Par nom d\'oiseau',
+                'class' => TAXREF::class,
                 'required'      => false,
                 'translation_domain' => false,
                 'attr' => array(

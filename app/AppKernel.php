@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new NBGraphics\UserBundle\NBGraphicsUserBundle(),
             new NBGraphics\AdminBundle\NBGraphicsAdminBundle(),
             new NBGraphics\FrontSiteBundle\NBGraphicsFrontSiteBundle(),
+            new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
