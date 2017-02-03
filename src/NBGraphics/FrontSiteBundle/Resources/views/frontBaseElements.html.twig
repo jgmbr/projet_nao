@@ -289,28 +289,14 @@
 
     <script>
         (function () {
-            var options1 = {
+            $('#nbgraphics_corebundle_search_oiseau').autocompleter({
                 url_list: '{{ path('taxref_search') }}',
-                otherOptions: {
-                    minimumInputLength: 3,
-                    theme: 'boostrap',
-                    formatNoMatches: 'Pas d\'espèce trouvée',
-                    formatSearching: 'Recherche espèce ..',
-                    formatInputTooShort: 'Veuillez saisir plus de caractères ..'
-                }
-            };
-            $('#nbgraphics_corebundle_search_oiseau').autocompleter(options1);
-            var options2 = {
-                url_list: '{{ path('taxref_search_obs') }}',
-                otherOptions: {
-                    minimumInputLength: 3,
-                    theme: 'boostrap',
-                    formatNoMatches: 'Pas d\'espèce trouvée',
-                    formatSearching: 'Recherche espèce ..',
-                    formatInputTooShort: 'Veuillez saisir plus de caractères ..'
-                }
-            };
-            $('#observation_form_taxref').autocompleter(options2);
+                url_get: '{{ path('taxref_get') ~ '/' }}'
+            });
+            $('#observation_form_taxref').autocompleter({
+                url_list: '{{ path('taxref_search') }}',
+                url_get: '{{ path('taxref_get') ~ '/' }}'
+            });
         }());
     </script>
 

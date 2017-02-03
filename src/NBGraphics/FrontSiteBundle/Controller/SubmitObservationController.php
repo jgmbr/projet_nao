@@ -12,6 +12,7 @@ use NBGraphics\CoreBundle\Entity\Image;
 use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -24,8 +25,9 @@ class SubmitObservationController extends Controller
      */
     public function submitObservationAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $observation = new Observation();
-        $image = new Image();
         $observationForm = $this->createForm(ObservationFormType::class, $observation);
         $observationForm->handleRequest($request);
 
@@ -33,16 +35,12 @@ class SubmitObservationController extends Controller
 
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
 
-            $data = $observationForm->getData();
-
             if ($observation->getImage() !== null) {
                 $image = $observation->getImage();
                 $image->setObservation($observation);
                 $observation->setImage($image);
                 $observation->getImage()->upload();
             }
-
-            $em = $this->getDoctrine()->getManager();
 
             $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
 
@@ -62,23 +60,6 @@ class SubmitObservationController extends Controller
         return $this->render('@NBGraphicsFrontSite/submitObservation/formSubmitObservation.html.twig', array(
             'observation'       => $observation,
             'observationForm'   => $observationForm->createView(),
-        ));
-    }
-
-    /**
-     * @Route("/taxref-search-obs", name="taxref_search_obs", defaults={"_format"="json"})
-     * @Method("GET")
-     */
-    public function searchObsTaxrefAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $term = $request->query->get('term');
-
-        $results = $em->getRepository('NBGraphicsCoreBundle:TAXREF')->findLikeNameOrFamily($term);
-
-        return $this->render('@NBGraphicsFrontSite/submitObservation/taxref.json.twig', array(
-            'results' => $results
         ));
     }
 
