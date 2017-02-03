@@ -33,6 +33,23 @@ class TAXREFRepository extends \Doctrine\ORM\EntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->execute()
+            ;
+    }
+
+    public function findLikeNameOrFamily($term)
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->where('t.nomComplet LIKE :term')
+            ->orWhere('t.nomValide LIKE :term')
+            ->orWhere('t.nomVern LIKE :term')
+            ->orWhere('t.nomVernEng LIKE :term')
+            ->orWhere('t.famille LIKE :term')
+            ->setParameter('term', "%$term%")
+            ->orderBy('t.nomComplet')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->execute()
         ;
     }
 }
