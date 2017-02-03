@@ -19,4 +19,20 @@ class TAXREFRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('t.famille')
         ;
     }
+
+    public function findLikeName($term)
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->where('t.nomComplet LIKE :term')
+            ->orWhere('t.nomValide LIKE :term')
+            ->orWhere('t.nomVern LIKE :term')
+            ->orWhere('t.nomVernEng LIKE :term')
+            ->setParameter('term', "%$term%")
+            ->orderBy('t.nomComplet')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->execute()
+        ;
+    }
 }
