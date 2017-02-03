@@ -36,7 +36,7 @@
             <div id="map"></div>
         </div>
 
-            {{ form_row(observationForm.departement) }}
+            {{ form_row(observationForm.departement, {'attr': {'readonly': 'true'}}) }}
             {{ form_row(observationForm.comment) }}
 
         <button type="submit" class="btn btn-primary">

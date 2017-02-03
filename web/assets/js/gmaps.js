@@ -7,7 +7,7 @@ var initMap = function() {
         scrollwheel: false,
         zoom: 6
     });
-}
+};
 
 
 
@@ -84,4 +84,4 @@ addressInput.onblur = getLocationByAddress;
 // When the "Me Localiser" button is clicked
 localizeBtn.onclick = function() {
     loc.getCurrentPosition(getLocationByLocalizeBtn);
-}
+};

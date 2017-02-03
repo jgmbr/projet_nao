@@ -143,13 +143,8 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             //Faire un ChoiceType avec tous les départements
-            ->add('departement', ChoiceType::class, [
-                'label' => 'Veuillez compléter votre département/adresse',
-                'choices' => [
-                    '75 Paris' => 75,
-                    "95 Val d'Oise" => 95
-                ],
-                'required' => true,
+            ->add('departement', TextType::class, [
+                'label' => 'Département',
                 'translation_domain' => false,
             ])
             ->add('comment', TextareaType::class, [

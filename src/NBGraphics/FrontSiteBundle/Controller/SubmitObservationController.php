@@ -33,6 +33,8 @@ class SubmitObservationController extends Controller
 
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
 
+            $data = $observationForm->getData();
+
 
             if ($observation->getImage() !== null) {
                 $image = $observation->getImage();
