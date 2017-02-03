@@ -73,8 +73,7 @@ class InteractiveWebMapController extends Controller
         $criteriaMapsForm = $this->createForm(CriteriaMapsFormType::class, array());
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
-            'searchForm' => $searchForm->createView(),
-            'criteriaMapsForm' => $criteriaMapsForm->createView()
+            'searchForm' => $searchForm->createView()
         ));
     }
 
