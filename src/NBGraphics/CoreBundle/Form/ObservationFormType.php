@@ -152,16 +152,40 @@ class ObservationFormType extends AbstractType
                 'label' => 'Votre latitude *',
                 'required' => true,
                 'translation_domain' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de vous géolocaliser'
+                    ]),
+                    new NotNull([
+                        'message' => 'Merci de vous géolocaliser'
+                    ])
+                ]
             ])
             ->add('longitude', TextType::class, [
                 'label' => 'Votre longitude *',
                 'required' => true,
                 'translation_domain' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de vous géolocaliser'
+                    ]),
+                    new NotNull([
+                        'message' => 'Merci de vous géolocaliser'
+                    ])
+                ]
             ])
             //Faire un ChoiceType avec tous les départements
             ->add('departement', TextType::class, [
                 'label' => 'Département *',
                 'translation_domain' => false,
+                'constraints' => [
+                    new NotNull([
+                        'message' => 'Merci de vous géolocaliser'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Merci de vous géolocaliser'
+                    ])
+                ]
             ])
             ->add('comment', TextareaType::class, [
                 'label' => "Veuillez compléter votre observation * (50 caractères minimum)",
