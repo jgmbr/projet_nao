@@ -35,15 +35,12 @@ class SubmitObservationController extends Controller
 
             $data = $observationForm->getData();
 
-
             if ($observation->getImage() !== null) {
                 $image = $observation->getImage();
                 $image->setObservation($observation);
                 $observation->setImage($image);
                 $observation->getImage()->upload();
             }
-
-
 
             $em = $this->getDoctrine()->getManager();
 
@@ -67,4 +64,22 @@ class SubmitObservationController extends Controller
             'observationForm'   => $observationForm->createView(),
         ));
     }
+
+    /**
+     * @Route("/taxref-search-obs", name="taxref_search_obs", defaults={"_format"="json"})
+     * @Method("GET")
+     */
+    public function searchObsTaxrefAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $term = $request->query->get('term');
+
+        $results = $em->getRepository('NBGraphicsCoreBundle:TAXREF')->findLikeNameOrFamily($term);
+
+        return $this->render('@NBGraphicsFrontSite/submitObservation/taxref.json.twig', array(
+            'results' => $results
+        ));
+    }
+
 }

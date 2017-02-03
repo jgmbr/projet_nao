@@ -3,10 +3,13 @@
 namespace NBGraphics\CoreBundle\Form;
 
 use NBGraphics\CoreBundle\Entity\Image;
+use NBGraphics\CoreBundle\Entity\TAXREF;
+use NBGraphics\CoreBundle\Form\Type\HelpType;
 use NBGraphics\CoreBundle\Validator\Constraints\isHourTimeValid;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYear;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYearValid;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYearValidValidator;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,14 +31,24 @@ class ObservationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('taxref', AutocompleteType::class, array(
+                'label' => 'Espèce - Nom d\'oiseau *',
+                'class' => TAXREF::class,
+                'required'      => true,
+                'translation_domain' => false,
+                'attr' => array(
+                    'placeholder' => 'Saisir le nom de l\'espèce ou de l\'oiseau'
+                )
+            ))
             ->add('quantity', ChoiceType::class, [
-                'label' => "Nombre d'oiseaux aperçu",
+                'label' => "Nombre d'oiseaux aperçu *",
                 'choices' => [
                     'Avez-vous aperçu un individu, un groupe ou un couple' => null,
                     'Un individu' => 'individu',
                     'Un couple' => 'couple',
                     'Un groupe' => 'groupe'
                 ],
+                'data' => 'individu',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez renseigner ce champ.'
@@ -48,13 +61,14 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             ->add('matureStage', ChoiceType::class, [
-                'label' => "Stade de maturité de l'oiseau observé",
+                'label' => "Stade de maturité de l'oiseau observé *",
                 'choices' => [
                     'Stade possible : jeune, premier hiver ou adulte ?' => null,
-                    'Spécimen jeune' => 'Jeune',
-                    'Premier hiver du spécimen' => 'Premier Hiver',
+                    'Spécimen jeune' => 'jeune',
+                    'Premier hiver du spécimen' => 'premier_hiver',
                     'Spécimen adulte' => 'adulte',
                 ],
+                'data' => 'jeune',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez choisir un stade de maturité',
@@ -64,12 +78,13 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             ->add('plumage', ChoiceType::class, [
-                'label' => "Quel était le plumage de l'oiseau observé ?",
+                'label' => "Quel était le plumage de l'oiseau observé ? *",
                 'choices' => [
                     'Plumage possible' => null,
                     'Plumage nuptial' => 'nuptial',
                     'Plumage normal' => 'normal',
                 ],
+                'data' => 'normal',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez choisir un plumage'
@@ -79,11 +94,12 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             ->add('nidification', ChoiceType::class, [
-                'label' => 'Nidification',
+                'label' => 'Nidification *',
                 'choices' => [
-                    'oui' => true,
-                    'non' => false,
+                    'Oui' => true,
+                    'Non' => false,
                 ],
+                'data' => 'oui',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez renseigner la nidification ?'
@@ -93,7 +109,7 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             ->add('dateAt', DateType::class, [
-                'label' => "Date de l'observation : ",
+                'label' => "Date de l'observation *",
                 'data'  => new \DateTime(),
                 //Modifier l'implémentation de la date après
                 'widget' => 'choice',
@@ -112,7 +128,7 @@ class ObservationFormType extends AbstractType
                 'translation_domain' => false,
             ])
             ->add('hourAt', TimeType::class, [
-                'label' => "Heure de l'observation : ",
+                'label' => "Heure de l'observation *",
                 'data'  => new \DateTime(),
                 'input' => 'datetime',
                 'constraints' => [
@@ -127,28 +143,28 @@ class ObservationFormType extends AbstractType
             ])
             //Regarder pour utiliser un ClassType spécial
             ->add('image', ImageType::class, [
-                'label' => "Ajouter votre photo : ",
+                'label' => "Ajouter votre photo",
                 'required' => false,
                 'translation_domain' => false,
             ])
             // Coordonnées GPS :
             ->add('latitude', TextType::class, [
-                'label' => 'Votre latitude',
+                'label' => 'Votre latitude *',
                 'required' => true,
                 'translation_domain' => false,
             ])
             ->add('longitude', TextType::class, [
-                'label' => 'Votre longitude',
+                'label' => 'Votre longitude *',
                 'required' => true,
                 'translation_domain' => false,
             ])
             //Faire un ChoiceType avec tous les départements
             ->add('departement', TextType::class, [
-                'label' => 'Département',
+                'label' => 'Département *',
                 'translation_domain' => false,
             ])
             ->add('comment', TextareaType::class, [
-                'label' => "Veuillez compléter votre observation",
+                'label' => "Veuillez compléter votre observation * (50 caractères minimum)",
                 'required' => true,
                 'constraints' => [
                     New NotBlank([
@@ -159,8 +175,11 @@ class ObservationFormType extends AbstractType
                         'minMessage' => 'Votre observation doit comporter au moins 50 caractères.'
                     ])
                 ],
-                'required' => false,
                 'translation_domain' => false,
+                'attr' => array(
+                    'rows' => 10,
+                    'placeholder' => 'Sans commentaire de votre part, l\'observation ne pourra être envoyée et soumise à la modération des Naturalistes'
+                )
             ])
         ;
     }

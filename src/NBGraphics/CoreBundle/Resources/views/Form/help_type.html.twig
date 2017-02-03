@@ -1,0 +1,7 @@
+{% block help_widget %}
+    {% spaceless %}
+        {% if data is not null %}
+            <span class="help-block">{{ data }}</span>
+         {% endif %}
+    {% endspaceless %}
+{% endblock %}

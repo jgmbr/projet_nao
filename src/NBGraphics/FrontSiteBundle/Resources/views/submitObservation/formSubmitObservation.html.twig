@@ -6,6 +6,7 @@
         Vous souhaitez soumettre une observation ?
     </h2>
         {{ form_start(observationForm) }}
+            {{ form_row(observationForm.taxref) }}
             {{ form_row(observationForm.quantity) }}
             {{ form_row(observationForm.matureStage) }}
             {{ form_row(observationForm.plumage) }}
@@ -14,17 +15,17 @@
             {{ form_row(observationForm.hourAt) }}
             {{ form_row(observationForm.image) }}
         <h3>
-            Choix 1 : Je ne connais pas les coordonées GPS, mais je connais l'adresse
+            Choix 1 : Je connais l'adresse de l'observation
         </h3>
         <div class="form-group">
             <label for="address">Adresse</label>
             <input type="text" id="address" name="obs_address" class="form-control">
         </div>
         <h3>
-            Choix 2 : je souhaite me géolocaliser
+            Choix 2 : Je souhaite me géolocaliser
         </h3>
-            {{ form_row(observationForm.latitude) }}
-            {{ form_row(observationForm.longitude) }}
+            {{ form_row(observationForm.latitude, {'attr': {'readonly': 'true'}}) }}
+            {{ form_row(observationForm.longitude, {'attr': {'readonly': 'true'}}) }}
 
         <div class="form-group">
             <a id="localize" name="obs_button" class="btn btn-info">
