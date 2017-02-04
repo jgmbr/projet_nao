@@ -30,7 +30,6 @@ class Newsletter
      */
     private $email;
 
-
     /**
      * @ORM\Column(type="datetime")
      */

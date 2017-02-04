@@ -61,6 +61,11 @@ class User extends BaseUser
      */
     private $observations;
 
+    /**
+     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Moderation", mappedBy="user", cascade={"persist"})
+     */
+    private $moderations;
+
     private $role;
 
     private $superAdmin;
@@ -69,6 +74,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->createdAt    = new \Datetime();
+        $this->observations = new ArrayCollection();
     }
 
     public function getRole()
@@ -263,6 +269,40 @@ class User extends BaseUser
     public function getObservations()
     {
         return $this->observations;
+    }
+
+    /**
+     * Add moderation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Moderation $moderation
+     *
+     * @return User
+     */
+    public function addModeration(\NBGraphics\CoreBundle\Entity\Moderation $moderation)
+    {
+        $this->moderations[] = $moderation;
+
+        return $this;
+    }
+
+    /**
+     * Remove moderation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Moderation $moderation
+     */
+    public function removeModeration(\NBGraphics\CoreBundle\Entity\Moderation $moderation)
+    {
+        $this->moderations->removeElement($moderation);
+    }
+
+    /**
+     * Get moderations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModerations()
+    {
+        return $this->moderations;
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace NBGraphics\AdminBundle\Controller;
 
+use NBGraphics\CoreBundle\Entity\Moderation;
 use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Form\ModerationType;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -122,15 +124,44 @@ class ObservationController extends Controller
      * Moderation observation.
      *
      * @Route("/moderate/{id}", name="observation_moderate")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function moderateAction(Request $request, Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
 
+        $moderation = new Moderation();
+
+        $moderationForm = $this->createForm(ModerationType::class, $moderation);
+
+        $moderationForm->handleRequest($request);
+
+        $user = $this->getUser();
+
+        if ($moderationForm->isSubmitted() && $moderationForm->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $observation->setStatus($moderationForm->getData()->getStatus());
+            $observation->addModeration($moderation);
+
+            $user->addModeration($moderation);
+
+            $moderation->setObservation($observation);
+            $moderation->setUser($user);
+            $moderation->setStatus($moderationForm->getData()->getStatus());
+
+            $em->persist($observation);
+            $em->persist($moderation);
+            $em->flush();
+
+            return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
+        }
+
         return $this->render('NBGraphicsAdminBundle:Admin/observation:moderate.html.twig', array(
             'observation' => $observation,
             'delete_form' => $deleteForm->createView(),
+            'moderation_form' => $moderationForm->createView()
         ));
 
     }

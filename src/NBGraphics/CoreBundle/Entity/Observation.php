@@ -8,6 +8,7 @@
 
 namespace NBGraphics\CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -112,9 +113,15 @@ class Observation
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Moderation", mappedBy="observation", cascade={"persist"})
+     */
+    private $moderations;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
+        $this->moderations = new ArrayCollection();
     }
 
     /**
@@ -428,6 +435,40 @@ class Observation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add moderation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Moderation $moderation
+     *
+     * @return Observation
+     */
+    public function addModeration(\NBGraphics\CoreBundle\Entity\Moderation $moderation)
+    {
+        $this->moderations[] = $moderation;
+
+        return $this;
+    }
+
+    /**
+     * Remove moderation
+     *
+     * @param \NBGraphics\CoreBundle\Entity\Moderation $moderation
+     */
+    public function removeModeration(\NBGraphics\CoreBundle\Entity\Moderation $moderation)
+    {
+        $this->moderations->removeElement($moderation);
+    }
+
+    /**
+     * Get moderations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModerations()
+    {
+        return $this->moderations;
     }
 
     /**

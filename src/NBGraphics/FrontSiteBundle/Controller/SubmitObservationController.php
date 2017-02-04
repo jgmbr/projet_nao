@@ -9,6 +9,7 @@
 namespace NBGraphics\FrontSiteBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Image;
+use NBGraphics\CoreBundle\Entity\Moderation;
 use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -45,10 +46,16 @@ class SubmitObservationController extends Controller
             $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
 
             $observation->setStatus($statut);
-
             $observation->setUser($user);
+
             $user->addObservation($observation);
 
+            $moderation = new Moderation();
+            $moderation->setComment('En attente de validation par un modérateur');
+            $moderation->setObservation($observation);
+            $moderation->setStatus($statut);
+
+            $em->persist($moderation);
             $em->persist($observation);
             $em->flush();
 

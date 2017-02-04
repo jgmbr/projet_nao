@@ -35,9 +35,17 @@
                                         <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
                                         <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
                                         <td>{{ observation.quantity }}</td>
-                                        <td><img src="{{ observation.image }}" /></td>
-                                        <td> [nom espece] </td>
-                                        <td> <a href="#" target="_blank"> Voir sur la carte </a> </td>
+                                        <td>
+                                            {% if observation.image is defined and observation.image is not null %}
+                                                <img src="{{ observation.image }}" />
+                                            {% else %}
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> {{ observation.taxref.nomValide }} </a>
+                                        </td>
+                                        <td> <a href="https://www.google.fr/maps/@{{ observation.latitude }},{{ observation.longitude }},14z" class="btn btn-info btn-xs" target="_blank"> Voir sur la carte </a> </td>
                                         <td>
                                             <i class="fa {{ observation.status.icon }}" aria-hidden="true"></i>
                                             {{ observation.status.name }}
