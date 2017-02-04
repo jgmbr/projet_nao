@@ -3,6 +3,7 @@
 namespace NBGraphics\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -25,6 +26,61 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('email', EmailType::class, array(
+                'label' => 'form.email',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => true,
+            ))
+            ->add('username', null, array(
+                'label' => 'form.username',
+                'translation_domain' => 'FOSUserBundle',
+                'required' => true,
+            ))
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
+                'required' => true,
+            ))
+            ->add('enabled', ChoiceType::class, [
+                    'label' => 'form.enabled',
+                    'translation_domain' => 'FOSUserBundle',
+                    'choices' => array(
+                        'form.yes' => true,
+                        'form.no' => false
+                    ),
+                    'expanded' => false,
+                    'multiple' => false,
+                    'required' => false,
+                ]
+            )
+            ->add('role', ChoiceType::class, [
+                    'label' => 'form.role',
+                    'translation_domain' => 'FOSUserBundle',
+                    'choices' => array(
+                        'form.particulier' => 'ROLE_USER',
+                        'form.naturaliste' => 'ROLE_ADMIN',
+                        'form.collaborateur' => 'ROLE_COLLABORATOR'
+                    ),
+                    'expanded' => false,
+                    'multiple' => false,
+                    'required' => true,
+                ]
+            )
+            ->add('superAdmin', ChoiceType::class, [
+                    'label' => 'form.superadmin',
+                    'translation_domain' => 'FOSUserBundle',
+                    'choices' => array(
+                        'form.yes' => true,
+                        'form.no' => false
+                    ),
+                    'expanded' => false,
+                    'multiple' => false,
+                    'required' => true,
+                ]
+            )
             ->add('lastname', TextType::class, array(
                 'label' => 'form.lastname',
                 'translation_domain' => 'FOSUserBundle',
@@ -52,61 +108,11 @@ class UserType extends AbstractType
                     ))
                 )
             ))
-            ->add('email', EmailType::class, array(
-                'label' => 'form.email',
+            ->add('enableCampaigns', CheckboxType::class, array(
+                'label' => 'form.enableCampaigns',
                 'translation_domain' => 'FOSUserBundle',
-                'required' => true,
+                'required' => false,
             ))
-            ->add('username', null, array(
-                'label' => 'form.username',
-                'translation_domain' => 'FOSUserBundle',
-                'required' => true,
-            ))
-            ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
-                'required' => true,
-            ))
-            ->add('enabled', ChoiceType::class, [
-                    'label' => 'form.enabled',
-                    'translation_domain' => 'FOSUserBundle',
-                    'choices' => array(
-                        'Oui' => true,
-                        'Non' => false
-                    ),
-                    'expanded' => false,
-                    'multiple' => false,
-                    'required' => false,
-                ]
-            )
-            ->add('role', ChoiceType::class, [
-                    'label' => 'form.role',
-                    'translation_domain' => 'FOSUserBundle',
-                    'choices' => array(
-                        'Particulier' => 'ROLE_USER',
-                        'Naturaliste' => 'ROLE_ADMIN',
-                        'Collaborateur' => 'ROLE_COLLABORATOR'
-                    ),
-                    'expanded' => false,
-                    'multiple' => false,
-                    'required' => true,
-                ]
-            )
-            ->add('superAdmin', ChoiceType::class, [
-                    'label' => 'form.superadmin',
-                    'translation_domain' => 'FOSUserBundle',
-                    'choices' => array(
-                        'Oui' => true,
-                        'Non' => false
-                    ),
-                    'expanded' => false,
-                    'multiple' => false,
-                    'required' => true,
-                ]
-            )
         ;
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {

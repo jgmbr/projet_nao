@@ -94,3 +94,8 @@ form:
     superadmin: 'Super administrateur'
     file: 'Photo'
     initfile: 'Photo initiale'
+    yes: Oui
+    no: Non
+    particulier: Particulier
+    naturaliste: Naturaliste
+    collaborateur: Collaborateur
