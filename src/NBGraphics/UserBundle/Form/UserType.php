@@ -72,7 +72,7 @@ class UserType extends AbstractType
             ))
             ->add('enabled', ChoiceType::class, [
                     'label' => 'form.enabled',
-                    'translation_domain' => false,
+                    'translation_domain' => 'FOSUserBundle',
                     'choices' => array(
                         'Oui' => true,
                         'Non' => false
@@ -84,7 +84,7 @@ class UserType extends AbstractType
             )
             ->add('role', ChoiceType::class, [
                     'label' => 'form.role',
-                    'translation_domain' => false,
+                    'translation_domain' => 'FOSUserBundle',
                     'choices' => array(
                         'Particulier' => 'ROLE_USER',
                         'Naturaliste' => 'ROLE_ADMIN',
@@ -97,7 +97,7 @@ class UserType extends AbstractType
             )
             ->add('superAdmin', ChoiceType::class, [
                     'label' => 'form.superadmin',
-                    'translation_domain' => false,
+                    'translation_domain' => 'FOSUserBundle',
                     'choices' => array(
                         'Oui' => true,
                         'Non' => false
