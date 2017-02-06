@@ -26,28 +26,37 @@ class InteractiveWebMapController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        // Search form
+        // By default, $results is null
+        $results = null;
 
+        // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
+
+        //Criteria Maps Form
+        $criteriaMapsForm = $this->createForm(CriteriaMapsFormType::class, array());
 
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $datas = $searchForm->getData();
 
-            $bird = $datas['oiseau'];
 
+            $bird = $datas['oiseau'];
             $family = $datas['famille'];
 
+            dump($family);
+
+
+            // Faire contrainte personnalisée à partir du formulaire
             if (!$bird && !$family) {
                 $request->getSession()->getFlashBag()->add('error', 'Merci de saisir des critères de recherche !');
                 return $this->redirectToRoute('nb_graphics_front_site_interactivewebmap');
             }
 
+
             $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
 
             // Priorité oiseau
-
             if ($bird !== null) {
 
                 $results = $em->getRepository('NBGraphicsCoreBundle:Observation')->findBy(array(
@@ -55,25 +64,32 @@ class InteractiveWebMapController extends Controller
                     'status' => $status
                 ));
 
+
+
             } elseif ($family !== null) {
 
                 $results = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByFamily($family, $status);
+                
 
             }
 
-            var_dump('LISTE DES OBSERVATIONS SELON CRITERES DU SEARCH FORM :');
+            if ($results !== null) {
+                dump($results);
+                return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', [
+                    'searchForm' => $searchForm->createView(),
+                    'criteriaMapsForm' => $criteriaMapsForm->createView(),
+                    'results' => $results,
+                ]);
+            }
 
-            var_dump($results);
 
-            die('check datas search form type');
         }
 
-        // Criteria Maps
 
-        $criteriaMapsForm = $this->createForm(CriteriaMapsFormType::class, array());
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
-            'searchForm' => $searchForm->createView()
+            'searchForm' => $searchForm->createView(),
+            'results' => $results,
         ));
     }
 

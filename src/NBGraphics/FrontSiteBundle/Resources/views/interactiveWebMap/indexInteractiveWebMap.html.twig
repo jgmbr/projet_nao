@@ -11,4 +11,11 @@
     {{ form_widget(searchForm) }}
     {{ form_end(searchForm) }}
     </section>
+
+    {% if results %}
+        <h2>Voici vos résultats :</h2>
+        <p>
+            Le plein de résultats ici !
+        </p>
+    {% endif %}
 {% endblock%}
