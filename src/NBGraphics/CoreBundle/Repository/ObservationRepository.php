@@ -110,4 +110,13 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
+    public function exportAll()
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->getQuery()
+            ->iterate()
+        ;
+    }
+
 }

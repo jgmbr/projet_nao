@@ -10,6 +10,7 @@ namespace NBGraphics\CoreBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use NBGraphics\CoreBundle\Entity\EntityInterface\ExportInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="NBGraphics\CoreBundle\Repository\ObservationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Observation
+class Observation implements ExportInterface
 {
     /**
      * @ORM\Id
@@ -489,5 +490,26 @@ class Observation
     public function onPreUpdate()
     {
         $this->updatedAt = new \DateTime("now");
+    }
+
+    public function toCsvArray()
+    {
+        return array(
+            $this->id,
+            utf8_decode($this->getUser()->getUsername()),
+            $this->getDateAt()->format('d/m/Y'),
+            $this->getHourAt()->format('H:i'),
+            utf8_decode(ucfirst($this->getQuantity())),
+            utf8_decode(ucfirst(str_replace('_', ' ', $this->getMatureStage()))),
+            utf8_decode(ucfirst($this->getPlumage())),
+            utf8_decode(($this->getNidification() ? 'Oui' : 'Non')),
+            utf8_decode($this->getTaxref()->getFamille() . ' - ' . $this->getTaxref()->getNomComplet()),
+            utf8_decode($this->getDepartement()),
+            utf8_decode($this->getLatitude()),
+            utf8_decode($this->getLongitude()),
+            utf8_decode($this->getComment()),
+            utf8_decode($this->getStatus()->getName()),
+            $this->getCreatedAt()->format('d/m/Y')
+        );
     }
 }

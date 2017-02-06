@@ -169,34 +169,18 @@ class ObservationController extends Controller
     }
 
     /**
-     * Moderation choice observation.
+     * Export observation entities.
      *
-     * @Route("/moderate/{id}/state/{state}", name="observation_moderate_choice")
+     * @Route("/export", name="observation_export")
      * @Method("GET")
      */
-    public function choiceAction(Request $request, Observation $observation, $state)
+    public function exportAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $exportWS = $this->get('app.export');
 
-        if ($state)
-            $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
-        else
-            $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('REFUSED');
+        $headers = array('id','Utilisateur','Date Observation','Heure Observation','Quantite','Maturage','Plumage','Nidification','Taxref','Departement','Latitude','Longitude','Commentaire','Statut','Date de creation');
 
-        $observation->setStatus($status);
-
-        $em->persist($observation);
-
-        $em->flush();
-
-        $request->getSession()->getFlashBag()->add('success', 'Observation supprimée avec succès !');
-
-        if ($state)
-            $url = 'observation_valided';
-        else
-            $url = 'observation_refused';
-
-        return $this->redirectToRoute($url);
+        return $exportWS->export(new Observation(), $headers, 'exportAll', 'observation');
     }
 
     /**
