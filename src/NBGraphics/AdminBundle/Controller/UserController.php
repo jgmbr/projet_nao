@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $exportWS = $this->get('app.export');
 
-        return $exportWS->export('NBGraphicsUserBundle:User', array('phone'), 'exportAllPhoneAllowed', 'sms', 'toPhone');
+        return $exportWS->export('NBGraphicsUserBundle:User', array('phone'), 'exportAllPhoneAllowed', 'sms');
     }
 
     /**

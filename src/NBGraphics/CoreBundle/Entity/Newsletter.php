@@ -3,6 +3,7 @@
 namespace NBGraphics\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use NBGraphics\CoreBundle\Entity\EntityInterface\ExportInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -12,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="NBGraphics\CoreBundle\Repository\NewsletterRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Newsletter
+class Newsletter implements ExportInterface
 {
     /**
      * @var int
@@ -147,18 +148,12 @@ class Newsletter
         $this->updatedAt = new \DateTime("now");
     }
 
-    public function toArray()
+    public function toCsvArray()
     {
         return array(
             $this->id,
-            $this->email,
+            $this->email
         );
     }
 
-    public function toCsv()
-    {
-        return array(
-            $this->email,
-        );
-    }
 }

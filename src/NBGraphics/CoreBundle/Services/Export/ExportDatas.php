@@ -3,6 +3,7 @@
 namespace NBGraphics\CoreBundle\Services\Export;
 
 use Doctrine\ORM\EntityManagerInterface;
+use NBGraphics\CoreBundle\Entity\EntityInterface\ExportInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class ExportDatas
@@ -17,7 +18,7 @@ class ExportDatas
         $this->em = $em;
     }
 
-    public function export($entity, $headers, $query = null, $file, $method = "toArray")
+    public function export(ExportInterface $entity, $headers, $query = null, $file)
     {
         $delimiter = ";";
 
@@ -28,7 +29,7 @@ class ExportDatas
         fputcsv($handle, $headers, $delimiter);
 
         while (false !== ($row = $iterableResult->next())) {
-            fputcsv($handle, $row[0]->$method(), $delimiter);
+            fputcsv($handle, $row[0]->toCsvArray(), $delimiter);
             $this->em->detach($row[0]);
         }
 
