@@ -9,85 +9,15 @@
     <div class="col-sm-12 col-md-9">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab_administrator">Naturalistes</a></li>
-            <li><a data-toggle="tab" href="#tab_user">Particuliers</a></li>
+            <li class="active"><a data-toggle="tab" href="#tab_user">Particuliers</a></li>
+            <li><a data-toggle="tab" href="#tab_administrator">Naturalistes</a></li>
             <li><a data-toggle="tab" href="#tab_collaborator">Collaborateurs</a></li>
+            <li><a data-toggle="tab" href="#tab_superadmin">Super Administrateurs</a></li>
         </ul>
 
         <div class="tab-content">
-            <div id="tab_administrator" class="tab-pane fade in active">
 
-                <div class="box">
-                    <div class="box-header"> &nbsp; </div>
-                    <div class="box-body">
-                        <div id="administrator_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <div class="row">
-                                <div class="col-sm-6"></div>
-                                <div class="col-sm-6"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {% if administrators is defined and administrators|length > 0 %}
-                                        <table id="administrator" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="administrator_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th> Id </th>
-                                                <th> Email </th>
-                                                <th> Actif </th>
-                                                <th> Super admin </th>
-                                                <th> Date de création </th>
-                                                <th> Date de modification </th>
-                                                <th> Actions </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for admin in administrators %}
-                                                <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                                                    <td> {{ admin.id }} </td>
-                                                    <td> {{ admin.email }} </td>
-                                                    <td> {% if admin.enabled %}Oui{% else %}Non{% endif %} </td>
-                                                    <td> {% if admin.superAdmin %}Oui{% else %}Non{% endif %} </td>
-                                                    <td> {{ admin.createdAt|date('d/m/Y à H:i') }} </td>
-                                                    <td> {{ admin.updatedAt|date('d/m/Y à H:i') }} </td>
-                                                    <td>
-                                                        {% if app.user.id != admin.id %}
-                                                            <a href="{{ path('admin_home_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
-                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
-                                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
-                                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                            </a>
-                                                        {% endif %}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <th> Id </th>
-                                                <th> Email </th>
-                                                <th> Actif </th>
-                                                <th> Super admin </th>
-                                                <th> Date de création </th>
-                                                <th> Date de modification </th>
-                                                <th> Actions </th>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    {% else %}
-                                        <p> Pas de naturalistes. </p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div id="tab_user" class="tab-pane fade">
+            <div id="tab_user" class="tab-pane fade in active">
 
                 <div class="box">
                     <div class="box-header"> &nbsp; </div>
@@ -99,11 +29,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    {% if users is defined and users|length > 0 %}
+                                    {% if particuliers is defined and particuliers|length > 0 %}
                                         <table id="user" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="user_info">
                                             <thead>
                                             <tr role="row">
                                                 <th> Id </th>
+                                                <th> Utilisateur </th>
                                                 <th> Email </th>
                                                 <th> Actif </th>
                                                 <th> Date de création </th>
@@ -112,9 +43,10 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for user in users %}
+                                            {% for user in particuliers %}
                                                 <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                                                     <td> {{ user.id }} </td>
+                                                    <td> {{ user.username }} </td>
                                                     <td> {{ user.email }} </td>
                                                     <td> {% if user.enabled %}Oui{% else %}Non{% endif %} </td>
                                                     <td> {{ user.createdAt|date('d/m/Y à H:i') }} </td>
@@ -136,6 +68,7 @@
                                             <tfoot>
                                             <tr>
                                                 <th> Id </th>
+                                                <th> Utilisateur </th>
                                                 <th> Email </th>
                                                 <th> Actif </th>
                                                 <th> Date de création </th>
@@ -154,6 +87,80 @@
                 </div>
 
             </div>
+
+            <div id="tab_administrator" class="tab-pane fade">
+
+                <div class="box">
+                    <div class="box-header"> &nbsp; </div>
+                    <div class="box-body">
+                        <div id="administrator_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% if naturalistes is defined and naturalistes|length > 0 %}
+                                        <table id="administrator" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="administrator_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th> Id </th>
+                                                <th> Utilisateur </th>
+                                                <th> Email </th>
+                                                <th> Actif </th>
+                                                <th> Date de création </th>
+                                                <th> Date de modification </th>
+                                                <th> Actions </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for admin in naturalistes %}
+                                                <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                                    <td> {{ admin.id }} </td>
+                                                    <td> {{ admin.username }} </td>
+                                                    <td> {{ admin.email }} </td>
+                                                    <td> {% if admin.enabled %}Oui{% else %}Non{% endif %} </td>
+                                                    <td> {{ admin.createdAt|date('d/m/Y à H:i') }} </td>
+                                                    <td> {{ admin.updatedAt|date('d/m/Y à H:i') }} </td>
+                                                    <td>
+                                                        {% if app.user.id != admin.id %}
+                                                            <a href="{{ path('admin_home_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
+                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th> Id </th>
+                                                <th> Utilisateur </th>
+                                                <th> Email </th>
+                                                <th> Actif </th>
+                                                <th> Date de création </th>
+                                                <th> Date de modification </th>
+                                                <th> Actions </th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    {% else %}
+                                        <p> Pas de naturalistes. </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <div id="tab_collaborator" class="tab-pane fade">
 
                 <div class="box">
@@ -166,11 +173,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    {% if collaborators is defined and collaborators|length > 0 %}
+                                    {% if collaborateurs is defined and collaborateurs|length > 0 %}
                                         <table id="collaborator" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="collaborator_info">
                                             <thead>
                                             <tr role="row">
                                                 <th> Id </th>
+                                                <th> Utilisateur </th>
                                                 <th> Email </th>
                                                 <th> Actif </th>
                                                 <th> Date de création </th>
@@ -179,9 +187,10 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for collaborator in collaborators %}
+                                            {% for collaborator in collaborateurs %}
                                                 <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                                                     <td> {{ collaborator.id }} </td>
+                                                    <td> {{ collaborator.username }} </td>
                                                     <td> {{ collaborator.email }} </td>
                                                     <td> {% if collaborator.enabled %}Oui{% else %}Non{% endif %} </td>
                                                     <td> {{ collaborator.createdAt|date('d/m/Y à H:i') }} </td>
@@ -203,6 +212,7 @@
                                             <tfoot>
                                             <tr>
                                                 <th> Id </th>
+                                                <th> Utilisateur </th>
                                                 <th> Email </th>
                                                 <th> Actif </th>
                                                 <th> Date de création </th>
@@ -221,6 +231,80 @@
                 </div>
 
             </div>
+
+            <div id="tab_superadmin" class="tab-pane fade">
+
+                <div class="box">
+                    <div class="box-header"> &nbsp; </div>
+                    <div class="box-body">
+                        <div id="superadmin_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% if superadmins is defined and superadmins|length > 0 %}
+                                        <table id="superadmin" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="superadmin_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th> Id </th>
+                                                <th> Utilisateur </th>
+                                                <th> Email </th>
+                                                <th> Actif </th>
+                                                <th> Date de création </th>
+                                                <th> Date de modification </th>
+                                                <th> Actions </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for admin in superadmins %}
+                                                <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                                    <td> {{ admin.id }} </td>
+                                                    <td> {{ admin.username }} </td>
+                                                    <td> {{ admin.email }} </td>
+                                                    <td> {% if admin.enabled %}Oui{% else %}Non{% endif %} </td>
+                                                    <td> {{ admin.createdAt|date('d/m/Y à H:i') }} </td>
+                                                    <td> {{ admin.updatedAt|date('d/m/Y à H:i') }} </td>
+                                                    <td>
+                                                        {% if app.user.id != admin.id %}
+                                                            <a href="{{ path('admin_home_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
+                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th> Id </th>
+                                                <th> Utilisateur </th>
+                                                <th> Email </th>
+                                                <th> Actif </th>
+                                                <th> Date de création </th>
+                                                <th> Date de modification </th>
+                                                <th> Actions </th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    {% else %}
+                                        <p> Pas de super administrateur. </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -229,7 +313,7 @@
 {% block javascripts %}
     <script type="text/javascript">
         $(function () {
-            $('#administrator, #user, #collaborator').DataTable({
+            $('#user, #administrator, #collaborator, #superadmin').DataTable({
                 "responsive": true,
                 "paging": true,
                 "lengthChange": true,

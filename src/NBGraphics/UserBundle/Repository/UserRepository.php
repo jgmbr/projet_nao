@@ -46,6 +46,22 @@ class UserRepository extends EntityRepository
     /**
      * @return User[]
      */
+    public function findAllSuperAdmin($sort = 'DESC')
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        return $qb
+            ->where($qb->expr()->like('u.roles', ':role'))
+            ->orderBy('u.id', $sort)
+            ->setParameter('role', '%"ROLE_SUPER_ADMIN"%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return User[]
+     */
     public function findAllCollaborators($sort = 'DESC')
     {
         $qb = $this->createQueryBuilder('u');

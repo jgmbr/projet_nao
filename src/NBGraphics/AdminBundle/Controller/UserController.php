@@ -25,6 +25,8 @@ class UserController extends Controller
 
         $administrators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllAdmin();
 
+        $superadministrators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllSuperAdmin();
+
         $collaborators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllCollaborators();
 
         $deleteForms = array();
@@ -34,9 +36,10 @@ class UserController extends Controller
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/user:index.html.twig',array(
-            'users' => $users,
-            'administrators' => $administrators,
-            'collaborators' => $collaborators,
+            'particuliers' => $users,
+            'naturalistes' => $administrators,
+            'collaborateurs' => $collaborators,
+            'superadmins' => $superadministrators,
             'deleteForms' => $deleteForms
         ));
     }
