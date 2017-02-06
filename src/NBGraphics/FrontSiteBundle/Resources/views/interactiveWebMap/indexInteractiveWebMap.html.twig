@@ -33,7 +33,14 @@
                     <td>{{ bird.taxref.nomVern }}</td>
                     <td>{{ bird.dateAt|date('d/m/Y') }}</td>
                     <td>{{ bird.departement }}</td>
-                    <td><a class="btn btn-default" href="#">Voir l'observation</a></td>
+                    <td>
+                        <a class="btn btn-default"
+                           href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                               'birdObs': bird.id
+                           }) }}">
+                            Voir l'observation
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -73,7 +80,14 @@
                     <td>{{ bird.taxref.nomVern }}</td>
                     <td>{{ bird.dateAt|date('d/m/Y') }}</td>
                     <td>{{ bird.departement }}</td>
-                    <td><a href="#">Voir l'observation</a></td>
+                    <td>
+                        <a class="btn btn-default"
+                           href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                               'birdObs': bird.id
+                           }) }}">
+                            Voir l'observation
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
