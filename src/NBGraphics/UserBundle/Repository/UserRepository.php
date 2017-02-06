@@ -129,4 +129,15 @@ class UserRepository extends EntityRepository
             ->iterate()
         ;
     }
+
+    public function exportAllUsers($sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('u')
+            ->select('u')
+            ->orderBy('u.id', $sort)
+            ->getQuery()
+            ->iterate()
+        ;
+    }
 }
