@@ -27,7 +27,7 @@ class AutocompleteController extends Controller
 
         $results = $em->getRepository('NBGraphicsCoreBundle:TAXREF')->findLikeName($term);
 
-        return $this->render('@NBGraphicsFrontSite/interactiveWebMap/taxref.json.twig', array(
+        return $this->render('@NBGraphicsFrontSite/json/taxref.json.twig', array(
             'results' => $results
         ));
     }

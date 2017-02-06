@@ -1,5 +1,5 @@
 [{% for taxref in results -%}
-    {{ {id: taxref.id, label: taxref.nomVern ~ ' - '  ~ taxref.nomComplet, value: taxref.nomComplet}|json_encode|raw }}
+    {{ {id: taxref.id, label: taxref.nomVern ~ ' - '  ~ taxref.nomComplet, value: taxref.nomVern ~ ' - '  ~ taxref.nomComplet}|json_encode|raw }}
     {# use "value" instead of "id" key, if you use jquery-ui #}
     {%- if not loop.last %},{% endif -%}
 {%- endfor %}]
