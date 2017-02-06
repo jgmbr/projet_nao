@@ -20,7 +20,7 @@
                     <th>Observation n°</th>
                     <th>Famille de l'oiseau observé</th>
                     <th>Oiseau observé</th>
-                    <th>Jour de l'observation</th>
+                    <th>Date de l'observation</th>
                     <th>Département</th>
                     <th>Observation en détail</th>
                 </tr>
@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ bird.taxref.famille }}</td>
-                    <td>{{ bird.taxref.nomValide }}</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
                     <td>{{ bird.dateAt|date('d/m/Y') }}</td>
                     <td>{{ bird.departement }}</td>
                     <td><a href="#">Voir l'observation</a></td>
@@ -38,6 +38,18 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <hr>
+        <h3>Affiner la carte intéractive</h3>
+        {{ form_start(criteriaMapsForm) }}
+        {{ form_widget(criteriaMapsForm) }}
+        {{ form_end(criteriaMapsForm) }}
+
+        <hr>
+        <div class="form-group">
+            <div id="map"></div>
+        </div>
+
     {% endif %}
 
     {% if resultsPerFamily %}
@@ -48,7 +60,7 @@
                     <th>Observation n°</th>
                     <th>Famille de l'oiseau observé</th>
                     <th>Oiseau observé</th>
-                    <th>Jour de l'observation</th>
+                    <th>Date de l'observation</th>
                     <th>Département</th>
                     <th>Observation en détail</th>
                 </tr>
@@ -58,7 +70,7 @@
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ bird.taxref.famille }}</td>
-                    <td>{{ bird.taxref.nomValide }}</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
                     <td>{{ bird.dateAt|date('d/m/Y') }}</td>
                     <td>{{ bird.departement }}</td>
                     <td><a href="#">Voir l'observation</a></td>
@@ -68,5 +80,6 @@
         </table>
     {% endif %}
 
-
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock%}
