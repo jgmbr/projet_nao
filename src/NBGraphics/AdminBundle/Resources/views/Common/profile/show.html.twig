@@ -13,6 +13,10 @@
             <table class="table table-responsive">
                 <tbody>
                 <tr>
+                    <th> {{ 'profile.show.type'|trans }} </th>
+                    <td> {{ user.type }} </td>
+                </tr>
+                <tr>
                     <th> {{ 'profile.show.username'|trans }} </th>
                     <td> {{ user.username }} </td>
                 </tr>
@@ -33,7 +37,7 @@
                     <td> {{ user.phone }} </td>
                 </tr>
                 <tr>
-                    <th> Autorisation(s) </th>
+                    <th> {{ 'profile.show.autorisations'|trans }} </th>
                     <td>
                         {% if user.enableCampaigns %}
                             J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing

@@ -23,6 +23,8 @@ profile:
         firstname: 'Prénom'
         phone: 'Mobile'
         campaigns: 'Autoriser Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing'
+        autorisations: 'Autorisation(s)'
+        type: 'Compte'
     edit:
         submit: 'Mettre à jour'
         lastname: 'Nom'
@@ -94,8 +96,8 @@ form:
     superadmin: 'Super administrateur'
     file: 'Photo'
     initfile: 'Photo initiale'
-    yes: Oui
-    no: Non
-    particulier: Particulier
-    naturaliste: Naturaliste
-    collaborateur: Collaborateur
+    yes: 'Oui'
+    no: 'Non'
+    particulier: 'Particulier'
+    naturaliste: 'Naturaliste'
+    collaborateur: 'Collaborateur'

@@ -70,6 +70,8 @@ class User extends BaseUser
 
     private $superAdmin;
 
+    private $type;
+
     public function __construct()
     {
         parent::__construct();
@@ -91,6 +93,38 @@ class User extends BaseUser
             $this->removeRole($currentRole);
 
         $this->addRole($role);
+    }
+
+    public function getType()
+    {
+        $role = $this->getRole();
+
+        if (!$role)
+            return null;
+
+        $type = "";
+
+        switch ($role) {
+            case "ROLE_USER":
+                $type = "Particulier";
+                break;
+            case "ROLE_ADMIN":
+                $type = "Naturaliste";
+                break;
+            case "ROLE_SUPER_ADMIN":
+                $type = "Super Administrateur";
+                break;
+            case "ROLE_COLLABORATOR":
+                $type = "Collaborateur";
+                break;
+        }
+
+        return $type;
+    }
+
+    public function setType($type)
+    {
+        return $type;
     }
 
     /**
