@@ -43,7 +43,7 @@ class NewsletterController extends Controller
     {
         $exportWS = $this->get('app.export');
 
-        return $exportWS->export('NBGraphicsCoreBundle:Newsletter', array('id','email'), 'exportAll', 'newsletter');
+        return $exportWS->export(new Newsletter(), array('email'), 'exportAll', 'newsletter');
     }
 
     /**

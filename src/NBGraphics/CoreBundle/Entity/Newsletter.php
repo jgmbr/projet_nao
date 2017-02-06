@@ -151,7 +151,6 @@ class Newsletter implements ExportInterface
     public function toCsvArray()
     {
         return array(
-            $this->id,
             $this->email
         );
     }

@@ -22,7 +22,7 @@ class ExportDatas
     {
         $delimiter = ";";
 
-        $iterableResult = $this->em->getRepository($entity)->$query();
+        $iterableResult = $this->em->getRepository(get_class($entity))->$query();
 
         $handle = fopen('php://memory', 'r+');
 
