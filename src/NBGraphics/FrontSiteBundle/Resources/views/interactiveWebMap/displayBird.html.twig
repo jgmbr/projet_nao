@@ -1,5 +1,72 @@
 {% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
 
 {% block body %}
-    <h3>Foo</h3>
+
+    <div class="row show-results">
+        <div class="col-sm-4">
+            <img src="{{ asset('uploads/img/chouette-2.jpg') }}">
+        </div>
+        <div class="col-sm-offset-2 col-sm-6">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <table class="table table-hover">
+            <caption>Résultat de l'observation n°{{ bird.id }}</caption>
+            <thead>
+                <tr>
+                    <th>Champ</th>
+                    <th>Observation de l'utilisateur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Famille</td>
+                    <td>{{ bird.taxref.famille }}</td>
+                </tr>
+                <tr>
+                    <td>Nom vernaculaire</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
+                </tr>
+                <tr>
+                    <td>Nom latin</td>
+                    <td>{{ bird.taxref.nomValide }}</td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>{{ bird.quantity }}</td>
+                </tr>
+                <tr>
+                    <td>Maturité</td>
+                    <td>{{ bird.matureStage }}</td>
+                </tr>
+                <tr>
+                    <td>Plumage</td>
+                    <td>{{ bird.plumage }}</td>
+                </tr>
+                <tr>
+                    <td>Nidification</td>
+                    <td>{{ bird.nidification }}</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <td>Heure</td>
+                    <td>{{ bird.hourAt|date('H:i') }}</td>
+                </tr>
+                <tr>
+                    <td>Remarques</td>
+                    <td>{{ bird.comment }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ asset('assets/js/seeAllResults.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock %}

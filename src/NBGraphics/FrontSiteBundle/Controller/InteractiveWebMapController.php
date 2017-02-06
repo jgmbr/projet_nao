@@ -83,11 +83,7 @@ class InteractiveWebMapController extends Controller
                     'resultsPerFamily' => $resultsPerFamily,
                 ]);
             }
-
-
         }
-
-
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
             'searchForm' => $searchForm->createView(),
@@ -101,9 +97,16 @@ class InteractiveWebMapController extends Controller
      */
     public function displayBirdDetail($birdObs)
     {
-        dump($birdObs);
+        $em = $this->getDoctrine()->getManager();
+        $bird = $em->getRepository('NBGraphicsCoreBundle:Observation')->findOneBy([
+            'id' => $birdObs,
+        ]);
 
-        return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig');
+        dump($bird);
+
+        return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig', [
+            'bird' => $bird,
+        ]);
     }
 
 }
