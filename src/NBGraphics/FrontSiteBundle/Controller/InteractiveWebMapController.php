@@ -96,4 +96,14 @@ class InteractiveWebMapController extends Controller
         ));
     }
 
+    /**
+     * @Route("/webmap/{birdObs}")
+     */
+    public function displayBirdDetail($birdObs)
+    {
+        dump($birdObs);
+
+        return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig');
+    }
+
 }
