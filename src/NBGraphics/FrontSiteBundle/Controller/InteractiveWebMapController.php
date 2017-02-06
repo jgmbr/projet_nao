@@ -26,54 +26,73 @@ class InteractiveWebMapController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        // Search form
+        // By default, $results is null
+        $resultsPerFamily = null;
+        $resultsPerBird = null;
 
+
+        // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
+
+        //Criteria Maps Form
+        $criteriaMapsForm = $this->createForm(CriteriaMapsFormType::class, array());
 
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $datas = $searchForm->getData();
+            $data = $searchForm->getData();
 
-            $bird = $datas['oiseau'];
 
-            $family = $datas['famille'];
+            $bird = $data['oiseau'];
+            $family = $data['famille'];
 
+
+
+            // Faire contrainte personnalisée à partir du formulaire
             if (!$bird && !$family) {
                 $request->getSession()->getFlashBag()->add('error', 'Merci de saisir des critères de recherche !');
                 return $this->redirectToRoute('nb_graphics_front_site_interactivewebmap');
             }
 
+
             $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
 
             // Priorité oiseau
-
             if ($bird !== null) {
 
-                $results = $em->getRepository('NBGraphicsCoreBundle:Observation')->findBy(array(
+                $resultsPerBird = $em->getRepository('NBGraphicsCoreBundle:Observation')->findBy(array(
                     'taxref' => $bird,
                     'status' => $status
                 ));
 
+
+
             } elseif ($family !== null) {
 
-                $results = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByFamily($family, $status);
+                $resultsPerFamily = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByFamily($family, $status);
 
             }
 
-            var_dump('LISTE DES OBSERVATIONS SELON CRITERES DU SEARCH FORM :');
+            if ($resultsPerBird !== null || $resultsPerFamily !== null) {
+                dump($resultsPerBird);
+                dump($resultsPerFamily);
+                return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', [
+                    'searchForm' => $searchForm->createView(),
+                    'criteriaMapsForm' => $criteriaMapsForm->createView(),
+                    'resultsPerBird' => $resultsPerBird,
+                    'resultsPerFamily' => $resultsPerFamily,
+                ]);
+            }
 
-            var_dump($results);
 
-            die('check datas search form type');
         }
 
-        // Criteria Maps
 
-        $criteriaMapsForm = $this->createForm(CriteriaMapsFormType::class, array());
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
-            'searchForm' => $searchForm->createView()
+            'searchForm' => $searchForm->createView(),
+            'resultsPerBird' => $resultsPerBird,
+            'resultsPerFamily' => $resultsPerFamily,
         ));
     }
 

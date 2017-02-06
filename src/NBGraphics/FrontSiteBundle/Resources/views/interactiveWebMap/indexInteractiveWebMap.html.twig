@@ -11,4 +11,75 @@
     {{ form_widget(searchForm) }}
     {{ form_end(searchForm) }}
     </section>
+
+    {% if resultsPerBird %}
+        <table class="table table-hover">
+            <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
+            <thead>
+                <tr>
+                    <th>Observation n°</th>
+                    <th>Famille de l'oiseau observé</th>
+                    <th>Oiseau observé</th>
+                    <th>Date de l'observation</th>
+                    <th>Département</th>
+                    <th>Observation en détail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bird in resultsPerBird %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ bird.taxref.famille }}</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
+                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                    <td>{{ bird.departement }}</td>
+                    <td><a class="btn btn-default" href="#">Voir l'observation</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+        <h3>Affiner la carte intéractive</h3>
+        {{ form_start(criteriaMapsForm) }}
+        {{ form_widget(criteriaMapsForm) }}
+        {{ form_end(criteriaMapsForm) }}
+
+        <hr>
+        <div class="form-group map-container">
+            <div id="map"></div>
+        </div>
+
+    {% endif %}
+
+    {% if resultsPerFamily %}
+        <table class="table table-hover">
+            <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
+            <thead>
+                <tr>
+                    <th>Observation n°</th>
+                    <th>Famille de l'oiseau observé</th>
+                    <th>Oiseau observé</th>
+                    <th>Date de l'observation</th>
+                    <th>Département</th>
+                    <th>Observation en détail</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for bird in resultsPerFamily %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ bird.taxref.famille }}</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
+                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                    <td>{{ bird.departement }}</td>
+                    <td><a href="#">Voir l'observation</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <script src="{{ asset('assets/js/seeAllResults.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock%}
