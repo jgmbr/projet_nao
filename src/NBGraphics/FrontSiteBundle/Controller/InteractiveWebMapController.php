@@ -102,6 +102,10 @@ class InteractiveWebMapController extends Controller
             'id' => $birdObs,
         ]);
 
+        if (!$bird) {
+            throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
+        }
+
         dump($bird);
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig', [
