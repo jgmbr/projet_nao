@@ -33,7 +33,7 @@
                     <td>{{ bird.taxref.nomVern }}</td>
                     <td>{{ bird.dateAt|date('d/m/Y') }}</td>
                     <td>{{ bird.departement }}</td>
-                    <td><a href="#">Voir l'observation</a></td>
+                    <td><a class="btn btn-default" href="#">Voir l'observation</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -46,7 +46,7 @@
         {{ form_end(criteriaMapsForm) }}
 
         <hr>
-        <div class="form-group">
+        <div class="form-group map-container">
             <div id="map"></div>
         </div>
 
@@ -80,6 +80,6 @@
         </table>
     {% endif %}
 
-    
+    <script src="{{ asset('assets/js/seeAllResults.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock%}
