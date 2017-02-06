@@ -10,10 +10,20 @@ namespace NBGraphics\CoreBundle\Repository;
  */
 class NewsletterRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findNewsletters($sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('n')
+            ->orderBy('n.id', $sort)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function exportAll()
     {
         return $this
-            ->createQueryBuilder('a')
+            ->createQueryBuilder('n')
             ->getQuery()
             ->iterate()
         ;

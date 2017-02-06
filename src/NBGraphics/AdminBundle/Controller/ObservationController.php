@@ -28,7 +28,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findAll();
+        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservations();
+
+
 
         $deleteForms = array();
 
@@ -52,9 +54,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByStatus(
-            $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('DEFAULT')
-        );
+        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('DEFAULT');
+
+        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 
@@ -78,9 +80,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByStatus(
-            $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('VALIDED')
-        );
+        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('VALIDED');
+
+        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 
@@ -104,9 +106,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByStatus(
-            $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('REFUSED')
-        );
+        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('REFUSED');
+
+        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 

@@ -26,10 +26,11 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
-    public function findDistinctDepartementQB()
+    public function findDistinctDepartementQB($sort = 'ASC')
     {
         return $this
             ->createQueryBuilder('o')
+            ->orderBy('o.departement', $sort)
             ->groupBy('o.departement')
         ;
     }
@@ -46,11 +47,12 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @return Observation[]
      */
-    public function findMyObservations($user)
+    public function findMyObservations($user, $sort = 'DESC')
     {
         return $this
             ->createQueryBuilder('o')
             ->where('o.user = :user')
+            ->orderBy('o.id', $sort)
             ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
@@ -81,6 +83,30 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('user', $user)
             ->getQuery()
             ->getSingleScalarResult()
+        ;
+    }
+
+    /* LISTS */
+
+    public function findObservations($sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->orderBy('o.id', $sort)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findObservationsByStatusAndOrder($status, $sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->orderBy('o.id', $sort)
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getResult()
         ;
     }
 

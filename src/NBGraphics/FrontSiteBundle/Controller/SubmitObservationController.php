@@ -43,17 +43,31 @@ class SubmitObservationController extends Controller
                 $observation->getImage()->upload();
             }
 
-            $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
+            // Validation automatique de l'observation
+            if ($user->hasRole('ROLE_ADMIN')) {
 
-            $observation->setStatus($statut);
-            $observation->setUser($user);
+                $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
+                $observation->setStatus($statut);
+                $observation->setUser($user);
+                $user->addObservation($observation);
+                $moderation = new Moderation();
+                $moderation->setComment('Validation automatique');
+                $moderation->setObservation($observation);
+                $moderation->setStatus($statut);
 
-            $user->addObservation($observation);
+            // Observation en attente
+            } else {
 
-            $moderation = new Moderation();
-            $moderation->setComment('En attente de validation par un modérateur');
-            $moderation->setObservation($observation);
-            $moderation->setStatus($statut);
+                $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
+                $observation->setStatus($statut);
+                $observation->setUser($user);
+                $user->addObservation($observation);
+                $moderation = new Moderation();
+                $moderation->setComment('En attente de validation par un modérateur');
+                $moderation->setObservation($observation);
+                $moderation->setStatus($statut);
+
+            }
 
             $em->persist($moderation);
             $em->persist($observation);

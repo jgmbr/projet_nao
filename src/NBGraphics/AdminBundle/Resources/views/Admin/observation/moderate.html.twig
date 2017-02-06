@@ -73,6 +73,32 @@
                     <th>Date de modification</th>
                     <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
                 </tr>
+                <tr>
+                    <th>Modération(s)</th>
+                    <td>
+                        {% if observation.moderations is defined and observation.moderations|length > 0 %}
+                            {% for moderation in observation.moderations %}
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <i class="fa {{ moderation.status.icon }}" aria-hidden="true"></i>
+                                            {{ moderation.status.name }} - le {{ moderation.createdAt|date('d/m/Y') }}
+                                            {% if moderation.user is not null %}
+                                                par {{ moderation.user.username }}
+                                            {% endif %}
+                                        </p>
+                                        {% if moderation.comment is not null %}
+                                            <p> Commentaire : {{ moderation.comment }} </p>
+                                        {% endif %}
+                                        <hr >
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        {% else %}
+                            <p> Pas de modération(s) </p>
+                        {% endif %}
+                    </td>
+                </tr>
             </tbody>
         </table>
         </div>

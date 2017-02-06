@@ -10,7 +10,7 @@ class UserRepository extends EntityRepository
     /**
      * @return User[]
      */
-    public function findAllUsers()
+    public function findAllUsers($sort = 'DESC')
     {
         $qb = $this->createQueryBuilder('u');
 
@@ -18,6 +18,7 @@ class UserRepository extends EntityRepository
             ->where($qb->expr()->notLike('u.roles', ':role1'))
             ->andWhere($qb->expr()->notLike('u.roles', ':role2'))
             ->andWhere($qb->expr()->notLike('u.roles', ':role3'))
+            ->orderBy('u.id', $sort)
             ->setParameter('role1', '%"ROLE_ADMIN"%')
             ->setParameter('role2', '%"ROLE_COLLABORATOR"%')
             ->setParameter('role3', '%"ROLE_SUPER_ADMIN"%')
@@ -29,12 +30,13 @@ class UserRepository extends EntityRepository
     /**
      * @return User[]
      */
-    public function findAllAdmin()
+    public function findAllAdmin($sort = 'DESC')
     {
         $qb = $this->createQueryBuilder('u');
 
         return $qb
             ->where($qb->expr()->like('u.roles', ':role'))
+            ->orderBy('u.id', $sort)
             ->setParameter('role', '%"ROLE_ADMIN"%')
             ->getQuery()
             ->getResult()
@@ -44,12 +46,13 @@ class UserRepository extends EntityRepository
     /**
      * @return User[]
      */
-    public function findAllCollaborators()
+    public function findAllCollaborators($sort = 'DESC')
     {
         $qb = $this->createQueryBuilder('u');
 
         return $qb
             ->where($qb->expr()->like('u.roles', ':role'))
+            ->orderBy('u.id', $sort)
             ->setParameter('role', '%"ROLE_COLLABORATOR"%')
             ->getQuery()
             ->getResult()
@@ -99,12 +102,13 @@ class UserRepository extends EntityRepository
         ;
     }
 
-    public function exportAllPhoneAllowed()
+    public function exportAllPhoneAllowed($sort = 'DESC')
     {
         return $this
             ->createQueryBuilder('u')
             ->select('u')
             ->where('u.enableCampaigns = 1')
+            ->orderBy('u.id', $sort)
             ->getQuery()
             ->iterate()
         ;
