@@ -95,3 +95,9 @@ fos_user:
     registration:
         confirmation:
             template:   FOSUserBundle:Registration:email.txt.twig
+
+# Stof\DoctrineExtensionsBundle configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

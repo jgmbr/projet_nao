@@ -86,11 +86,13 @@
                             </ul>
                         </li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <li class="{% if app.request.attributes.get('_route') == "news_index" %}active{% endif %}">
-                                <a href="#">
-                                    Actualités <i class="fa fa-file-text pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                                </a>
-                            </li>
+
+                            {% if app.request.attributes.get('_route') starts with "article" %}
+                                {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
+                            {% else %}
+                                {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
+                            {% endif %}
+
                             <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
                                 <a href="{{ path('newsletter_index') }}">
                                     Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
@@ -127,11 +129,11 @@
                                 Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
                             </a>
                         </li>
-                        <li class="{% if app.request.attributes.get('_route') == "news_index" %}active{% endif %}">
-                            <a href="#">
-                                Actualités <i class="fa fa-file-text pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
+                        {% if app.request.attributes.get('_route') starts with "article" %}
+                            {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
+                        {% else %}
+                            {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
+                        {% endif %}
                     </ul>
                 </div>
             </div>

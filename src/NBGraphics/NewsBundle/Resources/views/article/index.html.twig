@@ -1,0 +1,110 @@
+{% extends 'NBGraphicsFrontSiteBundle::frontBaseElements.html.twig' %}
+
+{% block body %}
+
+    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+
+    <div class="col-sm-12 col-md-9">
+        <div class="box box-default">
+            <div class="box-header with-border"> <h3 class="box-title">Actualités</h3> </div>
+            <div class="box-body">
+                <div id="article_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {% if articles is defined and articles|length > 0 %}
+                                <table id="article" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="article_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th>Id</th>
+                                        <th>Titre</th>
+                                        <th>Slug</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for article in articles %}
+                                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                            <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+
+                                            <td>{{ article.title }}</td>
+                                            <td>{{ article.slug }}</td>
+                                            <td>{{ article.state.name }}</td>
+
+                                            <td>
+                                                <a href="{{ path('article_show', { 'id': article.id }) }}" class="btn btn-info btn-xs">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('article_edit', { 'id': article.id }) }}" class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('article_delete', { 'id': article.id }) }}" class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Titre</th>
+                                        <th>Slug</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            {% else %}
+                                <p> Pas d'actualités. </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('#article').DataTable({
+                "responsive": true,
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "language": {
+                    "processing":     "Traitement en cours...",
+                    "search":         "Rechercher&nbsp;:",
+                    "lengthMenu":    "Afficher _MENU_ &eacute;l&eacute;ments",
+                    "info":           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                    "infoEmpty":      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                    "infoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                    "infoPostFix":    "",
+                    "loadingRecords": "Chargement en cours...",
+                    "zeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                    "emptyTable":     "Aucune donnée disponible dans le tableau",
+                    "paginate": {
+                        "first":      "Premier",
+                        "previous":   "Pr&eacute;c&eacute;dent",
+                        "next":       "Suivant",
+                        "last":       "Dernier"
+                    },
+                    "aria": {
+                        "sortAscending":  ": activer pour trier la colonne par ordre croissant",
+                        "sortDescending": ": activer pour trier la colonne par ordre décroissant"
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

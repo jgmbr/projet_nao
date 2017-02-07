@@ -30,8 +30,6 @@ class ObservationController extends Controller
 
         $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservations();
 
-
-
         $deleteForms = array();
 
         foreach ($observations as $observation) {
