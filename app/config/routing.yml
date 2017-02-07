@@ -8,10 +8,9 @@ nb_graphics_admin:
     type:     annotation
     prefix:   /admin
 
-#nb_graphics_account:
-    #resource: "@NBGraphicsAdminBundle/Controller/Account/"
-    #type:     annotation
-    #prefix:   /account
+nb_graphics_news:
+    resource: "@NBGraphicsNewsBundle/Controller/"
+    type:     annotation
 
 nb_graphics_core:
     resource: "@NBGraphicsCoreBundle/Resources/config/routing.yml"

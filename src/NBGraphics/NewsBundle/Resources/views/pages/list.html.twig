@@ -1,0 +1,16 @@
+{% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
+
+{% block body %}
+
+    <h1> Liste actualités </h1>
+
+    {% for article in articles %}
+        <div>
+            <p> {{ article.title }} </p>
+            <p> {{ article.content|raw }} </p>
+            <p> <a class="btn btn-primary pull-right" href="{{ path('article_view',{'id': article.id, 'slug': article.slug}) }}"> Voir l'article complet </a> </p>
+            <hr />
+        </div>
+    {% endfor %}
+
+{% endblock %}
