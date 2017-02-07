@@ -116,31 +116,91 @@
                 zoom: 6,
                 maxZoom: 6
             });
-            // Create the markers
             {% if resultsPerBird %}
                 {% for bird in resultsPerBird %}
+                    // Create the markers
                     var marker{{ loop.index }} = new google.maps.Marker({
                         position: {
                             lat: {{ bird.latitude }},
                             lng: {{ bird.longitude }}
                         },
                         map: map,
-                        title: "Vous êtes ici"
+                        title: "Voir l'observation"
+                    });
+                    // Create the strings
+                    var contentString = '';
+                        contentString += '<div id="content">';
+                        contentString += '<p>';
+                        contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                        contentString += '<br>';
+                        contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                        contentString += '</p>';
+                        contentString += '<p>';
+                        contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                            'birdObs': bird.id
+                        }) }}">';
+                        contentString += 'Voir l\'observation';
+                        contentString += '</a>';
+                        contentString += '</p>';
+                        contentString += '</div>';
+
+                    // Creathe info windows
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    // Add click event
+                    marker{{ loop.index }}.addListener('click', function() {
+                        infowindow.open(map, marker{{ loop.index }});
                     });
                 {% endfor %}
             {% elseif resultsPerFamily %}
                 {% for bird in resultsPerFamily %}
-                var marker{{ loop.index }} = new google.maps.Marker({
-                    position: {
-                        lat: {{ bird.latitude }},
-                        lng: {{ bird.longitude }}
-                    },
-                    map: map,
-                    title: "Vous êtes ici"
-                });
+                    var marker{{ loop.index }} = new google.maps.Marker({
+                        position: {
+                            lat: {{ bird.latitude }},
+                            lng: {{ bird.longitude }}
+                        },
+                        map: map,
+                        title: "Voir l'observation"
+                    });
+                    // Create the markers
+                    var marker{{ loop.index }} = new google.maps.Marker({
+                        position: {
+                            lat: {{ bird.latitude }},
+                            lng: {{ bird.longitude }}
+                        },
+                        map: map,
+                        title: "Voir l'observation"
+                    });
+                    // Create the strings
+                    var contentString = '';
+                    contentString += '<div id="content">';
+                    contentString += '<p>';
+                    contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                    contentString += '<br>';
+                    contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                    contentString += '</p>';
+                    contentString += '<p>';
+                    contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                        'birdObs': bird.id
+                    }) }}">';
+                    contentString += 'Voir l\'observation';
+                    contentString += '</a>';
+                    contentString += '</p>';
+                    contentString += '</div>';
+
+                    // Creathe info windows
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    // Add click event
+                    marker{{ loop.index }}.addListener('click', function() {
+                        infowindow.open(map, marker{{ loop.index }});
+                    });
                 {% endfor %}
             {% endif %}
         };
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock%}
