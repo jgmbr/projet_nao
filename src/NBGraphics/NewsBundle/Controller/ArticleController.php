@@ -3,6 +3,7 @@
 namespace NBGraphics\NewsBundle\Controller;
 
 use NBGraphics\NewsBundle\Entity\Article;
+use NBGraphics\NewsBundle\Entity\State;
 use NBGraphics\NewsBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -25,7 +26,9 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('NBGraphicsNewsBundle:Article')->findAll();
+        $articles = $em->getRepository(Article::class)->findArticles(
+            $em->getRepository(State::class)->findOneByRole('PUBLISH')
+        );
 
         $deleteForms = array();
 

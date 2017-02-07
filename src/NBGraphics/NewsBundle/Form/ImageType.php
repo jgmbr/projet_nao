@@ -19,7 +19,9 @@ class ImageType extends AbstractType
                     new File([
                         'maxSize' => '3000k',
                         'mimeTypes' => [
-                            'image/jpeg'
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg'
                         ],
                     ])
                 ],

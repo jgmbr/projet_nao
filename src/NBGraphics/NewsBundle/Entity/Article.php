@@ -61,6 +61,11 @@ class Article
      */
     private $image;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="NBGraphics\NewsBundle\Entity\State", cascade={"persist"})
+     */
+    private $state;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -218,6 +223,30 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set state
+     *
+     * @param \NBGraphics\NewsBundle\Entity\State $state
+     *
+     * @return Article
+     */
+    public function setState(\NBGraphics\NewsBundle\Entity\State $state = null)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \NBGraphics\NewsBundle\Entity\State
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 
     /**

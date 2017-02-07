@@ -2,34 +2,25 @@
 
 {% block body %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header"> <h3 class="box-title"> Fiche actualité </h3> </div>
-            <div class="box-body box-article">
-                <table class="table table-responsive">
-                    <tbody>
-                    <tr>
-                        <th>Image</th>
-                        <td>[image]</td>
-                    </tr>
-                    <tr>
-                        <th>Titre</th>
-                        <td>{{ article.title }}</td>
-                    </tr>
-                    <tr>
-                        <th>Contenu</th>
-                        <td>{{ article.content }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <div class="actions">
-            <a href="{{ path('article_list') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
-            </a>
+    <div class="col-sm-12">
+        <div class="col-md-2">
+            {% if article.image is not null %}
+                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+            {% else %}
+                <i class="fa fa-picture-o fa-5x" aria-hidden="true" style="margin: 20px;"></i>
+            {% endif %}
         </div>
+        <div class="col-md-10">
+            <h2> {{ article.title }} </h2>
+            <p> {{ article.content|nl2br }} </p>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a href="{{ path('article_list') }}" class="btn btn-primary pull-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
+        </a>
     </div>
 
 {% endblock %}

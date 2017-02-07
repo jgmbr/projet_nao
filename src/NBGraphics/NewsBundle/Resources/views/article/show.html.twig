@@ -11,6 +11,20 @@
                 <table class="table table-responsive">
                     <tbody>
                     <tr>
+                        <th>Image</th>
+                        <td>
+                            {% if article.image is not null %}
+                                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+                            {% else %}
+                                <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ article.state.name }}</td>
+                    </tr>
+                    <tr>
                         <th>Titre</th>
                         <td>{{ article.title }}</td>
                     </tr>
@@ -20,11 +34,7 @@
                     </tr>
                     <tr>
                         <th>Contenu</th>
-                        <td>{{ article.content }}</td>
-                    </tr>
-                    <tr>
-                        <th>Image</th>
-                        <td> [image] </td>
+                        <td>{{ article.content|nl2br }}</td>
                     </tr>
                     <tr>
                         <th>Date de création</th>

@@ -3,6 +3,7 @@
 namespace NBGraphics\NewsBundle\Controller;
 
 use NBGraphics\NewsBundle\Entity\Article;
+use NBGraphics\NewsBundle\Entity\State;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,9 @@ class PagesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('NBGraphicsNewsBundle:Article')->findAll();
+        $articles = $em->getRepository(Article::class)->findArticles(
+            $em->getRepository(State::class)->findOneByRole('PUBLISH')
+        );
 
         return $this->render('NBGraphicsNewsBundle:pages:list.html.twig', array(
             'articles' => $articles

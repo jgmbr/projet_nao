@@ -1,6 +1,6 @@
 <?php
 
-namespace JG\CoreBundle\DataFixtures\ORM;
+namespace NBGraphics\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

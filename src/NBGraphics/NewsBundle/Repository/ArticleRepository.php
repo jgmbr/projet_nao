@@ -10,4 +10,15 @@ namespace NBGraphics\NewsBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findArticles($state, $sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->where('a.state = :state')
+            ->orderBy('a.id', $sort)
+            ->setParameter('state', $state)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
