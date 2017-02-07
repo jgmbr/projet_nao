@@ -83,17 +83,34 @@ class InteractiveWebMapController extends Controller
                     'resultsPerFamily' => $resultsPerFamily,
                 ]);
             }
-
-
         }
-
-
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
             'searchForm' => $searchForm->createView(),
             'resultsPerBird' => $resultsPerBird,
             'resultsPerFamily' => $resultsPerFamily,
         ));
+    }
+
+    /**
+     * @Route("/webmap/{birdObs}")
+     */
+    public function displayBirdDetail($birdObs)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bird = $em->getRepository('NBGraphicsCoreBundle:Observation')->findOneBy([
+            'id' => $birdObs,
+        ]);
+
+        if (!$bird) {
+            throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
+        }
+
+        dump($bird);
+
+        return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig', [
+            'bird' => $bird,
+        ]);
     }
 
 }

@@ -1,0 +1,95 @@
+{% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
+
+{% block body %}
+
+    <div class="row show-results">
+        <div class="col-sm-4">
+            <img src="/uploads/img/{{ bird.image.url }}" alt="{{ bird.image.alt }}">
+        </div>
+        <div class="col-sm-offset-2 col-sm-6">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <table class="table table-hover">
+            <caption>Résultat de l'observation n°{{ bird.id }}</caption>
+            <thead>
+                <tr>
+                    <th>Champ</th>
+                    <th>Observation de l'utilisateur</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Famille</td>
+                    <td>{{ bird.taxref.famille }}</td>
+                </tr>
+                <tr>
+                    <td>Nom vernaculaire</td>
+                    <td>{{ bird.taxref.nomVern }}</td>
+                </tr>
+                <tr>
+                    <td>Nom latin</td>
+                    <td>{{ bird.taxref.nomValide }}</td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>{{ bird.quantity }}</td>
+                </tr>
+                <tr>
+                    <td>Maturité</td>
+                    <td>{{ bird.matureStage }}</td>
+                </tr>
+                <tr>
+                    <td>Plumage</td>
+                    <td>{{ bird.plumage }}</td>
+                </tr>
+                <tr>
+                    <td>Nidification</td>
+                    <td>{{ bird.nidification }}</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <td>Heure</td>
+                    <td>{{ bird.hourAt|date('H:i') }}</td>
+                </tr>
+                <tr>
+                    <td>Remarques</td>
+                    <td>{{ bird.comment }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Initialize The Google Map Element
+        var initMap = function() {
+            var myLatLng = {
+                lat: {{ bird.latitude }},
+                lng: {{ bird.longitude }}
+            };
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 6
+            });
+            // Create the marker
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: {{ bird.latitude }},
+                    lng: {{ bird.longitude }}
+                },
+                map: map,
+                title: "Vous êtes ici"
+            });
+        };
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
+{% endblock %}
