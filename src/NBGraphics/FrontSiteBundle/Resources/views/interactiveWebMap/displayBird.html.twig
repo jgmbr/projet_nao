@@ -4,7 +4,12 @@
 
     <div class="row show-results">
         <div class="col-sm-4">
-            <img src="/uploads/img/{{ bird.image.url }}" alt="{{ bird.image.alt }}">
+            {% if bird.image %}
+                <img src="/uploads/img/{{ bird.image.url }}" alt="{{ bird.image.alt }}">
+            {% else %}
+                <img src="{{ asset('images/400px-Image_manquante_2.svg.png') }}" alt="Image manquante">
+            {% endif %}
+
         </div>
         <div class="col-sm-offset-2 col-sm-6">
             <div id="map"></div>
@@ -78,7 +83,8 @@
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: myLatLng,
                 scrollwheel: false,
-                zoom: 6
+                zoom: 8,
+                maxZoom: 10
             });
             // Create the marker
             var marker = new google.maps.Marker({
