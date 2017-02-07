@@ -92,8 +92,55 @@
             {% endfor %}
             </tbody>
         </table>
+
+        <hr>
+        <h3>Affiner la carte intéractive</h3>
+        {{ form_start(criteriaMapsForm) }}
+        {{ form_widget(criteriaMapsForm) }}
+        {{ form_end(criteriaMapsForm) }}
+
+        <hr>
+        <div class="form-group map-container">
+            <div id="map"></div>
+        </div>
     {% endif %}
 
-    <script src="{{ asset('assets/js/seeAllResults.js') }}"></script>
+    <script>
+        // Initialize The Google Map Element
+        var initMap = function() {
+            var myLatLng = {lat: 48.866667, lng: 2.333333};
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 6,
+                maxZoom: 6
+            });
+            // Create the markers
+            {% if resultsPerBird %}
+                {% for bird in resultsPerBird %}
+                    var marker{{ loop.index }} = new google.maps.Marker({
+                        position: {
+                            lat: {{ bird.latitude }},
+                            lng: {{ bird.longitude }}
+                        },
+                        map: map,
+                        title: "Vous êtes ici"
+                    });
+                {% endfor %}
+            {% elseif resultsPerFamily %}
+                {% for bird in resultsPerFamily %}
+                var marker{{ loop.index }} = new google.maps.Marker({
+                    position: {
+                        lat: {{ bird.latitude }},
+                        lng: {{ bird.longitude }}
+                    },
+                    map: map,
+                    title: "Vous êtes ici"
+                });
+                {% endfor %}
+            {% endif %}
+        };
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
 {% endblock%}
