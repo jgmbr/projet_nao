@@ -1,3 +1,0 @@
-nb_graphics_news_homepage:
-    path:     /
-    defaults: { _controller: NBGraphicsNewsBundle:Default:index }

@@ -2,3 +2,6 @@ services:
     app.export:
         class: NBGraphics\CoreBundle\Services\Export\ExportDatas
         arguments: ['@doctrine.orm.entity_manager']
+    app.email.contact.form:
+        class: NBGraphics\CoreBundle\Services\Email\EmailContactFormSystem
+        arguments: ["@mailer", "@templating"]

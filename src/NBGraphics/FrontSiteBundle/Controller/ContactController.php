@@ -26,7 +26,7 @@ class ContactController extends Controller
         $contactForm->handleRequest($request);
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $data = $contactForm->getData();
-            $mail = $this->get('email.contact.form');
+            $mail = $this->get('app.email.contact.form');
             $mail->sendEmail($data);
             $this->addFlash('success', 'Votre message a bien été envoyé');
             return $this->redirectToRoute('nb_graphics_front_site_homepage');

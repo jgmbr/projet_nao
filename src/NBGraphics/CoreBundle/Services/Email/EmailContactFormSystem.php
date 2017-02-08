@@ -6,7 +6,7 @@
  * Time: 18:55
  */
 
-namespace NBGraphics\CoreBundle\Services;
+namespace NBGraphics\CoreBundle\Services\Email;
 
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

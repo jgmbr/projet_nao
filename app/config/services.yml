@@ -4,6 +4,3 @@ parameters:
 #    parameter_name: value
 
 services:
-  email.contact.form:
-    class: NBGraphics\CoreBundle\Services\EmailContactFormSystem
-    arguments: ["@mailer", "@templating"]
