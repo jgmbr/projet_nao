@@ -141,6 +141,13 @@
     </style>
 </head>
 <body>
+
+{% for flashMsg in app.session.flashBag.get('success') %}
+    <div class="text-center alert alert-success">
+        {{ flashMsg }}
+    </div>
+{% endfor %}
+
     <div class="header-wrapper">
         <header class="main-header">
             <ul>

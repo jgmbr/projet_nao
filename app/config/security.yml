@@ -48,6 +48,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/submit-observation, role: ROLE_USER }
+        - { path: ^/webmap/, role: ROLE_USER }
         - { path: ^/admin/index/, role: ROLE_USER }
         - { path: ^/admin/profil/, role: ROLE_USER }
         - { path: ^/admin/my_observation/, role: ROLE_USER }

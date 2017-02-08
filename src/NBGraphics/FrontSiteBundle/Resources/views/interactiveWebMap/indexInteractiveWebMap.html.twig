@@ -13,38 +13,40 @@
     </section>
 
     {% if resultsPerBird %}
-        <table class="table table-hover">
-            <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
-            <thead>
-                <tr>
-                    <th>Observation n°</th>
-                    <th>Famille de l'oiseau observé</th>
-                    <th>Oiseau observé</th>
-                    <th>Date de l'observation</th>
-                    <th>Département</th>
-                    <th>Observation en détail</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for bird in resultsPerBird %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ bird.taxref.famille }}</td>
-                    <td>{{ bird.taxref.nomVern }}</td>
-                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
-                    <td>{{ bird.departement }}</td>
-                    <td>
-                        <a class="btn btn-default"
-                           href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                               'birdObs': bird.id
-                           }) }}">
-                            Voir l'observation
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="dataTables_wrapper">
+            <table id="results" class="table table-hover dataTable">
+                <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
+                <thead>
+                    <tr>
+                        <th>Observation n°</th>
+                        <th>Famille de l'oiseau observé</th>
+                        <th>Oiseau observé</th>
+                        <th>Date de l'observation</th>
+                        <th>Département</th>
+                        <th>Observation en détail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bird in resultsPerBird %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ bird.taxref.famille }}</td>
+                        <td>{{ bird.taxref.nomVern }}</td>
+                        <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                        <td>{{ bird.departement }}</td>
+                        <td>
+                            <a class="btn btn-default"
+                               href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                                   'birdObs': bird.id
+                               }) }}">
+                                Voir l'observation
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         <hr>
         <h3>Affiner la carte intéractive</h3>
@@ -60,38 +62,40 @@
     {% endif %}
 
     {% if resultsPerFamily %}
-        <table class="table table-hover">
-            <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
-            <thead>
-                <tr>
-                    <th>Observation n°</th>
-                    <th>Famille de l'oiseau observé</th>
-                    <th>Oiseau observé</th>
-                    <th>Date de l'observation</th>
-                    <th>Département</th>
-                    <th>Observation en détail</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for bird in resultsPerFamily %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ bird.taxref.famille }}</td>
-                    <td>{{ bird.taxref.nomVern }}</td>
-                    <td>{{ bird.dateAt|date('d/m/Y') }}</td>
-                    <td>{{ bird.departement }}</td>
-                    <td>
-                        <a class="btn btn-default"
-                           href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                               'birdObs': bird.id
-                           }) }}">
-                            Voir l'observation
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="dataTables_wrapper">
+            <table id="results" class="table table-hover dataTable">
+                <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
+                <thead>
+                    <tr>
+                        <th>Observation n°</th>
+                        <th>Famille de l'oiseau observé</th>
+                        <th>Oiseau observé</th>
+                        <th>Date de l'observation</th>
+                        <th>Département</th>
+                        <th>Observation en détail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for bird in resultsPerFamily %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ bird.taxref.famille }}</td>
+                        <td>{{ bird.taxref.nomVern }}</td>
+                        <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                        <td>{{ bird.departement }}</td>
+                        <td>
+                            <a class="btn btn-default"
+                               href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                                   'birdObs': bird.id
+                               }) }}">
+                                Voir l'observation
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         <hr>
         <h3>Affiner la carte intéractive</h3>
@@ -188,41 +192,33 @@
                         title: "Voir l'observation"
                     });
                     // Create the strings
-                    var contentString = '';
-                        contentString += '<div id="content">';
-                        contentString += '<p>';
-                        contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                        contentString += '<br>';
-                        contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                        contentString += '</p>';
-                        contentString += '<p>';
-                        contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    var contentString{{ loop.index }} = '';
+                        contentString{{ loop.index }} += '<div id="content">';
+                        contentString{{ loop.index }} += '<p>';
+                        contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                        contentString{{ loop.index }} += '<br>';
+                        contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                        contentString{{ loop.index }} += '</p>';
+                        contentString{{ loop.index }} += '<p>';
+                        contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
                             'birdObs': bird.id
                         }) }}">';
-                        contentString += 'Voir l\'observation';
-                        contentString += '</a>';
-                        contentString += '</p>';
-                        contentString += '</div>';
+                        contentString{{ loop.index }} += 'Voir l\'observation';
+                        contentString{{ loop.index }} += '</a>';
+                        contentString{{ loop.index }} += '</p>';
+                        contentString{{ loop.index }} += '</div>';
 
                     // Creathe info windows
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
+                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                        content: contentString{{ loop.index }}
                     });
                     // Add click event
                     marker{{ loop.index }}.addListener('click', function() {
-                        infowindow.open(map, marker{{ loop.index }});
+                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
                     });
                 {% endfor %}
             {% elseif resultsPerFamily %}
                 {% for bird in resultsPerFamily %}
-                    var marker{{ loop.index }} = new google.maps.Marker({
-                        position: {
-                            lat: {{ bird.latitude }},
-                            lng: {{ bird.longitude }}
-                        },
-                        map: map,
-                        title: "Voir l'observation"
-                    });
                     // Create the markers
                     var marker{{ loop.index }} = new google.maps.Marker({
                         position: {
@@ -233,42 +229,68 @@
                         title: "Voir l'observation"
                     });
                     // Create the strings
-                    var contentString = '';
-                    contentString += '<div id="content">';
-                    contentString += '<p>';
-                    contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                    contentString += '<br>';
-                    contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                    contentString += '</p>';
-                    contentString += '<p>';
-                    contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    var contentString{{ loop.index }} = '';
+                    contentString{{ loop.index }} += '<div id="content">';
+                    contentString{{ loop.index }} += '<p>';
+                    contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                    contentString{{ loop.index }} += '<br>';
+                    contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                    contentString{{ loop.index }} += '</p>';
+                    contentString{{ loop.index }} += '<p>';
+                    contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
                         'birdObs': bird.id
                     }) }}">';
-                    contentString += 'Voir l\'observation';
-                    contentString += '</a>';
-                    contentString += '</p>';
-                    contentString += '</div>';
+                    contentString{{ loop.index }} += 'Voir l\'observation';
+                    contentString{{ loop.index }} += '</a>';
+                    contentString{{ loop.index }} += '</p>';
+                    contentString{{ loop.index }} += '</div>';
 
                     // Creathe info windows
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
+                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                        content: contentString{{ loop.index }}
                     });
                     // Add click event
                     marker{{ loop.index }}.addListener('click', function() {
-                        infowindow.open(map, marker{{ loop.index }});
+                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
                     });
                 {% endfor %}
             {% endif %}
         };
     </script>
-        <script>
-
-
-
-
-
-
-        </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     {% endif %}
 {% endblock%}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('#results').DataTable({
+                "responsive": true,
+                "paging": true,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "language": {
+                    "processing":     "Traitement en cours...",
+                    "lengthMenu":    "Afficher _MENU_ &eacute;l&eacute;ments",
+                    "info":           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                    "infoEmpty":      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                    "infoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                    "infoPostFix":    "",
+                    "paginate": {
+                        "first":      "Premier",
+                        "previous":   "Pr&eacute;c&eacute;dent",
+                        "next":       "Suivant",
+                        "last":       "Dernier"
+                    },
+                    "aria": {
+                        "sortAscending":  ": activer pour trier la colonne par ordre croissant",
+                        "sortDescending": ": activer pour trier la colonne par ordre décroissant"
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
