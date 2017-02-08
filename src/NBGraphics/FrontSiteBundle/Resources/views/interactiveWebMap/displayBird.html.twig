@@ -84,7 +84,11 @@
                 center: myLatLng,
                 scrollwheel: false,
                 zoom: 8,
+                {% if is_granted('ROLE_ADMIN') %}
+                maxZoom: 18,
+                {% else %}
                 maxZoom: 10
+                {% endif %}
             });
             // Create the marker
             var marker = new google.maps.Marker({

@@ -122,7 +122,12 @@
                 center: myLatLng,
                 scrollwheel: false,
                 zoom: 6,
-                maxZoom: 10
+                {% if is_granted('ROLE_ADMIN') %}
+                    maxZoom: 18,
+                {% else %}
+                    maxZoom: 10
+                {% endif %}
+
             });
 
 
