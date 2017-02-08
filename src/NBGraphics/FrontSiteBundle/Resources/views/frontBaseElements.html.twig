@@ -11,11 +11,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/Ionicons/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs/css/dataTables.bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/growl/stylesheets/jquery.growl.css') }}">
-
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -287,7 +284,19 @@
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
-
+    <script>
+        $(document).ready(function(){
+            {% for msgSuccess in app.session.flashbag.get('success') %}
+            $.growl.notice({ message: "{{ msgSuccess }}", title: "Succès" });
+            {% endfor %}
+            {% for msgError in app.session.flashbag.get('error') %}
+            $.growl.error({ message: "{{ msgError }}", title: "Erreur" });
+            {% endfor %}
+            {% for msgWarning in app.session.flashbag.get('warning') %}
+            $.growl.warning({ message: "{{ msgWarning }}", title: "Attention" });
+            {% endfor %}
+        });
+    </script>
     <script>
         (function () {
             $('#nbgraphics_corebundle_search_oiseau').autocompleter({

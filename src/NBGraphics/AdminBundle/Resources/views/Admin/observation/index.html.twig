@@ -4,8 +4,10 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    {% if observations is defined and observations|length > 0 %}
-        <a href="{{ path('observation_export') }}" class="btn btn-info"> <i class="fa fa-download" aria-hidden="true"></i> Exporter </a>
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        {% if observations is defined and observations|length > 0 %}
+            <a href="{{ path('observation_export') }}" class="btn btn-info"> <i class="fa fa-download" aria-hidden="true"></i> Exporter </a>
+        {% endif %}
     {% endif %}
 
     <div class="col-sm-12 col-md-9">

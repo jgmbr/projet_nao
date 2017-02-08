@@ -60,10 +60,19 @@ class MainController extends Controller
 
         if ($newsletterForm->isSubmitted() && $newsletterForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newsletter);
-            $em->flush($newsletter);
-            $request->getSession()->getFlashBag()->add('success', 'Adresse email enregistrée avec succès !');
-            return $this->redirectToRoute('nb_graphics_front_site_homepage');
+
+            $exist = $em->getRepository(Newsletter::class)->findOneByEmail($newsletter->getEmail());
+
+            if (is_object($exist)) {
+                $request->getSession()->getFlashBag()->add('error', 'L\'adresse email existe déjà !');
+                return $this->redirectToRoute('nb_graphics_front_site_newsletter');
+            } else {
+                $em->persist($newsletter);
+                $em->flush($newsletter);
+                $request->getSession()->getFlashBag()->add('success', 'Adresse email enregistrée avec succès !');
+                return $this->redirectToRoute('nb_graphics_front_site_homepage');
+            }
+
         }
 
         return $this->render('@NBGraphicsFrontSite/main/newsletter.html.twig', array(

@@ -66,12 +66,19 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush($user);
 
-            $request->getSession()->getFlashBag()->add('success', 'Membre ajouté avec succès !');
+            $exist = $em->getRepository(User::class)->findOneByEmail($user->getEmail());
 
-            return $this->redirectToRoute('user_index');
+            if (is_object($exist)) {
+                $request->getSession()->getFlashBag()->add('error', 'Compte utilisateur existant cette adresse email !');
+                return $this->redirectToRoute('user_new');
+            } else {
+                $em->persist($user);
+                $em->flush($user);
+                $request->getSession()->getFlashBag()->add('success', 'Membre ajouté avec succès !');
+                return $this->redirectToRoute('user_index');
+            }
+
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/user:new.html.twig',array(

@@ -62,25 +62,26 @@ class UserType extends AbstractType
                     'choices' => array(
                         'form.particulier' => 'ROLE_USER',
                         'form.naturaliste' => 'ROLE_ADMIN',
-                        'form.collaborateur' => 'ROLE_COLLABORATOR'
+                        'form.collaborateur' => 'ROLE_COLLABORATOR',
+                        'form.superadmin' => 'ROLE_SUPER_ADMIN'
                     ),
                     'expanded' => false,
                     'multiple' => false,
                     'required' => true,
                 ]
             )
-            ->add('superAdmin', ChoiceType::class, [
-                    'label' => 'form.superadmin',
-                    'translation_domain' => 'FOSUserBundle',
-                    'choices' => array(
-                        'form.yes' => true,
-                        'form.no' => false
-                    ),
-                    'expanded' => false,
-                    'multiple' => false,
-                    'required' => true,
-                ]
-            )
+//            ->add('superAdmin', ChoiceType::class, [
+//                    'label' => 'form.superadmin',
+//                    'translation_domain' => 'FOSUserBundle',
+//                    'choices' => array(
+//                        'form.yes' => true,
+//                        'form.no' => false
+//                    ),
+//                    'expanded' => false,
+//                    'multiple' => false,
+//                    'required' => true,
+//                ]
+//            )
             ->add('lastname', TextType::class, array(
                 'label' => 'form.lastname',
                 'translation_domain' => 'FOSUserBundle',

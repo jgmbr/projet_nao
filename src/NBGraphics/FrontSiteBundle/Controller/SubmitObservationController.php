@@ -44,7 +44,7 @@ class SubmitObservationController extends Controller
             }
 
             // Validation automatique de l'observation
-            if ($user->hasRole('ROLE_ADMIN')) {
+            if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_SUPER_ADMIN')) {
 
                 $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
                 $observation->setStatus($statut);
