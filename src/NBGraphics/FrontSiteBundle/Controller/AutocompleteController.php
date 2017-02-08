@@ -8,6 +8,7 @@
 
 namespace NBGraphics\FrontSiteBundle\Controller;
 
+use NBGraphics\CoreBundle\Entity\TAXREF;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +26,7 @@ class AutocompleteController extends Controller
 
         $term = $request->query->get('term');
 
-        $results = $em->getRepository('NBGraphicsCoreBundle:TAXREF')->findLikeName($term);
+        $results = $em->getRepository(TAXREF::class)->findLikeNameOrFamily($term);
 
         return $this->render('@NBGraphicsFrontSite/json/taxref.json.twig', array(
             'results' => $results
@@ -40,9 +41,10 @@ class AutocompleteController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        if (is_null($taxref = $em->getRepository('NBGraphicsCoreBundle:TAXREF')->find($id))) {
+        if (is_null($taxref = $em->getRepository(TAXREF::class)->find($id))) {
             throw $this->createNotFoundException();
         }
+        
         return $this->json($taxref->getNomComplet());
     }
 
