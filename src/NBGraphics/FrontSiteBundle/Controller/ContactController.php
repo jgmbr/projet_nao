@@ -26,7 +26,16 @@ class ContactController extends Controller
         $contactForm->handleRequest($request);
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $data = $contactForm->getData();
-            dump($data);
+
+
+            $mail = $this->get('email.contact.form');
+            $mail->sendEmail($data);
+
+
+
+            $this->addFlash('success', 'Votre message a bien été envoyé');
+            return $this->redirectToRoute('nb_graphics_front_site_homepage');
+
         }
 
         return $this->render('@NBGraphicsFrontSite/Contact/contactForm.html.twig', [

@@ -4,6 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  email.contact.form:
+    class: NBGraphics\CoreBundle\Services\EmailContactFormSystem
+    arguments: ["@mailer", "@templating"]
