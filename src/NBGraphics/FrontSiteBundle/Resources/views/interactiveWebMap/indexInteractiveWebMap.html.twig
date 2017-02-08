@@ -192,41 +192,33 @@
                         title: "Voir l'observation"
                     });
                     // Create the strings
-                    var contentString = '';
-                        contentString += '<div id="content">';
-                        contentString += '<p>';
-                        contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                        contentString += '<br>';
-                        contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                        contentString += '</p>';
-                        contentString += '<p>';
-                        contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    var contentString{{ loop.index }} = '';
+                        contentString{{ loop.index }} += '<div id="content">';
+                        contentString{{ loop.index }} += '<p>';
+                        contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                        contentString{{ loop.index }} += '<br>';
+                        contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                        contentString{{ loop.index }} += '</p>';
+                        contentString{{ loop.index }} += '<p>';
+                        contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
                             'birdObs': bird.id
                         }) }}">';
-                        contentString += 'Voir l\'observation';
-                        contentString += '</a>';
-                        contentString += '</p>';
-                        contentString += '</div>';
+                        contentString{{ loop.index }} += 'Voir l\'observation';
+                        contentString{{ loop.index }} += '</a>';
+                        contentString{{ loop.index }} += '</p>';
+                        contentString{{ loop.index }} += '</div>';
 
                     // Creathe info windows
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
+                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                        content: contentString{{ loop.index }}
                     });
                     // Add click event
                     marker{{ loop.index }}.addListener('click', function() {
-                        infowindow.open(map, marker{{ loop.index }});
+                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
                     });
                 {% endfor %}
             {% elseif resultsPerFamily %}
                 {% for bird in resultsPerFamily %}
-                    var marker{{ loop.index }} = new google.maps.Marker({
-                        position: {
-                            lat: {{ bird.latitude }},
-                            lng: {{ bird.longitude }}
-                        },
-                        map: map,
-                        title: "Voir l'observation"
-                    });
                     // Create the markers
                     var marker{{ loop.index }} = new google.maps.Marker({
                         position: {
@@ -237,29 +229,29 @@
                         title: "Voir l'observation"
                     });
                     // Create the strings
-                    var contentString = '';
-                    contentString += '<div id="content">';
-                    contentString += '<p>';
-                    contentString += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                    contentString += '<br>';
-                    contentString += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                    contentString += '</p>';
-                    contentString += '<p>';
-                    contentString += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    var contentString{{ loop.index }} = '';
+                    contentString{{ loop.index }} += '<div id="content">';
+                    contentString{{ loop.index }} += '<p>';
+                    contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                    contentString{{ loop.index }} += '<br>';
+                    contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                    contentString{{ loop.index }} += '</p>';
+                    contentString{{ loop.index }} += '<p>';
+                    contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
                         'birdObs': bird.id
                     }) }}">';
-                    contentString += 'Voir l\'observation';
-                    contentString += '</a>';
-                    contentString += '</p>';
-                    contentString += '</div>';
+                    contentString{{ loop.index }} += 'Voir l\'observation';
+                    contentString{{ loop.index }} += '</a>';
+                    contentString{{ loop.index }} += '</p>';
+                    contentString{{ loop.index }} += '</div>';
 
                     // Creathe info windows
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentString
+                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                        content: contentString{{ loop.index }}
                     });
                     // Add click event
                     marker{{ loop.index }}.addListener('click', function() {
-                        infowindow.open(map, marker{{ loop.index }});
+                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
                     });
                 {% endfor %}
             {% endif %}
