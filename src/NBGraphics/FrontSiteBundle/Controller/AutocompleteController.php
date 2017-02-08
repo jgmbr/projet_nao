@@ -44,7 +44,7 @@ class AutocompleteController extends Controller
         if (is_null($taxref = $em->getRepository(TAXREF::class)->find($id))) {
             throw $this->createNotFoundException();
         }
-        
+
         return $this->json($taxref->getNomComplet());
     }
 

@@ -26,7 +26,7 @@ class NewsletterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $newsletters = $em->getRepository('NBGraphicsCoreBundle:Newsletter')->findNewsletters();
+        $newsletters = $em->getRepository(Newsletter::class)->findNewsletters();
 
         return $this->render('NBGraphicsAdminBundle:Admin/newsletter:index.html.twig', array(
             'newsletters' => $newsletters,

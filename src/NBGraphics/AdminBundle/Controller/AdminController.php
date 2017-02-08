@@ -12,10 +12,8 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->getUser();
-
         return $this->render('NBGraphicsAdminBundle:Common:index.html.twig',array(
-            'user' => $user,
+            'user' => $this->getUser()
         ));
     }
 }

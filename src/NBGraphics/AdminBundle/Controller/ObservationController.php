@@ -4,6 +4,7 @@ namespace NBGraphics\AdminBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Moderation;
 use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Entity\Status;
 use NBGraphics\CoreBundle\Form\ModerationType;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,7 +29,7 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservations();
+        $observations = $em->getRepository(Observation::class)->findObservations();
 
         $deleteForms = array();
 
@@ -52,9 +53,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('DEFAULT');
+        $status = $em->getRepository(Status::class)->findByRole('DEFAULT');
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
+        $observations = $em->getRepository(Observation::class)->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 
@@ -78,9 +79,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('VALIDED');
+        $status = $em->getRepository(Status::class)->findByRole('VALIDED');
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
+        $observations = $em->getRepository(Observation::class)->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 
@@ -104,9 +105,9 @@ class ObservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findByRole('REFUSED');
+        $status = $em->getRepository(Status::class)->findByRole('REFUSED');
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findObservationsByStatusAndOrder($status);
+        $observations = $em->getRepository(Observation::class)->findObservationsByStatusAndOrder($status);
 
         $deleteForms = array();
 
@@ -206,7 +207,7 @@ class ObservationController extends Controller
     public function editAction(Request $request, Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
-        $editForm = $this->createForm('NBGraphics\CoreBundle\Form\ObservationFormType', $observation);
+        $editForm = $this->createForm(ObservationFormType::class, $observation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

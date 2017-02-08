@@ -8,6 +8,7 @@
 
 namespace NBGraphics\FrontSiteBundle\Controller;
 
+use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Entity\TAXREF;
 use NBGraphics\CoreBundle\Form\CriteriaMapsFormType;
 use NBGraphics\CoreBundle\Form\SearchFormType;
@@ -60,7 +61,7 @@ class InteractiveWebMapController extends Controller
             // Priorité oiseau
             if ($bird !== null) {
 
-                $resultsPerBird = $em->getRepository('NBGraphicsCoreBundle:Observation')->findBy(array(
+                $resultsPerBird = $em->getRepository(Observation::class)->findBy(array(
                     'taxref' => $bird,
                     'status' => $status
                 ));
@@ -69,7 +70,7 @@ class InteractiveWebMapController extends Controller
 
             } elseif ($family !== null) {
 
-                $resultsPerFamily = $em->getRepository('NBGraphicsCoreBundle:Observation')->findByFamily($family, $status);
+                $resultsPerFamily = $em->getRepository(Observation::class)->findByFamily($family, $status);
 
             }
 
@@ -97,16 +98,17 @@ class InteractiveWebMapController extends Controller
      */
     public function displayBirdDetail($birdObs)
     {
+        if (!$birdObs)
+            throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
+
         $em = $this->getDoctrine()->getManager();
-        $bird = $em->getRepository('NBGraphicsCoreBundle:Observation')->findOneBy([
+
+        $bird = $em->getRepository(Observation::class)->findOneBy([
             'id' => $birdObs,
         ]);
 
-        if (!$bird) {
+        if (!is_object($bird))
             throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
-        }
-
-        dump($bird);
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig', [
             'bird' => $bird,

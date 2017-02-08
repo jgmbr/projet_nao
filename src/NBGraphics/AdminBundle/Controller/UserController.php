@@ -21,13 +21,13 @@ class UserController extends Controller
      */
     public function listUsersAction()
     {
-        $users = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllUsers();
+        $users = $this->getDoctrine()->getRepository(User::class)->findAllUsers();
 
-        $administrators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllAdmin();
+        $administrators = $this->getDoctrine()->getRepository(User::class)->findAllAdmin();
 
-        $superadministrators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllSuperAdmin();
+        $superadministrators = $this->getDoctrine()->getRepository(User::class)->findAllSuperAdmin();
 
-        $collaborators = $this->getDoctrine()->getRepository('NBGraphicsUserBundle:User')->findAllCollaborators();
+        $collaborators = $this->getDoctrine()->getRepository(User::class)->findAllCollaborators();
 
         $deleteForms = array();
 
@@ -60,7 +60,7 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('NBGraphics\UserBundle\Form\UserType', $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -112,7 +112,7 @@ class UserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('NBGraphics\UserBundle\Form\UserType', $user);
+        $editForm = $this->createForm(UserType::class, $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

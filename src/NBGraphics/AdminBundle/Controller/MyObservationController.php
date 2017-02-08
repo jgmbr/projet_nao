@@ -3,6 +3,7 @@
 namespace NBGraphics\AdminBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Entity\Status;
 use NBGraphics\CoreBundle\Form\ObservationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -28,7 +29,7 @@ class MyObservationController extends Controller
 
         $user = $this->getUser();
 
-        $observations = $em->getRepository('NBGraphicsCoreBundle:Observation')->findMyObservations($user);
+        $observations = $em->getRepository(Observation::class)->findMyObservations($user);
 
         $deleteForms = array();
 
@@ -51,7 +52,7 @@ class MyObservationController extends Controller
     public function newAction(Request $request)
     {
         $observation = new Observation();
-        $form = $this->createForm('NBGraphics\CoreBundle\Form\ObservationFormType', $observation);
+        $form = $this->createForm(ObservationFormType::class, $observation);
         $form->handleRequest($request);
 
         $user = $this->getUser();
@@ -59,7 +60,7 @@ class MyObservationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
+            $statut = $em->getRepository(Status::class)->findOneByRole('DEFAULT');
 
             $observation->setStatus($statut);
 
@@ -103,7 +104,7 @@ class MyObservationController extends Controller
     public function editAction(Request $request, Observation $observation)
     {
         $deleteForm = $this->createDeleteForm($observation);
-        $editForm = $this->createForm('NBGraphics\CoreBundle\Form\ObservationFormType', $observation);
+        $editForm = $this->createForm(ObservationFormType::class, $observation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
