@@ -87,6 +87,9 @@ class MyObservationController extends Controller
      */
     public function showAction(Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $deleteForm = $this->createDeleteForm($observation);
 
         return $this->render('NBGraphicsAdminBundle:Account/observation:show.html.twig', array(
@@ -103,13 +106,18 @@ class MyObservationController extends Controller
      */
     public function editAction(Request $request, Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
+        if ("VALIDED" === $observation->getStatus()->getRole())
+            throw $this->createNotFoundException("L'observation n'est pas autorisée à être éditée !");
+
         $deleteForm = $this->createDeleteForm($observation);
         $editForm = $this->createForm(ObservationFormType::class, $observation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('my_observation_show', array('id' => $observation->getId()));
         }
 
@@ -127,6 +135,9 @@ class MyObservationController extends Controller
      */
     public function deleteAction(Request $request, Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $form = $this->createDeleteForm($observation);
         $form->handleRequest($request);
 

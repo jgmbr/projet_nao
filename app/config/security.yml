@@ -52,7 +52,7 @@ security:
         - { path: ^/admin/index/, role: ROLE_USER }
         - { path: ^/admin/profil/, role: ROLE_USER }
         - { path: ^/admin/my_observation/, role: ROLE_USER }
-        - { path: ^/admin/observation/, role: ROLE_ADMIN }
         - { path: ^/admin/user/, role: ROLE_SUPER_ADMIN }
-        - { path: ^/admin/newsletter/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/observation/, role: ROLE_ADMIN }
         - { path: ^/admin/news/, role: ROLE_COLLABORATOR }
+        - { path: ^/admin/newsletter/, role: ROLE_SUPER_ADMIN }

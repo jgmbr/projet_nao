@@ -54,6 +54,11 @@
                                             <a href="{{ path('my_observation_show', { 'id': observation.id }) }}" class="btn btn-info btn-xs">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
+                                            {% if observation.status.role != "VALIDED" %}
+                                            <a href="{{ path('my_observation_edit', { 'id': observation.id }) }}" class="btn btn-warning btn-xs">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </a>
+                                            {% endif %}
                                             <a href="{{ path('my_observation_delete', { 'id': observation.id }) }}" class="btn btn-danger btn-xs">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>

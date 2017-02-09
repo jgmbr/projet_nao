@@ -129,6 +129,9 @@ class ObservationController extends Controller
      */
     public function moderateAction(Request $request, Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $deleteForm = $this->createDeleteForm($observation);
 
         $moderation = new Moderation();
@@ -168,21 +171,6 @@ class ObservationController extends Controller
     }
 
     /**
-     * Export observation entities.
-     *
-     * @Route("/export", name="observation_export")
-     * @Method("GET")
-     */
-    public function exportAction()
-    {
-        $exportWS = $this->get('app.export');
-
-        $headers = array('id','Utilisateur','Date Observation','Heure Observation','Quantite','Maturage','Plumage','Nidification','Taxref','Departement','Latitude','Longitude','Commentaire','Statut','Date de creation');
-
-        return $exportWS->export(new Observation(), $headers, 'exportAll', 'observation');
-    }
-
-    /**
      * Finds and displays a observation entity.
      *
      * @Route("/{id}", name="observation_show")
@@ -190,6 +178,9 @@ class ObservationController extends Controller
      */
     public function showAction(Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $deleteForm = $this->createDeleteForm($observation);
 
         return $this->render('NBGraphicsAdminBundle:Admin/observation:show.html.twig', array(
@@ -206,6 +197,9 @@ class ObservationController extends Controller
      */
     public function editAction(Request $request, Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $deleteForm = $this->createDeleteForm($observation);
         $editForm = $this->createForm(ObservationFormType::class, $observation);
         $editForm->handleRequest($request);
@@ -230,6 +224,9 @@ class ObservationController extends Controller
      */
     public function deleteAction(Request $request, Observation $observation)
     {
+        if (!$observation instanceof Observation)
+            throw $this->createNotFoundException("Observation non reconnue");
+
         $form = $this->createDeleteForm($observation);
         $form->handleRequest($request);
 

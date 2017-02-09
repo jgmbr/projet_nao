@@ -45,16 +45,6 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/export/phones", name="user_export_phones")
-     */
-    public function exportPhonesAction()
-    {
-        $exportWS = $this->get('app.export');
-
-        return $exportWS->export(new User(), array('phone'), 'exportAllPhoneAllowed', 'sms');
-    }
-
-    /**
      * @Route("/new", name="user_new")
      */
     public function newAction(Request $request)
@@ -95,6 +85,9 @@ class UserController extends Controller
      */
     public function showAction(User $user)
     {
+        if (!$user instanceof User)
+            throw $this->createNotFoundException("Utilisateur non reconnu");
+
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('NBGraphicsAdminBundle:Admin/user:show.html.twig', array(
@@ -111,6 +104,9 @@ class UserController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
+        if (!$user instanceof User)
+            throw $this->createNotFoundException("Utilisateur non reconnu");
+
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm(UserType::class, $user);
         $editForm->handleRequest($request);
@@ -135,6 +131,9 @@ class UserController extends Controller
      */
     public function deleteAction(Request $request, User $user)
     {
+        if (!$user instanceof User)
+            throw $this->createNotFoundException("Utilisateur non reconnu");
+
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 

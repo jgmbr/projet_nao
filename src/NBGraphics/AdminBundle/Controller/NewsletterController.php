@@ -34,25 +34,15 @@ class NewsletterController extends Controller
     }
 
     /**
-     * Export newsletter entities.
-     *
-     * @Route("/export", name="newsletter_export")
-     * @Method("GET")
-     */
-    public function exportAction()
-    {
-        $exportWS = $this->get('app.export');
-
-        return $exportWS->export(new Newsletter(), array('email'), 'exportAll', 'newsletter');
-    }
-
-    /**
      * Deletes a newsletter entity.
      *
      * @Route("/{id}/delete", name="newsletter_delete")
      */
     public function deleteAction(Request $request, Newsletter $newsletter)
     {
+        if (!$newsletter instanceof Newsletter)
+            throw $this->createNotFoundException("Adresse email newsletter non reconnue");
+
         $form = $this->createDeleteForm($newsletter);
         $form->handleRequest($request);
 
