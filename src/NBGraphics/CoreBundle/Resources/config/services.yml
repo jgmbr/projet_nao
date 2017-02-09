@@ -2,6 +2,9 @@ services:
     app.export:
         class: NBGraphics\CoreBundle\Services\Export\ExportDatas
         arguments: ['@doctrine.orm.entity_manager']
+    app.crud.delete:
+        class: NBGraphics\CoreBundle\Services\Crud\DeleteDatas
+        arguments: ['@doctrine.orm.entity_manager']
     app.email.contact.form:
         class: NBGraphics\CoreBundle\Services\Email\EmailContactFormSystem
         arguments: ["@mailer", "@templating"]

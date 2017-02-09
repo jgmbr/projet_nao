@@ -144,10 +144,9 @@ class MyObservationController extends Controller
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $user->removeObservation($observation);
-            $em->remove($observation);
-            $em->flush($observation);
+  
+            $deleteObservation = $this->get('app.crud.delete')->deleteObservation($observation, $user, true);
+
             $request->getSession()->getFlashBag()->add('success', 'Observation supprimée avec succès !');
             return $this->redirectToRoute('my_observation_index');
         }
