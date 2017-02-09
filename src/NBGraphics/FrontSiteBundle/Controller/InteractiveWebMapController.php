@@ -89,7 +89,7 @@ class InteractiveWebMapController extends Controller
      */
     public function displayBirdDetail($birdObs)
     {
-        if (!$birdObs || !is_int($birdObs))
+        if (!$birdObs)
             throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
 
         $em = $this->getDoctrine()->getManager();
