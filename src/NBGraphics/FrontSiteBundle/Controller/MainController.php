@@ -59,18 +59,15 @@ class MainController extends Controller
         $newsletterForm->handleRequest($request);
 
         if ($newsletterForm->isSubmitted() && $newsletterForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
 
-            $exist = $em->getRepository(Newsletter::class)->findOneByEmail($newsletter->getEmail());
+            $createEntity = $this->get('app.crud.create')->createEntity($newsletter);
 
-            if (is_object($exist)) {
-                $request->getSession()->getFlashBag()->add('error', 'L\'adresse email existe déjà !');
-                return $this->redirectToRoute('nb_graphics_front_site_newsletter');
-            } else {
-                $em->persist($newsletter);
-                $em->flush($newsletter);
-                $request->getSession()->getFlashBag()->add('success', 'Adresse email enregistrée avec succès !');
+            if ($createEntity) {
+                $this->addFlash('success', 'Adresse email ajoutée avec succès !');
                 return $this->redirectToRoute('nb_graphics_front_site_homepage');
+            } else {
+                $this->addFlash('error', 'Erreur lors de l\'ajout de l\'adresse email !');
+                return $this->redirectToRoute('nb_graphics_front_site_newsletter');
             }
 
         }

@@ -35,7 +35,22 @@ class DeleteDatas
         $this->em->remove($observation);
 
         if ($andFlush)
-            $this->em->flush($observation);
+            $this->em->flush();
+
+        return true;
+    }
+
+    public function deleteEntity($entity, $andFlush = true)
+    {
+        if (!is_object($entity))
+            throw new NotFoundHttpException('Entité non reconnue');
+
+        $this->em->remove($entity);
+
+        if ($andFlush)
+            $this->em->flush();
+
+        return true;
     }
 
 }

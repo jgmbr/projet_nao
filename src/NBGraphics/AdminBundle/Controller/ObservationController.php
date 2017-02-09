@@ -144,22 +144,15 @@ class ObservationController extends Controller
 
         if ($moderationForm->isSubmitted() && $moderationForm->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
+            $moderationObservation = $this->get('app.crud.update')->moderateObservation($observation, $user, $moderation, $moderationForm->getData()->getStatus());
 
-            $observation->setStatus($moderationForm->getData()->getStatus());
-            $observation->addModeration($moderation);
-
-            $user->addModeration($moderation);
-
-            $moderation->setObservation($observation);
-            $moderation->setUser($user);
-            $moderation->setStatus($moderationForm->getData()->getStatus());
-
-            $em->persist($observation);
-            $em->persist($moderation);
-            $em->flush();
-
-            return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
+            if ($moderationObservation) {
+                $this->addFlash('success','Observationn modérée avec succès !');
+                return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
+            } else {
+                $this->addFlash('error','Erreur lors de la modération de l\'observation');
+                return $this->redirectToRoute('observation_moderate', array('id' => $observation->getId()));
+            }
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/observation:moderate.html.twig', array(
@@ -206,7 +199,6 @@ class ObservationController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
         }
 
@@ -233,11 +225,14 @@ class ObservationController extends Controller
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $user->removeObservation($observation);
-            $em->remove($observation);
-            $em->flush($observation);
-            $request->getSession()->getFlashBag()->add('success', 'Observation supprimée avec succès !');
+
+            $deleteObservation = $this->get('app.crud.delete')->deleteObservation($observation, $user);
+
+            if ($deleteObservation)
+                $this->addFlash('success', 'Observation supprimée avec succès !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
+
             return $this->redirectToRoute('observation_index');
         }
 

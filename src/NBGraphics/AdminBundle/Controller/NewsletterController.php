@@ -47,10 +47,14 @@ class NewsletterController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($newsletter);
-            $em->flush($newsletter);
-            $request->getSession()->getFlashBag()->add('success', 'Adresse email supprimée avec succès !');
+
+            $deleteEntity = $this->get('app.crud.delete')->deleteEntity($newsletter);
+
+            if ($deleteEntity)
+                $this->addFlash('success', 'Adresse email supprimée avec succès !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'adresse email !');
+
             return $this->redirectToRoute('newsletter_index');
         }
 

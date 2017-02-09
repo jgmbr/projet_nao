@@ -31,7 +31,6 @@ class InteractiveWebMapController extends Controller
         $resultsPerFamily = null;
         $resultsPerBird = null;
 
-
         // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
 
@@ -43,11 +42,8 @@ class InteractiveWebMapController extends Controller
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
 
-
             $bird = $data['oiseau'];
             $family = $data['famille'];
-
-
 
             // Faire contrainte personnalisée à partir du formulaire
             if (!$bird && !$family) {
@@ -55,18 +51,14 @@ class InteractiveWebMapController extends Controller
                 return $this->redirectToRoute('nb_graphics_front_site_interactivewebmap');
             }
 
-
             $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
 
-            // Priorité oiseau
             if ($bird !== null) {
 
                 $resultsPerBird = $em->getRepository(Observation::class)->findBy(array(
                     'taxref' => $bird,
                     'status' => $status
                 ));
-
-
 
             } elseif ($family !== null) {
 
@@ -75,8 +67,7 @@ class InteractiveWebMapController extends Controller
             }
 
             if ($resultsPerBird !== null || $resultsPerFamily !== null) {
-                dump($resultsPerBird);
-                dump($resultsPerFamily);
+
                 return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', [
                     'searchForm' => $searchForm->createView(),
                     'criteriaMapsForm' => $criteriaMapsForm->createView(),

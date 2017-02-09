@@ -26,8 +26,6 @@ class SubmitObservationController extends Controller
      */
     public function submitObservationAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $observation = new Observation();
         $observationForm = $this->createForm(ObservationFormType::class, $observation);
         $observationForm->handleRequest($request);
@@ -36,45 +34,15 @@ class SubmitObservationController extends Controller
 
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
 
-            if ($observation->getImage() !== null) {
-                $image = $observation->getImage();
-                $image->setObservation($observation);
-                $observation->setImage($image);
-                $observation->getImage()->upload();
-            }
+            $createObservation = $this->get('app.crud.create')->createObservation($observation, $user);
 
-            // Validation automatique de l'observation
-            if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_SUPER_ADMIN')) {
-
-                $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
-                $observation->setStatus($statut);
-                $observation->setUser($user);
-                $user->addObservation($observation);
-                $moderation = new Moderation();
-                $moderation->setComment('Validation automatique');
-                $moderation->setObservation($observation);
-                $moderation->setStatus($statut);
-
-            // Observation en attente
+            if ($createObservation) {
+                $this->addFlash('success', 'Observation ajoutée avec succès !');
+                return $this->redirectToRoute('nb_graphics_user_homepage');
             } else {
-
-                $statut = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('DEFAULT');
-                $observation->setStatus($statut);
-                $observation->setUser($user);
-                $user->addObservation($observation);
-                $moderation = new Moderation();
-                $moderation->setComment('En attente de validation par un modérateur');
-                $moderation->setObservation($observation);
-                $moderation->setStatus($statut);
-
+                $this->addFlash('success', 'Erreur lors de la soumission de l\'observation');
+                return $this->redirectToRoute('nb_graphics_front_site_submitobservation');
             }
-
-            $em->persist($moderation);
-            $em->persist($observation);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add('success', 'Observation ajoutée avec succès !');
-            return $this->redirectToRoute('nb_graphics_user_homepage');
 
         }
 

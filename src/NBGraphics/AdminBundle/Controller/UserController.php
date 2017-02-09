@@ -55,18 +55,14 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
+            $createUser = $this->get('app.crud.create')->createUser($user);
 
-            $exist = $em->getRepository(User::class)->findOneByEmail($user->getEmail());
-
-            if (is_object($exist)) {
-                $request->getSession()->getFlashBag()->add('error', 'Compte utilisateur existant cette adresse email !');
-                return $this->redirectToRoute('user_new');
-            } else {
-                $em->persist($user);
-                $em->flush($user);
-                $request->getSession()->getFlashBag()->add('success', 'Membre ajouté avec succès !');
+            if ($createUser) {
+                $this->addFlash('success','Membre ajouté avec succès !');
                 return $this->redirectToRoute('user_index');
+            } else {
+                $this->addFlash('error','Membre existe déjà !');
+                return $this->redirectToRoute('user_new');
             }
 
         }
@@ -113,7 +109,7 @@ class UserController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $request->getSession()->getFlashBag()->add('success', 'Membre modifié avec succès !');
+            $this->addFlash('success', 'Membre modifié avec succès !');
             return $this->redirectToRoute('user_index');
         }
 
@@ -138,10 +134,14 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush($user);
-            $request->getSession()->getFlashBag()->add('success', 'Membre supprimé avec succès !');
+
+            $deleteEntity = $this->get('app.crud.delete')->deleteEntity($user);
+
+            if ($deleteEntity)
+                $this->addFlash('success', 'Membre supprimé avec succès !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression du membre !');
+
             return $this->redirectToRoute('user_index');
         }
 
@@ -164,7 +164,7 @@ class UserController extends Controller
             ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
             ->getForm()
-            ;
+        ;
     }
 
 }

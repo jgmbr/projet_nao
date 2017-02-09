@@ -44,42 +44,6 @@ class MyObservationController extends Controller
     }
 
     /**
-     * Creates a new observation entity.
-     *
-     * @Route("/new", name="my_observation_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $observation = new Observation();
-        $form = $this->createForm(ObservationFormType::class, $observation);
-        $form->handleRequest($request);
-
-        $user = $this->getUser();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            $statut = $em->getRepository(Status::class)->findOneByRole('DEFAULT');
-
-            $observation->setStatus($statut);
-
-            $observation->setUser($user);
-            $user->addObservation($observation);
-
-            $em->persist($observation);
-            $em->flush($observation);
-
-            return $this->redirectToRoute('my_observation_show', array('id' => $observation->getId()));
-        }
-
-        return $this->render('NBGraphicsAdminBundle:Account/observation:new.html.twig', array(
-            'observation' => $observation,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a observation entity.
      *
      * @Route("/{id}/show", name="my_observation_show")
@@ -144,10 +108,14 @@ class MyObservationController extends Controller
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-  
-            $deleteObservation = $this->get('app.crud.delete')->deleteObservation($observation, $user, true);
 
-            $request->getSession()->getFlashBag()->add('success', 'Observation supprimée avec succès !');
+            $deleteObservation = $this->get('app.crud.delete')->deleteObservation($observation, $user);
+
+            if ($deleteObservation)
+                $this->addFlash('success', 'Observation supprimée avec succès !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
+
             return $this->redirectToRoute('my_observation_index');
         }
 
