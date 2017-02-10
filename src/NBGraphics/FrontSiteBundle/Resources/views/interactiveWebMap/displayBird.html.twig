@@ -5,9 +5,12 @@
     <div class="row show-results">
         <div class="col-sm-4">
             {% if bird.image %}
-                <img src="/uploads/img/{{ bird.image.url }}" alt="{{ bird.image.alt }}">
+                <img {#src="/uploads/img/{{ bird.image.url | imagine_filter('my_thumb') }}"#}
+                     src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
+                     alt="{{ bird.image.alt }}"
+                >
             {% else %}
-                <img src="{{ asset('images/400px-Image_manquante_2.svg.png') }}" alt="Image manquante">
+                <img src="{{ asset('images/400px-Image_manquante_2.svg.png')|imagine_filter('my_thumb') }}" alt="Image manquante">
             {% endif %}
 
         </div>
