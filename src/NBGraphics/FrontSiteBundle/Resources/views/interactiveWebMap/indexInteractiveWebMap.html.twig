@@ -109,164 +109,166 @@
         </div>
     {% endif %}
 
-    {% if (resultsPerBird or resultsPerFamily) %}
 
-    <script>
-        // Initialize The Google Map Element
-        var initMap = function() {
-            var lat = 48.866667;
-            var lgn = 2.333333;
-            var myLatLng = {lat: lat, lng: lgn};
-            // Create a map object and specify the DOM element for display.
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: myLatLng,
-                scrollwheel: false,
-                zoom: 6,
-                {% if is_granted('ROLE_ADMIN') %}
-                    maxZoom: 18,
-                {% else %}
-                    maxZoom: 10
-                {% endif %}
-
-            });
-
-
-
-
-            var localizeBtn = document.getElementById('btnGeoloc');
-            var loc = navigator.geolocation;
-            // Center the map when localizeBtn is clicked
-            function getLocationByLocalizeBtn(position) {
-                // assign them to variables
-                var lat = position.coords.latitude;
-                var lon = position.coords.longitude;
-
-                // Modify the map according to the new position
-                map.setCenter({
-                    lat : lat,
-                    lng : lon
-                });
-                map.setZoom(8);
-            }
-            // The event handler linked to the function below
-            localizeBtn.onclick = function() {
-                loc.getCurrentPosition(getLocationByLocalizeBtn)
-            };
-
-
-
-            var select = document.getElementById('nbgraphics_corebundle_criteria_maps_departement');
-            var value;
-            // Center the map according to the department
-            select.onchange = function() {
-                // Recover the value of select and add 000 to the end
-                value = select.options[select.selectedIndex].text;
-                value = value + '000';
-                // Make the AJAX Request
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                        // Retrieve the latitude and longitude needed
-                        var data = JSON.parse(xhr.responseText);
-                        var lng = data.features[1].geometry.coordinates[0];
-                        var lat = data.features[1].geometry.coordinates[1];
-                        // Modify the map according to the new position
-                        map.setCenter({
-                            lat : lat,
-                            lng : lng
-                        });
-                        map.setZoom(8);
-                    }
-                };
-                xhr.open('GET', 'http://api-adresse.data.gouv.fr/search/?q=postcode=' + value);
-                xhr.send();
-            };
-
-
-
-
-            {% if resultsPerBird %}
-                {% for bird in resultsPerBird %}
-                    // Create the markers
-                    var marker{{ loop.index }} = new google.maps.Marker({
-                        position: {
-                            lat: {{ bird.latitude }},
-                            lng: {{ bird.longitude }}
-                        },
-                        map: map,
-                        title: "Voir l'observation"
-                    });
-                    // Create the strings
-                    var contentString{{ loop.index }} = '';
-                        contentString{{ loop.index }} += '<div id="content">';
-                        contentString{{ loop.index }} += '<p>';
-                        contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                        contentString{{ loop.index }} += '<br>';
-                        contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                        contentString{{ loop.index }} += '</p>';
-                        contentString{{ loop.index }} += '<p>';
-                        contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                            'birdObs': bird.id
-                        }) }}">';
-                        contentString{{ loop.index }} += 'Voir l\'observation';
-                        contentString{{ loop.index }} += '</a>';
-                        contentString{{ loop.index }} += '</p>';
-                        contentString{{ loop.index }} += '</div>';
-
-                    // Creathe info windows
-                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
-                        content: contentString{{ loop.index }}
-                    });
-                    // Add click event
-                    marker{{ loop.index }}.addListener('click', function() {
-                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
-                    });
-                {% endfor %}
-            {% elseif resultsPerFamily %}
-                {% for bird in resultsPerFamily %}
-                    // Create the markers
-                    var marker{{ loop.index }} = new google.maps.Marker({
-                        position: {
-                            lat: {{ bird.latitude }},
-                            lng: {{ bird.longitude }}
-                        },
-                        map: map,
-                        title: "Voir l'observation"
-                    });
-                    // Create the strings
-                    var contentString{{ loop.index }} = '';
-                    contentString{{ loop.index }} += '<div id="content">';
-                    contentString{{ loop.index }} += '<p>';
-                    contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
-                    contentString{{ loop.index }} += '<br>';
-                    contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
-                    contentString{{ loop.index }} += '</p>';
-                    contentString{{ loop.index }} += '<p>';
-                    contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                        'birdObs': bird.id
-                    }) }}">';
-                    contentString{{ loop.index }} += 'Voir l\'observation';
-                    contentString{{ loop.index }} += '</a>';
-                    contentString{{ loop.index }} += '</p>';
-                    contentString{{ loop.index }} += '</div>';
-
-                    // Creathe info windows
-                    var infowindow{{ loop.index }} = new google.maps.InfoWindow({
-                        content: contentString{{ loop.index }}
-                    });
-                    // Add click event
-                    marker{{ loop.index }}.addListener('click', function() {
-                        infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
-                    });
-                {% endfor %}
-            {% endif %}
-        };
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
-    {% endif %}
 {% endblock%}
 
 {% block javascripts %}
+    {{ parent() }}
+    {% if (resultsPerBird or resultsPerFamily) %}
+
+        <script>
+            // Initialize The Google Map Element
+            var initMap = function() {
+                var lat = 48.866667;
+                var lgn = 2.333333;
+                var myLatLng = {lat: lat, lng: lgn};
+                // Create a map object and specify the DOM element for display.
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    scrollwheel: false,
+                    zoom: 6,
+                    {% if is_granted('ROLE_ADMIN') %}
+                    maxZoom: 18,
+                    {% else %}
+                    maxZoom: 10
+                    {% endif %}
+
+                });
+
+
+
+
+                var localizeBtn = document.getElementById('btnGeoloc');
+                var loc = navigator.geolocation;
+                // Center the map when localizeBtn is clicked
+                function getLocationByLocalizeBtn(position) {
+                    // assign them to variables
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+
+                    // Modify the map according to the new position
+                    map.setCenter({
+                        lat : lat,
+                        lng : lon
+                    });
+                    map.setZoom(8);
+                }
+                // The event handler linked to the function below
+                localizeBtn.onclick = function() {
+                    loc.getCurrentPosition(getLocationByLocalizeBtn)
+                };
+
+
+
+                var select = document.getElementById('nbgraphics_corebundle_criteria_maps_departement');
+                var value;
+                // Center the map according to the department
+                select.onchange = function() {
+                    // Recover the value of select and add 000 to the end
+                    value = select.options[select.selectedIndex].text;
+                    value = value + '000';
+                    // Make the AJAX Request
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            // Retrieve the latitude and longitude needed
+                            var data = JSON.parse(xhr.responseText);
+                            var lng = data.features[1].geometry.coordinates[0];
+                            var lat = data.features[1].geometry.coordinates[1];
+                            // Modify the map according to the new position
+                            map.setCenter({
+                                lat : lat,
+                                lng : lng
+                            });
+                            map.setZoom(8);
+                        }
+                    };
+                    xhr.open('GET', 'http://api-adresse.data.gouv.fr/search/?q=postcode=' + value);
+                    xhr.send();
+                };
+
+
+
+
+                {% if resultsPerBird %}
+                {% for bird in resultsPerBird %}
+                // Create the markers
+                var marker{{ loop.index }} = new google.maps.Marker({
+                    position: {
+                        lat: {{ bird.latitude }},
+                        lng: {{ bird.longitude }}
+                    },
+                    map: map,
+                    title: "Voir l'observation"
+                });
+                // Create the strings
+                var contentString{{ loop.index }} = '';
+                contentString{{ loop.index }} += '<div id="content">';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                contentString{{ loop.index }} += '<br>';
+                contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    'birdObs': bird.id
+                }) }}">';
+                contentString{{ loop.index }} += 'Voir l\'observation';
+                contentString{{ loop.index }} += '</a>';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '</div>';
+
+                // Creathe info windows
+                var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                    content: contentString{{ loop.index }}
+                });
+                // Add click event
+                marker{{ loop.index }}.addListener('click', function() {
+                    infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
+                });
+                {% endfor %}
+                {% elseif resultsPerFamily %}
+                {% for bird in resultsPerFamily %}
+                // Create the markers
+                var marker{{ loop.index }} = new google.maps.Marker({
+                    position: {
+                        lat: {{ bird.latitude }},
+                        lng: {{ bird.longitude }}
+                    },
+                    map: map,
+                    title: "Voir l'observation"
+                });
+                // Create the strings
+                var contentString{{ loop.index }} = '';
+                contentString{{ loop.index }} += '<div id="content">';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += 'Oiseau observé : {{ bird.taxref.nomVern }}';
+                contentString{{ loop.index }} += '<br>';
+                contentString{{ loop.index }} += 'Date de l\'observation : {{ bird.dateAt|date('d/m/Y') }}';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    'birdObs': bird.id
+                }) }}">';
+                contentString{{ loop.index }} += 'Voir l\'observation';
+                contentString{{ loop.index }} += '</a>';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '</div>';
+
+                // Creathe info windows
+                var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                    content: contentString{{ loop.index }}
+                });
+                // Add click event
+                marker{{ loop.index }}.addListener('click', function() {
+                    infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
+                });
+                {% endfor %}
+                {% endif %}
+            };
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
+    {% endif %}
     <script type="text/javascript">
         $(function () {
             $('#results').DataTable({
