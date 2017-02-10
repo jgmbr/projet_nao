@@ -54,7 +54,13 @@
                 </tr>
                 <tr>
                     <td>Nidification</td>
-                    <td>{{ bird.nidification }}</td>
+                    <td>
+                      {% if bird.nidification %}
+                      oui
+                      {% else %}
+                      non
+                      {% endif %}
+                    </td>
                 </tr>
                 <tr>
                     <td>Date</td>
