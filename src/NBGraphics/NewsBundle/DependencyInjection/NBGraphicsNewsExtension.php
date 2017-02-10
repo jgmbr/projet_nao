@@ -24,5 +24,7 @@ class NBGraphicsNewsExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter('nb_graphics_news.pagination.max_per_page', $config['pagination']['max_per_page']);
     }
 }

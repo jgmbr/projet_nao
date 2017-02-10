@@ -18,19 +18,37 @@ class PagesController extends Controller
     /**
      * Lists all article entities.
      *
-     * @Route("/", name="article_list")
+     * @Route("/list/{page}", name="article_list", defaults={"page": 1})
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
+        $page = (int)$page;
+
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository(Article::class)->findArticles(
+        $maxArticles = (int)$this->getParameter('nb_graphics_news.pagination.max_per_page');
+
+        $countArticles = $em->getRepository(Article::class)->countArticlesByState(
             $em->getRepository(State::class)->findOneByRole('PUBLISH')
         );
 
+        $pagination = array(
+            'page' => $page,
+            'route' => 'article_list',
+            'pages_count' => ceil($countArticles / $maxArticles),
+            'route_params' => array()
+        );
+
+        $articles = $em->getRepository(Article::class)->listArticles(
+            $em->getRepository(State::class)->findOneByRole('PUBLISH'),
+            $page,
+            $maxArticles
+        );
+
         return $this->render('NBGraphicsNewsBundle:pages:list.html.twig', array(
-            'articles' => $articles
+            'articles' => $articles,
+            'pagination' => $pagination
         ));
     }
 
