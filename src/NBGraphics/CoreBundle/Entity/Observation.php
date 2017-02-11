@@ -60,7 +60,7 @@ class Observation implements ExportInterface
     private $hourAt;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $departement;
 

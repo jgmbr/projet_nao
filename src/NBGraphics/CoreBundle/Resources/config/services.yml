@@ -14,3 +14,8 @@ services:
     app.email.contact.form:
         class: NBGraphics\CoreBundle\Services\Email\EmailContactFormSystem
         arguments: ["@mailer", "@templating"]
+    app.listener.observation:
+        class: NBGraphics\CoreBundle\EventListener\ObservationListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush }

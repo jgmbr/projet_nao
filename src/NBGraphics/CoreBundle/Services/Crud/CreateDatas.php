@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\UserInterface;
 use NBGraphics\CoreBundle\Entity\Moderation;
 use NBGraphics\CoreBundle\Entity\Newsletter;
 use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Entity\Status;
 use NBGraphics\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,6 +22,30 @@ class CreateDatas
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
+    }
+
+    public function createModeration(Observation $observation, Status $statut, $comment, $andFlush = true)
+    {
+        if (!$observation instanceof Observation)
+            throw new NotFoundHttpException('Observation non reconnu');
+
+        if (!$statut instanceof Status)
+            throw new NotFoundHttpException('Statut non reconnu');
+
+        if (!$comment)
+            return false;
+
+        $moderation = new Moderation();
+        $moderation->setComment($comment);
+        $moderation->setObservation($observation);
+        $moderation->setStatus($statut);
+
+        $this->em->persist($moderation);
+
+        if ($andFlush)
+            $this->em->flush($moderation);
+
+        return true;
     }
 
     public function createObservation(Observation $observation, User $user, $andFlush = true)

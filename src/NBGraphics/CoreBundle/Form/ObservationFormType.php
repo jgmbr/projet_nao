@@ -48,7 +48,6 @@ class ObservationFormType extends AbstractType
                     'Un couple' => 'couple',
                     'Un groupe' => 'groupe'
                 ],
-                'data' => 'individu',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez renseigner ce champ.'
@@ -68,7 +67,6 @@ class ObservationFormType extends AbstractType
                     'Premier hiver du spécimen' => 'premier_hiver',
                     'Spécimen adulte' => 'adulte',
                 ],
-                'data' => 'jeune',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez choisir un stade de maturité',
@@ -84,7 +82,6 @@ class ObservationFormType extends AbstractType
                     'Plumage nuptial' => 'nuptial',
                     'Plumage normal' => 'normal',
                 ],
-                'data' => 'normal',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez choisir un plumage'
@@ -99,7 +96,6 @@ class ObservationFormType extends AbstractType
                     'Oui' => true,
                     'Non' => false,
                 ],
-                'data' => 'oui',
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez renseigner la nidification ?'
@@ -110,8 +106,6 @@ class ObservationFormType extends AbstractType
             ])
             ->add('dateAt', DateType::class, [
                 'label' => "Date de l'observation *",
-                'data'  => new \DateTime(),
-                //Modifier l'implémentation de la date après
                 'widget' => 'choice',
                 'constraints' => [
                     new NotBlank([
@@ -129,25 +123,21 @@ class ObservationFormType extends AbstractType
             ])
             ->add('hourAt', TimeType::class, [
                 'label' => "Heure de l'observation *",
-                'data'  => new \DateTime(),
                 'input' => 'datetime',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Vous devez renseigner l\'horaire de l\'observation.'
                     ]),
-                    //Custom validators
                     new isHourTimeValid([]),
                 ],
                 'required'      => true,
                 'translation_domain' => false,
             ])
-            //Regarder pour utiliser un ClassType spécial
             ->add('image', ImageType::class, [
                 'label' => "Ajouter votre photo",
                 'required' => false,
                 'translation_domain' => false,
             ])
-            // Coordonnées GPS :
             ->add('latitude', TextType::class, [
                 'label' => 'Votre latitude *',
                 'required' => true,
@@ -174,7 +164,6 @@ class ObservationFormType extends AbstractType
                     ])
                 ]
             ])
-            //Faire un ChoiceType avec tous les départements
             ->add('departement', TextType::class, [
                 'label' => 'Département *',
                 'translation_domain' => false,
