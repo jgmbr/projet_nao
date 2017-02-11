@@ -3,3 +3,12 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
+    news.crud.create:
+        class: NBGraphics\NewsBundle\Services\Crud\CreateDatas
+        arguments: ['@doctrine.orm.entity_manager']
+    news.crud.update:
+        class: NBGraphics\NewsBundle\Services\Crud\UpdateDatas
+        arguments: ['@doctrine.orm.entity_manager']
+    news.crud.delete:
+        class: NBGraphics\NewsBundle\Services\Crud\DeleteDatas
+        arguments: ['@doctrine.orm.entity_manager']

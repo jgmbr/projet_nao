@@ -40,7 +40,7 @@ class SubmitObservationController extends Controller
                 $this->addFlash('success', 'Observation ajoutée avec succès !');
                 return $this->redirectToRoute('nb_graphics_user_homepage');
             } else {
-                $this->addFlash('success', 'Erreur lors de la soumission de l\'observation');
+                $this->addFlash('error', 'Erreur lors de la soumission de l\'observation');
                 return $this->redirectToRoute('nb_graphics_front_site_submitobservation');
             }
 

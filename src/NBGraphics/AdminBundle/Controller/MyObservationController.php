@@ -109,12 +109,11 @@ class MyObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $deleteObservation = $this->get('app.crud.delete')->deleteObservation($observation, $user);
+            $response = $this->get('app.crud.delete')->deleteObservation($observation, $user);
 
-            if ($deleteObservation)
+            if ($response)
                 $this->addFlash('success', 'Observation supprimée avec succès !');
-            else
-                $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
+            $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
 
             return $this->redirectToRoute('my_observation_index');
         }

@@ -55,19 +55,17 @@ class ArticleController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
 
-            if ($article->getImage() !== null) {
-                $image = $article->getImage();
-                $image->setArticle($article);
-                $article->setImage($image);
-                $article->getImage()->upload();
+            $response = $this->get('news.crud.create')->createArticle($article);
+
+            if ($response) {
+                $this->addFlash('success', 'Article ajouté avec succès !');
+                return $this->redirectToRoute('article_show', array('id' => $article->getId()));
+            } else {
+                $this->addFlash('error', 'Erreur lors de l\'ajout de l\'article');
+                return $this->redirectToRoute('article_new');
             }
 
-            $em->persist($article);
-            $em->flush($article);
-
-            return $this->redirectToRoute('article_show', array('id' => $article->getId()));
         }
 
         return $this->render('NBGraphicsNewsBundle:article:new.html.twig', array(
@@ -106,7 +104,6 @@ class ArticleController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('article_show', array('id' => $article->getId()));
         }
 
@@ -127,13 +124,14 @@ class ArticleController extends Controller
         $form = $this->createDeleteForm($article);
         $form->handleRequest($request);
 
-        $user = $this->getUser();
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($article);
-            $em->flush($article);
-            $request->getSession()->getFlashBag()->add('success', 'Actualité supprimée avec succès !');
+
+            $response = $this->get('news.crud.delete')->deleteArticle($article);
+
+            if ($response)
+                $this->addFlash('success', 'Actualité supprimée avec succès !');
+            $this->addFlash('error', 'Erreur lors de la suppression de l\'actualité !');
+
             return $this->redirectToRoute('article_index');
         }
 

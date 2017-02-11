@@ -139,8 +139,7 @@ class UserController extends Controller
 
             if ($deleteEntity)
                 $this->addFlash('success', 'Membre supprimé avec succès !');
-            else
-                $this->addFlash('error', 'Erreur lors de la suppression du membre !');
+            $this->addFlash('error', 'Erreur lors de la suppression du membre !');
 
             return $this->redirectToRoute('user_index');
         }

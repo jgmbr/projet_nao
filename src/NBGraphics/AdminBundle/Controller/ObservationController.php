@@ -144,9 +144,9 @@ class ObservationController extends Controller
 
         if ($moderationForm->isSubmitted() && $moderationForm->isValid()) {
 
-            $moderationObservation = $this->get('app.crud.update')->moderateObservation($observation, $user, $moderation, $moderationForm->getData()->getStatus());
+            $response = $this->get('app.crud.update')->moderateObservation($observation, $user, $moderation, $moderationForm->getData()->getStatus());
 
-            if ($moderationObservation) {
+            if ($response) {
                 $this->addFlash('success','Observationn modérée avec succès !');
                 return $this->redirectToRoute('observation_show', array('id' => $observation->getId()));
             } else {
@@ -230,8 +230,7 @@ class ObservationController extends Controller
 
             if ($deleteObservation)
                 $this->addFlash('success', 'Observation supprimée avec succès !');
-            else
-                $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
+            $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
 
             return $this->redirectToRoute('observation_index');
         }
