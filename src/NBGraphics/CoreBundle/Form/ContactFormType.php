@@ -77,7 +77,9 @@ class ContactFormType extends AbstractType
                     'placeholder' => 'Veuillez expliquer l\'objet de votre message'
                 ]
             ])
-            ->add('captcha', CaptchaType::class)
+            ->add('captcha', CaptchaType::class, [
+                'translation_domain' => false,
+            ])
         ;
     }
 
