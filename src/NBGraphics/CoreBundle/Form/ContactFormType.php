@@ -2,6 +2,7 @@
 
 namespace NBGraphics\CoreBundle\Form;
 
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -25,7 +26,7 @@ class ContactFormType extends AbstractType
                         'min' => 2,
                         'max' => 45,
                         'minMessage' => 'Veuillez entrer au moins deux lettres',
-                        'maxMessage' => 'Veuillez entrer moins de 45 lettres'
+                        'maxMessage' => 'Veuillez entrer moins de 45 lettres',
                     ]),
                     new NotBlank([
                         'message' => 'Veuillez renseigner votre prénom'
@@ -76,6 +77,7 @@ class ContactFormType extends AbstractType
                     'placeholder' => 'Veuillez expliquer l\'objet de votre message'
                 ]
             ])
+            ->add('captcha', CaptchaType::class)
         ;
     }
 
