@@ -26,9 +26,7 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository(Article::class)->findArticles(
-            $em->getRepository(State::class)->findOneByRole('PUBLISH')
-        );
+        $articles = $em->getRepository(Article::class)->findArticles();
 
         $deleteForms = array();
 

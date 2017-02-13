@@ -5,6 +5,7 @@ namespace NBGraphics\CoreBundle\Form;
 use NBGraphics\CoreBundle\Entity\Image;
 use NBGraphics\CoreBundle\Entity\TAXREF;
 use NBGraphics\CoreBundle\Form\Type\HelpType;
+use NBGraphics\CoreBundle\Form\Type\ShowImageType;
 use NBGraphics\CoreBundle\Validator\Constraints\isHourTimeValid;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYear;
 use NBGraphics\CoreBundle\Validator\Constraints\isThisYearValid;
@@ -25,6 +26,8 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 
 class ObservationFormType extends AbstractType
 {
@@ -195,6 +198,26 @@ class ObservationFormType extends AbstractType
                 )
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+            $object = $event->getData();
+            $form = $event->getForm();
+            if (!$object || null === $object->getId()) {
+                return;
+            } else {
+                // Check if has image
+                if ($object->getImage()) {
+                    $form->add('tmpImage', ShowImageType::class, array(
+                        'label'         => 'Image Originale',
+                        'required'      => false,
+                        'translation_domain' => false,
+                        'image_path'    => $object->getImage()->getWebPath(),
+                        'filter'        => 'avatar',
+                        'class'         => 'img-responsive img-circle'
+                    ));
+                }
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

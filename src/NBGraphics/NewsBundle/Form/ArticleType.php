@@ -92,7 +92,7 @@ class ArticleType extends AbstractType
                         'translation_domain' => false,
                         'image_path'    => $object->getImage()->getWebPath(),
                         'filter'        => 'avatar',
-                        'class'         => 'profile-user-img img-responsive img-circle'
+                        'class'         => 'img-responsive img-circle'
                     ));
                 }
             }

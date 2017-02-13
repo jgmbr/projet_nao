@@ -11,6 +11,16 @@
             <table class="table table-responsive">
             <tbody>
                 <tr>
+                    <th> Image </th>
+                    <td>
+                        {% if observation.image is defined and observation.image is not null %}
+                            <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" />
+                        {% else %}
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
                     <th>Observateur</th>
                     <td>
                         {{ observation.user.username }}

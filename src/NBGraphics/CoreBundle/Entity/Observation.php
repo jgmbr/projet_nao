@@ -119,6 +119,8 @@ class Observation implements ExportInterface
      */
     private $moderations;
 
+    private $tmpImage;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -133,6 +135,18 @@ class Observation implements ExportInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setTmpImage($tmpImage)
+    {
+        $this->tmpImage = $tmpImage;
+
+        return $this;
+    }
+
+    public function getTmpImage()
+    {
+        return $this->tmpImage;
     }
 
     /**

@@ -85,6 +85,20 @@ class Image
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
+    public function getAbsolutePath()
+    {
+        return null === $this->url
+            ? null
+            : $this->getUploadRootDir().'/'.$this->url;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->url
+            ? null
+            : '/web/'.$this->getUploadDir().'/'.$this->url;
+    }
+
     /**
      * @return mixed
      */

@@ -11,13 +11,11 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findArticles($state, $sort = 'DESC')
+    public function findArticles($sort = 'DESC')
     {
         return $this
             ->createQueryBuilder('a')
-            ->where('a.state = :state')
             ->orderBy('a.id', $sort)
-            ->setParameter('state', $state)
             ->getQuery()
             ->getResult()
         ;

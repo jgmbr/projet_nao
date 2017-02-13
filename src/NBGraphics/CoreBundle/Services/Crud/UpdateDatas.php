@@ -56,4 +56,27 @@ class UpdateDatas
         return true;
     }
 
+    public function updateObservation(Observation $observation, $andFlush = true)
+    {
+        if (!$observation instanceof Observation)
+            throw new NotFoundHttpException('Observation non reconnue');
+
+        if ($observation->getImage() !== null) {
+            $image = $observation->getImage();
+            if ($image->getFile() !== null) {
+                $image->setFile($image->getFile());
+                $image->upload();
+                $image->setObservation($observation);
+                $observation->setImage($image);
+            }
+        }
+
+        $this->em->persist($observation);
+
+        if ($andFlush)
+            $this->em->flush();
+
+        return true;
+    }
+
 }
