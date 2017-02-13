@@ -100,7 +100,7 @@ class Observation implements ExportInterface
     private $status;
 
     /**
-     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="NBGraphics\CoreBundle\Entity\Image", mappedBy="observation", cascade={"persist","remove"})
      */
     private $image;
 
