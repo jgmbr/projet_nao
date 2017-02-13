@@ -26,7 +26,7 @@ class AutocompleteController extends Controller
 
         $term = $request->query->get('term');
 
-        $results = $em->getRepository(TAXREF::class)->findLikeNameOrFamily($term);
+        $results = $em->getRepository(TAXREF::class)->findLikeName($term);
 
         return $this->render('@NBGraphicsFrontSite/json/taxref.json.twig', array(
             'results' => $results

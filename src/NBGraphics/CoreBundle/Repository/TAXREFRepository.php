@@ -24,12 +24,10 @@ class TAXREFRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this
             ->createQueryBuilder('t')
-            ->where('t.nomComplet LIKE :term')
             ->orWhere('t.nomValide LIKE :term')
             ->orWhere('t.nomVern LIKE :term')
-            ->orWhere('t.nomVernEng LIKE :term')
             ->setParameter('term', "%$term%")
-            ->orderBy('t.nomComplet')
+            ->orderBy('t.nomValide')
             ->setMaxResults(15)
             ->getQuery()
             ->execute()
