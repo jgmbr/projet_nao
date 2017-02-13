@@ -103,7 +103,17 @@ class ArticleController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $response = $this->get('news.crud.update')->updateArticle($article);
+
+            if ($response) {
+                $this->addFlash('success', 'Article modifié avec succès !');
+                return $this->redirectToRoute('article_show', array('id' => $article->getId()));
+            } else {
+                $this->addFlash('error', 'Erreur lors de la modification de l\'article');
+                return $this->redirectToRoute('article_edit', array('id' => $article->getId()));
+            }
+
             return $this->redirectToRoute('article_show', array('id' => $article->getId()));
         }
 

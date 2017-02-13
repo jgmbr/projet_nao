@@ -2,6 +2,7 @@
 
 namespace NBGraphics\NewsBundle\Form;
 
+use NBGraphics\CoreBundle\Form\Type\ShowImageType;
 use NBGraphics\NewsBundle\Entity\State;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -9,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\Length;
@@ -74,6 +77,26 @@ class ArticleType extends AbstractType
                 'translation_domain' => false,
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+            $object = $event->getData();
+            $form = $event->getForm();
+            if (!$object || null === $object->getId()) {
+                return;
+            } else {
+                // Check if has image
+                if ($object->getImage()) {
+                    $form->add('tmpImage', ShowImageType::class, array(
+                        'label'         => 'Image Originale',
+                        'required'      => false,
+                        'translation_domain' => false,
+                        'image_path'    => $object->getImage()->getWebPath(),
+                        'filter'        => 'avatar',
+                        'class'         => 'profile-user-img img-responsive img-circle'
+                    ));
+                }
+            }
+        });
     }
     
     /**

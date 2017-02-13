@@ -40,7 +40,7 @@ class CreateDatas
         $this->em->persist($article);
 
         if ($andFlush)
-            $this->em->flush($article);
+            $this->em->flush();
 
         return true;
     }

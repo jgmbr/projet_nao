@@ -1,0 +1,7 @@
+{% block show_image_widget %}
+    {% spaceless %}
+        {% if image_path %}
+            <img src="{{ image_path }}" class="{{ class }}" style="margin:0;" />
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

@@ -66,6 +66,8 @@ class Article
      */
     private $state;
 
+    private $tmpImage;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -247,6 +249,18 @@ class Article
     public function getState()
     {
         return $this->state;
+    }
+
+    public function setTmpImage($tmpImage)
+    {
+        $this->tmpImage = $tmpImage;
+
+        return $this;
+    }
+
+    public function getTmpImage()
+    {
+        return $this->tmpImage;
     }
 
     /**
