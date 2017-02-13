@@ -122,7 +122,8 @@ class MyObservationController extends Controller
 
             if ($response)
                 $this->addFlash('success', 'Observation supprimée avec succès !');
-            $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
 
             return $this->redirectToRoute('my_observation_index');
         }

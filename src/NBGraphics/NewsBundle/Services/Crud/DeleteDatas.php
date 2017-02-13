@@ -30,7 +30,7 @@ class DeleteDatas
         $this->em->remove($article);
 
         if ($andFlush)
-            $this->em->flush($article);
+            $this->em->flush();
 
         return true;
     }

@@ -52,7 +52,8 @@ class NewsletterController extends Controller
 
             if ($response)
                 $this->addFlash('success', 'Adresse email supprimée avec succès !');
-            $this->addFlash('error', 'Erreur lors de la suppression de l\'adresse email !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'adresse email !');
 
             return $this->redirectToRoute('newsletter_index');
         }

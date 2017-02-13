@@ -112,7 +112,6 @@ class ArticleController extends Controller
                 return $this->redirectToRoute('article_edit', array('id' => $article->getId()));
             }
 
-            return $this->redirectToRoute('article_show', array('id' => $article->getId()));
         }
 
         return $this->render('NBGraphicsNewsBundle:article:edit.html.twig', array(
@@ -138,7 +137,8 @@ class ArticleController extends Controller
 
             if ($response)
                 $this->addFlash('success', 'Actualité supprimée avec succès !');
-            $this->addFlash('error', 'Erreur lors de la suppression de l\'actualité !');
+            else
+                $this->addFlash('error', 'Erreur lors de la suppression de l\'actualité !');
 
             return $this->redirectToRoute('article_index');
         }
