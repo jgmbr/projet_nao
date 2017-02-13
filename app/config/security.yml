@@ -29,8 +29,17 @@ security:
             form_login:
                 provider:             fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                login_path:           fos_user_security_login
+                use_forward:          false
+                check_path:           fos_user_security_check
+                failure_path:         null
+                default_target_path:  fos_user_profile_show
+                remember_me:          true
                 use_referer:          false
                 success_handler:      authentication_success_handler
+            logout:
+                 path:       fos_user_security_logout
+                 target:     /
 
             # activate different ways to authenticate
 
@@ -40,13 +49,12 @@ security:
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
-            logout:       true
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/reinitialiser-mot-de-passe, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/submit-observation, role: ROLE_USER }
         - { path: ^/webmap/, role: ROLE_USER }
         - { path: ^/admin/index/, role: ROLE_USER }

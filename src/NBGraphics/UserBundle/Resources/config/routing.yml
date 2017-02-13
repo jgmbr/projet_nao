@@ -1,11 +1,3 @@
 nb_graphics_user_homepage:
     path:     /
     defaults: { _controller: NBGraphicsUserBundle:Default:index }
-
-fos_user_security_login:
-    path:     /login
-    defaults: { _controller: NBGraphicsUserBundle:Security:login }
-
-fos_user_registration_register:
-    path:     /register
-    defaults: { _controller: NBGraphicsUserBundle:Registration:register }
