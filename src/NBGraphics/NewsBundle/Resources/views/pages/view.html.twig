@@ -13,6 +13,7 @@
         </div>
         <div class="col-md-10">
             <h2> {{ article.title }} </h2>
+            <p> {{ article.createdAt|date('d/m/Y') }} </p>
             <p> {{ article.content|nl2br }} </p>
         </div>
     </div>
