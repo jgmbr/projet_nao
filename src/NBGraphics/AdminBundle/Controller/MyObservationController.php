@@ -81,8 +81,17 @@ class MyObservationController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('my_observation_show', array('id' => $observation->getId()));
+
+            $response = $this->get('app.crud.update')->updateObservation($observation);
+
+            if ($response) {
+                $this->addFlash('success', 'Observation modifiée avec succès !');
+                return $this->redirectToRoute('my_observation_show', array('id' => $observation->getId()));
+            } else {
+                $this->addFlash('error', 'Erreur lors de la modification de l\'observation');
+                return $this->redirectToRoute('my_observation_edit', array('id' => $observation->getId()));
+            }
+
         }
 
         return $this->render('NBGraphicsAdminBundle:Account/observation:edit.html.twig', array(
