@@ -122,6 +122,8 @@ class Observation implements ExportInterface
     public function __construct()
     {
         $this->createdAt = new \Datetime();
+        $this->dateAt = new \Datetime();
+        $this->hourAt = new \Datetime();
         $this->moderations = new ArrayCollection();
     }
 
