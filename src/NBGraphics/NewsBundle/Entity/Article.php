@@ -57,7 +57,7 @@ class Article
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="NBGraphics\NewsBundle\Entity\Image", mappedBy="article", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="NBGraphics\NewsBundle\Entity\Image", mappedBy="article", cascade={"persist","remove"})
      */
     private $image;
 
