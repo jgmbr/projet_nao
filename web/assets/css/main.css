@@ -411,6 +411,9 @@ body {
   min-width: 300px;
   font-family: 'Open Sans', sans-serif; }
 
+.main-wrapper {
+  height: calc(100vh - 230px); }
+
 a {
   text-decoration: none;
   color: #374a5b; }

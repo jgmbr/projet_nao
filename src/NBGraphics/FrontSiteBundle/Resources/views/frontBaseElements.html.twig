@@ -168,13 +168,13 @@
 
                 {% if app.user %}
                     <li class="connect">
-                        <a>Bonjour {{ app.user.username }}</a>
+                        <a title="Espace mon compte" href="{{ path('admin_page') }}">{{ app.user.username }}</a>
                     </li>
                 {% endif %}
 
                 {% if app.user %}
                     <li class="connect">
-                        <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
+                        <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
                     </li>
                 {% else %}
                     <li class="connect">
@@ -184,9 +184,6 @@
                         <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
                     </li>
                 {% endif %}
-                <li class="connect newletter">
-                    <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
-                </li>
             </ul>
             <img class="hamburger" src="{{ asset('images/menu.png') }}" alt="Voir le menu">
         </header>
@@ -222,7 +219,14 @@
                         </li>
                     {% endif %}
                 {% endif %}
-
+                {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">Quitter la connexion utilisateur</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
+                </li>
             </ul>
         </nav>
 
@@ -230,27 +234,7 @@
     </div><!-- END: header-wrapper  -->
 
 
-
-
-
-
-    <div class="container">
-        <header class="col-sm-12">
-            {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-                <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
-                </a>
-            {% endif %}
-        </header>
-
-        <nav class="col-sm-12">
-            <ul>
-
-            </ul>
-        </nav>
-    </div>
-
-    <div class="container">
+    <div class="container main-wrapper">
         {% block body %}{% endblock %}
     </div>
 
@@ -274,7 +258,7 @@
                 </ul>
             </section>
             <section>
-                <h3>Liens complémentaires</h3>
+                <h3>L'association Nos Amis Les Oiseaux</h3>
                 <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les liens complémentaires">
                 <ul>
                     <li>
