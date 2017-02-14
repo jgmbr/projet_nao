@@ -1,5 +1,29 @@
 {% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
 
+{% block stylesheets %}
+    <style>
+        .callout-info {
+            color: #fff !important;
+            background-color: #00c0ef !important;
+
+            border-color: #0097bc;
+        }
+        .callout {
+            border-radius: 3px;
+            margin: 0 0 20px 0;
+            padding: 15px 30px 15px 15px;
+            border-left: 5px solid #eee;
+        }
+        .callout h4 {
+            margin-top: 0;
+            font-weight: 600;
+        }
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
@@ -52,6 +76,10 @@
                                     </tfoot>
                                 </table>
                             {% else %}
+                                <div class="callout callout-info">
+                                    <h4>Information !</h4>
+                                    <p>Veuillez charger les routes SEO en lançant la commande console : <strong> php bin/console seo:load-routes </strong> </p>
+                                </div>
                                 <p> Pas de SEO </p>
                             {% endif %}
                         </div>
