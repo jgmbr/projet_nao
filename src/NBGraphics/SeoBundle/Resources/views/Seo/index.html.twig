@@ -44,8 +44,7 @@
                                     <thead>
                                     <tr role="row">
                                         <th>Id</th>
-                                        <th>Page</th>
-                                        <th>Route</th>
+                                        <th>Page</th> 
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -54,7 +53,6 @@
                                         <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                                             <td> {{ page.id }} </td>
                                             <td> {{ page.page }} </td>
-                                            <td> {{ page.route }} </td>
                                             <td>
                                                 <a href="{{ path('seo_show', { 'id': page.id }) }}" class="btn btn-info btn-xs">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -70,7 +68,6 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Page</th>
-                                        <th>Route</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>
