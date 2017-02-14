@@ -50,4 +50,14 @@ class TAXREFRepository extends \Doctrine\ORM\EntityRepository
             ->execute()
         ;
     }
+
+    public function countTaxref()
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->select('COUNT(t)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }

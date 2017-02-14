@@ -86,6 +86,16 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
+    public function countObservations()
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->select('COUNT(o)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
     /* LISTS */
 
     public function findObservations($sort = 'DESC')

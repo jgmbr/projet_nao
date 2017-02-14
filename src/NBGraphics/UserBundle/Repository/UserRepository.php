@@ -75,6 +75,17 @@ class UserRepository extends EntityRepository
         ;
     }
 
+    public function findCountAll()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        return $qb
+            ->select('COUNT(u)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
     public function findCountUsers()
     {
         $qb = $this->createQueryBuilder('u');
