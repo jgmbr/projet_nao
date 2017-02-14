@@ -1,0 +1,3 @@
+nb_graphics_seo_homepage:
+    path:     /
+    defaults: { _controller: NBGraphicsSeoBundle:Default:index }

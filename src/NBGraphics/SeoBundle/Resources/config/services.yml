@@ -1,0 +1,4 @@
+services:
+    seo.routes.load:
+        class: NBGraphics\SeoBundle\Services\Routes\LoadRoutes
+        arguments: ['@doctrine.orm.entity_manager','@router']

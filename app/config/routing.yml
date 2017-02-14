@@ -12,9 +12,13 @@ nb_graphics_news:
     resource: "@NBGraphicsNewsBundle/Controller/"
     type:     annotation
 
+nb_graphics_seo:
+    resource: "@NBGraphicsSeoBundle/Controller/"
+    type:     annotation
+
 nb_graphics_core:
-    resource: "@NBGraphicsCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@NBGraphicsCoreBundle/Controller/"
+    type:     annotation
 
 nb_graphics_user:
     resource: "@NBGraphicsUserBundle/Resources/config/routing.yml"

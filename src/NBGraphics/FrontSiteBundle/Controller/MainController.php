@@ -10,6 +10,7 @@ namespace NBGraphics\FrontSiteBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Newsletter;
 use NBGraphics\CoreBundle\Form\NewsletterFormType;
+use NBGraphics\SeoBundle\Entity\Seo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -18,7 +19,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class MainController extends Controller
 {
     /**
-     * @Route("/", name="nb_graphics_front_site_homepage")
+     * @Route("/",
+     *     name="nb_graphics_front_site_homepage",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Accueil"
+     *     }
+     *  )
      */
     public function homePageAction()
     {
@@ -26,7 +33,14 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/program-of-research", name="nb_graphics_front_site_researchprogramm")
+     * @Route(
+     *     "/program-of-research",
+     *     name="nb_graphics_front_site_researchprogramm",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Programme de recherche"
+     *     }
+     *  )
      */
     public function researchProgramAction()
     {
@@ -34,7 +48,13 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/terms", name="nb_graphics_front_site_terms")
+     * @Route("/terms",
+     *     name="nb_graphics_front_site_terms",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Mentions légales"
+     *     }
+     *  )
      */
     public function termsAction()
     {
@@ -42,7 +62,12 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/credits", name="nb_graphics_front_site_credits")
+     * @Route("/credits", name="nb_graphics_front_site_credits",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Crédits"
+     *     }
+     *  )
      */
     public function creditsAction()
     {
@@ -50,7 +75,12 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/newsletter", name="nb_graphics_front_site_newsletter")
+     * @Route("/newsletter", name="nb_graphics_front_site_newsletter",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Newsletter"
+     *     }
+     *  )
      */
     public function newsletterAction(Request $request)
     {
