@@ -148,6 +148,12 @@
     </div>
 {% endfor %}
 
+{% for flashMsg in app.session.flashBag.get('error') %}
+    <div class="text-center alert alert-danger">
+        {{ flashMsg }}
+    </div>
+{% endfor %}
+
     <div class="header-wrapper">
         <header class="main-header">
             <ul>
@@ -159,12 +165,25 @@
                 <li class="header-title">
                     <a href="{{ path('nb_graphics_front_site_homepage') }}">Nos Amis Les Oiseaux</a>
                 </li>
-                <li class="connect">
-                    <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
-                </li>
-                <li class="connect">
-                    <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
-                </li>
+
+                {% if app.user %}
+                    <li class="connect">
+                        <a>Bonjour {{ app.user.username }}</a>
+                    </li>
+                {% endif %}
+
+                {% if app.user %}
+                    <li class="connect">
+                        <a href="{{ path('fos_user_security_logout') }}">Deconnection</a>
+                    </li>
+                {% else %}
+                    <li class="connect">
+                        <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                    </li>
+                    <li class="connect">
+                        <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                    </li>
+                {% endif %}
                 <li class="connect newletter">
                     <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
                 </li>
@@ -188,6 +207,22 @@
                     <a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a>
                 </li>
                 {{ render(controller('NBGraphicsNewsBundle:Pages:menuTop')) }}
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Administration</a>
+                        </li>
+                    {% elseif is_granted('ROLE_COLLABORATOR') %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Collaborateur</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Mon Compte </a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+
             </ul>
         </nav>
 
@@ -201,34 +236,16 @@
 
     <div class="container">
         <header class="col-sm-12">
-            <h1> HEADER › Home from FrontSiteBundle </h1>
             {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                 <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
                 </a>
             {% endif %}
-            {% if app.user %}
-                <p>
-                    Bonjour {{ app.user.username }}
-                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
-                </p>
-            {% endif %}
         </header>
 
         <nav class="col-sm-12">
             <ul>
-                {% if app.user %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
-                    {% elseif is_granted('ROLE_COLLABORATOR') %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Collaborateur </a></li>
-                    {% else %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Mon Compte </a></li>
-                    {% endif %}
-                {% else %}
-                    <li><a href="{{ path('fos_user_security_login') }}"> Connexion </a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}"> Inscription </a></li>
-                {% endif %}
+
             </ul>
         </nav>
     </div>

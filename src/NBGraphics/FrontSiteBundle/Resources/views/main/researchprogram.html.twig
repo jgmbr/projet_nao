@@ -34,9 +34,15 @@
         <hr>
         <div class="text-center">
             <button class="btn btn-default">
+            {% if app.user %}
                 <a href="{{ path('nb_graphics_front_site_submitobservation') }}">
-                    Je participe
+                    Je poste une observation
                 </a>
+            {% else %}
+            <a href="{{ path('fos_user_registration_register') }}">
+                Je participe
+            </a>
+            {% endif %}
             </button>
         </div>
     </section>
