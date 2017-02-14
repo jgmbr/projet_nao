@@ -43,7 +43,7 @@ class ProfileController extends BaseController
     }
 
     /**
-     * @Route("/edit", name="admin_profil_edit")
+     * @Route("/edition", name="admin_profil_edit")
      */
     public function editAction(Request $request)
     {

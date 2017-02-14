@@ -36,7 +36,7 @@ class SeoController extends Controller
     /**
      * Displays a form to edit an existing seo entity.
      *
-     * @Route("/{id}/edit", name="seo_edit")
+     * @Route("/edition/{id}", name="seo_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Seo $seo)
@@ -64,7 +64,7 @@ class SeoController extends Controller
     /**
      * Finds and displays a seo entity.
      *
-     * @Route("/{id}", name="seo_show")
+     * @Route("/fiche/{id}", name="seo_show")
      * @Method("GET")
      */
     public function showAction(Seo $seo)

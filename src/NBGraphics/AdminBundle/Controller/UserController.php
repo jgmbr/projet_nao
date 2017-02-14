@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * User controller.
  *
- * @Route("user")
+ * @Route("utilisateurs")
  */
 class UserController extends Controller
 {
     /**
-     * @Route("/list", name="user_index")
+     * @Route("/", name="user_index")
      */
     public function listUsersAction()
     {
@@ -45,7 +45,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/new", name="user_new")
+     * @Route("/nouvel-utilisateur", name="user_new")
      */
     public function newAction(Request $request)
     {
@@ -76,7 +76,7 @@ class UserController extends Controller
     /**
      * Finds and displays a user entity.
      *
-     * @Route("/{id}/show", name="user_show")
+     * @Route("/fiche/{id}", name="user_show")
      * @Method("GET")
      */
     public function showAction(User $user)
@@ -95,7 +95,7 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing user entity.
      *
-     * @Route("/{id}/edit", name="user_edit")
+     * @Route("/edition/{id}", name="user_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, User $user)
@@ -123,7 +123,7 @@ class UserController extends Controller
     /**
      * Deletes a user entity.
      *
-     * @Route("/{id}/delete", name="user_delete")
+     * @Route("/suppression/{id}", name="user_delete")
      */
     public function deleteAction(Request $request, User $user)
     {

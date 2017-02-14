@@ -19,7 +19,7 @@ class NewsletterController extends Controller
     /**
      * Lists all newsletter entities.
      *
-     * @Route("/list", name="newsletter_index")
+     * @Route("/", name="newsletter_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class NewsletterController extends Controller
     /**
      * Deletes a newsletter entity.
      *
-     * @Route("/{id}/delete", name="newsletter_delete")
+     * @Route("/suppression/{id}", name="newsletter_delete")
      */
     public function deleteAction(Request $request, Newsletter $newsletter)
     {

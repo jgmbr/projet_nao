@@ -34,7 +34,7 @@ class MainController extends Controller
 
     /**
      * @Route(
-     *     "/program-of-research",
+     *     "/programme-de-recherche",
      *     name="nb_graphics_front_site_researchprogramm",
      *     defaults={
      *          "seo": true,
@@ -48,7 +48,7 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/terms",
+     * @Route("/mentions-legales",
      *     name="nb_graphics_front_site_terms",
      *     defaults={
      *          "seo": true,

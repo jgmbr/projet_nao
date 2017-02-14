@@ -22,7 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SubmitObservationController extends Controller
 {
     /**
-     * @Route("/submit-observation", name="nb_graphics_front_site_submitobservation",
+     * @Route("/soumettre-une-observation", name="nb_graphics_front_site_submitobservation",
      *     defaults={
      *          "seo": true,
      *          "page": "Page Soumettre une observation"

@@ -11,14 +11,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Article controller.
  *
- * @Route("news")
+ * @Route("actualites")
  */
 class PagesController extends Controller
 {
     /**
      * Lists all article entities.
      *
-     * @Route("/list/{page}", name="article_list", defaults={"page": 1})
+     * @Route("/{page}", name="article_list", defaults={"page": 1})
      * @Method("GET")
      */
     public function indexAction($page)

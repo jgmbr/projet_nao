@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 class InteractiveWebMapController extends Controller
 {
     /**
-     * @Route("/webmap", name="nb_graphics_front_site_interactivewebmap",
+     * @Route("/carte-interactive", name="nb_graphics_front_site_interactivewebmap",
      *     defaults={
      *          "seo": true,
      *          "page": "Page Carte Interactive"
@@ -90,7 +90,7 @@ class InteractiveWebMapController extends Controller
     }
 
     /**
-     * @Route("/webmap/{birdObs}")
+     * @Route("/carte-interactive/observation/{birdObs}")
      */
     public function displayBirdDetail($birdObs)
     {

@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Observation controller.
  *
- * @Route("my_observation")
+ * @Route("mes-observations")
  */
 class MyObservationController extends Controller
 {
     /**
      * Lists all observation entities.
      *
-     * @Route("/list", name="my_observation_index")
+     * @Route("/", name="my_observation_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -46,7 +46,7 @@ class MyObservationController extends Controller
     /**
      * Finds and displays a observation entity.
      *
-     * @Route("/{id}/show", name="my_observation_show")
+     * @Route("/fiche/{id}", name="my_observation_show")
      * @Method("GET")
      */
     public function showAction(Observation $observation)
@@ -65,7 +65,7 @@ class MyObservationController extends Controller
     /**
      * Displays a form to edit an existing observation entity.
      *
-     * @Route("/{id}/edit", name="my_observation_edit")
+     * @Route("/edition/{id}", name="my_observation_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Observation $observation)
@@ -104,7 +104,7 @@ class MyObservationController extends Controller
     /**
      * Deletes a observation entity.
      *
-     * @Route("/{id}/delete", name="my_observation_delete")
+     * @Route("/suppression/{id}", name="my_observation_delete")
      */
     public function deleteAction(Request $request, Observation $observation)
     {

@@ -15,14 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Observation controller.
  *
- * @Route("observation")
+ * @Route("observations")
  */
 class ObservationController extends Controller
 {
     /**
      * Lists all observation entities.
      *
-     * @Route("/list", name="observation_index")
+     * @Route("/", name="observation_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -46,7 +46,7 @@ class ObservationController extends Controller
     /**
      * Lists all observation waiting entities.
      *
-     * @Route("/waiting", name="observation_waiting")
+     * @Route("/en-attente", name="observation_waiting")
      * @Method("GET")
      */
     public function waitingAction()
@@ -72,7 +72,7 @@ class ObservationController extends Controller
     /**
      * Lists all observation valided entities.
      *
-     * @Route("/valided", name="observation_valided")
+     * @Route("/validees", name="observation_valided")
      * @Method("GET")
      */
     public function validedAction()
@@ -98,7 +98,7 @@ class ObservationController extends Controller
     /**
      * Lists all observation refused entities.
      *
-     * @Route("/refused", name="observation_refused")
+     * @Route("/refusees", name="observation_refused")
      * @Method("GET")
      */
     public function refusedAction()
@@ -124,7 +124,7 @@ class ObservationController extends Controller
     /**
      * Moderation observation.
      *
-     * @Route("/moderate/{id}", name="observation_moderate")
+     * @Route("/moderation/{id}", name="observation_moderate")
      * @Method({"GET", "POST"})
      */
     public function moderateAction(Request $request, Observation $observation)
@@ -166,7 +166,7 @@ class ObservationController extends Controller
     /**
      * Finds and displays a observation entity.
      *
-     * @Route("/{id}", name="observation_show")
+     * @Route("/fiche/{id}", name="observation_show")
      * @Method("GET")
      */
     public function showAction(Observation $observation)
@@ -185,7 +185,7 @@ class ObservationController extends Controller
     /**
      * Displays a form to edit an existing observation entity.
      *
-     * @Route("/{id}/edit", name="observation_edit")
+     * @Route("/edition/{id}", name="observation_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Observation $observation)
@@ -221,7 +221,7 @@ class ObservationController extends Controller
     /**
      * Deletes a observation entity.
      *
-     * @Route("/{id}/delete", name="observation_delete")
+     * @Route("/suppression/{id}", name="observation_delete")
      */
     public function deleteAction(Request $request, Observation $observation)
     {
