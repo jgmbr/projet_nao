@@ -32,7 +32,7 @@ class SeoExtension extends \Twig_Extension
 
     public function getSEO($route)
     {
-        return ($this->doctrine->getRepository(Seo::class)->findOneByRoute($route) ? $this->doctrine->getRepository(Seo::class)->findOneByRoute($route) : '');
+        return $this->doctrine->getRepository(Seo::class)->findOneByRoute($route);
     }
 
 }
