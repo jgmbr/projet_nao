@@ -21,7 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
 class InteractiveWebMapController extends Controller
 {
     /**
-     * @Route("/webmap", name="nb_graphics_front_site_interactivewebmap")
+     * @Route("/webmap", name="nb_graphics_front_site_interactivewebmap",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Carte Interactive"
+     *     }
+     *  )
      */
     public function indexInteractiveWebMapAction(Request $request)
     {

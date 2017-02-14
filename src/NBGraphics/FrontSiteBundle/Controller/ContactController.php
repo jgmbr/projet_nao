@@ -17,7 +17,12 @@ use Symfony\Component\HttpFoundation\Request;
 class ContactController extends Controller
 {
     /**
-     * @Route("/contact-us", name="nb_graphics_front_site_contactform")
+     * @Route("/contact-us", name="nb_graphics_front_site_contactform",
+     *     defaults={
+     *          "seo": true,
+     *          "page": "Page Contact"
+     *     }
+     *  )
      */
     public function contactFormAction(Request $request)
     {

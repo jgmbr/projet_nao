@@ -88,18 +88,22 @@
                             </ul>
                         </li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-
                             {% if app.request.attributes.get('_route') starts with "article" %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
                             {% else %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
                             {% endif %}
-
                             <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
                                 <a href="{{ path('newsletter_index') }}">
                                     Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                             </li>
+                            {% if app.request.attributes.get('_route') starts with "seo" %}
+                                {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':true} )) }}
+                            {% else %}
+                                {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':false} )) }}
+                            {% endif %}
+
                         {% endif %}
                     </ul>
                 </div>
