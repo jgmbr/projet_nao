@@ -2,10 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="robots" content="noindex">
+    <title>Nos Amis les Oiseaux - {{ getSEO(app.request.attributes.get('_route')).title }}</title>
+    <meta name="description" content="{{ getSEO(app.request.attributes.get('_route')).metaDescription }}" />
+    <meta name="keywords" content="{{ getSEO(app.request.attributes.get('_route')).metaKeywords }}" />
+    <meta name="robots" content="{{ getSEO(app.request.attributes.get('_route')).metaRobots }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/Ionicons/css/ionicons.min.css') }}">
