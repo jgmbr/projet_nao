@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationType extends AbstractType
@@ -27,11 +28,33 @@ class RegistrationType extends AbstractType
                 'label' => 'form.firstname',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez compléter votre prénom'
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Nous avons besoin d\'un prénom de minimum 3 caractères.',
+                        'max' => 100,
+                        'maxMessage' => 'Nous avons besoin d\'un prénom de maximum 100 caractères.',
+                    ])
+                ]
             ))
             ->add('lastname', TextType::class, array(
                 'label' => 'form.lastname',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez compléter votre nom de famille'
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Nous avons besoin d\'un nom de minimum 3 caractères.',
+                        'max' => 100,
+                        'maxMessage' => 'Nous avons besoin d\'un nom de maximum 100 caractères.',
+                    ])
+                ]
             ))
             ->add('phone', TextType::class, array(
                 'label' => 'form.phone',

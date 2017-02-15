@@ -814,6 +814,16 @@ li {
 .contact-us-form .btn {
   color: #fff; }
 
+.register-form {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .register-form {
+      width: 70%;
+      margin-top: 20px; } }
+  @media (min-width: 1024px) {
+    .register-form {
+      width: 45%; } }
+
 .register-form label,
 .register-form input,
 .register-form textarea {
@@ -831,7 +841,8 @@ li {
   outline-color: #374a5b; }
 
 .register-form .btn {
-  color: #fff; }
+  color: #fff;
+  width: 100%; }
 
 .connexion-form {
   margin: auto;
@@ -839,6 +850,10 @@ li {
   @media (min-width: 768px) {
     .connexion-form {
       width: 70%; } }
+  @media (min-width: 1024px) {
+    .connexion-form {
+      width: 45%;
+      margin-top: 40px; } }
 
 .connexion-form input[type=text],
 .connexion-form input[type=password],
@@ -846,6 +861,11 @@ li {
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 10px; }
+  @media (min-width: 768px) {
+    .connexion-form input[type=text],
+    .connexion-form input[type=password],
+    .connexion-form input[type=submit] {
+      display: block; } }
 
 .connexion-form input[type=text],
 .connexion-form input[type=password] {
@@ -854,10 +874,7 @@ li {
   border-radius: 5px; }
 
 @media (min-width: 768px) {
-  .connexion-form input[type=text],
-  .connexion-form input[type=password],
-  .connexion-form input[type=submit] {
-    width: 100%;
-    display: block; } }
+  .connexion-form .buttonsGroup {
+    margin-top: 20px; } }
 
 /*# sourceMappingURL=main.css.map */

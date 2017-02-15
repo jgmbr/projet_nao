@@ -1,9 +1,21 @@
+.register-form {
+  width: 100%;
+  @media #{$tablet} {
+    width: 70%;
+    margin-top: 20px;
+  }
+  @media #{$desktop} {
+    width: 45%;
+  }
+}
+
 .register-form label,
 .register-form input,
 .register-form textarea {
   cursor: pointer;
   transition: .4s;
   outline: none;
+
 }
 
 .register-form input:hover,
@@ -19,4 +31,6 @@
 
 .register-form .btn {
   color: #fff;
+  width: 100%;
 }
+

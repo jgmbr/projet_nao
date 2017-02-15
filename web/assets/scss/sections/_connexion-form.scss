@@ -5,6 +5,10 @@
   @media #{$tablet} {
     width: 70%;
   }
+  @media #{$desktop} {
+    width: 45%;
+    margin-top: 40px;
+  }
 }
 
 .connexion-form input[type=text],
@@ -13,6 +17,9 @@
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 10px;
+  @media #{$tablet} {
+    display: block;
+  }
 }
 
 .connexion-form input[type=text],
@@ -22,11 +29,8 @@
   border-radius: 5px;
 }
 
-@media #{$tablet} {
-  .connexion-form input[type=text],
-  .connexion-form input[type=password],
-  .connexion-form input[type=submit] {
-    width: 100%;
-    display: block;
+.connexion-form .buttonsGroup {
+  @media #{$tablet} {
+    margin-top: 20px;
   }
 }

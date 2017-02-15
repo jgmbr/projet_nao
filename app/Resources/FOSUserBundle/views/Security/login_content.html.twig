@@ -23,7 +23,7 @@
     <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 </form>
 
-<br /> <br />
-<a class="btn btn-warning" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-<br /> <br />
-<a class="btn btn-info" href="{{ path('fos_user_registration_register') }}" class="text-center">Créer un nouveau compte ?</a>
+<div class="buttonsGroup">
+    <a class="btn btn-warning" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+    <a class="btn btn-info" href="{{ path('fos_user_registration_register') }}" class="text-center">Créer un nouveau compte ?</a>
+</div>
