@@ -2,10 +2,6 @@
 
 namespace NBGraphics\CoreBundle\Services\Import;
 
-use Doctrine\ORM\EntityManagerInterface;
-use NBGraphics\CoreBundle\Entity\EntityInterface\ExportInterface;
-use Symfony\Component\HttpFoundation\Response;
-
 class ConvertCsvToArray
 {
     public function __construct()
