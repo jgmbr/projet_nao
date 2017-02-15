@@ -49,14 +49,6 @@ class ImportCommand extends ContainerAwareCommand
         // outputs a message without adding a "\n" at the end of the line
         $output->writeln('You are about to update TAXREF in database');
 
-        /*if ($response) {
-            $output->writeln([
-                '',
-                'Routes loaded with success !',
-                '',
-            ]);
-        }*/
-
         $output->writeln([
             '',
             '===================',
