@@ -1,0 +1,22 @@
+.register-form label,
+.register-form input,
+.register-form textarea {
+  cursor: pointer;
+  transition: .4s;
+  outline: none;
+}
+
+.register-form input:hover,
+.register-form textarea:hover {
+  border: 1px solid #374a5b;
+}
+
+.register-form input:focus,
+.register-formm textarea:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b;
+}
+
+.register-form .btn {
+  color: #fff;
+}

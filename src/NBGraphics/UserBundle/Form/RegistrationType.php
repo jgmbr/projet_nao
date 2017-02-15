@@ -23,13 +23,13 @@ class RegistrationType extends AbstractType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('lastname', TextType::class, array(
-                'label' => 'form.lastname',
+            ->add('firstname', TextType::class, array(
+                'label' => 'form.firstname',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
             ))
-            ->add('firstname', TextType::class, array(
-                'label' => 'form.firstname',
+            ->add('lastname', TextType::class, array(
+                'label' => 'form.lastname',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
             ))

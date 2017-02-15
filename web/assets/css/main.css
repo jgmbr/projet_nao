@@ -535,7 +535,7 @@ li {
   text-align: center; }
   @media (min-width: 768px) {
     .main-nav li {
-      border-right: 1px solid #374a5b; } }
+      border-right: 1px solid #ddd; } }
 
 @media (min-width: 768px) {
   .main-nav li:first-child {
@@ -813,5 +813,51 @@ li {
 
 .contact-us-form .btn {
   color: #fff; }
+
+.register-form label,
+.register-form input,
+.register-form textarea {
+  cursor: pointer;
+  transition: .4s;
+  outline: none; }
+
+.register-form input:hover,
+.register-form textarea:hover {
+  border: 1px solid #374a5b; }
+
+.register-form input:focus,
+.register-formm textarea:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b; }
+
+.register-form .btn {
+  color: #fff; }
+
+.connexion-form {
+  margin: auto;
+  width: 90%; }
+  @media (min-width: 768px) {
+    .connexion-form {
+      width: 70%; } }
+
+.connexion-form input[type=text],
+.connexion-form input[type=password],
+.connexion-form input[type=submit] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px; }
+
+.connexion-form input[type=text],
+.connexion-form input[type=password] {
+  outline: none;
+  border: 1px solid #374a5b;
+  border-radius: 5px; }
+
+@media (min-width: 768px) {
+  .connexion-form input[type=text],
+  .connexion-form input[type=password],
+  .connexion-form input[type=submit] {
+    width: 100%;
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */
