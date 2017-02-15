@@ -93,25 +93,25 @@ class ImportCommand extends ContainerAwareCommand
             // If the taxref doest not exist we create one
             if(!is_object($taxref)){
                 $taxref = new TAXREF();
-                $taxref->setCdNom($row['CD_NOM']);
+                $taxref->setCdNom($this->sanitizeData($row['CD_NOM']));
             }
 
             // Updating info
-            $taxref->setRegne($row['REGNE']);
-            $taxref->setPhylum($row['PHYLUM']);
-            $taxref->setClasse($row['CLASSE']);
-            $taxref->setOrdre($row['ORDRE']);
-            $taxref->setFamille($row['FAMILLE']);
-            $taxref->setCdTaxSup($row['CD_TAXSUP']);
-            $taxref->setCdRef($row['CD_REF']);
-            $taxref->setRang($row['RANG']);
-            $taxref->setLbNom($row['LB_NOM']);
-            $taxref->setLbAuteur($row['LB_AUTEUR']);
-            $taxref->setNomComplet($row['NOM_COMPLET']);
-            $taxref->setNomValide($row['NOM_VALIDE']);
-            $taxref->setNomVern($row['NOM_VERN']);
-            $taxref->setNomVernEng($row['NOM_VERN_ENG']);
-            $taxref->setHabitat($row['HABITAT']);
+            $taxref->setRegne($this->sanitizeData($row['REGNE']));
+            $taxref->setPhylum($this->sanitizeData($row['PHYLUM']));
+            $taxref->setClasse($this->sanitizeData($row['CLASSE']));
+            $taxref->setOrdre($this->sanitizeData($row['ORDRE']));
+            $taxref->setFamille($this->sanitizeData($row['FAMILLE']));
+            $taxref->setCdTaxSup($this->sanitizeData($row['CD_TAXSUP']));
+            $taxref->setCdRef($this->sanitizeData($row['CD_REF']));
+            $taxref->setRang($this->sanitizeData($row['RANG']));
+            $taxref->setLbNom($this->sanitizeData($row['LB_NOM']));
+            $taxref->setLbAuteur($this->sanitizeData($row['LB_AUTEUR']));
+            $taxref->setNomComplet($this->sanitizeData($row['NOM_COMPLET']));
+            $taxref->setNomValide($this->sanitizeData($row['NOM_VALIDE']));
+            $taxref->setNomVern($this->sanitizeData($row['NOM_VERN']));
+            $taxref->setNomVernEng($this->sanitizeData($row['NOM_VERN_ENG']));
+            $taxref->setHabitat($this->sanitizeData($row['HABITAT']));
 
             // Do stuff here !
 
@@ -129,7 +129,7 @@ class ImportCommand extends ContainerAwareCommand
                 $progress->advance($batchSize);
 
                 $now = new \DateTime();
-                $output->writeln(' of TAXRED imported ... | ' . $now->format('d-m-Y G:i:s'));
+                $output->writeln(' of TAXREF imported ... | ' . $now->format('d-m-Y G:i:s'));
 
             }
 
@@ -143,6 +143,15 @@ class ImportCommand extends ContainerAwareCommand
 
         // Ending the progress bar process
         $progress->finish();
+    }
+
+    protected function sanitizeData($str)
+    {
+        $str = str_replace('?','',$str);
+
+        $str = utf8_decode($str);
+
+        return $str;
     }
 
     protected function get(InputInterface $input, OutputInterface $output)
