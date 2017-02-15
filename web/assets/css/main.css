@@ -795,4 +795,23 @@ li {
   width: 100%;
   height: 250px; }
 
+.contact-us-form label,
+.contact-us-form input,
+.contact-us-form textarea {
+  cursor: pointer;
+  transition: .4s;
+  outline: none; }
+
+.contact-us-form input:hover,
+.contact-us-form textarea:hover {
+  border: 1px solid #374a5b; }
+
+.contact-us-form input:focus,
+.contact-us-form textarea:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b; }
+
+.contact-us-form .btn {
+  color: #fff; }
+
 /*# sourceMappingURL=main.css.map */
