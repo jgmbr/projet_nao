@@ -681,7 +681,7 @@ li {
 
 @media (max-width: 1024px) {
   .home-page-wrapper {
-    background: url("../../../images/owl.jpg");
+    background: url("../../images/owl.jpg");
     padding-top: 400px;
     height: 600px;
     background-size: cover;
@@ -752,8 +752,11 @@ li {
       background-color: #fff; } }
 
 .observation-form-container {
-  width: 96%;
+  width: 100%;
   margin: auto; }
+  @media (min-width: 768px) {
+    .observation-form-container {
+      width: 70%; } }
 
 .observation-form-container h2 {
   text-align: center;
@@ -779,11 +782,34 @@ li {
 .observation-form-container form textarea {
   width: 100%;
   margin: 10px 0 20px;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: .4s; }
+
+.observation-form-container input:hover,
+.observation-form-container select:hover,
+.observation-form-container textarea:hover {
+  border: 1px solid #374a5b; }
+
+.observation-form-container input:focus,
+.observation-form-container select:focus,
+.observation-form-container textarea:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b; }
+
+.observation-form-container input:read-only {
+  cursor: default; }
 
 .observation-form-container #map {
   height: 300px;
-  width: 50%; }
+  width: 100%; }
+
+.observation-form-container form .btn {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .observation-form-container form .btn {
+      width: 50%;
+      margin: auto;
+      display: block; } }
 
 .map-container #map {
   height: 500px;

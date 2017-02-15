@@ -40,13 +40,13 @@ class ObservationFormType extends AbstractType
                 'required'      => true,
                 'translation_domain' => false,
                 'attr' => array(
-                    'placeholder' => 'Saisir le nom de l\'espèce ou de l\'oiseau'
+                    'placeholder' => 'Nom de l\'espèce ou de l\'oiseau'
                 )
             ))
             ->add('quantity', ChoiceType::class, [
                 'label' => "Nombre d'oiseaux aperçu *",
                 'choices' => [
-                    'Avez-vous aperçu un individu, un groupe ou un couple' => null,
+                    'Nombre d\'oiseaux apperçues' => null,
                     'Un individu' => 'individu',
                     'Un couple' => 'couple',
                     'Un groupe' => 'groupe'
@@ -65,7 +65,7 @@ class ObservationFormType extends AbstractType
             ->add('matureStage', ChoiceType::class, [
                 'label' => "Stade de maturité de l'oiseau observé *",
                 'choices' => [
-                    'Stade possible : jeune, premier hiver ou adulte ?' => null,
+                    'Jeune, premier hiver ou adulte ?' => null,
                     'Spécimen jeune' => 'jeune',
                     'Premier hiver du spécimen' => 'premier_hiver',
                     'Spécimen adulte' => 'adulte',
