@@ -8,7 +8,7 @@
 .main-header {
   position: relative;
   border-bottom: 1px solid #374a5b;
-  background-color: #ecf0f1;
+  background-color: #fff;
 }
 
 .main-header ul {
@@ -51,8 +51,8 @@
 
 .connect a {
   border: 1px solid #374a5b;
-  color: #374a5b;
-  background-color: #fff;
+  background-color: #374a5b;
+  color: #fff;
   padding: 5px;
   border-radius: 10px;
   font-size: .8em;
@@ -60,8 +60,8 @@
 }
 
 .connect a:hover {
-  background-color: #374a5b;
-  color: #fff;
+  color: #374a5b;
+  background-color: #fff;
 }
 
 .hamburger {

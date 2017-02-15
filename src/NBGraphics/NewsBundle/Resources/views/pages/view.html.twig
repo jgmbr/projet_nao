@@ -2,26 +2,30 @@
 
 {% block body %}
 
+    <div class="container news-details-page">
 
-    <div class="col-sm-12">
-        <div class="col-md-2">
+        <div class="news-details-image">
             {% if article.image is not null %}
                 <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
             {% else %}
                 <i class="fa fa-picture-o fa-5x" aria-hidden="true" style="margin: 20px;"></i>
             {% endif %}
         </div>
-        <div class="col-md-10">
+
+        <div class="news-details-article">
             <h2> {{ article.title }} </h2>
             <p> {{ article.createdAt|date('d/m/Y') }} </p>
             <p> {{ article.content|nl2br }} </p>
         </div>
+
+        <div class="actions">
+            <a href="{{ path('article_list') }}" class="btn btn-primary pull-left">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
+            </a>
+        </div>
+
     </div>
 
-    <div class="actions">
-        <a href="{{ path('article_list') }}" class="btn btn-primary pull-left">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
-        </a>
-    </div>
+
 
 {% endblock %}

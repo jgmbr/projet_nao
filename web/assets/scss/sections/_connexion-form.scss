@@ -1,0 +1,36 @@
+// Page: login.html.twig
+.connexion-form {
+  margin: auto;
+  width: 90%;
+  @media #{$tablet} {
+    width: 70%;
+  }
+  @media #{$desktop} {
+    width: 45%;
+    margin-top: 40px;
+  }
+}
+
+.connexion-form input[type=text],
+.connexion-form input[type=password],
+.connexion-form input[type=submit] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  @media #{$tablet} {
+    display: block;
+  }
+}
+
+.connexion-form input[type=text],
+.connexion-form input[type=password] {
+  outline: none;
+  border: 1px solid #374a5b;
+  border-radius: 5px;
+}
+
+.connexion-form .buttonsGroup {
+  @media #{$tablet} {
+    margin-top: 20px;
+  }
+}

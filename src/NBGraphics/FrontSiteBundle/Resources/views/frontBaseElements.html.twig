@@ -162,26 +162,42 @@
     </div>
 {% endfor %}
 
+{% for flashMsg in app.session.flashBag.get('error') %}
+    <div class="text-center alert alert-danger">
+        {{ flashMsg }}
+    </div>
+{% endfor %}
+
     <div class="header-wrapper">
         <header class="main-header">
             <ul>
                 <li class="logo">
                     <a href="{{ path('nb_graphics_front_site_homepage') }}">
-                        <img src="{{ asset('images/logoOK-bleu.svg') }}" alt="Logo du site">
+                            <img src="{{ asset('images/logoOK-bleu.svg') }}" alt="Logo du site">
                     </a>
                 </li>
                 <li class="header-title">
                     <a href="{{ path('nb_graphics_front_site_homepage') }}">Nos Amis Les Oiseaux</a>
                 </li>
-                <li class="connect">
-                    <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
-                </li>
-                <li class="connect">
-                    <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
-                </li>
-                <li class="connect newletter">
-                    <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
-                </li>
+
+                {% if app.user %}
+                    <li class="connect">
+                        <a title="Espace mon compte" href="{{ path('admin_page') }}">{{ app.user.username }}</a>
+                    </li>
+                {% endif %}
+
+                {% if app.user %}
+                    <li class="connect">
+                        <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="connect">
+                        <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                    </li>
+                    <li class="connect">
+                        <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                    </li>
+                {% endif %}
             </ul>
             <img class="hamburger" src="{{ asset('images/menu.png') }}" alt="Voir le menu">
         </header>
@@ -202,6 +218,26 @@
                     <a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a>
                 </li>
                 {{ render(controller('NBGraphicsNewsBundle:Pages:menuTop')) }}
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Administration</a>
+                        </li>
+                    {% elseif is_granted('ROLE_COLLABORATOR') %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Collaborateur</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('admin_page') }}">Espace Mon Compte </a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+                {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">Quitter la connexion utilisateur</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
 
@@ -209,45 +245,7 @@
     </div><!-- END: header-wrapper  -->
 
 
-
-
-
-
-    <div class="container">
-        <header class="col-sm-12">
-            <h1> HEADER › Home from FrontSiteBundle </h1>
-            {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-                <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i> Quitter la connexion utilisateur
-                </a>
-            {% endif %}
-            {% if app.user %}
-                <p>
-                    Bonjour {{ app.user.username }}
-                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
-                </p>
-            {% endif %}
-        </header>
-
-        <nav class="col-sm-12">
-            <ul>
-                {% if app.user %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Administration </a></li>
-                    {% elseif is_granted('ROLE_COLLABORATOR') %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Collaborateur </a></li>
-                    {% else %}
-                        <li><a href="{{ path('admin_page') }}"> Aller sur Espace Mon Compte </a></li>
-                    {% endif %}
-                {% else %}
-                    <li><a href="{{ path('fos_user_security_login') }}"> Connexion </a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}"> Inscription </a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
-
-    <div class="container">
+    <div class="main-wrapper">
         {% block body %}{% endblock %}
     </div>
 
@@ -271,9 +269,12 @@
                 </ul>
             </section>
             <section>
-                <h3>Liens complémentaires</h3>
+                <h3>L'association Nos Amis Les Oiseaux</h3>
                 <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les liens complémentaires">
                 <ul>
+                    <li>
+                        <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
+                    </li>
                     <li>
                         <a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a>
                     </li>
