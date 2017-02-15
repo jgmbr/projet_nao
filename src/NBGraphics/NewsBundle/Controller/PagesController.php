@@ -55,7 +55,7 @@ class PagesController extends Controller
     /**
      * Finds and displays a article entity.
      *
-     * @Route("/{id}-{slug}", name="article_view")
+     * @Route("/actualite/{id}-{slug}", name="article_view")
      * @Method("GET")
      */
     public function showAction(Article $article)
