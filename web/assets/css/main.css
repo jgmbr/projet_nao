@@ -953,4 +953,35 @@ li {
       float: right;
       padding-left: 10px; } }
 
+.news-details-page {
+  margin-top: 20px; }
+
+.news-details-page .news-details-image {
+  text-align: center; }
+
+.news-details-page .news-details-image img {
+  max-width: 100%; }
+
+.news-details-page .news-details-article h2 {
+  text-align: center;
+  font-size: 1.7em; }
+
+.news-details-page .news-details-article p:first-of-type {
+  text-align: center; }
+
+.news-details-page .news-details-article p:nth-of-type(2) {
+  border-top: 1px solid #5c5c5c;
+  border-bottom: 1px solid #5c5c5c;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.news-details-page .actions {
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .news-details-page .actions {
+      margin-top: 30px; } }
+  @media (min-width: 1024px) {
+    .news-details-page .actions {
+      margin-top: 40px; } }
+
 /*# sourceMappingURL=main.css.map */
