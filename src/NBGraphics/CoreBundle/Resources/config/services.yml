@@ -2,6 +2,8 @@ services:
     app.export:
         class: NBGraphics\CoreBundle\Services\Export\ExportDatas
         arguments: ['@doctrine.orm.entity_manager']
+    app.import.csvtoarray:
+        class: NBGraphics\CoreBundle\Services\Import\ConvertCsvToArray
     app.crud.create:
         class: NBGraphics\CoreBundle\Services\Crud\CreateDatas
         arguments: ['@doctrine.orm.entity_manager']
