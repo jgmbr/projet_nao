@@ -159,7 +159,7 @@
             <ul>
                 <li class="logo">
                     <a href="{{ path('nb_graphics_front_site_homepage') }}">
-                        <img src="{{ asset('images/logoOK-bleu.svg') }}" alt="Logo du site">
+                            <img src="{{ asset('images/logoOK-bleu.svg') }}" alt="Logo du site">
                     </a>
                 </li>
                 <li class="header-title">
@@ -224,9 +224,6 @@
                         <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">Quitter la connexion utilisateur</a>
                     </li>
                 {% endif %}
-                <li>
-                    <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
-                </li>
             </ul>
         </nav>
 
@@ -234,7 +231,7 @@
     </div><!-- END: header-wrapper  -->
 
 
-    <div class="container main-wrapper">
+    <div class="main-wrapper">
         {% block body %}{% endblock %}
     </div>
 
@@ -261,6 +258,9 @@
                 <h3>L'association Nos Amis Les Oiseaux</h3>
                 <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les liens complémentaires">
                 <ul>
+                    <li>
+                        <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
+                    </li>
                     <li>
                         <a href="{{ path('nb_graphics_front_site_terms') }}">Mentions légales</a>
                     </li>
