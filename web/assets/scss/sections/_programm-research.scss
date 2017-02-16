@@ -1,11 +1,12 @@
 // FrontSiteBundle/Ressources/views/main/researchprogramm.html.twig
 .programm-research {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .programm-research h2 {
   font-size: 1.8em;
   color: #374A5B;
+  margin-bottom: 40px;
 }
 
 .programm-research section {
@@ -20,6 +21,11 @@
   margin-top: 0;
   margin-bottom: 20px;
   font-weight: bold;
+  color: #374A5B;
+}
+
+.programm-research section p {
+  text-align: center;
   color: #374A5B;
 }
 

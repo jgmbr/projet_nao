@@ -915,17 +915,54 @@ section {
 .interactive-web-map {
   margin-top: 40px; }
 
-.interactive-web-map #search {
+.interactive-web-map #search,
+.interactive-web-map .searchMap form {
   width: 100%; }
   @media (min-width: 768px) {
-    .interactive-web-map #search {
+    .interactive-web-map #search,
+    .interactive-web-map .searchMap form {
       width: 70%;
       margin: auto; } }
   @media (min-width: 1024px) {
-    .interactive-web-map #search {
-      width: 55%; } }
+    .interactive-web-map #search,
+    .interactive-web-map .searchMap form {
+      width: 80%;
+      margin: auto; } }
 
+.interactive-web-map .searchForm {
+  display: flex;
+  flex-direction: column; }
+  @media (min-width: 1024px) {
+    .interactive-web-map .searchForm {
+      flex-direction: row;
+      justify-content: space-between; } }
+
+@media (min-width: 1024px) {
+  .interactive-web-map .searchForm .form-group:first-child,
+  #nbgraphics_corebundle_criteria_maps .form-group:first-child {
+    width: 35%; }
+
+  .interactive-web-map .searchForm .form-group:last-child,
+  #nbgraphics_corebundle_criteria_maps .form-group:nth-of-type(3) {
+    width: 35%; } }
 .interactive-web-map #btnSearch {
+  width: 100%; }
+  @media (min-width: 1024px) {
+    .interactive-web-map #btnSearch {
+      width: 60%;
+      margin: 50px auto 0;
+      display: block; } }
+
+#nbgraphics_corebundle_criteria_maps {
+  display: flex;
+  flex-direction: column; }
+  @media (min-width: 1024px) {
+    #nbgraphics_corebundle_criteria_maps {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end; } }
+
+.interactive-web-map .searchMap form #btnGeoloc {
   width: 100%; }
 
 .map-container #map {
@@ -1114,11 +1151,12 @@ section {
       margin-top: 40px; } }
 
 .programm-research {
-  margin-top: 20px; }
+  margin-top: 50px; }
 
 .programm-research h2 {
   font-size: 1.8em;
-  color: #374A5B; }
+  color: #374A5B;
+  margin-bottom: 40px; }
 
 .programm-research section {
   margin-top: 20px;
@@ -1131,6 +1169,10 @@ section {
   margin-top: 0;
   margin-bottom: 20px;
   font-weight: bold;
+  color: #374A5B; }
+
+.programm-research section p {
+  text-align: center;
   color: #374A5B; }
 
 .programm-research-svg {

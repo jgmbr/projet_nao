@@ -8,10 +8,16 @@
             Bienvenue sur notre onglet de recherche intéractif.
         </h2>
 
-        <section id="search">
         <h3>Rechercher un oiseau</h3>
+        <section id="search">
+
         {{ form_start(searchForm, {'attr': {'class': '', 'role': 'form'}}) }}
-        {{ form_widget(searchForm) }}
+            <div class="searchForm">
+                {{ form_row(searchForm.famille) }}
+                {{ form_row(searchForm.step) }}
+                {{ form_row(searchForm.oiseau) }}
+            </div>
+            {{ form_row(searchForm.search) }}
         {{ form_end(searchForm) }}
         </section>
 
@@ -102,9 +108,11 @@
 
             <hr>
             <h3>Affiner la carte intéractive</h3>
-            {{ form_start(criteriaMapsForm) }}
-            {{ form_widget(criteriaMapsForm) }}
-            {{ form_end(criteriaMapsForm) }}
+            <div class="searchMap">
+                {{ form_start(criteriaMapsForm) }}
+                {{ form_widget(criteriaMapsForm) }}
+                {{ form_end(criteriaMapsForm) }}
+            </div>
 
             <hr>
             <div class="form-group map-container">
