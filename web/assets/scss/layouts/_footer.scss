@@ -4,20 +4,19 @@
   padding: 10px;
   background-color: #2c3e50;
   color: #fff;
-  display: flex;
-  flex-direction: column-reverse;
   @media #{$desktop} {
+    display: flex;
     flex-direction: row-reverse;
     padding: 10px 20px;
   }
 }
 
 .main-footer section {
-  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
   position: relative;
   @media #{$desktop} {
     width: 32%;
-    border-top: none;
+    border-bottom: none;
     border-left: 1px solid #bbb;
     margin-left: 10px;
     padding-left: 10px;
@@ -25,29 +24,22 @@
 }
 
 .main-footer section:last-child {
-  border-top: none;
+  border-bottom: none;
   @media #{$desktop} {
     border-left: none;
   }
 }
 
-.main-footer section:last-child h3 {
-  text-align: center;
-}
-
 .main-footer section h3 {
   text-align: left;
   font-size: 1em;
-  @media #{$tablet} {
-    text-align: center;
-  }
 }
 
 .main-footer section img {
   height: 30px;
   position: absolute;
   right: 0;
-  top: 13px;
+  top: -7px;
   opacity: .7;
   cursor: pointer;
   @media #{$tablet} {
@@ -62,20 +54,17 @@
 .main-footer section ul {
   display: none;
   @media #{$tablet} {
-    display: flex !important;
-    justify-content: center;
+    display: block !important;
   }
 }
 
-.main-footer .links li,
-.main-footer .social-links li {
-  @media #{$tablet} {
-    margin-right: 10px;
-  }
+.main-footer .social-links a {
+  margin-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .main-footer section p {
-  text-align: center;
   font-size: .9em;
 }
 
