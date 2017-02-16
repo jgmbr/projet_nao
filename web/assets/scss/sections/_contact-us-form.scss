@@ -1,3 +1,23 @@
+.contact-us-form {
+  margin-top: 40px;
+  @media #{$tablet} {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media #{$desktop} {
+    width: 45%;
+  }
+}
+
+.contact-us-form .form-group:last-of-type {
+  margin-top: 30px;
+}
+
+.contact-us-form #contact_form_captcha {
+  margin-top: 10px;
+}
+
 .contact-us-form label,
 .contact-us-form input,
 .contact-us-form textarea {
@@ -19,4 +39,5 @@
 
 .contact-us-form .btn {
   color: #fff;
+  width: 100%;
 }

@@ -975,6 +975,23 @@ section {
   width: 100%;
   height: 250px; }
 
+.contact-us-form {
+  margin-top: 40px; }
+  @media (min-width: 768px) {
+    .contact-us-form {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media (min-width: 1024px) {
+    .contact-us-form {
+      width: 45%; } }
+
+.contact-us-form .form-group:last-of-type {
+  margin-top: 30px; }
+
+.contact-us-form #contact_form_captcha {
+  margin-top: 10px; }
+
 .contact-us-form label,
 .contact-us-form input,
 .contact-us-form textarea {
@@ -992,7 +1009,8 @@ section {
   outline-color: #374a5b; }
 
 .contact-us-form .btn {
-  color: #fff; }
+  color: #fff;
+  width: 100%; }
 
 .register-form {
   width: 100%; }
@@ -1211,5 +1229,36 @@ section {
 
 .programm-research-btn a {
   color: #fff; }
+
+.newsletter-form {
+  width: 100%;
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .newsletter-form {
+      width: 70%;
+      margin: 20px auto 0; } }
+  @media (min-width: 1024px) {
+    .newsletter-form {
+      width: 45%;
+      margin-top: 60px; } }
+
+.newsletter-form h2 {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 40px; }
+
+.newsletter-form input[type=email] {
+  cursor: pointer;
+  transition: .4s; }
+
+.newsletter-form input[type=email]:hover {
+  border: 1px solid #374a5b; }
+
+.newsletter-form input[type=email]:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b; }
+
+.newsletter-form input[type=submit] {
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

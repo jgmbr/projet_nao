@@ -1,0 +1,38 @@
+// FrontSiteBundle/Resources/views/main/newsletter.html.twig
+
+.newsletter-form {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    width: 70%;
+    margin: 20px auto 0;
+  }
+  @media #{$desktop} {
+    width: 45%;
+    margin-top: 60px;
+  }
+}
+
+.newsletter-form h2 {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.newsletter-form input[type=email] {
+  cursor: pointer;
+  transition: .4s;
+}
+
+.newsletter-form input[type=email]:hover {
+  border: 1px solid #374a5b;
+}
+
+.newsletter-form input[type=email]:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b;
+}
+
+.newsletter-form input[type=submit] {
+  width: 100%;
+}
