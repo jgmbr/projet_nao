@@ -1334,4 +1334,66 @@ section {
   padding-left: 0;
   text-align: justify; }
 
+@keyframes apparition {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.error-page {
+  width: 100%;
+  margin: 40px auto; }
+  @media (min-width: 768px) {
+    .error-page {
+      width: 70%; } }
+  @media (min-width: 1024px) {
+    .error-page {
+      width: 55%; } }
+
+.error-page h2 {
+  animation: apparition .8s 9.5s linear backwards;
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: -60px;
+  margin-bottom: 100px; }
+  @media (min-width: 768px) {
+    .error-page h2 {
+      font-size: 1.6em; } }
+  @media (min-width: 1024px) {
+    .error-page h2 {
+      font-size: 1.8em; } }
+
+.error-page .svg-icon {
+  max-width: 350px;
+  margin: auto; }
+
+.error-page .svg-icon svg {
+  max-width: 100%; }
+
+.circle {
+  animation: apparition .8s .5s linear backwards; }
+
+.first-polygon {
+  animation: apparition .8s 1.5s linear backwards; }
+
+.second-polygon {
+  animation: apparition .8s 2.5s linear backwards; }
+
+.third-polygon {
+  animation: apparition .8s 3.5s linear backwards; }
+
+.fourth-polygon {
+  animation: apparition .8s 4.5s linear backwards; }
+
+.fifth-polygon {
+  animation: apparition .8s 5.5s linear backwards; }
+
+.sixth-polygon {
+  animation: apparition .8s 6.5s linear backwards; }
+
+.seventh-polygon {
+  animation: apparition .8s 7.5s linear backwards; }
+
+.eighth-polygon {
+  animation: apparition .8s 8.5s linear backwards; }
+
 /*# sourceMappingURL=main.css.map */
