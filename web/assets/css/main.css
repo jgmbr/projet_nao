@@ -1309,4 +1309,29 @@ section {
 .newsletter-form input[type=submit] {
   width: 100%; }
 
+.terms-page {
+  width: 100%;
+  margin: 40px auto 0; }
+  @media (min-width: 768px) {
+    .terms-page {
+      width: 70%; } }
+  @media (min-width: 1024px) {
+    .terms-page {
+      width: 55%; } }
+
+.terms-page h2 {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 20px; }
+  @media (min-width: 768px) {
+    .terms-page h2 {
+      font-size: 1.6em; } }
+  @media (min-width: 1024px) {
+    .terms-page h2 {
+      font-size: 1.8em; } }
+
+.terms-page section {
+  padding-left: 0;
+  text-align: justify; }
+
 /*# sourceMappingURL=main.css.map */

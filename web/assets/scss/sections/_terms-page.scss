@@ -1,0 +1,31 @@
+// FrontSiteBundle/Resources/views/main/terms.html.twig
+// &
+// FrontSiteBundle/Resources/views/main/credits.html.twig
+
+.terms-page {
+  width: 100%;
+  margin: 40px auto 0;
+  @media #{$tablet} {
+    width: 70%;
+  }
+  @media #{$desktop} {
+    width: 55%;
+  }
+}
+
+.terms-page h2 {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  @media #{$tablet} {
+    font-size: 1.6em;
+  }
+  @media #{$desktop} {
+    font-size: 1.8em;
+  }
+}
+
+.terms-page section {
+  padding-left: 0;
+  text-align: justify;
+}
