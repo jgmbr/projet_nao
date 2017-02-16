@@ -1,7 +1,14 @@
-// views/pages/list.html.twig
+// NewsBundle/Resources/views/pages/list.html.twig
 .news-main-page {
   margin-top: 20px;
   margin-bottom: 0;
+  @media #{$tablet} {
+    width: 70%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 60%;
+  }
 }
 
 .news-container {
@@ -41,22 +48,27 @@
 }
 
 .news-container .news-image {
-  width: 100%;
+  width: 60%;
+  text-align: center;
+  margin: auto;
   @media #{$tablet} {
-    width: 40%;
+    width: 20%;
     float: left;
   }
 }
 
 .news-container .news-image img {
   max-width: 100%;
+  @media #{$desktop} {
+    max-height: 150px;
+  }
 }
 
 .news-container .news-paragraph {
   padding: 10px;
   @media #{$tablet} {
-    width: 60%;
-    float: right;
+    width: 80%;
+    float: left;
     padding-left: 10px;
   }
 }

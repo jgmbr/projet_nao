@@ -2,26 +2,28 @@
 
 {% block body %}
 
-    <div class="row show-results">
-        <div class="col-sm-4">
-            {% if bird.image %}
-                <img {#src="/uploads/img/{{ bird.image.url | imagine_filter('my_thumb') }}"#}
-                     src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
-                     alt="{{ bird.image.alt }}"
-                >
-            {% else %}
-                <img src="{{ asset('images/400px-Image_manquante_2.svg.png')|imagine_filter('my_thumb') }}" alt="Image manquante">
-            {% endif %}
+    <div class="container">
 
+        <div class="show-results">
+            <div class="col-sm-4">
+                {% if bird.image %}
+                    <img {#src="/uploads/img/{{ bird.image.url | imagine_filter('my_thumb') }}"#}
+                         src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
+                         alt="{{ bird.image.alt }}"
+                    >
+                {% else %}
+                    <img src="{{ asset('images/400px-Image_manquante_2.svg.png')|imagine_filter('my_thumb') }}" alt="Image manquante">
+                {% endif %}
+
+            </div>
+            <div class="col-sm-offset-2 col-sm-6">
+                <div id="map"></div>
+            </div>
         </div>
-        <div class="col-sm-offset-2 col-sm-6">
-            <div id="map"></div>
-        </div>
-    </div>
 
-    <hr>
+        <hr>
 
-    <div class="row">
+
         <table class="table table-hover">
             <caption>Résultat de l'observation n°{{ bird.id }}</caption>
             <thead>
@@ -80,7 +82,6 @@
             </tbody>
         </table>
     </div>
-
 
 {% endblock %}
 

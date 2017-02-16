@@ -1,7 +1,27 @@
 // Interactive Web Map
+
+.interactive-web-map {
+  margin-top: 40px;
+}
+
+.interactive-web-map #search {
+  width: 100%;
+  @media #{$tablet} {
+    width: 70%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 55%;
+  }
+}
+
+.interactive-web-map #btnSearch {
+  width: 100%;
+}
+
 .map-container #map {
   height: 500px;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

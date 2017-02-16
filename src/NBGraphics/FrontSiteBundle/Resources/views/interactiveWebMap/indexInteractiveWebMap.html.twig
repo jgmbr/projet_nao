@@ -1,114 +1,118 @@
 {% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
 
 {% block body %}
-    <h2>
-        Bienvenue sur notre carte intéractive
-    </h2>
 
-    <section id="search">
-    <h3>Rechercher un oiseau</h3>
-    {{ form_start(searchForm, {'attr': {'class': '', 'role': 'form'}}) }}
-    {{ form_widget(searchForm) }}
-    {{ form_end(searchForm) }}
-    </section>
+    <div class="container interactive-web-map">
 
-    {% if resultsPerBird %}
-        <div class="dataTables_wrapper">
-            <table id="results" class="table table-hover dataTable">
-                <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
-                <thead>
-                    <tr>
-                        <th>Observation n°</th>
-                        <th>Famille de l'oiseau observé</th>
-                        <th>Oiseau observé</th>
-                        <th>Date de l'observation</th>
-                        <th>Département</th>
-                        <th>Observation en détail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for bird in resultsPerBird %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ bird.taxref.famille }}</td>
-                        <td>{{ bird.taxref.nomVern }}</td>
-                        <td>{{ bird.dateAt|date('d/m/Y') }}</td>
-                        <td>{{ bird.departement }}</td>
-                        <td>
-                            <a class="btn btn-default"
-                               href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                                   'birdObs': bird.id
-                               }) }}">
-                                Voir l'observation
-                            </a>
-                        </td>
-                    </tr>
+        <h2 class="text-center">
+            Bienvenue sur notre onglet de recherche intéractif.
+        </h2>
+
+        <section id="search">
+        <h3>Rechercher un oiseau</h3>
+        {{ form_start(searchForm, {'attr': {'class': '', 'role': 'form'}}) }}
+        {{ form_widget(searchForm) }}
+        {{ form_end(searchForm) }}
+        </section>
+
+        {% if resultsPerBird %}
+            <div class="dataTables_wrapper">
+                <table id="results" class="table table-hover dataTable">
+                    <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
+                    <thead>
+                        <tr>
+                            <th>Observation n°</th>
+                            <th>Famille de l'oiseau observé</th>
+                            <th>Oiseau observé</th>
+                            <th>Date de l'observation</th>
+                            <th>Département</th>
+                            <th>Observation en détail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bird in resultsPerBird %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ bird.taxref.famille }}</td>
+                            <td>{{ bird.taxref.nomVern }}</td>
+                            <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                            <td>{{ bird.departement }}</td>
+                            <td>
+                                <a class="btn btn-default"
+                                   href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                                       'birdObs': bird.id
+                                   }) }}">
+                                    Voir l'observation
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+            <h3>Affiner la carte intéractive</h3>
+            {{ form_start(criteriaMapsForm) }}
+            {{ form_widget(criteriaMapsForm) }}
+            {{ form_end(criteriaMapsForm) }}
+
+            <hr>
+            <div class="form-group map-container">
+                <div id="map"></div>
+            </div>
+
+        {% endif %}
+
+        {% if resultsPerFamily %}
+            <div class="dataTables_wrapper table-responsive">
+                <table id="results" class="table table-hover dataTable">
+                    <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
+                    <thead>
+                        <tr>
+                            <th>Observation n°</th>
+                            <th>Famille de l'oiseau observé</th>
+                            <th>Oiseau observé</th>
+                            <th>Date de l'observation</th>
+                            <th>Département</th>
+                            <th>Observation en détail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for bird in resultsPerFamily %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ bird.taxref.famille }}</td>
+                            <td>{{ bird.taxref.nomVern }}</td>
+                            <td>{{ bird.dateAt|date('d/m/Y') }}</td>
+                            <td>{{ bird.departement }}</td>
+                            <td>
+                                <a class="btn btn-default"
+                                   href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                                       'birdObs': bird.id
+                                   }) }}">
+                                    Voir l'observation
+                                </a>
+                            </td>
+                        </tr>
                     {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+            </div>
 
-        <hr>
-        <h3>Affiner la carte intéractive</h3>
-        {{ form_start(criteriaMapsForm) }}
-        {{ form_widget(criteriaMapsForm) }}
-        {{ form_end(criteriaMapsForm) }}
+            <hr>
+            <h3>Affiner la carte intéractive</h3>
+            {{ form_start(criteriaMapsForm) }}
+            {{ form_widget(criteriaMapsForm) }}
+            {{ form_end(criteriaMapsForm) }}
 
-        <hr>
-        <div class="form-group map-container">
-            <div id="map"></div>
-        </div>
+            <hr>
+            <div class="form-group map-container">
+                <div id="map"></div>
+            </div>
+        {% endif %}
 
-    {% endif %}
-
-    {% if resultsPerFamily %}
-        <div class="dataTables_wrapper">
-            <table id="results" class="table table-hover dataTable">
-                <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
-                <thead>
-                    <tr>
-                        <th>Observation n°</th>
-                        <th>Famille de l'oiseau observé</th>
-                        <th>Oiseau observé</th>
-                        <th>Date de l'observation</th>
-                        <th>Département</th>
-                        <th>Observation en détail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for bird in resultsPerFamily %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ bird.taxref.famille }}</td>
-                        <td>{{ bird.taxref.nomVern }}</td>
-                        <td>{{ bird.dateAt|date('d/m/Y') }}</td>
-                        <td>{{ bird.departement }}</td>
-                        <td>
-                            <a class="btn btn-default"
-                               href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
-                                   'birdObs': bird.id
-                               }) }}">
-                                Voir l'observation
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-        <hr>
-        <h3>Affiner la carte intéractive</h3>
-        {{ form_start(criteriaMapsForm) }}
-        {{ form_widget(criteriaMapsForm) }}
-        {{ form_end(criteriaMapsForm) }}
-
-        <hr>
-        <div class="form-group map-container">
-            <div id="map"></div>
-        </div>
-    {% endif %}
-
+    </div>
 
 {% endblock%}
 
@@ -133,7 +137,7 @@
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: myLatLng,
                     scrollwheel: false,
-                    zoom: 6,
+                    zoom: 4,
                     {% if is_granted('ROLE_ADMIN') %}
                     maxZoom: 18,
                     {% else %}

@@ -84,6 +84,9 @@
                 {% endif %}
             </ul>
             <img class="hamburger" src="{{ asset('images/menu.png') }}" alt="Voir le menu">
+            <h1 class="second-header-title">
+                <a href="{{ path('nb_graphics_front_site_homepage') }}">Nos Amis Les Oiseaux</a>
+            </h1>
         </header>
 
 
@@ -139,23 +142,31 @@
                 <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les réseaux sociaux">
                 <ul class="social-links">
                     <li class="facebook">
-                        <a href="#">Facebook</a>
+                        <a href="#">
+                            <i class="fa fa-2x fa-facebook"></i>
+                        </a>
                     </li>
                     <li class="twitter">
-                        <a href="#">Twitter</a>
+                        <a href="#">
+                            <i class="fa fa-2x fa-twitter"></i>
+                        </a>
                     </li>
                     <li class="instagram">
-                        <a href="#">Instagram</a>
+                        <a href="#">
+                            <i class="fa fa-2x fa-instagram"></i>
+                        </a>
                     </li>
                     <li class="youtube">
-                        <a href="#">Youtube</a>
+                        <a href="#">
+                            <i class="fa fa-2x fa-youtube"></i>
+                        </a>
                     </li>
                 </ul>
             </section>
             <section>
                 <h3>L'association Nos Amis Les Oiseaux</h3>
                 <img class="right-arrow" src="{{ asset('images/icon-right-arrow.svg') }}" alt="Voir les liens complémentaires">
-                <ul>
+                <ul class="links">
                     <li>
                         <a href="{{ path('nb_graphics_front_site_newsletter') }}">S'inscrire à la newsletter</a>
                     </li>

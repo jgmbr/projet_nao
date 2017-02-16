@@ -5,7 +5,7 @@ var initMap = function() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 6
+        zoom: 4
     });
 };
 
