@@ -141,7 +141,7 @@ class ImportCommand extends ContainerAwareCommand
     {
         $str = str_replace('?','',$str);
 
-        $str = utf8_decode($str);
+        $str = utf8_encode($str);
 
         return $str;
     }
