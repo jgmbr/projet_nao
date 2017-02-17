@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Thomas
- * Date: 08/02/2017
- * Time: 18:55
- */
 
 namespace NBGraphics\CoreBundle\Services\Email;
 
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class EmailContactFormSystem
+class EmailRegistrationFormSystem
 {
     private $mailer;
     private $templating;
@@ -22,24 +16,28 @@ class EmailContactFormSystem
         $this->templating = $templating;
     }
 
-    public function sendEmail($messageData)
+    public function sendEmail($user)
     {
 
         $mail = \Swift_Message::newInstance()
-            ->setSubject('Nos Amis Les Oiseaux › nouveau message')
+            ->setSubject('Nos Amis Les Oiseaux › Confirmation d\'inscription')
             ->setFrom('contact@nos-amis-les-oiseaux.fr')
             // Addresse e-mail à modifier pour celle du président
-            ->setTo('Thomas.dimnet@gmail.com')
+            ->setTo($user->getEmail())
             ->setBody(
                 $this->templating->render(
-                    '@NBGraphicsFrontSite/emails/contactFormEmail.html.twig', [
-                        'message' => $messageData,
+                    '@NBGraphicsFrontSite/emails/contactFormRegistration.html.twig', [
+                        'user' => $user,
                     ]
                 ),
                 'text/html'
             );
 
-        $this->mailer->send($mail);
+
+        if ($this->mailer->send($mail))
+            return true;
+        else
+            return false;
 
 
     }

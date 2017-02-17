@@ -16,6 +16,9 @@ services:
     app.email.contact.form:
         class: NBGraphics\CoreBundle\Services\Email\EmailContactFormSystem
         arguments: ["@mailer", "@templating"]
+    app.email.registration.form:
+        class: NBGraphics\CoreBundle\Services\Email\EmailRegistrationFormSystem
+        arguments: ["@mailer", "@templating"]
     app.listener.observation:
         class: NBGraphics\CoreBundle\EventListener\ObservationListener
         tags:
