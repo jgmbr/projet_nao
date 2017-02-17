@@ -29,33 +29,36 @@ class ImportCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // outputs multiple lines to the console (adding "\n" at the end of each line)
-        $output->writeln([
+        $output->writeln(array(
             '',
             '=====================',
             ' Start import TAXREF ',
             '=====================',
             '',
+        ));
+
+        $output->writeln([
+            '',
+            'You are about to update TAXREF in database',
+            '',
         ]);
 
         $now = new \DateTime();
-        $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
+        $output->writeln(array('','<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' </comment>',''));
 
         // Importing CSV on DB via Doctrine ORM
         $this->import($input, $output);
 
         $now = new \DateTime();
-        $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
+        $output->writeln(array('','<comment>End : ' . $now->format('d-m-Y G:i:s') . ' </comment>',''));
 
-        // outputs a message without adding a "\n" at the end of the line
-        $output->writeln('You are about to update TAXREF in database');
-
-        $output->writeln([
+        $output->writeln(array(
             '',
             '===================',
             ' End import TAXREF ',
             '===================',
             '',
-        ]);
+        ));
     }
 
     protected function import(InputInterface $input, OutputInterface $output)
@@ -70,7 +73,7 @@ class ImportCommand extends ContainerAwareCommand
 
         // Define the size of record, the frequency for persisting the data and the current index of records
         $size = count($data);
-        $batchSize = 100;
+        $batchSize = 20;
         $i = 1;
 
         // Starting progress
@@ -119,9 +122,6 @@ class ImportCommand extends ContainerAwareCommand
 
                 // Advancing for progress display on console
                 $progress->advance($batchSize);
-
-                $now = new \DateTime();
-                $output->writeln(' of TAXREF imported ... | ' . $now->format('d-m-Y G:i:s'));
 
             }
 
