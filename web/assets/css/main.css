@@ -1476,6 +1476,12 @@ nav:hover .forAnimate {
     width: 50%;
     padding: 0 10px; } }
 
+.index-back-end .info-group .info-box-container .info-box {
+  transition: .4s; }
+
+.index-back-end .info-group .info-box-container .info-box:hover {
+  background-color: #F7F5F0; }
+
 .index-back-end h3 {
   margin-top: 20px;
   padding-top: 20px;
