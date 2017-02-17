@@ -20,7 +20,7 @@
 
                     {% if article.image is not null %}
                         <a class="news-image" href="{{ path('article_view',{'id': article.id, 'slug': article.slug}) }}">
-                            <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+                            <img src="{{ asset('uploads/img_article/' ~ article.image.url) | imagine_filter('my_thumb') }}" />
                         </a>
                     {% else %}
                         <i class="fa fa-picture-o fa-5x" aria-hidden="true" style="margin: 20px;"></i>

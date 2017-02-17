@@ -27,6 +27,13 @@
 .programm-research section p {
   text-align: center;
   color: #374A5B;
+  @media #{$tablet} {
+    width: 80%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 60%;
+  }
 }
 
 .programm-research-svg {

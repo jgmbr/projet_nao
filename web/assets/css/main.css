@@ -1241,7 +1241,7 @@ nav:hover .forAnimate {
   max-width: 100%; }
   @media (min-width: 1024px) {
     .news-container .news-image img {
-      max-height: 150px; } }
+      max-height: 250px; } }
 
 .news-container .news-paragraph {
   padding: 10px; }
@@ -1306,6 +1306,13 @@ nav:hover .forAnimate {
 .programm-research section p {
   text-align: center;
   color: #374A5B; }
+  @media (min-width: 768px) {
+    .programm-research section p {
+      width: 80%;
+      margin: auto; } }
+  @media (min-width: 1024px) {
+    .programm-research section p {
+      width: 60%; } }
 
 .programm-research-svg {
   width: 40%;
