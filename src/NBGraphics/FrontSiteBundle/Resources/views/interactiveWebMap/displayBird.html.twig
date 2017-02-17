@@ -2,26 +2,37 @@
 
 {% block body %}
 
-    <div class="row show-results">
-        <div class="col-sm-4">
+    <div class="container display-bird">
+
+        <header class="display-bird-header">
+            <h2>
+                Observation sélectionnée :
+                <strong>{{ bird.taxref.nomVern }}</strong>.
+            </h2>
+
+            <a class="btn btn-primary prev-step" href="{{ path('nb_graphics_front_site_interactivewebmap') }}">
+                Revenir à la carte
+            </a>
+        </header>
+
+
+        <div class="show-results">
             {% if bird.image %}
-                <img {#src="/uploads/img/{{ bird.image.url | imagine_filter('my_thumb') }}"#}
-                     src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
-                     alt="{{ bird.image.alt }}"
+                <img
+                        class="bird-image"
+                        src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
+                        alt="Photographie de {{ bird.taxref.nomVern }}"
                 >
             {% else %}
                 <img src="{{ asset('images/400px-Image_manquante_2.svg.png')|imagine_filter('my_thumb') }}" alt="Image manquante">
             {% endif %}
-
-        </div>
-        <div class="col-sm-offset-2 col-sm-6">
             <div id="map"></div>
         </div>
-    </div>
 
-    <hr>
+        <hr>
 
-    <div class="row">
+
+        <div class="table-responsive">
         <table class="table table-hover">
             <caption>Résultat de l'observation n°{{ bird.id }}</caption>
             <thead>
@@ -79,8 +90,10 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+        </div>
 
+
+    </div> <!-- End: display-bird Container -->
 
 {% endblock %}
 

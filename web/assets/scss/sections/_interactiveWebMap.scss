@@ -1,7 +1,69 @@
 // Interactive Web Map
+.interactive-web-map {
+  margin-top: 40px;
+}
+
+.interactive-web-map #search,
+.interactive-web-map .searchMap form {
+  width: 100%;
+  @media #{$tablet} {
+    width: 70%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.interactive-web-map .searchForm {
+  display: flex;
+  flex-direction: column;
+  @media #{$desktop} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media #{$desktop} {
+  .interactive-web-map .searchForm .form-group:first-child,
+  #nbgraphics_corebundle_criteria_maps .form-group:first-child {
+    width: 35%;
+  }
+  .interactive-web-map .searchForm .form-group:last-child,
+  #nbgraphics_corebundle_criteria_maps .form-group:nth-of-type(3) {
+    width: 35%;
+  }
+}
+
+.interactive-web-map #btnSearch {
+  width: 100%;
+  @media #{$desktop} {
+    width: 60%;
+    margin: 50px auto 0;
+
+    display: block;
+  }
+}
+
+#nbgraphics_corebundle_criteria_maps {
+  display: flex;
+  flex-direction: column;
+  @media #{$desktop} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+
+.interactive-web-map .searchMap form #btnGeoloc {
+  width: 100%;
+}
+
 .map-container #map {
   height: 500px;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

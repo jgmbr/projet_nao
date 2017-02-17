@@ -7,42 +7,56 @@
 {% block body %}
     <div class="home-page-wrapper">
         <video class="video" autoplay muted loop>
-            <source src="https://s3.amazonaws.com/codecademy-content/projects/excursion/bg.mp4" type="video/mp4">
+            <source src="{{ asset('video/inter.mp4') }}" type="video/mp4">
+            <source src="{{ asset('video/NAO_theora.ogg') }}" type="video/ogg">
         </video>
         <h2>Notre programme d'observation</h2>
         <p>
-            <a href="{{ path('nb_graphics_front_site_submitobservation') }}">Participer</a>
+          {% if app.user %}
+              <a href="{{ path('nb_graphics_front_site_submitobservation') }}">
+                  Observer
+              </a>
+          {% else %}
+          <a href="{{ path('fos_user_registration_register') }}">
+              Participer
+          </a>
+          {% endif %}
         </p>
     </div>
 
     <main class="home-page-main">
-        <h2>Un super titre trop vendeur</h2>
-        <section>
-            <img src="../../../{{ asset('images/portfolio-6.png') }}" alt="Image à changer">
-            <div class="desktop-container">
-                <h3>La carte interactive</h3>
-                <p>
-                    Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar.
-                </p>
-            </div>
-        </section>
-        <section>
-            <img src="{{ asset('images/portfolio-11.png') }}" alt="Image à changer">
-            <div class="desktop-container">
-                <h3>Transmettez vos observations facilement</h3>
-                <p>
-                    Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
-                </p>
-            </div>
-        </section>
-        <section>
-            <img src="{{ asset('images/portfolio-14.png') }}" alt="Image à changer">
-            <div class="desktop-container">
-                <h3>Un programme ambitieux</h3>
-                <p>
-                    Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
-                </p>
-            </div>
-        </section>
+        <h2>Le plus ambitieux programme d'observation jamais créé.</h2>
+        <div class="home-page-desktop">
+            <section>
+                <a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">
+                    <img src="../../../{{ asset('images/portfolio-6.png') }}" alt="Image à changer">
+                </a>
+
+                    <h3>La carte interactive</h3>
+                    <p>
+                        Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar.
+                    </p>
+            </section>
+            <section>
+                <a href="{{ path('nb_graphics_front_site_submitobservation') }}">
+                    <img src="{{ asset('images/portfolio-11.png') }}" alt="Image à changer">
+                </a>
+
+                    <h3>Transmettez vos observations facilement</h3>
+                    <p>
+                        Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
+                    </p>
+            </section>
+            <section>
+                <a href="{{ path('nb_graphics_front_site_researchprogramm') }}">
+                    <img src="{{ asset('images/portfolio-14.png') }}" alt="Image à changer">
+                </a>
+
+                    <h3>Une gestion intuitive des observations.</h3>
+                    <p>
+                        Hac ita persuasione reducti intra moenia bellatores obseratis undique portarum aditibus, propugnaculis insistebant et pinnis.
+                    </p>
+            </section>
+        </div>
     </main>
 {% endblock %}

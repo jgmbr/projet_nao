@@ -1,0 +1,74 @@
+// NewsBundle/Resources/views/pages/list.html.twig
+.news-main-page {
+  margin-top: 20px;
+  margin-bottom: 0;
+  @media #{$tablet} {
+    width: 70%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 60%;
+  }
+}
+
+.news-container {
+  margin-top: 40px;
+  padding-bottom: 40px;
+  border-bottom: 2px solid black;
+}
+
+.news-container .news-title h2 {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.news-container .news-title h2 a {
+  opacity: .8;
+  transition: .4s;
+}
+
+.news-container .news-title h2 a:hover {
+  opacity: 1;
+}
+
+.news-container .news-title .created-at {
+  text-align: center;
+  @media #{$tablet} {
+    margin-left: auto;
+    font-size: .9em;
+  }
+}
+
+@media #{$tablet} {
+  .news-container .news-title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+}
+
+.news-container .news-image {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+  @media #{$tablet} {
+    width: 20%;
+    float: left;
+  }
+}
+
+.news-container .news-image img {
+  max-width: 100%;
+  @media #{$desktop} {
+    max-height: 150px;
+  }
+}
+
+.news-container .news-paragraph {
+  padding: 10px;
+  @media #{$tablet} {
+    width: 80%;
+    float: left;
+    padding-left: 10px;
+  }
+}

@@ -1,13 +1,17 @@
 // Main nav
 .main-nav {
   padding: 0 10px;
+  @media #{$tablet} {
+    background-color: #374a5b;
+  }
 }
 
 .main-nav ul {
   display: none;
   @media #{$tablet} {
     display: flex !important;
-    margin-top: 10px;
+    margin: 0;
+    padding: 10px 0;
     align-items: center;
   }
   @media #{$desktop} {
@@ -18,7 +22,7 @@
 .main-nav li {
   text-align: center;
   @media #{$tablet} {
-    border-right: 1px solid #374a5b;
+    border-right: 1px solid #ddd;
   }
 }
 
@@ -41,7 +45,11 @@
   transition: .4s;
   text-transform: capitalize;
   font-size: 1em;
-  opacity: .8;
+
+  @media #{$tablet} {
+    color: #fff;
+    opacity: .6;
+  }
 }
 
 .main-nav li a:hover {
@@ -49,7 +57,7 @@
   color: #fff;
   @media #{$tablet} {
     background-color: unset;
-    color: #222222;
+    color: #fff;
     opacity: 1;
   }
 }

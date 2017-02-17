@@ -1,0 +1,74 @@
+// FrontSiteBundle/Ressources/views/main/researchprogramm.html.twig
+.programm-research {
+  margin-top: 50px;
+}
+
+.programm-research h2 {
+  font-size: 1.8em;
+  color: #374A5B;
+  margin-bottom: 40px;
+}
+
+.programm-research section {
+  margin-top: 20px;
+  padding-left: 0;
+  border-top: 1px solid #5c5c5c;
+}
+
+.programm-research section h3 {
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #374A5B;
+}
+
+.programm-research section p {
+  text-align: center;
+  color: #374A5B;
+}
+
+.programm-research-svg {
+  width: 40%;
+  margin: 20px auto 0;
+  @media #{$tablet} {
+    width: 25%;
+  }
+  @media #{$desktop} {
+    width: 15%;
+  }
+}
+
+.programm-research-svg svg {
+  max-width: 100%;
+}
+
+.programm-research-svg svg path {
+  fill: #5c5c5c;
+}
+
+.programm-research-svg svg:hover path {
+  fill: #374A5B;
+}
+
+.programm-research-btn {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #374A5B;
+}
+
+.programm-research-btn .btn {
+  width: 100%;
+  @media #{$tablet} {
+    width: 70%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 40%;
+  }
+}
+
+.programm-research-btn a {
+  color: #fff;
+}

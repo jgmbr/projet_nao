@@ -8,13 +8,14 @@
 .main-header {
   position: relative;
   border-bottom: 1px solid #374a5b;
-  background-color: #ecf0f1;
+  background-color: #fff;
 }
 
 .main-header ul {
   display: flex;
   align-items: center;
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .logo img {
@@ -26,6 +27,17 @@
   @media #{$tablet} {
     display: inherit;
     font-size: 1.4em;
+  }
+}
+
+// Only for mobile devices
+.second-header-title {
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  @media #{$tablet} {
+    display: none;
   }
 }
 
@@ -51,8 +63,8 @@
 
 .connect a {
   border: 1px solid #374a5b;
-  color: #374a5b;
-  background-color: #fff;
+  background-color: #374a5b;
+  color: #fff;
   padding: 5px;
   border-radius: 10px;
   font-size: .8em;
@@ -60,8 +72,8 @@
 }
 
 .connect a:hover {
-  background-color: #374a5b;
-  color: #fff;
+  color: #374a5b;
+  background-color: #fff;
 }
 
 .hamburger {
