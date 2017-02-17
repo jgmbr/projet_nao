@@ -8,6 +8,34 @@
   margin-bottom: 20px;
 }
 
+.index-back-end .info-group {
+  margin-top: 10px;
+  @media #{$tablet} {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #aaa;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
+.index-back-end .info-group .info-box-container {
+  @media #{$tablet} {
+    width: 50%;
+    padding: 0 10px;
+  }
+}
 
+.index-back-end h3 {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #5c5c5c;
+  font-size: 1.2em;
+  text-align: center;
+}
 
+.index-back-end .description {
+  text-align: justify;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

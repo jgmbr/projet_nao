@@ -5,50 +5,49 @@
 
     <div class="container index-back-end">
 
-        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+        <div class="clearfix">
+            {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+        </div>
 
-        <div class="col-sm-12 col-md-9">
-
-            <div class="col-md-12">
+        <div class="info-group">
             {% if is_granted('ROLE_SUPER_ADMIN') %}
-
-                <a href="{{ path('user_index') }}" class="aBox">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Membres</span>
-                                <span class="info-box-number">{{ countUsers }}</span>
+                <div class="info-box-container">
+                    <a href="{{ path('user_index') }}" class="aBox">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Membres</span>
+                                    <span class="info-box-number">{{ countUsers }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ path('observation_index') }}" class="aBox">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Observations</span>
-                                <span class="info-box-number">{{ countObservations }}</span>
+                    </a>
+                </div>
+                <div class="info-box-container">
+                    <a href="{{ path('observation_index') }}" class="aBox">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Observations</span>
+                                    <span class="info-box-number">{{ countObservations }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </a>
-                <a href="{{ path('article_index') }}" class="aBox">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Actualités</span>
-                                <span class="info-box-number">{{ countArticles }}</span>
+                    </a>
+                </div>
+                <div class="info-box-container">
+                    <a href="{{ path('article_index') }}" class="aBox">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Actualités</span>
+                                    <span class="info-box-number">{{ countArticles }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </a>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                    </a>
+                </div>
+                <div class="info-box-container">
                     <div class="info-box">
                         <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
                         <div class="info-box-content">
@@ -60,20 +59,20 @@
                 </div>
 
             {% elseif is_granted('ROLE_ADMIN') %}
+                <div class="info-box-container">
+                    <a href="{{ path('observation_index') }}" class="aBox">
 
-                <a href="{{ path('observation_index') }}" class="aBox">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Observations</span>
-                                <span class="info-box-number">{{ countObservations }}</span>
+                            <div class="info-box">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Observations</span>
+                                    <span class="info-box-number">{{ countObservations }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </a>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                    </a>
+                </div>
+                <div class="info-box-container">
                     <div class="info-box">
                         <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
                         <div class="info-box-content">
@@ -86,30 +85,37 @@
 
             {% elseif is_granted('ROLE_COLLABORATOR') %}
 
-                <a href="{{ path('article_index') }}" class="aBox">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Actualités</span>
-                                <span class="info-box-number">{{ countArticles }}</span>
+                <div class="info-box-container">
+                    <a href="{{ path('article_index') }}" class="aBox">
+
+                            <div class="info-box">
+                                <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Actualités</span>
+                                    <span class="info-box-number">{{ countArticles }}</span>
+                                </div>
+                                <!-- /.info-box-content -->
                             </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </a>
+
+                    </a>
+                </div>
+        </div>
 
             {% else %}
-                ESPACE MON COMPTE
+                <h3>
+                    Votre compte
+                </h3>
             {% endif %}
 
-            </div>
 
-        <div class="col-md-12">
 
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam. </p>
-        </div>
-        </div>
+
+
+            <p class="description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam.
+            </p>
+
+
 
     </div>
 
