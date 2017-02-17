@@ -36,7 +36,9 @@
 }
 
 .show-results {
-  display: flex;
+  @media #{$desktop} {
+    display: flex;
+  }
 }
 
 .show-results .bird-image {
@@ -46,7 +48,9 @@
   margin: 10px auto 20px;
   padding-top: 20px;
   @media #{$tablet} {
-    width: 50%;
+    max-width: 50%;
+  }
+  @media #{$desktop} {
     display: initial;
     max-width: 30%;
     margin: 0;

@@ -22,7 +22,7 @@
         </section>
 
         {% if resultsPerBird %}
-            <div class="dataTables_wrapper">
+            <div class="dataTables_wrapper table-responsive">
                 <table id="results" class="table table-hover dataTable">
                     <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
                     <thead>
@@ -291,7 +291,7 @@
     <script type="text/javascript">
         $(function () {
             $('#results').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "paging": true,
                 "lengthChange": true,
                 "searching": false,
