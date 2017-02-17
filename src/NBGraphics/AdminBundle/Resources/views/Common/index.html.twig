@@ -3,11 +3,9 @@
 
 {% block body %}
 
-    <div class="container index-back-end">
+    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <div class="clearfix">
-            {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
-        </div>
+    <div class="container index-back-end">
 
         <div class="info-group">
             {% if is_granted('ROLE_SUPER_ADMIN') %}

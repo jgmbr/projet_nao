@@ -1,0 +1,31 @@
+// AdminBundle/Resources/views/Common/profile/show.html.twig
+
+.common-profile-show h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.common-profile-show .actions {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  @media #{$tablet} {
+    text-align: center;
+  }
+  @media #{$desktop} {
+    text-align: right;
+  }
+}
+
+.common-profile-show .actions a {
+  width: 100%;
+  @media #{$tablet} {
+    width: 40%;
+  }
+  @media #{$desktop} {
+    width: 15%;
+  }
+}

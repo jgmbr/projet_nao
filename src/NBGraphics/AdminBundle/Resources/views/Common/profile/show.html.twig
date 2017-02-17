@@ -6,12 +6,15 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">Mon profil</h3> </div>
-            <div class="box-body box-show">
-            <table class="table table-responsive">
-                <tbody>
+
+
+    <div class="container common-profile-show">
+
+    <h2>Mon profil</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tbody>
                 <tr>
                     <th> {{ 'profile.show.type'|trans }} </th>
                     <td> {{ user.type }} </td>
@@ -40,23 +43,22 @@
                     <th> {{ 'profile.show.autorisations'|trans }} </th>
                     <td>
                         {% if user.enableCampaigns %}
-                            J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing
+                            <em>J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
                         {% else %}
-                            Je n'autorise pas Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing
+                            <em>Je n'autorise pas Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
                         {% endif %}
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.box-body -->
+            </tbody>
+        </table>
     </div>
 
-    <div class="actions">
-        <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning pull-right">
-            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
-        </a>
-    </div>
+        <div class="actions">
+            <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning">
+                <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+            </a>
+        </div>
+
     </div>
 
 {% endblock %}
