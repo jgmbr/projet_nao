@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/growl/stylesheets/jquery.growl.css') }}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/cookieconsent/build/cookieconsent.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -194,6 +198,7 @@
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
+    <script src="{{ asset('assets/vendor/cookieconsent/build/cookieconsent.min.js') }}"></script>
     <script>
         $(document).ready(function(){
             {% for msgSuccess in app.session.flashbag.get('success') %}
@@ -223,6 +228,34 @@
     {% block javascripts %}
         <script src="{{ asset('assets/js/app.js') }}"></script>
         <script src="{{ asset('assets/js/autocompleteDepartment.js') }}"></script>
+        <script>
+            window.cookieconsent.initialise({
+                container: document.getElementById("content"),
+                palette:{
+                    popup: {background: "#ffffff", text: '#374a5b', link: '#374a5b'},
+                    button: {background: "#ffffff", text: '#374a5b', border: '#374a5b'},
+                },
+                revokable:true,
+                onStatusChange: function(status) {
+                    console.log(this.hasConsented() ?
+                            'enable cookies' : 'disable cookies');
+                },
+                law: {
+                    regionalLaw: false,
+                },
+                location: true,
+                content: {
+                    header: 'Utilisation des cookies sur le site !',
+                    message: 'Ce site web utilise des cookies pour vous assurer d\'obtenir la meilleure expérience sur notre site Web.',
+                    dismiss: 'J\'accepte !',
+                    allow: 'Autoriser cookies',
+                    deny: 'Je refuse',
+                    link: 'Lire la suite',
+                    href: '{{ path('nb_graphics_front_site_cookies') }}',
+                    close: '&#x274c;',
+                }
+            });
+        </script>
     {% endblock %}
 
 </body>

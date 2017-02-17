@@ -75,6 +75,14 @@ class MainController extends Controller
     }
 
     /**
+     * @Route("/cookies", name="nb_graphics_front_site_cookies")
+     */
+    public function cookiesAction()
+    {
+        return $this->render('@NBGraphicsFrontSite/main/cookies.html.twig');
+    }
+
+    /**
      * @Route("/newsletter", name="nb_graphics_front_site_newsletter",
      *     defaults={
      *          "seo": true,
