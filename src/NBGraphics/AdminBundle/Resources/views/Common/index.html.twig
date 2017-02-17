@@ -1,176 +1,116 @@
 {% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
 
-{% block stylesheets %}
-    <style>
-        .info-box {
-            display: block;
-            min-height: 90px;
-            background: #fff;
-            width: 100%;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.5);
-            border-radius: 2px;
-            margin-bottom: 15px;
-        }
-        .info-box-content {
-            padding: 20px 10px;
-            margin-left: 90px;
-            text-align: center;
-        }
-        .info-box-text {
-            display: block;
-            font-size: 14px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-transform: uppercase;
-        }
-        .info-box-number {
-            display: block;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        .bg-aqua {
-            color: #fff !important;
-            background-color: #00c0ef !important;
-        }
-        .bg-alizarin {
-            color: #fff !important;
-            background-color: #e74c3c !important;
-        }
-        .bg-turquoise {
-            color: #fff !important;
-            background-color: #1abc9c !important;
-        }
-        .bg-carrot {
-            color: #fff !important;
-            background-color: #e67e22 !important;
-        }
-        .info-box-icon {
-            border-top-left-radius: 2px;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 2px;
-            display: block;
-            float: left;
-            height: 90px;
-            width: 90px;
-            text-align: center;
-            font-size: 30px;
-            line-height: 90px;
-            background: rgba(0,0,0,0.5);
-        }
-        .aBox, .aBox:hover {
-            color: #333 !important;
-        }
-    </style>
-{% endblock %}
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div class="container index-back-end">
 
-    <div class="col-sm-12 col-md-9">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+
+        <div class="col-sm-12 col-md-9">
+
+            <div class="col-md-12">
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+
+                <a href="{{ path('user_index') }}" class="aBox">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Membres</span>
+                                <span class="info-box-number">{{ countUsers }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ path('observation_index') }}" class="aBox">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Observations</span>
+                                <span class="info-box-number">{{ countObservations }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ path('article_index') }}" class="aBox">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Actualités</span>
+                                <span class="info-box-number">{{ countArticles }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </a>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Espèces</span>
+                            <span class="info-box-number">{{ countTaxref }}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </div>
+
+            {% elseif is_granted('ROLE_ADMIN') %}
+
+                <a href="{{ path('observation_index') }}" class="aBox">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Observations</span>
+                                <span class="info-box-number">{{ countObservations }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </a>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Espèces</span>
+                            <span class="info-box-number">{{ countTaxref }}</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </div>
+
+            {% elseif is_granted('ROLE_COLLABORATOR') %}
+
+                <a href="{{ path('article_index') }}" class="aBox">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Actualités</span>
+                                <span class="info-box-number">{{ countArticles }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                </a>
+
+            {% else %}
+                ESPACE MON COMPTE
+            {% endif %}
+
+            </div>
 
         <div class="col-md-12">
-        {% if is_granted('ROLE_SUPER_ADMIN') %}
 
-            <a href="{{ path('user_index') }}" class="aBox">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Membres</span>
-                            <span class="info-box-number">{{ countUsers }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                </div>
-            </a>
-            <a href="{{ path('observation_index') }}" class="aBox">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Observations</span>
-                            <span class="info-box-number">{{ countObservations }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                </div>
-            </a>
-            <a href="{{ path('article_index') }}" class="aBox">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Actualités</span>
-                            <span class="info-box-number">{{ countArticles }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                </div>
-            </a>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Espèces</span>
-                        <span class="info-box-number">{{ countTaxref }}</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-            </div>
-
-        {% elseif is_granted('ROLE_ADMIN') %}
-
-            <a href="{{ path('observation_index') }}" class="aBox">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Observations</span>
-                            <span class="info-box-number">{{ countObservations }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                </div>
-            </a>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Espèces</span>
-                        <span class="info-box-number">{{ countTaxref }}</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-            </div>
-
-        {% elseif is_granted('ROLE_COLLABORATOR') %}
-
-            <a href="{{ path('article_index') }}" class="aBox">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Actualités</span>
-                            <span class="info-box-number">{{ countArticles }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                </div>
-            </a>
-
-        {% else %}
-            ESPACE MON COMPTE
-        {% endif %}
-
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam. </p>
+        </div>
         </div>
 
-    <div class="col-md-12">
-
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam. </p>
-    </div>
     </div>
 
 {% endblock %}
