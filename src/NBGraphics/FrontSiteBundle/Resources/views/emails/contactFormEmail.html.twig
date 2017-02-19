@@ -1,12 +1,15 @@
 <h3>
-    L'expéditeur suivant vous a envoyé un message via votre site :
+    Une nouvelle demande de contact envoyée via votre site internet :
 </h3>
 
 <hr>
 
-<ul>
-    <li>Prénom de l'expéditeur : {{ message.firstName }}</li>
-    <li>Nom de l'expéditeur : {{ message.lastName }}</li>
-    <li>Adresse e-mail de l'expéditeur : {{ message.emailAddress }}</li>
-    <li>Message de l'expéditur : {{ message.message }}</li>
-</ul>
+<p> Prénom de l'expéditeur : {{ message.firstName }} </p>
+
+<p> Nom de l'expéditeur : {{ message.lastName }} </p>
+
+<p> Adresse e-mail de l'expéditeur : {{ message.emailAddress }} </p>
+
+<p> Message de l'expéditur : </p>
+
+<p> {{ message.message }} </p>

@@ -24,12 +24,16 @@ class EmailContactFormSystem
 
     public function sendEmail($messageData)
     {
+        if (!$messageData)
+            return false;
+
+        $emailAddress = $messageData['emailAddress'];
 
         $mail = \Swift_Message::newInstance()
-            ->setSubject('Nos Amis Les Oiseaux › nouveau message')
+            ->setSubject('Nos Amis Les Oiseaux › Nouveau message')
             ->setFrom('contact@nos-amis-les-oiseaux.fr')
             // Addresse e-mail à modifier pour celle du président
-            ->setTo('Thomas.dimnet@gmail.com')
+            ->setTo('gambier.j@gmail.com')
             ->setBody(
                 $this->templating->render(
                     '@NBGraphicsFrontSite/emails/contactFormEmail.html.twig', [
@@ -41,6 +45,21 @@ class EmailContactFormSystem
 
         $this->mailer->send($mail);
 
+        $mailUser = \Swift_Message::newInstance()
+            ->setSubject('Nos Amis Les Oiseaux › Confirmation demande de contact')
+            ->setFrom('contact@nos-amis-les-oiseaux.fr')
+            // Addresse e-mail à modifier pour celle du président
+            ->setTo($emailAddress)
+            ->setBody(
+                $this->templating->render(
+                    '@NBGraphicsFrontSite/emails/contactFormEmailCopie.html.twig', [
+                        'message' => $messageData,
+                    ]
+                ),
+                'text/html'
+            );
+
+        $this->mailer->send($mailUser);
 
     }
 }
