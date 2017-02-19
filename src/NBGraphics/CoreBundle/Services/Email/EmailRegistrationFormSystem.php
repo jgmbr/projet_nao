@@ -18,6 +18,8 @@ class EmailRegistrationFormSystem
 
     public function sendEmail($user)
     {
+        if (!$user)
+            return false;
 
         $mail = \Swift_Message::newInstance()
             ->setSubject('Nos Amis Les Oiseaux › Confirmation d\'inscription')
@@ -33,12 +35,9 @@ class EmailRegistrationFormSystem
                 'text/html'
             );
 
-
         if ($this->mailer->send($mail))
             return true;
         else
             return false;
-
-
     }
 }

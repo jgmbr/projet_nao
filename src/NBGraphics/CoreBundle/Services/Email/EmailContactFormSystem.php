@@ -33,7 +33,7 @@ class EmailContactFormSystem
             ->setSubject('Nos Amis Les Oiseaux › Nouveau message')
             ->setFrom('contact@nos-amis-les-oiseaux.fr')
             // Addresse e-mail à modifier pour celle du président
-            ->setTo('gambier.j@gmail.com')
+            ->setTo('Thomas.dimnet@gmail.com')
             ->setBody(
                 $this->templating->render(
                     '@NBGraphicsFrontSite/emails/contactFormEmail.html.twig', [
@@ -48,7 +48,6 @@ class EmailContactFormSystem
         $mailUser = \Swift_Message::newInstance()
             ->setSubject('Nos Amis Les Oiseaux › Confirmation demande de contact')
             ->setFrom('contact@nos-amis-les-oiseaux.fr')
-            // Addresse e-mail à modifier pour celle du président
             ->setTo($emailAddress)
             ->setBody(
                 $this->templating->render(
@@ -61,5 +60,6 @@ class EmailContactFormSystem
 
         $this->mailer->send($mailUser);
 
+        return true;
     }
 }
