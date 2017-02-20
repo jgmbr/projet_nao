@@ -229,6 +229,11 @@
         <script src="{{ asset('assets/js/app.js') }}"></script>
         <script src="{{ asset('assets/js/autocompleteDepartment.js') }}"></script>
         <script>
+            $(function () {
+                if ( $('.alert').length ) {
+                    $('.alert').delay(2000).fadeOut();
+                }
+            });
             window.cookieconsent.initialise({
                 container: document.getElementById("content"),
                 palette:{
