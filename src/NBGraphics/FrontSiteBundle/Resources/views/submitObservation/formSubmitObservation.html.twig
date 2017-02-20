@@ -15,14 +15,16 @@
             {{ form_row(observationForm.hourAt) }}
             {{ form_row(observationForm.image) }}
         <h3>
-            Choix 1 : Je connais l'adresse de l'observation
+            <span class="step_data" style="display: inline-block; background: #374a5b; width: 40px; height: 40px; line-height: 41px; text-align: center; border-radius: 50%; font-size: .7em;
+    font-weight: bold; color: #ffffff;"> 1 </span> Je connais l'adresse de l'observation
         </h3>
         <div class="form-group">
             <label for="address">Adresse</label>
             <input type="text" id="address" name="obs_address" class="form-control">
         </div>
         <h3>
-            Choix 2 : Je souhaite me géolocaliser
+            <span class="step_data" style="display: inline-block; background: #374a5b; width: 40px; height: 40px; line-height: 41px; text-align: center; border-radius: 50%; font-size: .7em;
+    font-weight: bold; color: #ffffff;"> 2 </span> Je souhaite me géolocaliser
         </h3>
         <div class="form-group">
             <a id="localize" name="obs_button" class="btn btn-info">
