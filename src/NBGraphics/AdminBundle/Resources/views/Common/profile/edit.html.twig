@@ -6,28 +6,24 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-    <div class="box box-default">
-        <div class="box-header with-border"> <h3 class="box-title">Edition profil</h3> </div>
-        <div class="box-body box-edit">
-        <div class="well">
-        {{ form_start(form, { 'action': path('admin_profil_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-        <div class="box-body">
-            {{ form_widget(form) }}
-        </div>
-        <div class="box-footer">
-            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-warning" />
-        </div>
-        {{ form_end(form) }}
-        </div>
-    </div>
+    <div class="container edit-profil">
 
-    <div class="actions">
-        <a href="{{ path('admin_profil') }}" class="btn btn-primary pull-left">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à mon profil
-        </a>
-    </div>
-    </div>
+        <h2>Edition profil</h2>
+
+        <div class="edit-form">
+            {{ form_start(form, { 'action': path('admin_profil_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-warning" />
+            {{ form_end(form) }}
+        </div>
+
+
+        <div class="actions">
+            <a href="{{ path('admin_profil') }}" class="btn btn-primary pull-left">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à mon profil
+            </a>
+        </div>
+
     </div>
 
 {% endblock %}

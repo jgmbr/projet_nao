@@ -1591,4 +1591,49 @@ nav:hover .forAnimate {
   padding-top: 20px;
   border-top: 1px solid #5c5c5c; }
 
+@media (min-width: 768px) {
+  .edit-profil {
+    width: 80%;
+    margin: auto; } }
+@media (min-width: 1024px) {
+  .edit-profil {
+    width: 65%; } }
+
+.edit-profil h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.edit-form {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c; }
+
+.edit-form input {
+  cursor: pointer; }
+
+.edit-form input[type=text]:hover,
+.edit-form input[type=password]:hover,
+.edit-form input[type=tel]:hover,
+.edit-form input[type=email]:hover {
+  border: 1px solid #374a5b; }
+
+.edit-form input[type=text]:focus,
+.edit-form input[type=password]:focus,
+.edit-form input[type=tel]:focus,
+.edit-form input[type=email]:focus {
+  border-color: #374a5b;
+  outline-color: #374a5b; }
+
+.edit-form input[type=submit] {
+  width: 100%; }
+  @media (min-width: 1024px) {
+    .edit-form input[type=submit] {
+      width: 50%;
+      display: block;
+      margin: auto; } }
+
 /*# sourceMappingURL=main.css.map */
