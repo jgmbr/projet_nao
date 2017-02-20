@@ -1554,4 +1554,41 @@ nav:hover .forAnimate {
     .index-observation-user h2 {
       margin-bottom: 45px; } }
 
+.observation-card {
+  margin-bottom: 70px; }
+  @media (min-width: 1024px) {
+    .observation-card {
+      width: 70%;
+      margin-right: auto;
+      margin-left: auto; } }
+
+.observation-card h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.delete-observation {
+  text-align: center; }
+  @media (min-width: 1024px) {
+    .delete-observation {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.delete-observation h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.delete-observation .actions {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #5c5c5c; }
+
 /*# sourceMappingURL=main.css.map */
