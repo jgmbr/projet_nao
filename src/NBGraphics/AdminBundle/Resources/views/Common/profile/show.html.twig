@@ -53,8 +53,11 @@
     </div>
 
     <div class="actions">
+        <a href="{{ path('admin_user_password',{ 'id': user.id }) }}" class="btn btn-info pull-right">
+            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon mot de passe
+        </a>
         <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning pull-right">
-            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+            <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon profil
         </a>
     </div>
     </div>

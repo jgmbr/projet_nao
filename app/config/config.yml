@@ -82,6 +82,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: NBGraphics\UserBundle\Entity\User
+    change_password:
+        form:
+            type: NBGraphics\UserBundle\Form\ChangePasswordType
     registration:
         form:
             type: NBGraphics\UserBundle\Form\RegistrationType
@@ -103,6 +106,7 @@ stof_doctrine_extensions:
         default:
             sluggable: true
 
+# LiipImagine Configuration
 liip_imagine :
     resolvers :
         default :

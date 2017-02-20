@@ -71,18 +71,6 @@ class UserType extends AbstractType
                     'required' => true,
                 ]
             )
-//            ->add('superAdmin', ChoiceType::class, [
-//                    'label' => 'form.superadmin',
-//                    'translation_domain' => 'FOSUserBundle',
-//                    'choices' => array(
-//                        'form.yes' => true,
-//                        'form.no' => false
-//                    ),
-//                    'expanded' => false,
-//                    'multiple' => false,
-//                    'required' => true,
-//                ]
-//            )
             ->add('lastname', TextType::class, array(
                 'label' => 'form.lastname',
                 'translation_domain' => 'FOSUserBundle',
