@@ -26,7 +26,7 @@ class SeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'getSEO' => new \Twig_Function_Method($this, 'getSEO'),
+            new \Twig_SimpleFunction('getSEO', array($this, 'getSEO'))
         );
     }
 
