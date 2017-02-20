@@ -71,6 +71,11 @@ class InteractiveWebMapController extends Controller
 
             }
 
+            if (!$resultsPerBird && !$resultsPerFamily) {
+                $request->getSession()->getFlashBag()->add('error', 'Pas de résultats');
+                return $this->redirectToRoute('nb_graphics_front_site_interactivewebmap');
+            }
+
             if ($resultsPerBird !== null || $resultsPerFamily !== null) {
 
                 return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', [
@@ -79,6 +84,7 @@ class InteractiveWebMapController extends Controller
                     'resultsPerBird' => $resultsPerBird,
                     'resultsPerFamily' => $resultsPerFamily,
                 ]);
+
             }
         }
 

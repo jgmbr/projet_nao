@@ -126,6 +126,13 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.btnReset').on('click', function(){
+                $("#nbgraphics_corebundle_search_famille ").val($("#nbgraphics_corebundle_search_famille option:first").val());
+            });
+        });
+    </script>
     {% if (resultsPerBird or resultsPerFamily) %}
 
         <script>
