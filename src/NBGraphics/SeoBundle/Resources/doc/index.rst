@@ -79,7 +79,7 @@ In routing, just add defaults options (seo & page)::
 Step 5: Launch the route search command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, launch the command line for import the route to customize::
+Now, launch the command line for import the route to customize:
 
 .. code-block:: bash
 
@@ -92,7 +92,6 @@ Step 6: Configure SEO tags for pages in your admin page
 
 Add the render menu SEO available with::
 
-    <?php
     {% if app.request.attributes.get('_route') starts with "seo" %}
         {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':true} )) }}
     {% else %}
