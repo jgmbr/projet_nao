@@ -192,8 +192,8 @@
                         if (xhr.readyState === 4) {
                             // Retrieve the latitude and longitude needed
                             var data = JSON.parse(xhr.responseText);
-                            var lng = data.features[1].geometry.coordinates[0];
-                            var lat = data.features[1].geometry.coordinates[1];
+                            var lng = data.features[0].geometry.coordinates[0];
+                            var lat = data.features[0].geometry.coordinates[1];
                             // Modify the map according to the new position
                             map.setCenter({
                                 lat : lat,
