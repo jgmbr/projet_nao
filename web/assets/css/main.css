@@ -842,8 +842,8 @@ nav:hover .forAnimate {
 @media (max-width: 1024px) {
   .home-page-wrapper {
     background: url("../../images/owl.jpg");
-    padding-top: 400px;
-    height: 600px;
+    padding-top: 50vh;
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center; } }
@@ -872,7 +872,7 @@ nav:hover .forAnimate {
       margin-left: auto;
       margin-right: auto;
       position: absolute;
-      top: 340px;
+      top: 50vh;
       font-size: 3em; } }
 
 .home-page-wrapper p {
@@ -889,7 +889,7 @@ nav:hover .forAnimate {
       right: 0;
       margin-left: auto;
       margin-right: auto;
-      top: 450px; } }
+      top: 65vh; } }
 
 .home-page-wrapper p a {
   display: block;
