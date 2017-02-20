@@ -4,15 +4,11 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    {% if is_granted('ROLE_SUPER_ADMIN') %}
-        {% if observations is defined and observations|length > 0 %}
-            <a href="{{ path('observation_export') }}" class="btn btn-info"> <i class="fa fa-download" aria-hidden="true"></i> Exporter </a>
-        {% endif %}
-    {% endif %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">Observations</h3> </div>
+    <div class="container index-observation-admin">
+
+        <h2>Observations</h2>
+
         <div class="box-body">
             <div id="observation_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                 <div class="row">
@@ -22,75 +18,78 @@
                 <div class="row">
                     <div class="col-sm-12">
                         {% if observations is defined and observations|length > 0 %}
-                            <table id="observation" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="observation_info">
-                                <thead>
-                                <tr role="row">
-                                    <th>Id</th>
-                                    <th>Date</th>
-                                    <th>Quantité</th>
-                                    <th>Photo</th>
-                                    <th>Espèce</th>
-                                    <th>Lieu</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for observation in observations %}
-                                    <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                                        <td><a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a></td>
-
-                                        <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
-                                        <td>{{ observation.quantity }}</td>
-                                        <td>
-                                            {% if observation.image is defined and observation.image is not null %}
-                                                <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" />
-                                            {% else %}
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            <a target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> {{ observation.taxref.nomVern }} </a>
-                                        </td>
-                                        <td>
-                                            <a href="https://www.google.fr/maps/@{{ observation.latitude }},{{ observation.longitude }},14z" target="_blank">
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i> Localiser
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <i class="fa {{ observation.status.icon }}" aria-hidden="true"></i>
-                                            {{ observation.status.name }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ path('observation_show', { 'id': observation.id }) }}" class="btn btn-info btn-xs">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{{ path('observation_edit', { 'id': observation.id }) }}" class="btn btn-warning btn-xs">
-                                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{{ path('observation_delete', { 'id': observation.id }) }}" class="btn btn-danger btn-xs">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{{ path('observation_moderate', { 'id': observation.id }) }}" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-wrench" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
+                            <div class="table-responsive">
+                                <table id="observation" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="observation_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th>Id</th>
+                                        <th>Date</th>
+                                        <th>Quantité</th>
+                                        <th>Photo</th>
+                                        <th>Espèce</th>
+                                        <th>Lieu</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
-                                {% endfor %}
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Date</th>
-                                    <th>Quantité</th>
-                                    <th>Photo</th>
-                                    <th>Espèce</th>
-                                    <th>Lieu</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </tfoot>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    {% for observation in observations %}
+                                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                            <td>
+                                                <a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a>
+                                            </td>
+                                            <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
+                                            <td>{{ observation.quantity }}</td>
+                                            <td>
+                                                {% if observation.image is defined and observation.image is not null %}
+                                                    <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" />
+                                                {% else %}
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <a target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> {{ observation.taxref.nomVern }} </a>
+                                            </td>
+                                            <td>
+                                                <a href="https://www.google.fr/maps/@{{ observation.latitude }},{{ observation.longitude }},14z" target="_blank">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Localiser
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <i class="fa {{ observation.status.icon }}" aria-hidden="true"></i>
+                                                {{ observation.status.name }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('observation_show', { 'id': observation.id }) }}" class="btn btn-info btn-xs">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('observation_edit', { 'id': observation.id }) }}" class="btn btn-warning btn-xs">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('observation_delete', { 'id': observation.id }) }}" class="btn btn-danger btn-xs">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="{{ path('observation_moderate', { 'id': observation.id }) }}" class="btn btn-primary btn-xs">
+                                                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Date</th>
+                                        <th>Quantité</th>
+                                        <th>Photo</th>
+                                        <th>Espèce</th>
+                                        <th>Lieu</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         {% else %}
                             <p> Pas d'observations. </p>
                         {% endif %}
@@ -98,16 +97,29 @@
                 </div>
             </div>
         </div>
-    </div>
+
+
+        <!-- The export button -->
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            {% if observations is defined and observations|length > 0 %}
+                <a href="{{ path('observation_export') }}" class="btn btn-info">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    Exporter
+                </a>
+            {% endif %}
+        {% endif %}
+
     </div>
 
 {% endblock %}
+
+
 
 {% block javascripts %}
     <script type="text/javascript">
         $(function () {
             $('#observation').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,

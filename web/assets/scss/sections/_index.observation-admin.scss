@@ -1,0 +1,13 @@
+// AdminBundle/Resources/views/Admin/observation/index.html.twig
+
+.index-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}
