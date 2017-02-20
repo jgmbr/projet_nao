@@ -1475,6 +1475,11 @@ nav:hover .forAnimate {
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+  @media (min-width: 768px) {
+    .index-back-end h2 {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; } }
 
 .index-back-end .info-group {
   margin-top: 10px; }
@@ -1496,13 +1501,6 @@ nav:hover .forAnimate {
 
 .index-back-end .info-group .info-box-container .info-box:hover {
   background-color: #F7F5F0; }
-
-.index-back-end h3 {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #5c5c5c;
-  font-size: 1.2em;
-  text-align: center; }
 
 .index-back-end .description {
   text-align: justify;
@@ -1535,5 +1533,16 @@ nav:hover .forAnimate {
   @media (min-width: 1024px) {
     .common-profile-show .actions a {
       width: 15%; } }
+
+.index-observation-user h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.index-observation-user .table-responsive {
+  margin-bottom: 40px; }
 
 /*# sourceMappingURL=main.css.map */

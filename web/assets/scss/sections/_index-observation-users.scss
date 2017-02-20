@@ -1,0 +1,14 @@
+// AdminBundle/Resources/views/Account/observation/index.html.twig
+
+.index-observation-user h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.index-observation-user .table-responsive {
+  margin-bottom: 40px;
+}

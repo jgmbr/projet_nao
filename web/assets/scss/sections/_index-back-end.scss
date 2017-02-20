@@ -6,6 +6,11 @@
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px;
+  @media #{$tablet} {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .index-back-end .info-group {
@@ -32,14 +37,6 @@
 
 .index-back-end .info-group .info-box-container .info-box:hover {
   background-color: #F7F5F0;
-}
-
-.index-back-end h3 {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #5c5c5c;
-  font-size: 1.2em;
-  text-align: center;
 }
 
 .index-back-end .description {
