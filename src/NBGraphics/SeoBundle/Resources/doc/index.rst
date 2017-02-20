@@ -73,7 +73,7 @@ In routing, just add defaults options (seo & page)::
      */
     public function homePageAction()
     {
-        return $this->render('@NBGraphicsSeoBundle/home.html.twig');
+        return $this->render('@YourBundle/home.html.twig');
     }
 
 Step 5: Launch the route search command
