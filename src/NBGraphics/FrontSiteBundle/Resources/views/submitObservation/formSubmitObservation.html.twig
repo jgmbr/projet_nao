@@ -42,6 +42,11 @@
             {{ form_row(observationForm.departement, {'attr': {'readonly': 'true'}}) }}
             {{ form_row(observationForm.comment) }}
 
+        <div class="count">
+            <span id="countChars">0</span>
+            caractères saisis
+        </div>
+
         <button type="submit" class="btn btn-primary">
             <i class="fa fa-check" aria-hidden="true"></i> Envoyer mon observation
         </button>
@@ -55,5 +60,14 @@
     {{ parent() }}
     <script src="{{ asset('assets/js/gmaps.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
+    <script>
+        $(function () {
+            var length = 0;
+            $('#observation_form_comment').keyup(function () {
+                var countChars = $(this).val().length;
+                $('#countChars').html(countChars);
+            });
+        });
+    </script>
 {% endblock %}
 
