@@ -18,6 +18,13 @@
                 {{ form_row(searchForm.oiseau) }}
             </div>
             {{ form_row(searchForm.search) }}
+
+            <div class="form-group">
+                <a href="{{ path('nb_graphics_front_site_interactivewebmap') }}" class="btn btn-warning"> <i class="fa fa-refresh" aria-hidden="true"></i>
+                    Réinitialiser la recherche
+                </a>
+            </div>
+
         {{ form_end(searchForm) }}
         </section>
 
@@ -126,13 +133,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(document).ready(function() {
-            $('.btnReset').on('click', function(){
-                $("#nbgraphics_corebundle_search_famille ").val($("#nbgraphics_corebundle_search_famille option:first").val());
-            });
-        });
-    </script>
     {% if (resultsPerBird or resultsPerFamily) %}
 
         <script>

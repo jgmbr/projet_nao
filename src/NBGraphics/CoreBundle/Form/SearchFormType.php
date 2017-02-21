@@ -58,16 +58,6 @@ class SearchFormType extends AbstractType
                 'title' => 'Rechercher un oiseau',
                 'translation_domain' => false,
             ))
-            ->add('reset', CustomButtonType::class, array(
-                'label' => false,
-                'type'  => 'reset',
-                'name'  => 'btnReset',
-                'id'    => 'btnReset',
-                'class' => 'btn btn-warning',
-                'fa'    => 'trash-o',
-                'title' => 'Réinitialiser la recherche',
-                'translation_domain' => false,
-            ))
         ;
     }
 

@@ -64,7 +64,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     <script>
         $(function () {
-            var length = 0;
+            var countChars = 0;
             $('#observation_form_comment').keyup(function () {
                 var countChars = $(this).val().length;
                 $('#countChars').html(countChars);
