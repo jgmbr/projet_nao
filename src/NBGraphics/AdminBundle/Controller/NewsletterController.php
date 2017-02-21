@@ -19,7 +19,7 @@ class NewsletterController extends Controller
     /**
      * Lists all newsletter entities.
      *
-     * @Route("/", name="newsletter_index")
+     * @Route("/", name="admin_newsletter_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class NewsletterController extends Controller
     /**
      * Deletes a newsletter entity.
      *
-     * @Route("/suppression/{id}", name="newsletter_delete")
+     * @Route("/suppression/{id}", name="admin_newsletter_delete")
      */
     public function deleteAction(Request $request, Newsletter $newsletter)
     {
@@ -55,7 +55,7 @@ class NewsletterController extends Controller
             else
                 $this->addFlash('error', 'Erreur lors de la suppression de l\'adresse email !');
 
-            return $this->redirectToRoute('newsletter_index');
+            return $this->redirectToRoute('admin_newsletter_index');
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/newsletter:delete.html.twig', array(
@@ -75,7 +75,7 @@ class NewsletterController extends Controller
     private function createDeleteForm(Newsletter $newsletter)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('newsletter_delete', array('id' => $newsletter->getId())))
+            ->setAction($this->generateUrl('admin_newsletter_delete', array('id' => $newsletter->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -48,12 +48,12 @@
                                     </a>
                                     <ul class="dropdown-menu forAnimate" role="menu">
                                         <li>
-                                            <a href="{{ path('user_index') }}">
+                                            <a href="{{ path('admin_user_index') }}">
                                                 <span> Liste </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('user_new') }}">
+                                            <a href="{{ path('admin_user_new') }}">
                                                 <span> Ajouter </span>
                                             </a>
                                         </li>
@@ -68,22 +68,22 @@
                                 </a>
                                 <ul class="dropdown-menu forAnimate" role="menu">
                                     <li>
-                                        <a href="{{ path('observation_index') }}">
+                                        <a href="{{ path('admin_observation_index') }}">
                                             <span> Liste </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('observation_waiting') }}">
+                                        <a href="{{ path('admin_observation_waiting') }}">
                                             <span> En attente </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('observation_valided') }}">
+                                        <a href="{{ path('admin_observation_valided') }}">
                                            <span> Validées </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('observation_refused') }}">
+                                        <a href="{{ path('admin_observation_refused') }}">
                                            <span> Refusées </span>
                                         </a>
                                     </li>
@@ -96,7 +96,7 @@
                                     {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
                                 {% endif %}
                                 <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
-                                    <a href="{{ path('newsletter_index') }}">
+                                    <a href="{{ path('admin_newsletter_index') }}">
                                         Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -172,7 +172,7 @@
                                 </a>
                             </li>
                             <li class="{% if app.request.attributes.get('_route') == "my_observation_index" %}active{% endif %}">
-                                <a href="{{ path('my_observation_index') }}">
+                                <a href="{{ path('admin_my_observation_index') }}">
                                     Mes Observations <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                             </li>

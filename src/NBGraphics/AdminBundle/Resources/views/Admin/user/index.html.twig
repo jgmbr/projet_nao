@@ -60,16 +60,16 @@
                                                         <td> {{ user.createdAt|date('d/m/Y à H:i') }} </td>
                                                         <td> {{ user.updatedAt|date('d/m/Y à H:i') }} </td>
                                                         <td>
-                                                            <a href="{{ path('user_show', { 'id': user.id }) }}" title="Voir" class="btn btn-success btn-xs">
+                                                            <a href="{{ path('admin_user_show', { 'id': user.id }) }}" title="Voir" class="btn btn-success btn-xs">
                                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                                             </a>
                                                             <a href="{{ path('admin_page', {'_switch_user': user.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
                                                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                             </a>
-                                                            <a href="{{ path('user_edit', { 'id': user.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                            <a href="{{ path('admin_user_edit', { 'id': user.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
                                                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                                             </a>
-                                                            <a href="{{ path('user_delete', { 'id': user.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                            <a href="{{ path('admin_user_delete', { 'id': user.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </a>
                                                         </td>
@@ -132,16 +132,16 @@
                                                         <td> {{ admin.updatedAt|date('d/m/Y à H:i') }} </td>
                                                         <td>
                                                             {% if app.user.id != admin.id %}
-                                                                <a href="{{ path('user_show', { 'id': admin.id }) }}" title="Voir" class="btn btn-success btn-xs">
+                                                                <a href="{{ path('admin_user_show', { 'id': admin.id }) }}" title="Voir" class="btn btn-success btn-xs">
                                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                                 </a>
                                                                 <a href="{{ path('admin_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
                                                                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                                 </a>
-                                                                <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                                <a href="{{ path('admin_user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
                                                                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                                                 </a>
-                                                                <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                                <a href="{{ path('admin_user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                 </a>
                                                             {% endif %}
@@ -205,16 +205,16 @@
                                                         <td> {{ collaborator.createdAt|date('d/m/Y à H:i') }} </td>
                                                         <td> {{ collaborator.updatedAt|date('d/m/Y à H:i') }} </td>
                                                         <td>
-                                                            <a href="{{ path('user_show', { 'id': collaborator.id }) }}" title="Voir" class="btn btn-success btn-xs">
+                                                            <a href="{{ path('admin_user_show', { 'id': collaborator.id }) }}" title="Voir" class="btn btn-success btn-xs">
                                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                                             </a>
                                                             <a href="{{ path('admin_page', {'_switch_user': collaborator.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
                                                                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                             </a>
-                                                            <a href="{{ path('user_edit', { 'id': collaborator.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                            <a href="{{ path('admin_user_edit', { 'id': collaborator.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
                                                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                                             </a>
-                                                            <a href="{{ path('user_delete', { 'id': collaborator.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                            <a href="{{ path('admin_user_delete', { 'id': collaborator.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                             </a>
                                                         </td>
@@ -278,16 +278,16 @@
                                                         <td> {{ admin.updatedAt|date('d/m/Y à H:i') }} </td>
                                                         <td>
                                                             {% if app.user.id != admin.id %}
-                                                                <a href="{{ path('user_show', { 'id': admin.id }) }}" title="Voir" class="btn btn-success btn-xs">
+                                                                <a href="{{ path('admin_user_show', { 'id': admin.id }) }}" title="Voir" class="btn btn-success btn-xs">
                                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                                 </a>
                                                                 <a href="{{ path('admin_page', {'_switch_user': admin.username }) }}" title="Se connecter en tant que" class="btn btn-info btn-xs">
                                                                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                                 </a>
-                                                                <a href="{{ path('user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
+                                                                <a href="{{ path('admin_user_edit', { 'id': admin.id }) }}" title="Modifier les droits" class="btn btn-warning btn-xs">
                                                                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                                                 </a>
-                                                                <a href="{{ path('user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
+                                                                <a href="{{ path('admin_user_delete', { 'id': admin.id }) }}" title="Supprimer" class="btn btn-danger btn-xs">
                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                 </a>
                                                             {% endif %}

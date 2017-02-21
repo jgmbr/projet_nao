@@ -10,7 +10,7 @@
         <div class="info-group">
             {% if is_granted('ROLE_SUPER_ADMIN') %}
                 <div class="info-box-container">
-                    <a href="{{ path('user_index') }}" class="aBox">
+                    <a href="{{ path('admin_user_index') }}" class="aBox">
                             <div class="info-box">
                                 <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
                                 <div class="info-box-content">
@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="info-box-container">
-                    <a href="{{ path('observation_index') }}" class="aBox">
+                    <a href="{{ path('admin_observation_index') }}" class="aBox">
                             <div class="info-box">
                                 <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
                                 <div class="info-box-content">
@@ -34,7 +34,7 @@
                     </a>
                 </div>
                 <div class="info-box-container">
-                    <a href="{{ path('article_index') }}" class="aBox">
+                    <a href="{{ path('admin_article_index') }}" class="aBox">
                             <div class="info-box">
                                 <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
                                 <div class="info-box-content">
@@ -58,7 +58,7 @@
 
             {% elseif is_granted('ROLE_ADMIN') %}
                 <div class="info-box-container">
-                    <a href="{{ path('observation_index') }}" class="aBox">
+                    <a href="{{ path('admin_observation_index') }}" class="aBox">
 
                             <div class="info-box">
                                 <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
@@ -84,7 +84,7 @@
             {% elseif is_granted('ROLE_COLLABORATOR') %}
 
                 <div class="info-box-container">
-                    <a href="{{ path('article_index') }}" class="aBox">
+                    <a href="{{ path('admin_article_index') }}" class="aBox">
 
                             <div class="info-box">
                                 <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>

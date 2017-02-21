@@ -19,7 +19,7 @@ class SeoController extends Controller
     /**
      * Lists all seo entities.
      *
-     * @Route("/", name="seo_index")
+     * @Route("/", name="admin_seo_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,7 +36,7 @@ class SeoController extends Controller
     /**
      * Displays a form to edit an existing seo entity.
      *
-     * @Route("/edition/{id}", name="seo_edit")
+     * @Route("/edition/{id}", name="admin_seo_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Seo $seo)
@@ -51,7 +51,7 @@ class SeoController extends Controller
 
             $this->addFlash('success', 'SEO modifié avec succès !');
 
-            return $this->redirectToRoute('seo_show', array('id' => $seo->getId()));
+            return $this->redirectToRoute('admin_seo_show', array('id' => $seo->getId()));
 
         }
 
@@ -64,7 +64,7 @@ class SeoController extends Controller
     /**
      * Finds and displays a seo entity.
      *
-     * @Route("/fiche/{id}", name="seo_show")
+     * @Route("/fiche/{id}", name="admin_seo_show")
      * @Method("GET")
      */
     public function showAction(Seo $seo)

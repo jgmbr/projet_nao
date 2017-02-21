@@ -65,8 +65,10 @@ class PagesController extends Controller
         ));
     }
 
-    public function menuTopAction()
+    public function menuTopAction(Request $request, $active)
     {
-        return $this->render('NBGraphicsNewsBundle:pages:menu_top.html.twig');
+        return $this->render('NBGraphicsNewsBundle:pages:menu_top.html.twig', array(
+            'active' => ($active ? 'active' : '')
+        ));
     }
 }

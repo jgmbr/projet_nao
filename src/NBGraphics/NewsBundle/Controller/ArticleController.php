@@ -20,7 +20,7 @@ class ArticleController extends Controller
     /**
      * Lists all article entities.
      *
-     * @Route("/", name="article_index")
+     * @Route("/", name="admin_article_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -44,7 +44,7 @@ class ArticleController extends Controller
     /**
      * Creates a new article entity.
      *
-     * @Route("/nouvelle-actualite", name="article_new")
+     * @Route("/nouvelle-actualite", name="admin_article_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -59,10 +59,10 @@ class ArticleController extends Controller
 
             if ($response) {
                 $this->addFlash('success', 'Article ajouté avec succès !');
-                return $this->redirectToRoute('article_show', array('id' => $article->getId()));
+                return $this->redirectToRoute('admin_article_show', array('id' => $article->getId()));
             } else {
                 $this->addFlash('error', 'Erreur lors de l\'ajout de l\'article');
-                return $this->redirectToRoute('article_new');
+                return $this->redirectToRoute('admin_article_new');
             }
 
         }
@@ -76,7 +76,7 @@ class ArticleController extends Controller
     /**
      * Finds and displays a article entity.
      *
-     * @Route("/fiche/{id}", name="article_show")
+     * @Route("/fiche/{id}", name="admin_article_show")
      * @Method("GET")
      */
     public function showAction(Article $article)
@@ -92,7 +92,7 @@ class ArticleController extends Controller
     /**
      * Displays a form to edit an existing article entity.
      *
-     * @Route("/edition/{id}", name="article_edit")
+     * @Route("/edition/{id}", name="admin_article_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Article $article)
@@ -107,10 +107,10 @@ class ArticleController extends Controller
 
             if ($response) {
                 $this->addFlash('success', 'Article modifié avec succès !');
-                return $this->redirectToRoute('article_show', array('id' => $article->getId()));
+                return $this->redirectToRoute('admin_article_show', array('id' => $article->getId()));
             } else {
                 $this->addFlash('error', 'Erreur lors de la modification de l\'article');
-                return $this->redirectToRoute('article_edit', array('id' => $article->getId()));
+                return $this->redirectToRoute('admin_article_edit', array('id' => $article->getId()));
             }
 
         }
@@ -125,7 +125,7 @@ class ArticleController extends Controller
     /**
      * Deletes a article entity.
      *
-     * @Route("/suppression/{id}", name="article_delete")
+     * @Route("/suppression/{id}", name="admin_article_delete")
      */
     public function deleteAction(Request $request, Article $article)
     {
@@ -141,7 +141,7 @@ class ArticleController extends Controller
             else
                 $this->addFlash('error', 'Erreur lors de la suppression de l\'actualité !');
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('admin_article_index');
         }
 
         return $this->render('NBGraphicsNewsBundle:article:delete.html.twig', array(
@@ -160,7 +160,7 @@ class ArticleController extends Controller
     private function createDeleteForm(Article $article)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('article_delete', array('id' => $article->getId())))
+            ->setAction($this->generateUrl('admin_article_delete', array('id' => $article->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

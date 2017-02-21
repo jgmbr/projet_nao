@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("/", name="user_index")
+     * @Route("/", name="admin_user_index")
      */
     public function listUsersAction()
     {
@@ -45,7 +45,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/nouvel-utilisateur", name="user_new")
+     * @Route("/nouvel-utilisateur", name="admin_user_new")
      */
     public function newAction(Request $request)
     {
@@ -59,10 +59,10 @@ class UserController extends Controller
 
             if ($createUser) {
                 $this->addFlash('success','Membre ajouté avec succès !');
-                return $this->redirectToRoute('user_index');
+                return $this->redirectToRoute('admin_user_index');
             } else {
                 $this->addFlash('error','Membre existe déjà !');
-                return $this->redirectToRoute('user_new');
+                return $this->redirectToRoute('admin_user_new');
             }
 
         }
@@ -76,7 +76,7 @@ class UserController extends Controller
     /**
      * Finds and displays a user entity.
      *
-     * @Route("/fiche/{id}", name="user_show")
+     * @Route("/fiche/{id}", name="admin_user_show")
      * @Method("GET")
      */
     public function showAction(User $user)
@@ -95,7 +95,7 @@ class UserController extends Controller
     /**
      * Displays a form to edit an existing user entity.
      *
-     * @Route("/edition/{id}", name="user_edit")
+     * @Route("/edition/{id}", name="admin_user_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, User $user)
@@ -110,7 +110,7 @@ class UserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Membre modifié avec succès !');
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/user:edit.html.twig', array(
@@ -123,7 +123,7 @@ class UserController extends Controller
     /**
      * Deletes a user entity.
      *
-     * @Route("/suppression/{id}", name="user_delete")
+     * @Route("/suppression/{id}", name="admin_user_delete")
      */
     public function deleteAction(Request $request, User $user)
     {
@@ -142,7 +142,7 @@ class UserController extends Controller
             else
                 $this->addFlash('error', 'Erreur lors de la suppression du membre !');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         return $this->render('NBGraphicsAdminBundle:Admin/user:delete.html.twig', array(
@@ -161,7 +161,7 @@ class UserController extends Controller
     private function createDeleteForm(User $user)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setAction($this->generateUrl('admin_user_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

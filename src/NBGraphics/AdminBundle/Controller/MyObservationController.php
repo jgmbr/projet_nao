@@ -20,7 +20,7 @@ class MyObservationController extends Controller
     /**
      * Lists all observation entities.
      *
-     * @Route("/", name="my_observation_index")
+     * @Route("/", name="admin_my_observation_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -46,7 +46,7 @@ class MyObservationController extends Controller
     /**
      * Finds and displays a observation entity.
      *
-     * @Route("/fiche/{id}", name="my_observation_show")
+     * @Route("/fiche/{id}", name="admin_my_observation_show")
      * @Method("GET")
      */
     public function showAction(Observation $observation)
@@ -65,7 +65,7 @@ class MyObservationController extends Controller
     /**
      * Displays a form to edit an existing observation entity.
      *
-     * @Route("/edition/{id}", name="my_observation_edit")
+     * @Route("/edition/{id}", name="admin_my_observation_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Observation $observation)
@@ -86,10 +86,10 @@ class MyObservationController extends Controller
 
             if ($response) {
                 $this->addFlash('success', 'Observation modifiée avec succès !');
-                return $this->redirectToRoute('my_observation_show', array('id' => $observation->getId()));
+                return $this->redirectToRoute('admin_my_observation_show', array('id' => $observation->getId()));
             } else {
                 $this->addFlash('error', 'Erreur lors de la modification de l\'observation');
-                return $this->redirectToRoute('my_observation_edit', array('id' => $observation->getId()));
+                return $this->redirectToRoute('admin_my_observation_edit', array('id' => $observation->getId()));
             }
 
         }
@@ -104,7 +104,7 @@ class MyObservationController extends Controller
     /**
      * Deletes a observation entity.
      *
-     * @Route("/suppression/{id}", name="my_observation_delete")
+     * @Route("/suppression/{id}", name="admin_my_observation_delete")
      */
     public function deleteAction(Request $request, Observation $observation)
     {
@@ -125,7 +125,7 @@ class MyObservationController extends Controller
             else
                 $this->addFlash('error', 'Erreur lors de la suppression de l\'observation !');
 
-            return $this->redirectToRoute('my_observation_index');
+            return $this->redirectToRoute('admin_my_observation_index');
         }
 
         return $this->render('NBGraphicsAdminBundle:Account/observation:delete.html.twig', array(
@@ -145,7 +145,7 @@ class MyObservationController extends Controller
     private function createDeleteForm(Observation $observation)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('my_observation_delete', array('id' => $observation->getId())))
+            ->setAction($this->generateUrl('admin_my_observation_delete', array('id' => $observation->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -51,13 +51,13 @@
 
 
         <div class="actions">
-            <a href="{{ path('article_edit', { 'id': article.id }) }}" class="btn btn-warning">
+            <a href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-warning">
                 <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
             </a>
-            <a href="{{ path('article_delete', { 'id': article.id }) }}" class="btn btn-danger">
+            <a href="{{ path('admin_article_delete', { 'id': article.id }) }}" class="btn btn-danger">
                 <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
             </a>
-            <a href="{{ path('article_index') }}" class="btn btn-primary pull-left">
+            <a href="{{ path('admin_article_index') }}" class="btn btn-primary pull-left">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
             </a>
         </div>

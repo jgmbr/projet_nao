@@ -30,7 +30,7 @@
                         {% for observation in observations %}
                             <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
                                 <td>
-                                    <a href="{{ path('observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a>
+                                    <a href="{{ path('admin_observation_show', { 'id': observation.id }) }}">{{ observation.id }}</a>
                                 </td>
                                 <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
                                 <td>{{ observation.quantity }}</td>
@@ -54,16 +54,16 @@
                                     {{ observation.status.name }}
                                 </td>
                                 <td>
-                                    <a href="{{ path('observation_show', { 'id': observation.id }) }}" title="Voir l'observation" class="btn btn-info btn-xs">
+                                    <a href="{{ path('admin_observation_show', { 'id': observation.id }) }}" title="Voir l'observation" class="btn btn-info btn-xs">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
-                                    <a href="{{ path('observation_edit', { 'id': observation.id }) }}" title="Editer l'observation" class="btn btn-warning btn-xs">
+                                    <a href="{{ path('admin_observation_edit', { 'id': observation.id }) }}" title="Editer l'observation" class="btn btn-warning btn-xs">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
-                                    <a href="{{ path('observation_moderate', { 'id': observation.id }) }}" title="Modérer l'observation" class="btn btn-primary btn-xs">
+                                    <a href="{{ path('admin_observation_moderate', { 'id': observation.id }) }}" title="Modérer l'observation" class="btn btn-primary btn-xs">
                                         <i class="fa fa-wrench" aria-hidden="true"></i>
                                     </a>
-                                    <a href="{{ path('observation_delete', { 'id': observation.id }) }}" title="Supprimer l'observation" class="btn btn-danger btn-xs">
+                                    <a href="{{ path('admin_observation_delete', { 'id': observation.id }) }}" title="Supprimer l'observation" class="btn btn-danger btn-xs">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                 </td>

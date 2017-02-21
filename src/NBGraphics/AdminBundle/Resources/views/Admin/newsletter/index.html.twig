@@ -24,7 +24,7 @@
                             <td> {{ newsletter.id }} </td>
                             <td> {{ newsletter.email }} </td>
                             <td>
-                                <a class="btn btn-danger btn-xs" title="Supprimer l'e-mail" href="{{ path('newsletter_delete', { 'id': newsletter.id }) }}" >
+                                <a class="btn btn-danger btn-xs" title="Supprimer l'e-mail" href="{{ path('admin_newsletter_delete', { 'id': newsletter.id }) }}" >
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a>
                             </td>
