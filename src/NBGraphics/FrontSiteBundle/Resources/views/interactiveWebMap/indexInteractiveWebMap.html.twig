@@ -29,9 +29,10 @@
         </section>
 
         {% if resultsPerBird %}
+
             <div class="dataTables_wrapper table-responsive">
+                <h3>Résultat(s) de votre recherche par oiseau "{{ bird.nomVern }} - {{ bird.nomComplet }}"</h3>
                 <table id="results" class="table table-hover dataTable">
-                    <caption>Résultat(s) de votre recherche par nom d'oiseau :</caption>
                     <thead>
                         <tr>
                             <th>Observation n°</th>
@@ -66,10 +67,13 @@
 
             <hr>
             <h3>Affiner la carte intéractive</h3>
-            {{ form_start(criteriaMapsForm) }}
-            {{ form_widget(criteriaMapsForm) }}
-            {{ form_end(criteriaMapsForm) }}
-
+            <section id="criteria">
+                <div class="searchMap">
+                    {{ form_start(criteriaMapsForm) }}
+                    {{ form_widget(criteriaMapsForm) }}
+                    {{ form_end(criteriaMapsForm) }}
+                </div>
+            </section>
             <hr>
             <div class="form-group map-container">
                 <div id="map"></div>
@@ -78,9 +82,10 @@
         {% endif %}
 
         {% if resultsPerFamily %}
-            <div class="dataTables_wrapper table-responsive">
+
+            <div class="map-results dataTables_wrapper table-responsive">
+                <h3>Résultat(s) de votre recherche par famille d'oiseau "{{ family.famille }}"</h3>
                 <table id="results" class="table table-hover dataTable">
-                    <caption>Résultat(s) de votre recherche par famille d'oiseau</caption>
                     <thead>
                         <tr>
                             <th>Observation n°</th>
@@ -115,12 +120,13 @@
 
             <hr>
             <h3>Affiner la carte intéractive</h3>
+            <section id="criteria">
             <div class="searchMap">
                 {{ form_start(criteriaMapsForm) }}
                 {{ form_widget(criteriaMapsForm) }}
                 {{ form_end(criteriaMapsForm) }}
             </div>
-
+            </section>
             <hr>
             <div class="form-group map-container">
                 <div id="map"></div>
@@ -139,7 +145,7 @@
 
             $(document).ready(function() {
                 if ($('#results').length > 0) {
-                    $('html, body').animate({scrollTop: $('#results').offset().top -10}, 'slow');
+                    $('html, body').animate({scrollTop: $('#results').offset().top -70}, 'slow');
                 }
             });
 
@@ -303,7 +309,7 @@
                 "lengthChange": true,
                 "searching": false,
                 "ordering": true,
-                "info": false,
+                "info": true,
                 "autoWidth": false,
                 "language": {
                     "processing":     "Traitement en cours...",

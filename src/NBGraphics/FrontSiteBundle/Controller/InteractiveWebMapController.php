@@ -83,6 +83,8 @@ class InteractiveWebMapController extends Controller
                     'criteriaMapsForm' => $criteriaMapsForm->createView(),
                     'resultsPerBird' => $resultsPerBird,
                     'resultsPerFamily' => $resultsPerFamily,
+                    'bird' => $bird,
+                    'family' => $family
                 ]);
 
             }
