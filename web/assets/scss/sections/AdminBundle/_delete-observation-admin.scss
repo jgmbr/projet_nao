@@ -1,0 +1,25 @@
+// AdminBundle/Resources/views/Admin/observation/delete.html.twig
+
+.delete-observation-admin {
+  text-align: center;
+  @media #{$desktop} {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.delete-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.delete-observation-admin .actions {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #5c5c5c;
+}

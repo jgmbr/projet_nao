@@ -31,6 +31,8 @@
   border-bottom: 1px solid #ccc;
   @media #{$tablet} {
     width: 33.333%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 

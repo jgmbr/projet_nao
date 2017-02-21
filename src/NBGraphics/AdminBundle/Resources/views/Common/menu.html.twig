@@ -1,182 +1,186 @@
-<h2>
-    {% if is_granted('ROLE_SUPER_ADMIN') %}
-        ESPACE SUPER ADMINISTRATION
-    {% elseif is_granted('ROLE_ADMIN') %}
-        ESPACE ADMINISTRATION
-    {% elseif is_granted('ROLE_COLLABORATOR') %}
-        ESPACE COLLABORATEUR
-    {% else %}
-        ESPACE MON COMPTE
-    {% endif %}
-</h2>
+<div class="container clearfix">
 
-{% if is_granted('ROLE_ADMIN') %}
-    <div class="col-sm-12 col-md-3">
+    <h2>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            ESPACE SUPER ADMINISTRATION
+        {% elseif is_granted('ROLE_ADMIN') %}
+            ESPACE ADMINISTRATION
+        {% elseif is_granted('ROLE_COLLABORATOR') %}
+            ESPACE COLLABORATEUR
+        {% else %}
+            ESPACE MON COMPTE
+        {% endif %}
+    </h2>
 
-        <nav class="navbar navbar-default sidebar" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="col-sm-12 col-md-3">
+
+            <nav class="navbar navbar-default sidebar" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
 
 
 
-                        <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
-                            <a href="{{ path('admin_page') }}">
-                                Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                             </a>
-                        </li>
-                        <li class="{% if app.request.attributes.get('_route') starts with "admin_profil" %}active{% endif %}">
-                            <a href="{{ path('admin_profil') }}">
-                                Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
+                            <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                                <a href="{{ path('admin_page') }}">
+                                    Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                 </a>
+                            </li>
+                            <li class="{% if app.request.attributes.get('_route') starts with "admin_profil" %}active{% endif %}">
+                                <a href="{{ path('admin_profil') }}">
+                                    Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "user" %}active{% endif %}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Membres <span class="caret"></span>
-                                    <i class="fa fa-users pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <li class="dropdown {% if app.request.attributes.get('_route') starts with "user" %}active{% endif %}">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Membres <span class="caret"></span>
+                                        <i class="fa fa-users pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li>
+                                            <a href="{{ path('user_index') }}">
+                                                <span> Liste </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('user_new') }}">
+                                                <span> Ajouter </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+
+                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "observation" %}active{% endif %}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Observations <span class="caret"></span>
+                                    <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu forAnimate" role="menu">
                                     <li>
-                                        <a href="{{ path('user_index') }}">
+                                        <a href="{{ path('observation_index') }}">
                                             <span> Liste </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('user_new') }}">
-                                            <span> Ajouter </span>
+                                        <a href="{{ path('observation_waiting') }}">
+                                            <span> En attente </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('observation_valided') }}">
+                                           <span> Validées </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('observation_refused') }}">
+                                           <span> Refusées </span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                        {% endif %}
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                {% if app.request.attributes.get('_route') starts with "article" %}
+                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
+                                {% else %}
+                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
+                                {% endif %}
+                                <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
+                                    <a href="{{ path('newsletter_index') }}">
+                                        Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                {% if app.request.attributes.get('_route') starts with "seo" %}
+                                    {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':true} )) }}
+                                {% else %}
+                                    {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':false} )) }}
+                                {% endif %}
 
-                        <li class="dropdown {% if app.request.attributes.get('_route') starts with "observation" %}active{% endif %}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Observations <span class="caret"></span>
-                                <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                            <ul class="dropdown-menu forAnimate" role="menu">
-                                <li>
-                                    <a href="{{ path('observation_index') }}">
-                                        <span> Liste </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('observation_waiting') }}">
-                                        <span> En attente </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('observation_valided') }}">
-                                       <span> Validées </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('observation_refused') }}">
-                                       <span> Refusées </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    {% elseif is_granted('ROLE_COLLABORATOR') %}
+        <div class="col-sm-12 col-md-3">
+            <nav class="navbar navbar-default sidebar" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                                <a href="{{ path('admin_page') }}">
+                                    Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="{% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
+                                <a href="{{ path('admin_profil') }}">
+                                    Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                </a>
+                            </li>
                             {% if app.request.attributes.get('_route') starts with "article" %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
                             {% else %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
                             {% endif %}
-                            <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
-                                <a href="{{ path('newsletter_index') }}">
-                                    Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    {% else %}
+        <div class="col-sm-12 col-md-3">
+            <nav class="navbar navbar-default sidebar" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
+                                <a href="{{ path('admin_page') }}">
+                                    Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            {% if app.request.attributes.get('_route') starts with "seo" %}
-                                {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':true} )) }}
-                            {% else %}
-                                {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':false} )) }}
-                            {% endif %}
+                            <li class="{% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
+                                <a href="{{ path('admin_profil') }}">
+                                    Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="{% if app.request.attributes.get('_route') == "my_observation_index" %}active{% endif %}">
+                                <a href="{{ path('my_observation_index') }}">
+                                    Mes Observations <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    {% endif %}
 
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </div>
-{% elseif is_granted('ROLE_COLLABORATOR') %}
-    <div class="col-sm-12 col-md-3">
-        <nav class="navbar navbar-default sidebar" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
-                            <a href="{{ path('admin_page') }}">
-                                Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="{% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
-                            <a href="{{ path('admin_profil') }}">
-                                Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        {% if app.request.attributes.get('_route') starts with "article" %}
-                            {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
-                        {% else %}
-                            {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-{% else %}
-    <div class="col-sm-12 col-md-3">
-        <nav class="navbar navbar-default sidebar" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
-                            <a href="{{ path('admin_page') }}">
-                                Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="{% if app.request.attributes.get('_route') == "admin_profil" %}active{% endif %}">
-                            <a href="{{ path('admin_profil') }}">
-                                Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="{% if app.request.attributes.get('_route') == "my_observation_index" %}active{% endif %}">
-                            <a href="{{ path('my_observation_index') }}">
-                                Mes Observations <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-{% endif %}
+</div>

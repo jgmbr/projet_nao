@@ -4,62 +4,65 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header"> <h3 class="box-title"> Fiche actualité </h3> </div>
-            <div class="box-body box-article">
-                <table class="table table-responsive">
-                    <tbody>
-                    <tr>
-                        <th>Image</th>
-                        <td>
-                            {% if article.image is not null %}
-                                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
-                            {% else %}
-                                <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Statut</th>
-                        <td>{{ article.state.name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Titre</th>
-                        <td>{{ article.title }}</td>
-                    </tr>
-                    <tr>
-                        <th>Slug</th>
-                        <td>{{ article.slug }}</td>
-                    </tr>
-                    <tr>
-                        <th>Contenu</th>
-                        <td>{{ article.content|nl2br }}</td>
-                    </tr>
-                    <tr>
-                        <th>Date de création</th>
-                        <td>{% if article.createdAt %}{{ article.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Date de modification</th>
-                        <td>{% if article.updatedAt %}{{ article.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="container news-article-show">
+
+        <h2> Fiche actualité </h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        {% if article.image is not null %}
+                            <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+                        {% else %}
+                            <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>{{ article.state.name }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ article.title }}</td>
+                </tr>
+                <tr>
+                    <th>Slug</th>
+                    <td>{{ article.slug }}</td>
+                </tr>
+                <tr>
+                    <th>Contenu</th>
+                    <td>{{ article.content|nl2br }}</td>
+                </tr>
+                <tr>
+                    <th>Date de création</th>
+                    <td>{% if article.createdAt %}{{ article.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Date de modification</th>
+                    <td>{% if article.updatedAt %}{{ article.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
+
         <div class="actions">
-            <a href="{{ path('article_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
-            </a>
             <a href="{{ path('article_edit', { 'id': article.id }) }}" class="btn btn-warning">
                 <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
             </a>
             <a href="{{ path('article_delete', { 'id': article.id }) }}" class="btn btn-danger">
                 <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
             </a>
+            <a href="{{ path('article_index') }}" class="btn btn-primary pull-left">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
+            </a>
         </div>
+
+
     </div>
 
 {% endblock %}

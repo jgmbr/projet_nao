@@ -1,0 +1,31 @@
+// AdminBundle/Resources/views/Admin/user/show.html.twig
+
+.show-user-admin {
+  width: 100%;
+  @media #{$tablet} {
+    width: 90%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 70%;
+  }
+}
+
+.show-user-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.show-user-admin .actions .btn {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    width: 45%;
+    display: block;
+    margin: 20px auto;
+  }
+}

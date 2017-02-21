@@ -1,0 +1,23 @@
+// AdminBundle/Resources/views/Admin/user/index.html.twig
+
+.index-user-admin {
+  margin-bottom: 40px;
+  @media #{$desktop} {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+  }
+}
+
+.index-user-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}

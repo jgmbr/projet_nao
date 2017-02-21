@@ -54,17 +54,19 @@
             </section>
 
             <div class="text-center programm-research-btn">
-                <button class="btn btn-primary">
                 {% if app.user %}
                     <a href="{{ path('nb_graphics_front_site_submitobservation') }}">
+                        <button class="btn btn-primary">
                         Observer
+
                     </a>
                 {% else %}
                 <a href="{{ path('fos_user_registration_register') }}">
+                    <button class="btn btn-primary">
                     Participer
+                    </button>
                 </a>
                 {% endif %}
-                </button>
             </div>
         </section>
 

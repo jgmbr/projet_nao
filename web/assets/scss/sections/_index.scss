@@ -1,18 +1,8 @@
 // ==========================================================================
-// Sections Imports
+// Bundle Imports
 // ==========================================================================
 
-@import "home-page-main";
-@import "home-page-video-wrapper";
-@import "observation-form-container";
-@import "interactiveWebMap";
-@import "display-bird";
-@import "contact-us-form";
-@import "register-form";
-@import "connexion-form";
-@import "news-main-page";
-@import "news-details-page";
-@import "programm-research";
-@import "newsletter-form";
-@import "terms-page";
-@import "404-page";
+@import "FrontSiteBundle/index";
+@import "AdminBundle/index";
+@import "NewsBundle/index";
+@import "SEOBundle/index";

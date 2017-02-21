@@ -4,30 +4,25 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">Observations</h3> </div>
-        <div class="box-body box-contract">
+    <div class="container delete-observation">
 
-    <p>
-        Etes-vous certain de vouloir supprimer l'observation {{ observation.id }} ?
-    </p>
+        <h2>Supprimer une observation.</h2>
 
-    <div class="well">
-    {{ form_start(delete_form) }}
-        <input type="submit" value="Oui, je confirme la suppression" class="btn btn-success" />
-        {{ form_rest(delete_form) }}
-    {{ form_end(delete_form) }}
-    </div>
+        <p><strong>Etes-vous certain de vouloir supprimer l'observation {{ observation.id }} ?</strong></p>
 
-        </div>
-    </div>
 
-    <div class="actions">
-        <a href="{{ path('my_observation_index') }}" class="btn btn-primary pull-left">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
-        </a>
-    </div>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Oui, je confirme la suppression" class="btn btn-danger" />
+            {{ form_rest(delete_form) }}
+            {{ form_end(delete_form) }}
+
+            <div class="actions">
+                <a href="{{ path('my_observation_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+                </a>
+            </div>
+
     </div>
 
 {% endblock %}

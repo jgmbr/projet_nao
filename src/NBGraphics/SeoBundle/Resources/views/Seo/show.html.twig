@@ -4,57 +4,60 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header"> <h3 class="box-title"> Fiche SEO </h3> </div>
-            <div class="box-body box-article">
-                <table class="table table-responsive">
-                    <tbody>
-                    <tr>
-                        <th>Page</th>
-                        <td>{{ seo.page }}</td>
-                    </tr>
-                    <tr>
-                        <th>Route</th>
-                        <td>{{ seo.route }}</td>
-                    </tr>
-                    <tr>
-                        <th>Titre</th>
-                        <td>{{ seo.title }}</td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td>{{ seo.metaDescription }}</td>
-                    </tr>
-                    <tr>
-                        <th>Mots clés</th>
-                        <td>{{ seo.metaKeywords }}</td>
-                    </tr>
-                    <tr>
-                        <th>Robots</th>
-                        <td>{{ seo.metaRobots }}</td>
-                    </tr>
-                    <tr>
-                        <th>Date de création</th>
-                        <td>{% if seo.createdAt %}{{ seo.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Date de modification</th>
-                        <td>{% if seo.updatedAt %}{{ seo.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="container show-seo-bundle">
+
+        <h2>Fiche SEO</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <th>Page</th>
+                    <td>{{ seo.page }}</td>
+                </tr>
+                <tr>
+                    <th>Route</th>
+                    <td>{{ seo.route }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ seo.title }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ seo.metaDescription }}</td>
+                </tr>
+                <tr>
+                    <th>Mots clés</th>
+                    <td>{{ seo.metaKeywords }}</td>
+                </tr>
+                <tr>
+                    <th>Robots</th>
+                    <td>{{ seo.metaRobots }}</td>
+                </tr>
+                <tr>
+                    <th>Date de création</th>
+                    <td>{% if seo.createdAt %}{{ seo.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Date de modification</th>
+                    <td>{% if seo.updatedAt %}{{ seo.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
+
         <div class="actions">
-            <a href="{{ path('seo_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste SEO
-            </a>
             <a href="{{ path('seo_edit', { 'id': seo.id }) }}" class="btn btn-warning">
                 <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
             </a>
+            <a href="{{ path('seo_index') }}" class="btn btn-primary pull-left">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste SEO
+            </a>
         </div>
+
+
     </div>
 
 {% endblock %}

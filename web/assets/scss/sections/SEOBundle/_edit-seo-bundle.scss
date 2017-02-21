@@ -1,0 +1,34 @@
+// SeoBundle/Resources/views/Seo/edit.html.twig
+
+.edit-seo-bundle {
+  width: 100%;
+  margin: auto;
+  @media #{$tablet} {
+    width: 90%;
+  }
+  @media #{$desktop} {
+    width: 75%;
+  }
+}
+
+.edit-seo-bundle h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}
+
+.edit-seo-bundle .btn {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    width: 45%;
+    display: block;
+    margin: 20px auto;
+  }
+}

@@ -1,0 +1,35 @@
+// AdminBundle/Resources/views/Admin/observation/show.html.twig
+
+.observation-card-admin {
+  width: 100%;
+  @media #{$tablet} {
+    width: 90%;
+    margin: auto;
+  }
+  @media #{$desktop} {
+    width: 70%;
+  }
+}
+
+.observation-card-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.observation-card-admin .actions .btn {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    width: 45%;
+  }
+}
+
+.observation-card-admin .actions .btn-warning {
+  @media #{$tablet} {
+    margin-right: 9%;
+  }
+}
