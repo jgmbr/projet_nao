@@ -1381,4 +1381,52 @@ nav:hover .forAnimate {
   padding-top: 20px;
   border-top: 1px solid #5c5c5c; }
 
+.waiting-observation-admin {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .waiting-observation-admin {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .waiting-observation-admin {
+      width: 75%; } }
+
+.waiting-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .waiting-observation-admin h2 {
+      margin-bottom: 45px; } }
+
+.waiting-observation-admin #observation_wrapper {
+  margin-bottom: 40px; }
+
+.valided-observation-admin {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .valided-observation-admin {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .valided-observation-admin {
+      width: 75%; } }
+
+.valided-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .valided-observation-admin h2 {
+      margin-bottom: 45px; } }
+
+.valided-observation-admin #observation_wrapper {
+  margin-bottom: 40px; }
+
 /*# sourceMappingURL=main.css.map */
