@@ -4,66 +4,60 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">Actualités</h3> </div>
-            <div class="box-body">
-                <div id="article_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="row">
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {% if articles is defined and articles|length > 0 %}
-                                <table id="article" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="article_info">
-                                    <thead>
-                                    <tr role="row">
-                                        <th>Id</th>
-                                        <th>Titre</th>
-                                        <th>Statut</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for article in articles %}
-                                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                                            <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+    <div class="container news-article-index">
 
-                                            <td>{{ article.title }}</td>
-                                            <td>{{ article.state.name }}</td>
+        <h2>Actualités</h2>
 
-                                            <td>
-                                                <a href="{{ path('article_show', { 'id': article.id }) }}" class="btn btn-info btn-xs">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ path('article_edit', { 'id': article.id }) }}" class="btn btn-warning btn-xs">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ path('article_delete', { 'id': article.id }) }}" class="btn btn-danger btn-xs">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Titre</th>
-                                        <th>Statut</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            {% else %}
-                                <p> Pas d'actualités. </p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+        {% if articles is defined and articles|length > 0 %}
+        <div id="article_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
+            <table id="article" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="article_info">
+                <thead>
+                <tr role="row">
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                        <td>
+                            <a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a>
+                        </td>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.state.name }}</td>
+                        <td>
+                            <a title="Voir l'actualité" class="btn btn-info btn-xs" href="{{ path('article_show', { 'id': article.id }) }}" >
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                            <a title="Modifier l'actualité" class="btn btn-warning btn-xs" href="{{ path('article_edit', { 'id': article.id }) }}" >
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a title="Supprimer l'actualité" class="btn btn-danger btn-xs" href="{{ path('article_delete', { 'id': article.id }) }}" >
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </tfoot>
+            </table>
         </div>
+        {% else %}
+            <p>
+                <strong>Pas d'actualités.</strong>
+            </p>
+        {% endif %}
+
+
     </div>
 
 {% endblock %}
@@ -72,7 +66,7 @@
     <script type="text/javascript">
         $(function () {
             $('#article').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
