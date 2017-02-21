@@ -1,0 +1,35 @@
+// SeoBundle/Resources/views/Seo/show.html.twig
+
+.show-seo-bundle {
+  width: 100%;
+  margin: auto;
+  @media #{$tablet} {
+    width: 90%;
+    margin-bottom: 60px;
+  }
+  @media #{$desktop} {
+    width: 75%;
+    margin-bottom: 100px;
+  }
+}
+
+.show-seo-bundle h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}
+
+.show-seo-bundle .actions .btn {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    display: block;
+    width: 45%;
+  }
+}

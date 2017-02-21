@@ -4,26 +4,23 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">Edition SEO</h3> </div>
-            <div class="well">
-                {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
-                <div class="box-body">
-                    {{ form_widget(edit_form) }}
-                </div>
-                <div class="box-footer">
-                    <input type="submit" value="Mettre à jour" class="btn btn-warning" />
-                </div>
-                {{ form_end(edit_form) }}
-            </div>
-        </div>
+    <div class="container edit-seo-bundle">
+
+        <h2>Edition SEO</h2>
+
+        {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Mettre à jour" class="btn btn-warning" />
+        {{ form_end(edit_form) }}
+
 
         <div class="actions">
             <a href="{{ path('seo_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste SEO
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;
+                Retour à la liste SEO
             </a>
         </div>
+
     </div>
 
 {% endblock %}

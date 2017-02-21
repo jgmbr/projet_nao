@@ -1690,4 +1690,65 @@ nav:hover .forAnimate {
     .index-seo-bundle h2 {
       margin-bottom: 45px; } }
 
+.show-seo-bundle {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .show-seo-bundle {
+      width: 90%;
+      margin-bottom: 60px; } }
+  @media (min-width: 1024px) {
+    .show-seo-bundle {
+      width: 75%;
+      margin-bottom: 100px; } }
+
+.show-seo-bundle h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .show-seo-bundle h2 {
+      margin-bottom: 45px; } }
+
+.show-seo-bundle .actions .btn {
+  width: 100%;
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .show-seo-bundle .actions .btn {
+      display: block;
+      width: 45%; } }
+
+.edit-seo-bundle {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .edit-seo-bundle {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .edit-seo-bundle {
+      width: 75%; } }
+
+.edit-seo-bundle h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .edit-seo-bundle h2 {
+      margin-bottom: 45px; } }
+
+.edit-seo-bundle .btn {
+  width: 100%;
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .edit-seo-bundle .btn {
+      width: 45%;
+      display: block;
+      margin: 20px auto; } }
+
 /*# sourceMappingURL=main.css.map */
