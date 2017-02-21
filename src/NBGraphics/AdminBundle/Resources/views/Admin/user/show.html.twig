@@ -6,14 +6,13 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-    <div class="box box-default">
-        <div class="box-header with-border"> <h3 class="box-title">Fiche utilisateur</h3> </div>
-            <div class="box-body box-show">
+    <div class="container show-user-admin">
 
-            <p class="text-muted text-center"> &nbsp; </p>
+        <h2>Fiche utilisateur</h2>
 
-            <table class="table table-responsive">
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
                 <tbody>
                 <tr>
                     <th> {{ 'profile.show.type'|trans }} </th>
@@ -51,16 +50,15 @@
                 </tr>
                 </tbody>
             </table>
-
-            <p>
-                <a href="{{ path('user_edit',{ 'id': user.id }) }}" class="btn btn-warning pull-right">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
-                </a>
-            </p>
-
         </div>
-        <!-- /.box-body -->
-    </div>
+
+
+        <div class="actions">
+            <a class="btn btn-warning" href="{{ path('user_edit',{ 'id': user.id }) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+            </a>
+        </div>
+
     </div>
 
 {% endblock %}

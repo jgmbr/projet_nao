@@ -4,28 +4,24 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="container">
+    <div class="container index-user-admin">
 
-        <a href="{{ path('user_export_phones') }}" class="btn btn-info">
-            <i class="fa fa-download" aria-hidden="true"></i>
-            Exporter les numéros de téléphone
-        </a>
+        <h2>Accueil</h2>
 
-        <div class="col-sm-12 col-md-9">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a data-toggle="tab" href="#tab_user">Particuliers</a>
-                </li>
-                <li>
-                    <a data-toggle="tab" href="#tab_administrator">Naturalistes</a
-                </li>
-                <li>
-                    <a data-toggle="tab" href="#tab_collaborator">Collaborateurs</a>
-                </li>
-                <li>
-                    <a data-toggle="tab" href="#tab_superadmin">Super Administrateurs</a>
-                </li>
-            </ul>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-toggle="tab" href="#tab_user">Particuliers</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#tab_administrator">Naturalistes</a
+            </li>
+            <li>
+                <a data-toggle="tab" href="#tab_collaborator">Collaborateurs</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#tab_superadmin">Super Administrateurs</a>
+            </li>
+        </ul>
 
             <div class="tab-content">
 
@@ -321,7 +317,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+
+
+        <a href="{{ path('user_export_phones') }}" class="btn btn-info">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            Exporter les numéros de téléphone
+        </a>
+
     </div>
 
 {% endblock %}
@@ -330,7 +333,7 @@
     <script type="text/javascript">
         $(function () {
             $('#user, #administrator, #collaborator, #superadmin').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
