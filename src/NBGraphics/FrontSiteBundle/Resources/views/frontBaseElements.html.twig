@@ -42,6 +42,27 @@
     <![endif]-->
     {% block stylesheets %}
     {% endblock %}
+    <style>
+        .gotop {
+            color: #ffffff;
+            width: 35px;
+            height: 35px;
+            background: #374a5b;
+            cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            z-index: 9999;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            padding: 7px 10px;
+        }
+        .gotop:hover {
+            background: #ff6347;
+        }
+    </style>
 </head>
 <body>
 
@@ -191,6 +212,10 @@
             </section>
         </footer>
 
+    <div class="gotop js-top" style="display: block;">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </div>
+
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-responsive/js/dataTables.responsive.js') }}"></script>
@@ -215,6 +240,13 @@
     </script>
     <script>
         (function () {
+            $('.gotop').on('click', function (e){
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $('html').offset().top
+                }, 1000, 'easeInOutExpo');
+                return false;
+            });
             $('#nbgraphics_corebundle_search_oiseau').autocompleter({
                 url_list: '{{ path('taxref_search') }}',
                 url_get: '{{ path('taxref_get') ~ '/' }}'
@@ -224,6 +256,13 @@
                 url_get: '{{ path('taxref_get') ~ '/' }}'
             });
         }());
+        $(window).scroll(function(){
+            var posScroll = $(document).scrollTop();
+            if(posScroll >= 100)
+                $('.gotop').fadeIn(600);
+            else
+                $('.gotop').fadeOut(600); 
+        });
     </script>
 
     {% block javascripts %}
