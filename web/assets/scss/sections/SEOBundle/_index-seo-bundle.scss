@@ -1,0 +1,47 @@
+// SeoBundle/Resources/views/Seo/index.html.twig
+
+//
+  // Style by Justine
+//
+.callout-info {
+  color: #fff !important;
+  background-color: #00c0ef !important;
+
+  border-color: #0097bc;
+}
+.callout {
+  border-radius: 3px;
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+}
+.callout h4 {
+  margin-top: 0;
+  font-weight: 600;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.index-seo-bundle {
+  width: 100%;
+  margin: auto;
+  @media #{$tablet} {
+    width: 90%;
+  }
+  @media #{$desktop} {
+    width: 75%;
+  }
+}
+
+.index-seo-bundle h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}

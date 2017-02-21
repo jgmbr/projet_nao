@@ -2,25 +2,7 @@
 
 {% block stylesheets %}
     <style>
-        .callout-info {
-            color: #fff !important;
-            background-color: #00c0ef !important;
 
-            border-color: #0097bc;
-        }
-        .callout {
-            border-radius: 3px;
-            margin: 0 0 20px 0;
-            padding: 15px 30px 15px 15px;
-            border-left: 5px solid #eee;
-        }
-        .callout h4 {
-            margin-top: 0;
-            font-weight: 600;
-        }
-        .callout p:last-child {
-            margin-bottom: 0;
-        }
     </style>
 {% endblock %}
 
@@ -28,62 +10,53 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-        <div class="box box-default">
-            <div class="box-header with-border"> <h3 class="box-title">SEO</h3> </div>
-            <div class="box-body">
-                <div id="seo_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="row">
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-6"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {% if pagesSeo is defined and pagesSeo|length > 0 %}
-                                <table id="seo" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="seo_info">
-                                    <thead>
-                                    <tr role="row">
-                                        <th>Id</th>
-                                        <th>Page</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for page in pagesSeo %}
-                                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                                            <td> {{ page.id }} </td>
-                                            <td> {{ page.page }} </td>
-                                            <td>
-                                                <a href="{{ path('seo_show', { 'id': page.id }) }}" class="btn btn-info btn-xs">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="{{ path('seo_edit', { 'id': page.id }) }}" class="btn btn-warning btn-xs">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Page</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            {% else %}
-                                <div class="callout callout-info">
-                                    <h4>Information !</h4>
-                                    <p>Veuillez charger les routes SEO en lançant la commande console : <strong> php bin/console seo:load-routes </strong> </p>
-                                </div>
-                                <p> Pas de SEO </p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
+    <div class="container index-seo-bundle">
+
+        <h2>SEO</h2>
+
+        {% if pagesSeo is defined and pagesSeo|length > 0 %}
+            <div id="seo_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
+                <table id="seo" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="seo_info">
+                    <thead>
+                    <tr role="row">
+                        <th>Id</th>
+                        <th>Page</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for page in pagesSeo %}
+                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                            <td> {{ page.id }} </td>
+                            <td> {{ page.page }} </td>
+                            <td>
+                                <a href="{{ path('seo_show', { 'id': page.id }) }}" class="btn btn-info btn-xs">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a href="{{ path('seo_edit', { 'id': page.id }) }}" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Page</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
-        </div>
+        {% else %}
+            <div class="callout callout-info">
+                <h4>Information !</h4>
+                <p>Veuillez charger les routes SEO en lançant la commande console : <strong> php bin/console seo:load-routes </strong> </p>
+            </div>
+            <p> Pas de SEO </p>
+        {% endif %}
+
     </div>
 
 {% endblock %}
@@ -92,7 +65,7 @@
     <script type="text/javascript">
         $(function () {
             $('#seo').DataTable({
-                "responsive": true,
+                "responsive": false,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
