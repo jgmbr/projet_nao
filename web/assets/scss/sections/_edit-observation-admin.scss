@@ -1,6 +1,6 @@
-// AdminBundle/Resources/views/Admin/observation/index.html.twig
+// AdminBundle/Resources/views/Admin/observation/edit.html.twig
 
-.index-observation-admin {
+.edit-observation-admin {
   width: 100%;
   margin: auto;
   @media #{$tablet} {
@@ -11,7 +11,7 @@
   }
 }
 
-.index-observation-admin h2 {
+.edit-observation-admin h2 {
   font-size: 1.4em;
   text-align: center;
   padding-bottom: 20px;
@@ -23,18 +23,12 @@
   }
 }
 
-.index-observation-admin #observation_wrapper {
-  margin-bottom: 25px;
-}
-
-.index-observation-admin .btn-export {
+.edit-observation-admin .btn {
   width: 100%;
+  margin-top: 20px;
   @media #{$tablet} {
-    width: 70%;
+    width: 45%;
     display: block;
-    margin: auto;
-  }
-  @media #{$desktop} {
-    width: 50%;
+    margin: 20px auto;
   }
 }
