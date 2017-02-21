@@ -1,39 +1,7 @@
 // ==========================================================================
-// Sections Imports
+// Bundle Imports
 // ==========================================================================
 
-@import "home-page-main";
-@import "home-page-video-wrapper";
-@import "observation-form-container";
-@import "interactiveWebMap";
-@import "display-bird";
-@import "contact-us-form";
-@import "register-form";
-@import "connexion-form";
-@import "news-main-page";
-@import "news-details-page";
-@import "programm-research";
-@import "newsletter-form";
-@import "terms-page";
-@import "404-page";
-@import "index-back-end";
-@import "common-profile-show";
-@import "index-observation-users";
-@import "observation-card";
-@import "delete-observation";
-@import "edit-profil";
-@import "index-observation-admin";
-@import "obsevation-card-admin";
-@import "edit-observation-admin";
-@import "moderate-observation-admin";
-@import "delete-observation-admin";
-@import "waiting-observation-admin";
-@import "valided-observation-admin";
-@import "refused-observation-admin";
-@import "index-newsletter-admin";
-@import "delete-newsletter-admin";
-@import "news-article-index";
-@import "news-article-show";
-@import "news-article-edit";
-@import "news-article-delete";
-@import "news-article-new";
+@import "FrontSiteBundle/index";
+@import "AdminBundle/index";
+@import "NewsBundle/index";
