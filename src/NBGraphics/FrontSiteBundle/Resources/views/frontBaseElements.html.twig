@@ -107,23 +107,31 @@
                 <li class="header-title">
                     <a href="{{ path('nb_graphics_front_site_homepage') }}">Nos Amis Les Oiseaux</a>
                 </li>
-
                 {% if app.user %}
-                    <li class="connect">
-                        <a title="Espace mon compte" href="{{ path('admin_page') }}">{{ app.user.username }}</a>
-                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="connect">
+                            <a title="Espace Administration" href="{{ path('admin_page') }}">Bonjour {{ app.user.username }} !</a>
+                        </li>
+                    {% elseif is_granted('ROLE_COLLABORATOR') %}
+                        <li class="connect">
+                            <a title="Espace Collaborateur" href="{{ path('admin_page') }}">Bonjour {{ app.user.username }} !</a>
+                        </li>
+                    {% else %}
+                        <li class="connect">
+                            <a title="Espace Mon Compte" href="{{ path('admin_page') }}">Bonjour {{ app.user.username }} !</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
-
                 {% if app.user %}
                     <li class="connect">
-                        <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                        <a title="Se déconnecter" href="{{ path('fos_user_security_logout') }}">Se déconnecter &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; </a>
                     </li>
                 {% else %}
                     <li class="connect">
-                        <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                        <a title="S'inscrire" href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
                     </li>
                     <li class="connect">
-                        <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                        <a title="Se connecter" href="{{ path('fos_user_security_login') }}">Se connecter</a>
                     </li>
                 {% endif %}
             </ul>
@@ -170,7 +178,7 @@
                 {% endif %}
                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                     <li>
-                        <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">Quitter la connexion utilisateur</a>
+                        <a href="{{ path('admin_page', {'_switch_user': '_exit'}) }}">Quitter la connexion utilisateur &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                     </li>
                 {% endif %}
             </ul>
