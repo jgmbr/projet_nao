@@ -1,0 +1,40 @@
+// NewsBundle/Resources/views/article/new.html.twig
+
+.news-article-new {
+  width: 100%;
+  margin: auto;
+  @media #{$tablet} {
+    width: 90%;
+  }
+  @media #{$desktop} {
+    width: 75%;
+  }
+}
+
+.news-article-new h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}
+
+.news-article-new .btn {
+  width: 100%;
+  margin-top: 20px;
+  @media #{$tablet} {
+    width: 45%;
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+.news-article-new .actions {
+  @media #{$tablet} {
+    border-top: 1px solid #5c5c5c;
+  }
+}
