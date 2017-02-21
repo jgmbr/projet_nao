@@ -1,0 +1,28 @@
+// AdminBundle/Resources/views/Admin/observation/refused.html.twig
+
+.refused-observation-admin {
+  width: 100%;
+  margin: auto;
+  @media #{$tablet} {
+    width: 90%;
+  }
+  @media #{$desktop} {
+    width: 75%;
+  }
+}
+
+.refused-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-bottom: 45px;
+  }
+}
+
+.refused-observation-admin #observation_wrapper {
+  margin-bottom: 40px;
+}

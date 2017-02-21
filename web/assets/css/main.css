@@ -1429,4 +1429,84 @@ nav:hover .forAnimate {
 .valided-observation-admin #observation_wrapper {
   margin-bottom: 40px; }
 
+.refused-observation-admin {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .refused-observation-admin {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .refused-observation-admin {
+      width: 75%; } }
+
+.refused-observation-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .refused-observation-admin h2 {
+      margin-bottom: 45px; } }
+
+.refused-observation-admin #observation_wrapper {
+  margin-bottom: 40px; }
+
+.index-newsletter-admin {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .index-newsletter-admin {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .index-newsletter-admin {
+      width: 75%; } }
+
+.index-newsletter-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .index-newsletter-admin h2 {
+      margin-bottom: 45px; } }
+
+.index-newsletter-admin #newsletter_wrapper {
+  margin-bottom: 40px; }
+
+.index-newsletter-admin .btn-nlt {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .index-newsletter-admin .btn-nlt {
+      width: 50%;
+      display: block;
+      margin: auto; } }
+  @media (min-width: 1024px) {
+    .index-newsletter-admin .btn-nlt {
+      width: 35%; } }
+
+.delete-newsletter-admin {
+  text-align: center; }
+  @media (min-width: 1024px) {
+    .delete-newsletter-admin {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.delete-newsletter-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.delete-newsletter-admin .actions {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #5c5c5c; }
+
 /*# sourceMappingURL=main.css.map */
