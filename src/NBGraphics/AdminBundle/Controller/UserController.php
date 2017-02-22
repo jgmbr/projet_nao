@@ -55,6 +55,16 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            if ($this->get('fos_user.user_manager')->findUserByEmail($user->getEmail())) {
+                $this->addFlash('error','Membre existe déjà !');
+                return $this->redirectToRoute('admin_user_new');
+            }
+
+            if ($this->get('fos_user.user_manager')->findUserByUsername($user->getUsername())) {
+                $this->addFlash('error','Membre existe déjà !');
+                return $this->redirectToRoute('admin_user_new');
+            }
+
             $createUser = $this->get('app.crud.create')->createUser($user);
 
             if ($createUser) {
