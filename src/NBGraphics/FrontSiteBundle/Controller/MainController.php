@@ -115,4 +115,19 @@ class MainController extends Controller
             'formNewsletter'   => $newsletterForm->createView(),
         ));
     }
+
+    /**
+     * Génère le sitemap du site.
+     *
+     * @Route("/sitemap.{_format}", name="front_sitemap", Requirements={"_format" = "xml"})
+     */
+    public function sitemapAction(Request $request)
+    {
+        $hostname = $request->getHost();
+
+        return $this->render('@NBGraphicsFrontSite/main/sitemap.xml.twig',array(
+            'urls' => $this->get('app.sitemap')->generer(),
+            'hostname' => $hostname
+        ));
+    }
 }

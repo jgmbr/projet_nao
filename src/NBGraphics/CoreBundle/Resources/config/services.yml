@@ -24,3 +24,6 @@ services:
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
+    app.sitemap:
+        class: NBGraphics\CoreBundle\Services\Sitemap\Sitemap
+        arguments: ['@doctrine.orm.entity_manager','@router']

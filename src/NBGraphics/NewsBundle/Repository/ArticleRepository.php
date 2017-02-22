@@ -21,6 +21,18 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
+    public function findArticlesByState($state, $sort = 'DESC')
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->where('a.state = :state')
+            ->setParameter('state', $state)
+            ->orderBy('a.id', $sort)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function countArticles()
     {
         return $this
