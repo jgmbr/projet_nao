@@ -4,20 +4,20 @@
 
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="col-sm-12 col-md-9">
-    <div class="box box-default">
-    <div class="box-header with-border"> <h3 class="box-title">Nouvel utilisateur</h3> </div>
-    <div class="box-body box-new">
-    <div class="well">
-    {{ form_start(form, {'attr': {'class': ''}}) }}
+    <div class="container new-user-admin">
+
+        <h2>Nouvel utilisateur</h2>
+
+        {{ form_start(form, {'attr': {'class': ''}}) }}
         {{ form_widget(form) }}
         <input type="submit" value="Créer" class="btn btn-primary" />
-    {{ form_end(form) }}
-    </div>
+        {{ form_end(form) }}
 
-    <p> <a href="{{ path('admin_user_index') }}" class="btn btn-default">Retour à la liste des membres</a> </p>
-    </div>
-    </div>
+
+        <div class="actions">
+            <a class="btn btn-default" href="{{ path('admin_user_index') }}" >Retour à la liste des membres</a>
+        </div>
+
     </div>
 
 {% endblock %}

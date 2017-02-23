@@ -1592,17 +1592,17 @@ nav:hover .forAnimate{
     .index-user-admin h2 {
       margin-bottom: 45px; } }
 
-.show-user-admin {
+.new-user-admin {
   width: 100%; }
   @media (min-width: 768px) {
-    .show-user-admin {
+    .new-user-admin {
       width: 90%;
       margin: auto; } }
   @media (min-width: 1024px) {
-    .show-user-admin {
+    .new-user-admin {
       width: 70%; } }
 
-.show-user-admin h2 {
+.new-user-admin h2 {
   font-size: 1.4em;
   text-align: center;
   padding-bottom: 20px;
@@ -1610,14 +1610,47 @@ nav:hover .forAnimate{
   margin-top: 60px;
   margin-bottom: 20px; }
 
-.show-user-admin .actions .btn {
+.new-user-admin .actions .btn {
   width: 100%;
   margin-top: 20px; }
   @media (min-width: 768px) {
-    .show-user-admin .actions .btn {
+    .new-user-admin .actions .btn {
       width: 45%;
       display: block;
       margin: 20px auto; } }
+
+.new-user-admin {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .new-user-admin {
+      width: 90%;
+      margin: auto; } }
+  @media (min-width: 1024px) {
+    .new-user-admin {
+      width: 70%; } }
+
+.new-user-admin h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+
+.new-user-admin input[type=submit],
+.new-user-admin .actions .btn {
+  width: 100%;
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .new-user-admin input[type=submit],
+    .new-user-admin .actions .btn {
+      width: 45%;
+      display: block;
+      margin: 20px auto; } }
+
+@media (min-width: 768px) {
+  .new-user-admin .actions {
+    border-top: 1px solid #5c5c5c; } }
 
 .edit-user-admin {
   width: 100%; }

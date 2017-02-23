@@ -1,4 +1,4 @@
-// AdminBundle/Resources/views/Admin/user/show.html.twig
+// AdminBundle/Resources/views/Admin/user/new.html.twig
 
 .new-user-admin {
   width: 100%;
@@ -20,6 +20,7 @@
   margin-bottom: 20px;
 }
 
+.new-user-admin input[type=submit],
 .new-user-admin .actions .btn {
   width: 100%;
   margin-top: 20px;
@@ -27,5 +28,11 @@
     width: 45%;
     display: block;
     margin: 20px auto;
+  }
+}
+
+.new-user-admin .actions {
+  @media #{$tablet} {
+    border-top: 1px solid #5c5c5c;
   }
 }
