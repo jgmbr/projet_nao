@@ -1,4 +1,10 @@
 // AdminBundle/Resources/views/Common/index.html.twig
+.index-back-end {
+  @media #{$desktop} {
+    width: 70%;
+  }
+}
+
 .index-back-end h2 {
   font-size: 1.4em;
   text-align: center;
@@ -10,6 +16,9 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+  @media #{$desktop} {
+    margin-top: 0;
   }
 }
 

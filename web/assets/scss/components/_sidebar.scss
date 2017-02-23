@@ -1,3 +1,35 @@
+// General style
+.main-sidebar {
+  @media #{$desktop} {
+    width: 30%;
+  }
+}
+
+.main-sidebar h2 {
+  font-size: 1.4em;
+  text-transform: capitalize;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-top: 0;
+    text-align: left;
+  }
+}
+
+.main-sidebar .desktop-nav {
+  @media #{$desktop} {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+
+// Custom style
+/*
 nav.sidebar {
   -webkit-transition: margin 200ms ease-out;
   -moz-transition: margin 200ms ease-out;
@@ -9,7 +41,7 @@ nav.sidebar {
   font-size: 1.5em;
 }
 
-@media (min-width: 765px) {
+@media (min-width: 768px) {
 
   .main{
     position: absolute;
@@ -83,7 +115,7 @@ nav.sidebar {
   }
 }
 
-@media (min-width: 1330px) {
+@media (min-width: 1024px) {
 
   .main{
     width: calc(100% - 200px);
@@ -108,3 +140,4 @@ nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav
 nav:hover .forAnimate{
   opacity: 1;
 }
+*/

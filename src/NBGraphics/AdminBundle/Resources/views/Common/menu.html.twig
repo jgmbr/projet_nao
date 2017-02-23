@@ -1,19 +1,18 @@
-<div class="container clearfix">
+<div class="container clearfix main-sidebar">
 
     <h2>
         {% if is_granted('ROLE_SUPER_ADMIN') %}
-            ESPACE SUPER ADMINISTRATION
+            espace super administration
         {% elseif is_granted('ROLE_ADMIN') %}
-            ESPACE ADMINISTRATION
+            espace administration
         {% elseif is_granted('ROLE_COLLABORATOR') %}
-            ESPACE COLLABORATEUR
+            espace collaborateur
         {% else %}
-            ESPACE MON COMPTE
+            espace mon compte
         {% endif %}
     </h2>
 
     {% if is_granted('ROLE_ADMIN') %}
-        <div class="col-sm-12 col-md-3">
 
             <nav class="navbar navbar-default sidebar" role="navigation">
                 <div class="container-fluid">
@@ -26,9 +25,7 @@
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-
-
+                        <ul class="nav navbar-nav desktop-nav">
 
                             <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
                                 <a href="{{ path('admin_page') }}">
@@ -112,9 +109,9 @@
                 </div>
             </nav>
 
-        </div>
+
     {% elseif is_granted('ROLE_COLLABORATOR') %}
-        <div class="col-sm-12 col-md-3">
+
             <nav class="navbar navbar-default sidebar" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -126,7 +123,7 @@
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav desktop-nav">
                             <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
                                 <a href="{{ path('admin_page') }}">
                                     Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
@@ -146,9 +143,9 @@
                     </div>
                 </div>
             </nav>
-        </div>
+
     {% else %}
-        <div class="col-sm-12 col-md-3">
+
             <nav class="navbar navbar-default sidebar" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -160,7 +157,7 @@
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav desktop-nav">
                             <li class="{% if app.request.attributes.get('_route') == "admin_page" %}active{% endif %}">
                                 <a href="{{ path('admin_page') }}">
                                     Accueil <i class="fa fa-home pull-right hidden-xs showopacity" aria-hidden="true"></i>
@@ -180,7 +177,7 @@
                     </div>
                 </div>
             </nav>
-        </div>
+
     {% endif %}
 
 </div>

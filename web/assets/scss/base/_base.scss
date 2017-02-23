@@ -38,14 +38,13 @@ li {
   content: " "; /* 1 */
   display: table; /* 2 */
 }
-
 .clearfix:after {
   clear: both;
 }
-
 .clearfix {
   *zoom: 1;
 }
+// End Clearfix hack
 
 // Custom styles front part by Justine
 .gotop {
