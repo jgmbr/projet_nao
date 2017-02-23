@@ -164,6 +164,69 @@ nav:hover .forAnimate{
   opacity: 1;
 }
 
+// Custom styles front part by Justine
+.gotop {
+  color: #ffffff;
+  width: 35px;
+  height: 35px;
+  background: #374a5b;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  z-index: 9999;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  padding: 7px 10px;
+}
+.gotop:hover {
+  background: #ff6347;
+}
+.main-nav li.active a {
+  opacity: 1;
+  color: #fff;
+}
+.connect a {
+  padding: 5px 10px;
+}
+.main-header ul {
+  width: 100%;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .main-header ul {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .interactive-web-map #criteria, .interactive-web-map .searchMap form {
+    width: 80%;
+    margin: auto;
+  }
+}
+.btn-primary {
+  color: #fff;
+  background-color: #2c3e50;
+  border-color: #2c3e50;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:visited {
+  background-color: #3b546d;
+  border-color: #3b546d;
+}
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #2c3e50;
+  border-color: #2c3e50;
+}
+
 // Custom styles admin part by Justine
 .info-box {
   display: block;
