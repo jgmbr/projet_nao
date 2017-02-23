@@ -26,6 +26,14 @@
     width: 40%;
   }
   @media #{$desktop} {
-    width: 15%;
+    width: 25%;
+  }
+}
+
+.common-profile-show .actions a:last-child {
+  margin-top: 20px;
+  @media #{$tablet} {
+    margin-top: 0;
+    margin-right: 10px;
   }
 }

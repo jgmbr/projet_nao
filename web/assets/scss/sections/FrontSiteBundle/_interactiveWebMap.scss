@@ -30,6 +30,21 @@
   }
 }
 
+.interactive-web-map .btn-warning {
+  width: 100%;
+  @media #{$desktop} {
+    width: 33%;
+  }
+}
+
+.interactive-web-map .reinit-search {
+  @media #{$desktop} {
+    border-top: 1px solid #5c5c5c;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+}
+
 @media #{$desktop} {
   .interactive-web-map .searchForm .form-group:first-child,
   #nbgraphics_corebundle_criteria_maps .form-group:first-child {

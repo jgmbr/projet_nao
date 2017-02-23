@@ -163,15 +163,6 @@ nav:hover .forAnimate {
   .interactive-web-map #criteria, .interactive-web-map .searchMap form {
     width: 80%;
     margin: auto; } }
-.btn-primary {
-  color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50; }
-
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:visited {
-  background-color: #3b546d;
-  border-color: #3b546d; }
-
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,
@@ -243,6 +234,22 @@ nav:hover .forAnimate {
 
 .aBox, .aBox:hover {
   color: #333 !important; }
+
+.btn {
+  transition: .4s; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #2c3e50;
+  border-color: #2c3e50;
+  transition: .4s; }
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:visited {
+  background-color: #3b546d;
+  border-color: #3b546d; }
 
 @media (min-width: 768px) {
   .header-wrapper {
@@ -654,6 +661,18 @@ nav:hover .forAnimate {
     .interactive-web-map .searchForm {
       flex-direction: row;
       justify-content: space-between; } }
+
+.interactive-web-map .btn-warning {
+  width: 100%; }
+  @media (min-width: 1024px) {
+    .interactive-web-map .btn-warning {
+      width: 33%; } }
+
+@media (min-width: 1024px) {
+  .interactive-web-map .reinit-search {
+    border-top: 1px solid #5c5c5c;
+    margin-top: 20px;
+    padding-top: 20px; } }
 
 @media (min-width: 1024px) {
   .interactive-web-map .searchForm .form-group:first-child,
@@ -1094,7 +1113,14 @@ nav:hover .forAnimate {
       width: 40%; } }
   @media (min-width: 1024px) {
     .common-profile-show .actions a {
-      width: 15%; } }
+      width: 25%; } }
+
+.common-profile-show .actions a:last-child {
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .common-profile-show .actions a:last-child {
+      margin-top: 0;
+      margin-right: 10px; } }
 
 .index-observation-user {
   margin-bottom: 40px; }
@@ -1131,6 +1157,42 @@ nav:hover .forAnimate {
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+
+.edit-observation-user {
+  width: 100%;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .edit-observation-user {
+      width: 90%; } }
+  @media (min-width: 1024px) {
+    .edit-observation-user {
+      width: 75%; } }
+
+.edit-observation-user h2 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5c5c5c;
+  margin-top: 60px;
+  margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .edit-observation-user h2 {
+      margin-bottom: 45px; } }
+
+.edit-observation-user .btn {
+  width: 100%;
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .edit-observation-user .btn {
+      width: 45%;
+      display: block;
+      margin: 20px auto; } }
+
+@media (min-width: 768px) {
+  .edit-observation-user .actions {
+    margin-top: 20px;
+    border-top: 1px solid #5c5c5c;
+    padding-top: 20px; } }
 
 .delete-observation {
   text-align: center; }
