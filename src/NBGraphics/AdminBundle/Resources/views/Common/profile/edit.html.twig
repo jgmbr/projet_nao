@@ -4,24 +4,28 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container edit-profil">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Edition profil</h2>
+        <div class="container edit-profil">
 
-        <div class="edit-form">
-            {{ form_start(form, { 'action': path('admin_profil_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-            {{ form_widget(form) }}
-            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-warning" />
-            {{ form_end(form) }}
-        </div>
+            <h2>Edition profil</h2>
+
+            <div class="edit-form">
+                {{ form_start(form, { 'action': path('admin_profil_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-warning" />
+                {{ form_end(form) }}
+            </div>
 
 
-        <div class="actions">
-            <a href="{{ path('admin_profil') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à mon profil
-            </a>
+            <div class="actions">
+                <a href="{{ path('admin_profil') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à mon profil
+                </a>
+            </div>
+
         </div>
 
     </div>

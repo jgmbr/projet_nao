@@ -6,9 +6,6 @@
     width: 90%;
     margin: auto;
   }
-  @media #{$desktop} {
-    width: 70%;
-  }
 }
 
 .observation-card-admin h2 {
@@ -18,6 +15,9 @@
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-top: 0;
+  }
 }
 
 .observation-card-admin .actions .btn {

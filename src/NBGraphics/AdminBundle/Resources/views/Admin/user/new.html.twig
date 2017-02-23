@@ -2,20 +2,24 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container new-user-admin">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Nouvel utilisateur</h2>
+        <div class="container new-user-admin">
 
-        {{ form_start(form, {'attr': {'class': ''}}) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" class="btn btn-primary" />
-        {{ form_end(form) }}
+            <h2>Nouvel utilisateur</h2>
+
+            {{ form_start(form, {'attr': {'class': ''}}) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Créer" class="btn btn-primary" />
+            {{ form_end(form) }}
 
 
-        <div class="actions">
-            <a class="btn btn-default" href="{{ path('admin_user_index') }}" >Retour à la liste des membres</a>
+            <div class="actions">
+                <a class="btn btn-info pull-left" href="{{ path('admin_user_index') }}" >Retour à la liste des membres</a>
+            </div>
+
         </div>
 
     </div>

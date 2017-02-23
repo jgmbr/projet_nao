@@ -2,22 +2,26 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-        <div class="container edit-user-admin">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Edition utilisateur</h2>
+            <div class="container edit-user-admin">
 
-        {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Mettre à jour" class="btn btn-warning" />
-        {{ form_end(edit_form) }}
+            <h2>Edition utilisateur</h2>
 
-        <div class="actions">
-            <a href="{{ path('admin_user_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;
-                Retour à la liste des membres
-            </a>
+            {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Mettre à jour" class="btn btn-warning" />
+            {{ form_end(edit_form) }}
+
+            <div class="actions">
+                <a href="{{ path('admin_user_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;
+                    Retour à la liste des membres
+                </a>
+            </div>
+
         </div>
 
     </div>

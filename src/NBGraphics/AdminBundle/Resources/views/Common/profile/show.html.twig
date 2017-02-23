@@ -4,64 +4,67 @@
 
 {% block body %}
 
+    <div id="admin-wrapper">
+
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
 
+        <div class="container common-profile-show">
 
-    <div class="container common-profile-show">
+        <h2>Mon profil</h2>
 
-    <h2>Mon profil</h2>
-
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <th> {{ 'profile.show.type'|trans }} </th>
-                    <td> {{ user.type }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.username'|trans }} </th>
-                    <td> {{ user.username }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.email'|trans }} </th>
-                    <td> {{ user.email }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.lastname'|trans }} </th>
-                    <td> {{ user.lastname }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.firstname'|trans }} </th>
-                    <td> {{ user.firstname }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.phone'|trans }} </th>
-                    <td> {{ user.phone }} </td>
-                </tr>
-                <tr>
-                    <th> {{ 'profile.show.autorisations'|trans }} </th>
-                    <td>
-                        {% if user.enableCampaigns %}
-                            <em>J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
-                        {% else %}
-                            <em>Je n'autorise pas Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
-                        {% endif %}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-        <div class="actions">
-            <a href="{{ path('admin_user_password',{ 'id': user.id }) }}" class="btn btn-info pull-right">
-                <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon mot de passe
-            </a>
-            <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning pull-right">
-                <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon profil
-            </a>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th> {{ 'profile.show.type'|trans }} </th>
+                        <td> {{ user.type }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.username'|trans }} </th>
+                        <td> {{ user.username }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.email'|trans }} </th>
+                        <td> {{ user.email }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.lastname'|trans }} </th>
+                        <td> {{ user.lastname }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.firstname'|trans }} </th>
+                        <td> {{ user.firstname }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.phone'|trans }} </th>
+                        <td> {{ user.phone }} </td>
+                    </tr>
+                    <tr>
+                        <th> {{ 'profile.show.autorisations'|trans }} </th>
+                        <td>
+                            {% if user.enableCampaigns %}
+                                <em>J'autorise Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
+                            {% else %}
+                                <em>Je n'autorise pas Nos Amis les Oiseaux à utiliser mes coordonnées pour des campagnes marketing</em>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+
+
+            <div class="actions">
+                <a href="{{ path('admin_user_password',{ 'id': user.id }) }}" class="btn btn-info pull-right">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon mot de passe
+                </a>
+                <a href="{{ path('admin_profil_edit') }}" class="btn btn-warning pull-right">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier mon profil
+                </a>
+            </div>
+        </div>
+
     </div>
 
 {% endblock %}

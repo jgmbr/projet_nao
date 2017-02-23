@@ -1,14 +1,7 @@
 // AdminBundle/Resources/views/Admin/user/delete.html.twig
 
-// AdminBundle/Resources/views/Account/observation/delete.html.twig
-
 .delete-user-admin {
   text-align: center;
-  @media #{$desktop} {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 .delete-user-admin h2 {
@@ -18,6 +11,9 @@
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px;
+  @media #{$desktop} {
+    margin-top: 0;
+  }
 }
 
 .delete-user-admin .actions {

@@ -2,23 +2,27 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container edit-observation-admin">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-
-        <h2>Edition observation</h2>
-
-        {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
-        {{ form_widget(edit_form) }}
-        <input class="btn btn-warning" type="submit" value="Mettre à jour"  />
-        {{ form_end(edit_form) }}
+        <div class="container edit-observation-admin">
 
 
-        <div class="actions">
-            <a href="{{ path('admin_observation_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
-            </a>
+            <h2>Edition observation</h2>
+
+            {{ form_start(edit_form, {'attr': {'class': '', 'role': 'form'}}) }}
+            {{ form_widget(edit_form) }}
+            <input class="btn btn-warning" type="submit" value="Mettre à jour"  />
+            {{ form_end(edit_form) }}
+
+
+            <div class="actions">
+                <a href="{{ path('admin_observation_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+                </a>
+            </div>
+
         </div>
 
     </div>

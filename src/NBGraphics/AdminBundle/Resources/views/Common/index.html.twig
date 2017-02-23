@@ -4,121 +4,121 @@
 
     <div id="admin-wrapper">
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="container index-back-end">
+        <div class="container index-back-end">
 
-        <div class="info-group">
-            {% if is_granted('ROLE_SUPER_ADMIN') %}
-                <div class="info-box-container">
-                    <a href="{{ path('admin_user_index') }}" class="aBox">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Membres</span>
-                                    <span class="info-box-number">{{ countUsers }}</span>
+            <div class="info-group">
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <div class="info-box-container">
+                        <a href="{{ path('admin_user_index') }}" class="aBox">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-carrot"><i class="fa fa-users"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Membres</span>
+                                        <span class="info-box-number">{{ countUsers }}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
                                 </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                    </a>
-                </div>
-                <div class="info-box-container">
-                    <a href="{{ path('admin_observation_index') }}" class="aBox">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Observations</span>
-                                    <span class="info-box-number">{{ countObservations }}</span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                    </a>
-                </div>
-                <div class="info-box-container">
-                    <a href="{{ path('admin_article_index') }}" class="aBox">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Actualités</span>
-                                    <span class="info-box-number">{{ countArticles }}</span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                    </a>
-                </div>
-                <div class="info-box-container">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Espèces</span>
-                            <span class="info-box-number">{{ countTaxref }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
+                        </a>
                     </div>
-                </div>
-
-            {% elseif is_granted('ROLE_ADMIN') %}
-                <div class="info-box-container">
-                    <a href="{{ path('admin_observation_index') }}" class="aBox">
-
-                            <div class="info-box">
-                                <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Observations</span>
-                                    <span class="info-box-number">{{ countObservations }}</span>
+                    <div class="info-box-container">
+                        <a href="{{ path('admin_observation_index') }}" class="aBox">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Observations</span>
+                                        <span class="info-box-number">{{ countObservations }}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
                                 </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                    </a>
-                </div>
-                <div class="info-box-container">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Espèces</span>
-                            <span class="info-box-number">{{ countTaxref }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
+                        </a>
                     </div>
-                </div>
-
-            {% elseif is_granted('ROLE_COLLABORATOR') %}
-
-                <div class="info-box-container">
-                    <a href="{{ path('admin_article_index') }}" class="aBox">
-
-                            <div class="info-box">
-                                <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Actualités</span>
-                                    <span class="info-box-number">{{ countArticles }}</span>
+                    <div class="info-box-container">
+                        <a href="{{ path('admin_article_index') }}" class="aBox">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Actualités</span>
+                                        <span class="info-box-number">{{ countArticles }}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
                                 </div>
-                                <!-- /.info-box-content -->
+                        </a>
+                    </div>
+                    <div class="info-box-container">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Espèces</span>
+                                <span class="info-box-number">{{ countTaxref }}</span>
                             </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
 
-                    </a>
-                </div>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <div class="info-box-container">
+                        <a href="{{ path('admin_observation_index') }}" class="aBox">
+
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Observations</span>
+                                        <span class="info-box-number">{{ countObservations }}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                        </a>
+                    </div>
+                    <div class="info-box-container">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-alizarin"><i class="fa fa-twitter"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Espèces</span>
+                                <span class="info-box-number">{{ countTaxref }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+
+                {% elseif is_granted('ROLE_COLLABORATOR') %}
+
+                    <div class="info-box-container">
+                        <a href="{{ path('admin_article_index') }}" class="aBox">
+
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-turquoise"><i class="fa fa-file-text"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Actualités</span>
+                                        <span class="info-box-number">{{ countArticles }}</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+
+                        </a>
+                    </div>
 
 
-            {% else %}
-                <h2>
-                    Votre compte
-                </h2>
+                {% else %}
+                    <h2>
+                        Votre compte
+                    </h2>
+            </div>
+                {% endif %}
+
+
+
+
+
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam.
+                </p>
+
+
+
         </div>
-            {% endif %}
-
-
-
-
-
-            <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam.
-            </p>
-
-
 
     </div>
-
-</div>
 
 {% endblock %}
