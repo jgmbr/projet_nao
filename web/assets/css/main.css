@@ -431,6 +431,8 @@ nav:hover .forAnimate{
 
 @media (min-width: 1024px) {
   #admin-wrapper {
+    padding-top: 60px;
+    padding-bottom: 40px;
     display: flex;
     align-items: center;
     min-height: calc(100vh - 230px); } }
@@ -1128,7 +1130,6 @@ nav:hover .forAnimate{
     .index-back-end .info-group {
       margin-top: 30px;
       padding-top: 30px;
-      border-top: 1px solid #aaa;
       display: flex;
       flex-wrap: wrap; } }
 
