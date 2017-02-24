@@ -6,6 +6,10 @@
   @media #{$tablet} {
     width: 90%;
   }
+  @media #{$desktop} {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .index-observation-admin h2 {

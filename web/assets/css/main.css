@@ -435,7 +435,9 @@ nav:hover .forAnimate{
     padding-bottom: 40px;
     display: flex;
     align-items: baseline;
-    min-height: calc(100vh - 230px); } }
+    min-height: calc(100vh - 230px);
+    width: 90%;
+    margin: auto; } }
 
 .main-footer {
   margin-top: 30px;
@@ -1363,6 +1365,10 @@ nav:hover .forAnimate{
   @media (min-width: 768px) {
     .index-observation-admin {
       width: 90%; } }
+  @media (min-width: 1024px) {
+    .index-observation-admin {
+      width: 100%;
+      margin: 0; } }
 
 .index-observation-admin h2 {
   font-size: 1.4em;
