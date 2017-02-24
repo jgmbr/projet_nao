@@ -44,9 +44,9 @@ class ObservationFormType extends AbstractType
                 )
             ))
             ->add('quantity', ChoiceType::class, [
-                'label' => "Nombre d'oiseaux aperçu *",
+                'label' => "Nombre d'oiseaux aperçus *",
                 'choices' => [
-                    'Nombre d\'oiseaux apperçus' => null,
+                    'Nombre d\'oiseaux aperçus' => null,
                     'Un individu' => 'individu',
                     'Un couple' => 'couple',
                     'Un groupe' => 'groupe'
