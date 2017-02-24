@@ -39,7 +39,7 @@
                             </li>
 
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                <li class="dropdown {% if app.request.attributes.get('_route') starts with "user" %}active{% endif %}">
+                                <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_user" %}active{% endif %}">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Membres <span class="caret"></span>
                                         <i class="fa fa-users pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                     </a>
@@ -58,7 +58,7 @@
                                 </li>
                             {% endif %}
 
-                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "observation" %}active{% endif %}">
+                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_observation" %}active{% endif %}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     Observations <span class="caret"></span>
                                     <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
@@ -87,17 +87,17 @@
                                 </ul>
                             </li>
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                {% if app.request.attributes.get('_route') starts with "article" %}
+                                {% if app.request.attributes.get('_route') starts with "admin_article" %}
                                     {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
                                 {% else %}
                                     {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
                                 {% endif %}
-                                <li class="{% if app.request.attributes.get('_route') == "newsletter_index" %}active{% endif %}">
+                                <li class="{% if app.request.attributes.get('_route') == "admin_newsletter_index" %}active{% endif %}">
                                     <a href="{{ path('admin_newsletter_index') }}">
                                         Newsletter <i class="fa fa-at pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                                {% if app.request.attributes.get('_route') starts with "seo" %}
+                                {% if app.request.attributes.get('_route') starts with "admin_seo" %}
                                     {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':true} )) }}
                                 {% else %}
                                     {{ render(controller('NBGraphicsSeoBundle:Seo:menu', {'active':false} )) }}
@@ -134,7 +134,7 @@
                                     Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            {% if app.request.attributes.get('_route') starts with "article" %}
+                            {% if app.request.attributes.get('_route') starts with "admin_article" %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
                             {% else %}
                                 {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
@@ -168,7 +168,7 @@
                                     Mon Profil <i class="fa fa-user-circle-o pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li class="{% if app.request.attributes.get('_route') == "my_observation_index" %}active{% endif %}">
+                            <li class="{% if app.request.attributes.get('_route') == "admin_my_observation_index" %}active{% endif %}">
                                 <a href="{{ path('admin_my_observation_index') }}">
                                     Mes Observations <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                 </a>
