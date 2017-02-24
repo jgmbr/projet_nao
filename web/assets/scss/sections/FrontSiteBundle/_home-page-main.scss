@@ -49,10 +49,17 @@
   font-weight: lighter;
 }
 
-.home-page-main img {
-  width: 100%;
-  max-width: 500px;
-  @media #{$desktop} {
-    max-width: 450px;
+.home-page-main .svg-homepage {
+  height: 200px;
+  @media #{$tablet} {
+    height: 150px;
   }
+}
+
+.home-page-main .svg-homepage path {
+  fill: #5c5c5c;
+}
+
+.home-page-main .svg-homepage:hover path {
+  fill: #374A5B;
 }

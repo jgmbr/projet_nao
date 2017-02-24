@@ -549,12 +549,17 @@ nav:hover .forAnimate{
 .home-page-main p {
   font-weight: lighter; }
 
-.home-page-main img {
-  width: 100%;
-  max-width: 500px; }
-  @media (min-width: 1024px) {
-    .home-page-main img {
-      max-width: 450px; } }
+.home-page-main .svg-homepage {
+  height: 200px; }
+  @media (min-width: 768px) {
+    .home-page-main .svg-homepage {
+      height: 150px; } }
+
+.home-page-main .svg-homepage path {
+  fill: #5c5c5c; }
+
+.home-page-main .svg-homepage:hover path {
+  fill: #374A5B; }
 
 @media (max-width: 1024px) {
   .home-page-wrapper {
