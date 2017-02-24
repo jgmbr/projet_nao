@@ -2,60 +2,64 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container index-newsletter-admin">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Newsletter</h2>
+        <div class="container index-newsletter-admin">
 
-        {% if newsletters is defined and newsletters|length > 0 %}
-            <div id="newsletter_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
-                <table id="newsletter" class="table table-hover dataTable" role="grid" aria-describedby="newsletter_info">
-                    <thead>
-                    <tr role="row">
-                        <th>Id</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for newsletter in newsletters %}
-                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                            <td> {{ newsletter.id }} </td>
-                            <td> {{ newsletter.email }} </td>
-                            <td>
-                                <a class="btn btn-danger btn-xs" title="Supprimer l'e-mail" href="{{ path('admin_newsletter_delete', { 'id': newsletter.id }) }}" >
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
+            <h2>Newsletter</h2>
+
+            {% if newsletters is defined and newsletters|length > 0 %}
+                <div id="newsletter_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
+                    <table id="newsletter" class="table table-hover dataTable" role="grid" aria-describedby="newsletter_info">
+                        <thead>
+                        <tr role="row">
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Actions</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Id</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div><!-- End: newsletter_wrapper -->
+                        </thead>
+                        <tbody>
+                        {% for newsletter in newsletters %}
+                            <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                                <td> {{ newsletter.id }} </td>
+                                <td> {{ newsletter.email }} </td>
+                                <td>
+                                    <a class="btn btn-danger btn-xs" title="Supprimer l'e-mail" href="{{ path('admin_newsletter_delete', { 'id': newsletter.id }) }}" >
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- End: newsletter_wrapper -->
 
-        {% else %}
-            <p>
-                <strong>Pas d'inscrit(e)s à la newsletter.</strong>
-            </p>
-        {% endif %}
+            {% else %}
+                <p>
+                    <strong>Pas d'inscrit(e)s à la newsletter.</strong>
+                </p>
+            {% endif %}
 
 
-        {% if newsletters is defined and newsletters|length > 0 %}
-            <a class="btn btn-info btn-nlt" href="{{ path('newsletter_export') }}">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                Exporter les adresses
-            </a>
-        {% endif %}
+            {% if newsletters is defined and newsletters|length > 0 %}
+                <a class="btn btn-info btn-nlt" href="{{ path('newsletter_export') }}">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    Exporter les adresses
+                </a>
+            {% endif %}
 
-    </div><!-- End: container -->
+        </div><!-- End: container -->
+
+    </div>
 
 {% endblock %}
 

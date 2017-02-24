@@ -2,61 +2,64 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container news-article-index">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Actualités</h2>
+        <div class="container news-article-index">
 
-        {% if articles is defined and articles|length > 0 %}
-        <div id="article_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
-            <table id="article" class="table table-hover dataTable" role="grid" aria-describedby="article_info">
-                <thead>
-                <tr role="row">
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for article in articles %}
-                    <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
-                        <td>
-                            <a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a>
-                        </td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.state.name }}</td>
-                        <td>
-                            <a title="Voir l'actualité" class="btn btn-info btn-xs" href="{{ path('admin_article_show', { 'id': article.id }) }}" >
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <a title="Modifier l'actualité" class="btn btn-warning btn-xs" href="{{ path('admin_article_edit', { 'id': article.id }) }}" >
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <a title="Supprimer l'actualité" class="btn btn-danger btn-xs" href="{{ path('admin_article_delete', { 'id': article.id }) }}" >
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
-                        </td>
+            <h2>Actualités</h2>
+
+            {% if articles is defined and articles|length > 0 %}
+            <div id="article_wrapper" class="dataTables_wrapper form-inline dt-bootstrap table-responsive">
+                <table id="article" class="table table-hover dataTable" role="grid" aria-describedby="article_info">
+                    <thead>
+                    <tr role="row">
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-        {% else %}
-            <p>
-                <strong>Pas d'actualités.</strong>
-            </p>
-        {% endif %}
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr role="row" class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+                            <td>
+                                <a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.id }}</a>
+                            </td>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.state.name }}</td>
+                            <td>
+                                <a title="Voir l'actualité" class="btn btn-info btn-xs" href="{{ path('admin_article_show', { 'id': article.id }) }}" >
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a title="Modifier l'actualité" class="btn btn-warning btn-xs" href="{{ path('admin_article_edit', { 'id': article.id }) }}" >
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                                <a title="Supprimer l'actualité" class="btn btn-danger btn-xs" href="{{ path('admin_article_delete', { 'id': article.id }) }}" >
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            {% else %}
+                <p>
+                    <strong>Pas d'actualités.</strong>
+                </p>
+            {% endif %}
 
+        </div>
 
     </div>
 

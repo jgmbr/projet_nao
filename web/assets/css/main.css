@@ -1712,7 +1712,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .index-newsletter-admin {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .index-newsletter-admin h2 {
   font-size: 1.4em;
@@ -1723,6 +1724,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .index-newsletter-admin h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .index-newsletter-admin #newsletter_wrapper {
@@ -1743,9 +1745,8 @@ nav:hover .forAnimate{
   text-align: center; }
   @media (min-width: 1024px) {
     .delete-newsletter-admin {
-      width: 70%;
-      margin-left: auto;
-      margin-right: auto; } }
+      width: 100%;
+      margin: 0; } }
 
 .delete-newsletter-admin h2 {
   font-size: 1.4em;
@@ -1754,6 +1755,9 @@ nav:hover .forAnimate{
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .delete-newsletter-admin h2 {
+      margin-top: 0; } }
 
 .delete-newsletter-admin .actions {
   margin-top: 40px;
@@ -1764,9 +1768,8 @@ nav:hover .forAnimate{
   text-align: center; }
   @media (min-width: 1024px) {
     .news-article-delete {
-      width: 70%;
-      margin-left: auto;
-      margin-right: auto; } }
+      width: 100%;
+      margin: 0; } }
 
 .news-article-delete h2 {
   font-size: 1.4em;
@@ -1775,6 +1778,9 @@ nav:hover .forAnimate{
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .news-article-delete h2 {
+      margin-top: 0; } }
 
 .news-article-delete .actions {
   margin-top: 40px;
@@ -1789,7 +1795,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .news-article-edit {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .news-article-edit h2 {
   font-size: 1.4em;
@@ -1800,6 +1807,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .news-article-edit h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .news-article-edit .btn {
@@ -1820,8 +1828,8 @@ nav:hover .forAnimate{
       margin-bottom: 60px; } }
   @media (min-width: 1024px) {
     .news-article-index {
-      width: 75%;
-      margin-bottom: 100px; } }
+      width: 100%;
+      margin: 0; } }
 
 .news-article-index h2 {
   font-size: 1.4em;
@@ -1832,6 +1840,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .news-article-index h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .news-article-new {
@@ -1842,7 +1851,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .news-article-new {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .news-article-new h2 {
   font-size: 1.4em;
@@ -1853,6 +1863,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .news-article-new h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .news-article-new .btn {
@@ -1877,8 +1888,8 @@ nav:hover .forAnimate{
       margin-bottom: 60px; } }
   @media (min-width: 1024px) {
     .news-article-show {
-      width: 75%;
-      margin-bottom: 100px; } }
+      width: 100%;
+      margin: 0; } }
 
 .news-article-show h2 {
   font-size: 1.4em;
@@ -1889,6 +1900,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .news-article-show h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .news-article-show .actions .btn {
@@ -2021,7 +2033,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .index-seo-bundle {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .index-seo-bundle h2 {
   font-size: 1.4em;
@@ -2032,6 +2045,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .index-seo-bundle h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .show-seo-bundle {
@@ -2043,8 +2057,8 @@ nav:hover .forAnimate{
       margin-bottom: 60px; } }
   @media (min-width: 1024px) {
     .show-seo-bundle {
-      width: 75%;
-      margin-bottom: 100px; } }
+      width: 100%;
+      margin: 0; } }
 
 .show-seo-bundle h2 {
   font-size: 1.4em;
@@ -2055,6 +2069,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .show-seo-bundle h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .show-seo-bundle .actions .btn {
@@ -2073,7 +2088,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .edit-seo-bundle {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .edit-seo-bundle h2 {
   font-size: 1.4em;
@@ -2084,6 +2100,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .edit-seo-bundle h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .edit-seo-bundle .btn {

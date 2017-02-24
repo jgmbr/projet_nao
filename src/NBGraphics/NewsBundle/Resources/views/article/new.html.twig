@@ -2,22 +2,26 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container news-article-new">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Nouvelle actualité</h2>
+        <div class="container news-article-new">
 
-        {{ form_start(form, {'attr': {'class': '', 'role': 'form'}}) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" class="btn btn-success" />
-        {{ form_end(form) }}
+            <h2>Nouvelle actualité</h2>
+
+            {{ form_start(form, {'attr': {'class': '', 'role': 'form'}}) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Créer" class="btn btn-success" />
+            {{ form_end(form) }}
 
 
-        <div class="actions">
-            <a href="{{ path('admin_article_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
-            </a>
+            <div class="actions">
+                <a href="{{ path('admin_article_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
+                </a>
+            </div>
+
         </div>
 
     </div>

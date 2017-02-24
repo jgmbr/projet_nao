@@ -3,27 +3,31 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container delete-newsletter-admin">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2>Newsletter</h2>
-        <p>
-            <strong>Etes-vous certain de vouloir supprimer l'adresse email {{ newsletter.email }} ?</strong>
-        </p>
+        <div class="container delete-newsletter-admin">
 
-
-        {{ form_start(delete_form) }}
-        <input class="btn btn-danger" type="submit" value="Oui, je confirme la suppression" />
-        {{ form_rest(delete_form) }}
-        {{ form_end(delete_form) }}
+            <h2>Newsletter</h2>
+            <p>
+                <strong>Etes-vous certain de vouloir supprimer l'adresse email {{ newsletter.email }} ?</strong>
+            </p>
 
 
-        <div class="actions">
-            <a class="btn btn-primary pull-left" href="{{ path('admin_newsletter_index') }}" >
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;
-                Retour à la liste des inscrits à la newsletter
-            </a>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Oui, je confirme la suppression" />
+            {{ form_rest(delete_form) }}
+            {{ form_end(delete_form) }}
+
+
+            <div class="actions">
+                <a class="btn btn-primary pull-left" href="{{ path('admin_newsletter_index') }}" >
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp;
+                    Retour à la liste des inscrits à la newsletter
+                </a>
+            </div>
+
         </div>
 
     </div>

@@ -2,66 +2,70 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container news-article-show">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2> Fiche actualité </h2>
+        <div class="container news-article-show">
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <tbody>
-                <tr>
-                    <th>Image</th>
-                    <td>
-                        {% if article.image is not null %}
-                            <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
-                        {% else %}
-                            <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-                        {% endif %}
-                    </td>
-                </tr>
-                <tr>
-                    <th>Statut</th>
-                    <td>{{ article.state.name }}</td>
-                </tr>
-                <tr>
-                    <th>Titre</th>
-                    <td>{{ article.title }}</td>
-                </tr>
-                <tr>
-                    <th>Slug</th>
-                    <td>{{ article.slug }}</td>
-                </tr>
-                <tr>
-                    <th>Contenu</th>
-                    <td>{{ article.content|nl2br }}</td>
-                </tr>
-                <tr>
-                    <th>Date de création</th>
-                    <td>{% if article.createdAt %}{{ article.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Date de modification</th>
-                    <td>{% if article.updatedAt %}{{ article.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                </tr>
-                </tbody>
-            </table>
+            <h2> Fiche actualité </h2>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <tbody>
+                    <tr>
+                        <th>Image</th>
+                        <td>
+                            {% if article.image is not null %}
+                                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+                            {% else %}
+                                <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ article.state.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ article.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Slug</th>
+                        <td>{{ article.slug }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td>{{ article.content|nl2br }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de création</th>
+                        <td>{% if article.createdAt %}{{ article.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de modification</th>
+                        <td>{% if article.updatedAt %}{{ article.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="actions">
+                <a href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-warning">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
+                </a>
+                <a href="{{ path('admin_article_delete', { 'id': article.id }) }}" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
+                </a>
+                <a href="{{ path('admin_article_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
+                </a>
+            </div>
+
+
         </div>
-
-
-        <div class="actions">
-            <a href="{{ path('admin_article_edit', { 'id': article.id }) }}" class="btn btn-warning">
-                <i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Modifier
-            </a>
-            <a href="{{ path('admin_article_delete', { 'id': article.id }) }}" class="btn btn-danger">
-                <i class="fa fa-trash" aria-hidden="true"></i> &nbsp; Supprimer
-            </a>
-            <a href="{{ path('admin_article_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des actualités
-            </a>
-        </div>
-
 
     </div>
 
