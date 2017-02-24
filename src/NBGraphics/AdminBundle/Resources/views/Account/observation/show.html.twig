@@ -2,108 +2,112 @@
 
 {% block body %}
 
-    {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
+    <div id="admin-wrapper">
 
-    <div class="container observation-card">
+        {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-        <h2> Fiche observation </h2>
+        <div class="container observation-card">
 
-            <div class="table-responsive">
+            <h2> Fiche observation </h2>
 
-                <table class="table table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Date d'observation</th>
-                            <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Heure d'observation</th>
-                            <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Quantité</th>
-                            <td>{{ observation.quantity }}</td>
-                        </tr>
-                        <tr>
-                            <th>Espèce</th>
-                            <td>
-                                {{ observation.taxref.famille }} › {{ observation.taxref.nomValide }}
-                                &nbsp; <a class="btn btn-info btn-xs" target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> Voir la fiche sur le site de l'INPN </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Latitude</th>
-                            <td>{{ observation.latitude }}</td>
-                        </tr>
-                        <tr>
-                            <th>Longitude</th>
-                            <td>{{ observation.longitude }}</td>
-                        </tr>
-                        <tr>
-                            <th>Département</th>
-                            <td>{{ observation.departement }}</td>
-                        </tr>
-                        <tr>
-                            <th>Localisation</th>
-                            <td>
-                                <div id="map" style="width: 50%; height: 300px;"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Commentaire</th>
-                            <td>{{ observation.comment }}</td>
-                        </tr>
-                        <tr>
-                            <th>Statut</th>
-                            <td>
-                                <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
-                                {{ observation.status.name }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Date de création</th>
-                            <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Date de modification</th>
-                            <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Modération(s)</th>
-                            <td>
-                                {% if observation.moderations is defined and observation.moderations|length > 0 %}
-                                    {% for moderation in observation.moderations %}
-                                        <ul>
-                                            <li>
-                                                <p>
-                                                    <i class="fa {{ moderation.status.icon }}" aria-hidden="true"></i>
-                                                    {{ moderation.status.name }} - le {{ moderation.createdAt|date('d/m/Y') }}
-                                                    {% if moderation.user is not null %}
-                                                        par {{ moderation.user.username }}
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Date d'observation</th>
+                                <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Heure d'observation</th>
+                                <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Quantité</th>
+                                <td>{{ observation.quantity }}</td>
+                            </tr>
+                            <tr>
+                                <th>Espèce</th>
+                                <td>
+                                    {{ observation.taxref.famille }} › {{ observation.taxref.nomValide }}
+                                    &nbsp; <a class="btn btn-info btn-xs" target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> Voir la fiche sur le site de l'INPN </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Latitude</th>
+                                <td>{{ observation.latitude }}</td>
+                            </tr>
+                            <tr>
+                                <th>Longitude</th>
+                                <td>{{ observation.longitude }}</td>
+                            </tr>
+                            <tr>
+                                <th>Département</th>
+                                <td>{{ observation.departement }}</td>
+                            </tr>
+                            <tr>
+                                <th>Localisation</th>
+                                <td>
+                                    <div id="map" style="width: 50%; height: 300px;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Commentaire</th>
+                                <td>{{ observation.comment }}</td>
+                            </tr>
+                            <tr>
+                                <th>Statut</th>
+                                <td>
+                                    <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
+                                    {{ observation.status.name }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Date de création</th>
+                                <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de modification</th>
+                                <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Modération(s)</th>
+                                <td>
+                                    {% if observation.moderations is defined and observation.moderations|length > 0 %}
+                                        {% for moderation in observation.moderations %}
+                                            <ul>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa {{ moderation.status.icon }}" aria-hidden="true"></i>
+                                                        {{ moderation.status.name }} - le {{ moderation.createdAt|date('d/m/Y') }}
+                                                        {% if moderation.user is not null %}
+                                                            par {{ moderation.user.username }}
+                                                        {% endif %}
+                                                    </p>
+                                                    {% if moderation.comment is not null %}
+                                                        <p> Commentaire : {{ moderation.comment }} </p>
                                                     {% endif %}
-                                                </p>
-                                                {% if moderation.comment is not null %}
-                                                    <p> Commentaire : {{ moderation.comment }} </p>
-                                                {% endif %}
-                                                <hr >
-                                            </li>
-                                        </ul>
-                                    {% endfor %}
-                                {% else %}
-                                    <p> Pas de modération(s) </p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                                    <hr >
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p> Pas de modération(s) </p>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
 
-            <div class="actions">
-                <a href="{{ path('admin_my_observation_index') }}" class="btn btn-primary pull-left">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
-                </a>
-            </div>
+                <div class="actions">
+                    <a href="{{ path('admin_my_observation_index') }}" class="btn btn-primary pull-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+                    </a>
+                </div>
+
+        </div>
 
     </div>
 

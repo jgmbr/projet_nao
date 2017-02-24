@@ -1221,12 +1221,6 @@ nav:hover .forAnimate{
 
 .index-observation-user {
   margin-bottom: 40px; }
-  @media (min-width: 1024px) {
-    .index-observation-user {
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 70px; } }
 
 .index-observation-user h2 {
   font-size: 1.4em;
@@ -1237,15 +1231,11 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .index-observation-user h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .observation-card {
   margin-bottom: 70px; }
-  @media (min-width: 1024px) {
-    .observation-card {
-      width: 70%;
-      margin-right: auto;
-      margin-left: auto; } }
 
 .observation-card h2 {
   font-size: 1.4em;
@@ -1254,6 +1244,9 @@ nav:hover .forAnimate{
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .observation-card h2 {
+      margin-top: 0; } }
 
 .edit-observation-user {
   width: 100%;
@@ -1263,7 +1256,7 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .edit-observation-user {
-      width: 75%; } }
+      width: 100%; } }
 
 .edit-observation-user h2 {
   font-size: 1.4em;
@@ -1274,6 +1267,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .edit-observation-user h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .edit-observation-user .btn {
@@ -1293,11 +1287,6 @@ nav:hover .forAnimate{
 
 .delete-observation {
   text-align: center; }
-  @media (min-width: 1024px) {
-    .delete-observation {
-      width: 70%;
-      margin-left: auto;
-      margin-right: auto; } }
 
 .delete-observation h2 {
   font-size: 1.4em;
@@ -1306,6 +1295,9 @@ nav:hover .forAnimate{
   border-bottom: 1px solid #5c5c5c;
   margin-top: 60px;
   margin-bottom: 20px; }
+  @media (min-width: 1024px) {
+    .delete-observation h2 {
+      margin-top: 0; } }
 
 .delete-observation .actions {
   margin-top: 40px;
