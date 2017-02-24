@@ -36,8 +36,7 @@
                                        {% if observation.image is defined and observation.image is not null %}
                                             <img
                                                 src="{{ asset('/uploads/img/'~ observation.image.url) | imagine_filter('my_thumb') }}"
-                                                alt="alt="Photographie de {{ observation.taxref.nomVern }}""
-                                            >
+                                                alt="Photographie de {{ observation.taxref.nomVern }}" />
                                         {% else %}
                                             <i class="fa fa-twitter" aria-hidden="true"></i>
                                         {% endif %}
@@ -45,7 +44,11 @@
                                     <td>
                                         <a target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> {{ observation.taxref.nomVern }} </a>
                                     </td>
-                                    <td> <a href="#" class="btn btn-info btn-xs" target="_blank"> Voir sur la carte </a> </td>
+                                    <td>
+                                        <a href="https://www.google.fr/maps/@{{ observation.latitude }},{{ observation.longitude }},14z" target="_blank">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i> Localiser
+                                        </a>
+                                    </td>
                                     <td>
                                         <i class="fa {{ observation.status.icon }}" aria-hidden="true"></i>
                                         {{ observation.status.name }}

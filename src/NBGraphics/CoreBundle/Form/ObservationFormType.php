@@ -46,7 +46,7 @@ class ObservationFormType extends AbstractType
             ->add('quantity', ChoiceType::class, [
                 'label' => "Nombre d'oiseaux aperçu *",
                 'choices' => [
-                    'Nombre d\'oiseaux apperçues' => null,
+                    'Nombre d\'oiseaux apperçus' => null,
                     'Un individu' => 'individu',
                     'Un couple' => 'couple',
                     'Un groupe' => 'groupe'
@@ -66,7 +66,7 @@ class ObservationFormType extends AbstractType
                 'label' => "Stade de maturité de l'oiseau observé *",
                 'choices' => [
                     'Jeune, premier hiver ou adulte ?' => null,
-                    'Spécimen jeune' => 'jeune',
+                    'Spécimen juvénile' => 'juvenile',
                     'Premier hiver du spécimen' => 'premier_hiver',
                     'Spécimen adulte' => 'adulte',
                 ],

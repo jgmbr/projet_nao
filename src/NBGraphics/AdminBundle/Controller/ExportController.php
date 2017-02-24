@@ -22,7 +22,7 @@ class ExportController extends Controller
     {
         $exportWS = $this->get('app.export');
 
-        $headers = array('id','Utilisateur','Date Observation','Heure Observation','Quantite','Maturage','Plumage','Nidification','Taxref','Departement','Latitude','Longitude','Commentaire','Statut','Date de creation');
+        $headers = array('id','Utilisateur','Date Observation','Heure Observation','Quantite','Maturité','Plumage','Nidification','Taxref','Departement','Latitude','Longitude','Commentaire','Statut','Date de creation');
 
         return $exportWS->export(new Observation(), $headers, 'exportAll', 'observation');
     }
