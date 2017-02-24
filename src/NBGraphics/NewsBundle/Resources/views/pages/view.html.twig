@@ -6,7 +6,7 @@
 
         <div class="news-details-image">
             {% if article.image is not null %}
-                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" />
+                <img src="{{ asset('uploads/img_article/' ~ article.image.url) }}" alt="Image" />
             {% else %}
                 <i class="fa fa-picture-o fa-5x" aria-hidden="true" style="margin: 20px;"></i>
             {% endif %}
