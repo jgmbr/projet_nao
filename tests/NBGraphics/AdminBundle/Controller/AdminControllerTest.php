@@ -1,24 +1,22 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Thomas
  * Date: 27/02/2017
- * Time: 18:11
+ * Time: 18:35
  */
 
-namespace tests\NBGraphics\FrontSiteBundle\Controller;
+namespace tests\NBGraphics\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class SubmitObservationControllerTest extends WebTestCase
+class AdminControllerTest extends WebTestCase
 {
-    /*
-     * If the user is not connected
-     */
     public function testIsNotGranted()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/soumettre-une-observation');
+        $crawler = $client->request('GET', '/admin/index');
 
         $this->assertFalse($client->getResponse()->isSuccessful());
     }
