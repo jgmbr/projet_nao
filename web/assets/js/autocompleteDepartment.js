@@ -30,7 +30,7 @@ $addressInput.focusout(function() {
         $departmentInput.val(postCode);
     })
         .fail(function() {
-            alert("Serveur de données indisponibles.. Merci de réessayer plus tard.")
+            alert("Serveur de données indisponibles.. Merci de réessayer plus tard.");
         });
 });
 
@@ -51,8 +51,16 @@ $localizeBtn.click(function () {
             var postCode = postCode.slice(0, 2);
             $departmentInput.val(postCode);
         }
-        $.getJSON(reverseAddressDataGouvAPI, APIOptions, returnReverseDepartement);
+        $.getJSON(reverseAddressDataGouvAPI, APIOptions, function (data) {
 
-    }, 500);
+            var postCode = data.features[0].properties.postcode;
+            var postCode = postCode.slice(0, 2);
+            $departmentInput.val(postCode);
+        })
+            .fail(function () {
+                alert("Serveur de données indisponibles.. Merci de réessayer plus tard.");
+            });
+
+    }, 750);
 
 });
