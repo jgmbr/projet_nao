@@ -436,7 +436,7 @@ nav:hover .forAnimate{
     display: flex;
     align-items: baseline;
     min-height: calc(100vh - 230px);
-    width: 90%;
+    width: 98%;
     margin: auto; } }
 
 .main-footer {
@@ -1460,7 +1460,8 @@ nav:hover .forAnimate{
       width: 90%; } }
   @media (min-width: 1024px) {
     .moderate-observation-admin {
-      width: 75%; } }
+      width: 100%;
+      margin: 0; } }
 
 .moderate-observation-admin h2 {
   font-size: 1.4em;
@@ -1471,6 +1472,7 @@ nav:hover .forAnimate{
   margin-bottom: 20px; }
   @media (min-width: 1024px) {
     .moderate-observation-admin h2 {
+      margin-top: 0;
       margin-bottom: 45px; } }
 
 .moderate-observation-admin .btn {

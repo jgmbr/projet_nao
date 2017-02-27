@@ -2,138 +2,140 @@
 
 {% block body %}
 
+    <div id="admin-wrapper">
+
     {% include 'NBGraphicsAdminBundle:Common:menu.html.twig' %}
 
-    <div class="container moderate-observation-admin">
+        <div class="container moderate-observation-admin">
 
-        <h2> Modération observation </h2>
+            <h2> Modération observation </h2>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <tbody>
-                <tr>
-                    <th> Image </th>
-                    <td>
-                        {% if observation.image is defined and observation.image is not null %}
-                            <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" alt="Photographie de {{ observation.taxref.nomVern }}" />
-                        {% else %}
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                        {% endif %}
-                    </td>
-                </tr>
-                <tr>
-                    <th>Observateur</th>
-                    <td>
-                        {{ observation.user.username }}
-                        &nbsp; <a class="btn btn-info btn-xs" href="{{ path('admin_user_show',{ 'id': observation.user.id }) }}">Voir fiche</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Date d'observation</th>
-                    <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Heure d'observation</th>
-                    <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Quantité</th>
-                    <td>{{ observation.quantity }}</td>
-                </tr>
-                <tr>
-                    <th>Espèce</th>
-                    <td>
-                        {{ observation.taxref.famille }} › {{ observation.taxref.nomValide }}
-                        &nbsp; <a class="btn btn-info btn-xs" target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> Voir la fiche sur le site de l'INPN </a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Latitude</th>
-                    <td>{{ observation.latitude }}</td>
-                </tr>
-                <tr>
-                    <th>Longitude</th>
-                    <td>{{ observation.longitude }}</td>
-                </tr>
-                <tr>
-                    <th>Département</th>
-                    <td>{{ observation.departement }}</td>
-                </tr>
-                <tr>
-                    <th>Localisation</th>
-                    <td>
-                        <div id="map" style="width: 50%; height: 300px;"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Commentaire</th>
-                    <td>{{ observation.comment }}</td>
-                </tr>
-                <tr>
-                    <th>Statut</th>
-                    <td>
-                        <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
-                        {{ observation.status.name }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>Date de création</th>
-                    <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Date de modification</th>
-                    <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Modération(s)</th>
-                    <td>
-                        {% if observation.moderations is defined and observation.moderations|length > 0 %}
-                            {% for moderation in observation.moderations %}
-                                <ul>
-                                    <li>
-                                        <p>
-                                            <i class="fa {{ moderation.status.icon }}" aria-hidden="true"></i>
-                                            {{ moderation.status.name }} - le {{ moderation.createdAt|date('d/m/Y') }}
-                                            {% if moderation.user is not null %}
-                                                par {{ moderation.user.username }}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th> Image </th>
+                        <td>
+                            {% if observation.image is defined and observation.image is not null %}
+                                <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" alt="Photographie de {{ observation.taxref.nomVern }}" />
+                            {% else %}
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Observateur</th>
+                        <td>
+                            {{ observation.user.username }}
+                            &nbsp; <a class="btn btn-info btn-xs" href="{{ path('admin_user_show',{ 'id': observation.user.id }) }}">Voir fiche</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date d'observation</th>
+                        <td>{% if observation.dateAt %}{{ observation.dateAt|date('d/m/Y') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Heure d'observation</th>
+                        <td>{% if observation.hourAt %}{{ observation.hourAt|date('H:i') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Quantité</th>
+                        <td>{{ observation.quantity }}</td>
+                    </tr>
+                    <tr>
+                        <th>Espèce</th>
+                        <td>
+                            {{ observation.taxref.famille }} › {{ observation.taxref.nomValide }}
+                            &nbsp; <a class="btn btn-info btn-xs" target="_blank" href="https://inpn.mnhn.fr/espece/cd_nom/{{ observation.taxref.cdNom }}"> Voir la fiche sur le site de l'INPN </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Latitude</th>
+                        <td>{{ observation.latitude }}</td>
+                    </tr>
+                    <tr>
+                        <th>Longitude</th>
+                        <td>{{ observation.longitude }}</td>
+                    </tr>
+                    <tr>
+                        <th>Département</th>
+                        <td>{{ observation.departement }}</td>
+                    </tr>
+                    <tr>
+                        <th>Localisation</th>
+                        <td>
+                            <div id="map" style="width: 50%; height: 300px;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Commentaire</th>
+                        <td>{{ observation.comment }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>
+                            <i class="fa {{ observation.status.name }}" aria-hidden="true"></i>
+                            {{ observation.status.name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date de création</th>
+                        <td>{% if observation.createdAt %}{{ observation.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de modification</th>
+                        <td>{% if observation.updatedAt %}{{ observation.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Modération(s)</th>
+                        <td>
+                            {% if observation.moderations is defined and observation.moderations|length > 0 %}
+                                {% for moderation in observation.moderations %}
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa {{ moderation.status.icon }}" aria-hidden="true"></i>
+                                                {{ moderation.status.name }} - le {{ moderation.createdAt|date('d/m/Y') }}
+                                                {% if moderation.user is not null %}
+                                                    par {{ moderation.user.username }}
+                                                {% endif %}
+                                            </p>
+                                            {% if moderation.comment is not null %}
+                                                <p> Commentaire : {{ moderation.comment }} </p>
                                             {% endif %}
-                                        </p>
-                                        {% if moderation.comment is not null %}
-                                            <p> Commentaire : {{ moderation.comment }} </p>
-                                        {% endif %}
-                                        <hr >
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        {% else %}
-                            <p> Pas de modération(s) </p>
-                        {% endif %}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                                            <hr >
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                            {% else %}
+                                <p> Pas de modération(s) </p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <section id="moderation">
+                <h2> Modération </h2>
+                {{ form_start(moderation_form) }}
+                    {{ form_widget(moderation_form) }}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check" aria-hidden="true"></i> Valider
+                        </button>
+                    </div>
+                {{ form_end(moderation_form) }}
+            </section>
+
+            <div class="actions">
+                <a href="{{ path('admin_my_observation_index') }}" class="btn btn-primary pull-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
+                </a>
+            </div>
+
         </div>
-
-
-        <section id="moderation">
-            <h2> Modération </h2>
-            {{ form_start(moderation_form) }}
-                {{ form_widget(moderation_form) }}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-check" aria-hidden="true"></i> Valider
-                    </button>
-                </div>
-            {{ form_end(moderation_form) }}
-        </section>
-
-        <div class="actions">
-            <a href="{{ path('admin_my_observation_index') }}" class="btn btn-primary pull-left">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i> &nbsp; Retour à la liste des observations
-            </a>
-        </div>
-
-
 
     </div>
 
