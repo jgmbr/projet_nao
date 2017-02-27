@@ -32,6 +32,34 @@ li {
   list-style-type: none;
 }
 
+.btn-info {
+  background-color: #669486;
+  border: none;
+}
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info:checked,
+.btn-info:focus,
+.btn-info:visited {
+  background-color: #497968;
+  border: none;
+}
+
+.btn-warning {
+  background-color: #78779A;
+  border: none;
+}
+
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning:checked,
+.btn-warning:focus,
+.btn-warning:visited {
+  background-color: #55537E;
+  border: none;
+}
+
 // Clearfix hack
 .clearfix:before,
 .clearfix:after {
