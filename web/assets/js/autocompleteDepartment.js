@@ -14,14 +14,24 @@ $addressInput.focusout(function() {
         q: address,
     };
 
+    /*
     function returnDepartement(data) {
         var postCode = data.features[0].properties.postcode;
         var postCode = postCode.slice(0, 2);
-        console.log(postCode);
+        console.log('success');
         $departmentInput.val(postCode);
     }
     $.getJSON(addressDataGouvAPI, APIOptions, returnDepartement);
+    */
 
+    $.getJSON(addressDataGouvAPI, APIOptions, function(data) {
+        var postCode = data.features[0].properties.postcode;
+        var postCode = postCode.slice(0, 2);
+        $departmentInput.val(postCode);
+    })
+        .fail(function() {
+            alert("Serveur de données indisponibles.. Merci de réessayer plus tard.")
+        });
 });
 
 
