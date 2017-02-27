@@ -884,7 +884,7 @@ nav:hover .forAnimate{
   border: 1px solid #374a5b; }
 
 .register-form input:focus,
-.register-formm textarea:focus {
+.register-form textarea:focus {
   border-color: #374a5b;
   outline-color: #374a5b; }
 
@@ -1110,6 +1110,27 @@ nav:hover .forAnimate{
 
 .eighth-polygon {
   animation: apparition .8s 8.5s linear backwards; }
+
+.forgotten-password-form {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .forgotten-password-form {
+      width: 70%;
+      margin-top: 20px; } }
+  @media (min-width: 1024px) {
+    .forgotten-password-form {
+      width: 45%; } }
+
+.forgotten-password-form input {
+  width: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #374a5b; }
+
+.forgotten-password-form .btn {
+  margin-top: 40px;
+  color: #fff;
+  width: 100%; }
 
 @media (min-width: 1024px) {
   .index-back-end {

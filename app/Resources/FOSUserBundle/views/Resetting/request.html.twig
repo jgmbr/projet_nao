@@ -1,6 +1,12 @@
 {% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
 
 {% block body %}
-    <h2>Mot de passe oublié ?</h2>
-{% include "@FOSUser/Resetting/request_content.html.twig" %}
+
+    <div class="container forgotten-password-form">
+
+        <h2>Mot de passe oublié ?</h2>
+        {% include "@FOSUser/Resetting/request_content.html.twig" %}
+
+    </div>
+
 {% endblock body %}
