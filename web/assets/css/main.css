@@ -30,9 +30,7 @@ li {
 
 .btn-info:hover,
 .btn-info:active,
-.btn-info:checked,
-.btn-info:focus,
-.btn-info:visited {
+.btn-info:focus {
   background-color: #497968;
   border: none; }
 
@@ -42,9 +40,7 @@ li {
 
 .btn-warning:hover,
 .btn-warning:active,
-.btn-warning:checked,
-.btn-warning:focus,
-.btn-warning:visited {
+.btn-warning:focus {
   background-color: #55537E;
   border: none; }
 
