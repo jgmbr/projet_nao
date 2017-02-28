@@ -9,10 +9,27 @@ use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\CoreBundle\Entity\Status;
 use NBGraphics\CoreBundle\Services\Crud\CreateDatas;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ObservationListener
 {
-    protected $entites = [];
+    protected $entities = [];
+
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
+     * @var TokenStorageInterface
+     */
+    private $token;
+
+    public function __construct(ContainerInterface $container, TokenStorageInterface $token)
+    {
+        $this->container = $container;
+        $this->token = $token;
+    }
 
     public function preUpdate(LifecycleEventArgs $args)
     {
@@ -24,7 +41,7 @@ class ObservationListener
 
         $entityManager = $args->getEntityManager();
 
-        $user = $entity->getUser();
+        $user = $this->token->getToken()->getUser();
 
         if ($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_SUPER_ADMIN')) {
             return;
@@ -47,7 +64,7 @@ class ObservationListener
                 $moderation->setObservation($entity);
                 $moderation->setStatus($statut);
 
-                $this->entites[] = $moderation;
+                $this->entities[] = $moderation;
 
             }
         }
@@ -56,16 +73,17 @@ class ObservationListener
 
     public function postFlush(PostFlushEventArgs $args)
     {
-        if(!empty($this->entites)) {
+        if(!empty($this->entities)) {
 
             $entityManager = $args->getEntityManager();
 
-            foreach ($this->entites as $thing) {
+            foreach ($this->entities as $entity) {
 
-                $entityManager->persist($thing);
+                $entityManager->persist($entity);
             }
 
-            $this->entites = [];
+            $this->entities = [];
+
             $entityManager->flush();
         }
 

@@ -21,6 +21,7 @@ services:
         arguments: ["@mailer", "@templating"]
     app.listener.observation:
         class: NBGraphics\CoreBundle\EventListener\ObservationListener
+        arguments: ["@service_container", "@security.token_storage"]
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
