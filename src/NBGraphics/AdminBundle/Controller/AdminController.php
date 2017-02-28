@@ -35,6 +35,8 @@ class AdminController extends Controller
 
         $users = $em->getRepository(User::class)->findCountAll();
 
+        $countMyObservations = $em->getRepository(Observation::class)->countMyObservations($this->getUser());
+
         return $this->render('NBGraphicsAdminBundle:Common:index.html.twig',array(
             'user' => $this->getUser(),
             'countObservations' => $countObservations,
@@ -42,7 +44,8 @@ class AdminController extends Controller
             'countArticles' => $countArticles,
             'standBy' => $standBy,
             'published' => $pulished,
-            'countUsers' => $users
+            'countUsers' => $users,
+            'countMyObservations' => $countMyObservations
         ));
     }
 }

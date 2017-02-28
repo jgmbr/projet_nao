@@ -101,9 +101,20 @@
 
 
                 {% else %}
-                    <h2>
-                        Votre compte
-                    </h2>
+
+                <div class="info-box-container">
+                    <a href="{{ path('admin_my_observation_index') }}" class="aBox">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-camera"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Observations</span>
+                                <span class="info-box-number">{{ countMyObservations }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </a>
+                </div>
+
             </div>
                 {% endif %}
 
