@@ -754,7 +754,8 @@ nav:hover .forAnimate{
   .interactive-web-map .reinit-search {
     border-top: 1px solid #5c5c5c;
     margin-top: 20px;
-    padding-top: 20px; } }
+    padding-top: 20px;
+    text-align: center; } }
 
 @media (min-width: 1024px) {
   .interactive-web-map .searchForm .form-group:first-child,
