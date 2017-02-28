@@ -1,23 +1,23 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Thomas
- * Date: 27/02/2017
- * Time: 18:35
+ * Date: 28/02/2017
+ * Time: 10:34
  */
 
 namespace tests\NBGraphics\AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class AdminControllerTest extends WebTestCase
+class AdminControllerTest extends AbstractControllerTest
 {
-    public function testIsNotGranted()
+    /**
+     * When a client is authenticated
+     */
+    public function testIndexAction()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/index');
+        $crawler = $this->client->request('GET', '/soumettre-une-observation');
 
-        $this->assertFalse($client->getResponse()->isSuccessful());
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 }
