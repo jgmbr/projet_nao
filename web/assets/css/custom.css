@@ -35,3 +35,13 @@
   border: 1px solid #374a5b;
   border-radius: 5px;
 }
+
+::selection {
+    color: #ffffff;
+    background: #374a5b;
+}
+
+::-moz-selection {
+    color: #ffffff;
+    background: #374a5b;
+}
