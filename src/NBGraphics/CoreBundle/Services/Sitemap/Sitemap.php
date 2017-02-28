@@ -3,6 +3,7 @@
 namespace NBGraphics\CoreBundle\Services\Sitemap;
 
 use Doctrine\ORM\EntityManagerInterface;
+use NBGraphics\CoreBundle\Entity\Observation;
 use NBGraphics\NewsBundle\Entity\Article;
 use NBGraphics\NewsBundle\Entity\State;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -31,6 +32,8 @@ class Sitemap
 
     public function generer()
     {
+        $status = $this->em->getRepository(State::class)->findOneByRole('PUBLISH');
+
         $urls = array();
 
         // home page
@@ -46,6 +49,17 @@ class Sitemap
             'priority' => '0.8'
         );
 
+        $observations = $this->em->getRepository(Observation::class)->findObservationsByStatusAndOrder($status);
+
+        foreach ($observations as $observation)
+        {
+            $urls[] = array(
+                'loc' => $this->router->generate('nbgraphics_frontsite_interactivewebmap_displaybirddetail',array('birdObs'=>$observation->getId())),
+                'changefreq' => 'monthly',
+                'priority' => '0.6'
+            );
+        }
+
         $urls[] = array(
             'loc' => $this->router->generate('nb_graphics_front_site_submitobservation'),
             'changefreq' => 'monthly',
@@ -57,8 +71,6 @@ class Sitemap
             'changefreq' => 'monthly',
             'priority' => '0.6'
         );
-
-        $status = $this->em->getRepository(State::class)->findOneByRole('PUBLISH');
 
         $articles = $this->em->getRepository(Article::class)->findArticlesByState($status);
 
