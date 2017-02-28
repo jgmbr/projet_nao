@@ -57,11 +57,11 @@ security:
         - { path: ^/reinitialiser-mot-de-passe, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/soumettre-une-observation, role: ROLE_USER }
         - { path: ^/carte-interactive/, role: ROLE_USER }
-        - { path: ^/admin/index/, role: ROLE_USER }
-        - { path: ^/admin/profil/, role: ROLE_USER }
-        - { path: ^/admin/mes-observations/, role: ROLE_USER }
-        - { path: ^/admin/utilisateurs/, role: ROLE_SUPER_ADMIN }
-        - { path: ^/admin/observations/, role: ROLE_ADMIN }
-        - { path: ^/admin/actualites/, role: ROLE_COLLABORATOR }
-        - { path: ^/admin/newsletter/, role: ROLE_SUPER_ADMIN }
-        - { path: ^/admin/seo/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/index, role: ROLE_USER }
+        - { path: ^/admin/profil, role: ROLE_USER }
+        - { path: ^/admin/mes-observations, role: ROLE_USER }
+        - { path: ^/admin/utilisateurs, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/observations, role: ROLE_ADMIN }
+        - { path: ^/admin/actualites, role: ROLE_COLLABORATOR }
+        - { path: ^/admin/newsletter, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/seo, role: ROLE_SUPER_ADMIN }
