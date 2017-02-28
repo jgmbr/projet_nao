@@ -44,6 +44,11 @@
   box-sizing: border-box;
 }
 
+.avertissement a {
+  color: #8a6d3b;
+  font-weight: bold;
+}
+
 ::selection {
     color: #ffffff;
     background: #374a5b;
