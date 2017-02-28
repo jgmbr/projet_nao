@@ -1,5 +1,10 @@
 {% extends "NBGraphicsFrontSiteBundle::frontBaseElements.html.twig" %}
 
+{% block title %}{{ article.title }}{% endblock %}
+{% block description %}{{ article.content }}{% endblock %}
+{% block keywords %}actualités, fiche{% endblock %}
+{% block robots %}index{% endblock %}
+
 {% block body %}
 
     <div class="container news-details-page">
