@@ -23,11 +23,16 @@
 
         <div class="show-results">
             {% if bird.image %}
-                <img
-                        class="bird-image"
-                        src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
-                        alt="Photographie de {{ bird.taxref.nomVern }}"
+                <a
+                        class="bird-anchor"
+                        href="{{ asset('/uploads/img/'~ bird.image.url)}}"
                 >
+                    <img
+                            class="bird-image"
+                            src="{{ asset('/uploads/img/'~ bird.image.url) | imagine_filter('my_thumb') }}"
+                            alt="Photographie de {{ bird.taxref.nomVern }}"
+                    >
+                </a>
             {% else %}
                 <img src="{{ asset('images/400px-Image_manquante_2.svg.png')|imagine_filter('my_thumb') }}" alt="Image manquante">
             {% endif %}
@@ -134,4 +139,5 @@
         };
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
+    <script src="{{ asset('assets/js/displayBirdOverlay.js') }}"></script>
 {% endblock %}

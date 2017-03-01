@@ -858,22 +858,25 @@ nav:hover .forAnimate{
   .show-results {
     display: flex; } }
 
-.show-results .bird-image {
+.show-results .bird-anchor {
   width: 80%;
   display: block;
   border-top: 1px solid #5c5c5c;
   margin: 10px auto 20px;
   padding-top: 20px; }
   @media (min-width: 768px) {
-    .show-results .bird-image {
-      max-width: 50%; } }
+    .show-results .bird-anchor {
+      width: 50%; } }
   @media (min-width: 1024px) {
-    .show-results .bird-image {
+    .show-results .bird-anchor {
       display: initial;
       max-width: 30%;
       margin: 0;
       padding: 0 20px 0 0;
       border-top: none; } }
+
+.show-results .bird-image {
+  width: 100%; }
 
 .show-results #map {
   width: 100%;
