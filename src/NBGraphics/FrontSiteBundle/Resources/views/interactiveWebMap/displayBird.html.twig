@@ -1,5 +1,10 @@
 {% extends '@NBGraphicsFrontSite/frontBaseElements.html.twig' %}
 
+{% block title %}{{ bird.taxref.nomVern }} - {{ bird.taxref.nomComplet }}{% endblock %}
+{% block description %}{{ bird.comment }}{% endblock %}
+{% block keywords %}oiseau, {{ bird.taxref.nomVern }}, maturité {{ bird.matureStage }}, plumage {{ bird.plumage }}, {% if bird.nidification > 0 %}nidification{% else %}pas de nidifcation{% endif %}, {{ bird.quantity }}{% endblock %}
+{% block robots %}index{% endblock %}
+
 {% block body %}
 
     <div class="container display-bird">

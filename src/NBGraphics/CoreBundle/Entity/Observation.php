@@ -115,7 +115,7 @@ class Observation implements ExportInterface
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Moderation", mappedBy="observation", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="NBGraphics\CoreBundle\Entity\Moderation", mappedBy="observation", cascade={"persist","remove"})
      */
     private $moderations;
 

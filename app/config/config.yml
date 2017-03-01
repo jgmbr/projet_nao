@@ -131,7 +131,7 @@ liip_imagine :
 # NewsBundle Configuration
 nb_graphics_news:
     pagination:
-        max_per_page:   2
+        max_per_page:   5
 
 # CaptchaBundle Configuration
 gregwar_captcha: ~
