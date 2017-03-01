@@ -167,6 +167,39 @@ li {
 .aBox, .aBox:hover {
   color: #333 !important; }
 
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); }
+
+#overlayImgContainer {
+  width: 95%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 30px 10px; }
+  @media (min-width: 768px) {
+    #overlayImgContainer {
+      width: 80%; } }
+  @media (min-width: 1024px) {
+    #overlayImgContainer {
+      width: 45%; } }
+
+#overlayImgContainer img {
+  max-width: 100%;
+  max-height: 450px;
+  display: block;
+  margin: auto; }
+
+#overlayImgContainer p {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  cursor: pointer; }
+
 .btn {
   transition: .4s; }
 

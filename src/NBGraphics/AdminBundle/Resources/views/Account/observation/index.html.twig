@@ -34,9 +34,12 @@
                                     <td>{{ observation.quantity }}</td>
                                     <td>
                                        {% if observation.image is defined and observation.image is not null %}
-                                            <img src="{{ asset('/uploads/img/'~ observation.image.url) | imagine_filter('my_thumb') }}" alt="Photographie de {{ observation.taxref.nomVern }}" />
+                                            <img
+                                                    src="{{ asset('/uploads/img/'~ observation.image.url) | imagine_filter('my_thumb') }}"
+                                                    alt="Photographie de {{ observation.taxref.nomVern }}"
+                                            />
                                         {% else %}
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            <em>Aucun photo proposée</em>
                                         {% endif %}
                                     </td>
                                     <td>

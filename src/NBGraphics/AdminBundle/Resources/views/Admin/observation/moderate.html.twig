@@ -15,13 +15,20 @@
                     <tbody>
                     <tr>
                         <th> Image </th>
-                        <td>
-                            {% if observation.image is defined and observation.image is not null %}
-                                <img src="{{ observation.image.url | imagine_filter('my_thumb') }}" alt="Photographie de {{ observation.taxref.nomVern }}" />
-                            {% else %}
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            {% endif %}
-                        </td>
+                        {% if observation.image is defined and observation.image is not null %}
+                            <td id="obs-image">
+                                <a href="{{ asset('/uploads/img/'~ observation.image.url) }}">
+                                    <img
+                                            src="{{ asset('/uploads/img/'~ observation.image.url) | imagine_filter('my_thumb') }}"
+                                            alt="Photographie de {{ observation.taxref.nomVern }}"
+                                    />
+                                </a>
+                            </td>
+                        {% else %}
+                            <td>
+                                <em>Aucun photo proposée</em>
+                            </td>
+                        {% endif %}
                     </tr>
                     <tr>
                         <th>Observateur</th>
@@ -159,4 +166,5 @@
         };
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=getMap" async defer></script>
+    <script src="{{ asset('assets/js/imageOverlay.js') }}"></script>
 {% endblock %}
