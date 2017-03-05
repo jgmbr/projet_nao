@@ -23,7 +23,7 @@ class EmailRegistrationFormSystem
 
         $mail = \Swift_Message::newInstance()
             ->setSubject('Nos Amis Les Oiseaux › Confirmation d\'inscription')
-            ->setFrom('contact@nos-amis-les-oiseaux.fr')
+            ->setFrom('nao@boudetnature.com')
             // Addresse e-mail à modifier pour celle du président
             ->setTo($user->getEmail())
             ->setBody(
