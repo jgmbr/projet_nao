@@ -31,7 +31,7 @@ class EmailContactFormSystem
 
         $mail = \Swift_Message::newInstance()
             ->setSubject('Nos Amis Les Oiseaux › Nouveau message')
-            ->setFrom('contact@nos-amis-les-oiseaux.fr')
+            ->setFrom('nao@boudetnature.com')
             // Addresse e-mail à modifier pour celle du président
             ->setTo('Thomas.dimnet@gmail.com')
             ->setBody(
@@ -47,7 +47,7 @@ class EmailContactFormSystem
 
         $mailUser = \Swift_Message::newInstance()
             ->setSubject('Nos Amis Les Oiseaux › Confirmation demande de contact')
-            ->setFrom('contact@nos-amis-les-oiseaux.fr')
+            ->setFrom('nao@boudetnature.com')
             ->setTo($emailAddress)
             ->setBody(
                 $this->templating->render(
