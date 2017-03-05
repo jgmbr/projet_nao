@@ -22,3 +22,4 @@
 *_old
 *.zip
 *.phar
+.htaccess
