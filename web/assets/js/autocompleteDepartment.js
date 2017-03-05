@@ -35,32 +35,30 @@ $addressInput.focusout(function() {
 });
 
 
-
+/*
 $localizeBtn.click(function () {
-    setTimeout(function() {
-        var reverseAddressDataGouvAPI = 'http://api-adresse.data.gouv.fr/reverse/?';
-        lattitude = $('#observation_form_latitude').val();
-        longitude = $('#observation_form_longitude').val();
-        var APIOptions = {
-            lon: longitude,
-            lat: lattitude,
-        };
 
-        function returnReverseDepartement(data) {
-            var postCode = data.features[0].properties.postcode;
-            var postCode = postCode.slice(0, 2);
-            $departmentInput.val(postCode);
-        }
-        $.getJSON(reverseAddressDataGouvAPI, APIOptions, function (data) {
+    var reverseAddressDataGouvAPI = 'http://api-adresse.data.gouv.fr/reverse/?';
+    lattitude = $('#observation_form_latitude').val();
+    longitude = $('#observation_form_longitude').val();
+    var APIOptions = {
+        lon: longitude,
+        lat: lattitude,
+    };
 
-            var postCode = data.features[0].properties.postcode;
-            var postCode = postCode.slice(0, 2);
-            $departmentInput.val(postCode);
-        })
-            .fail(function () {
-                alert("Serveur de données indisponibles.. Merci de réessayer plus tard.");
-            });
+    function returnReverseDepartement(data) {
+        var postCode = data.features[0].properties.postcode;
+        var postCode = postCode.slice(0, 2);
+        $departmentInput.val(postCode);
+    }
+    $.getJSON(reverseAddressDataGouvAPI, APIOptions, function (data) {
 
-    }, 750);
-
+        var postCode = data.features[0].properties.postcode;
+        var postCode = postCode.slice(0, 2);
+        $departmentInput.val(postCode);
+    })
+        .fail(function () {
+            alert("Serveur de données indisponibles.. Merci de réessayer plus tard.");
+        });
 });
+*/

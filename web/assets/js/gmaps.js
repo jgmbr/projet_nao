@@ -21,6 +21,8 @@ var loc = navigator.geolocation;
 // The two forms field for latitude & longitude
 var latInput = document.getElementById('observation_form_latitude');
 var lonInput = document.getElementById('observation_form_longitude');
+// The department input
+var departmentInput = document.getElementById('observation_form_departement');
 
 
 // Creating the functions
@@ -43,6 +45,27 @@ function getLocationByLocalizeBtn(position) {
         map: map,
         title: "Vous êtes ici"
     });
+
+
+    var url = 'http://api-adresse.data.gouv.fr/reverse/';
+    params = "lon=" + lon + "&lat=" + lat;
+    var http = new XMLHttpRequest();
+
+    http.open("GET", url+"?"+params, true);
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            var response = http.responseText;
+            var response = JSON.parse(response);
+            var postCode = response.features[0].properties.postcode;
+            var postCode = postCode.slice(0, 2);
+
+            departmentInput.value = postCode;
+
+        }
+    };
+    http.send();
+
+
 }
 
 

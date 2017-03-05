@@ -90,10 +90,16 @@ li {
 .gotop:hover {
   background: #ff6347;
 }
+
 .main-nav li.active a {
-  opacity: 1;
-  color: #fff;
+  text-decoration: underline;
+  @media #{$tablet} {
+    text-decoration: none;
+    opacity: 1;
+    color: #fff;
+  }
 }
+
 .connect a {
   padding: 5px 10px;
 }
