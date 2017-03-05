@@ -3,7 +3,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
+    <div class="container check-email">
+        <h2>Informations</h2>
+        <p>
+        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+        </p>
+    </div>
 {% endblock %}

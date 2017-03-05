@@ -1,0 +1,36 @@
+.reset {
+  width: 100%;
+  @media #{$tablet} {
+    width: 70%;
+    margin-top: 20px;
+  }
+  @media #{$desktop} {
+    width: 45%;
+  }
+}
+
+.reset h2 {
+  text-align: center;
+  font-size: 1.4em;
+  margin-bottom: 80px;
+  margin-bottom: 50px;
+  @media #{$tablet} {
+    font-size: 1.6em;
+  }
+  @media #{$desktop} {
+    font-size: 1.8em;
+  }
+}
+
+.reset input {
+  width: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #374a5b;
+}
+
+.reset input[type=submit] {
+  width: 100%;
+  color: #fff;
+  background-color: #374a5b;
+}
