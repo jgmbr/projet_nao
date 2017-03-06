@@ -45,12 +45,18 @@
                                     </a>
                                     <ul class="dropdown-menu forAnimate" role="menu">
                                         <li>
-                                            <a href="{{ path('admin_user_index') }}">
+                                            <a
+                                                class="{% if app.request.attributes.get('_route') == "admin_user_index" %}selected{% endif %}"
+                                                href="{{ path('admin_user_index') }}"
+                                            >
                                                 <span> Liste </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('admin_user_new') }}">
+                                            <a
+                                                    class="{% if app.request.attributes.get('_route') == "admin_user_new" %}selected{% endif %}"
+                                                    href="{{ path('admin_user_new') }}"
+                                            >
                                                 <span> Ajouter </span>
                                             </a>
                                         </li>
@@ -65,22 +71,34 @@
                                 </a>
                                 <ul class="dropdown-menu forAnimate" role="menu">
                                     <li>
-                                        <a href="{{ path('admin_observation_index') }}">
+                                        <a
+                                                class="{% if app.request.attributes.get('_route') == "admin_observation_index" %}selected{% endif %}"
+                                                href="{{ path('admin_observation_index') }}"
+                                        >
                                             <span> Liste </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('admin_observation_waiting') }}">
+                                        <a
+                                                class="{% if app.request.attributes.get('_route') == "admin_observation_waiting" %}selected{% endif %}"
+                                                href="{{ path('admin_observation_waiting') }}"
+                                        >
                                             <span> En attente </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('admin_observation_valided') }}">
+                                        <a
+                                                class="{% if app.request.attributes.get('_route') == "admin_observation_valided" %}selected{% endif %}"
+                                                href="{{ path('admin_observation_valided') }}"
+                                        >
                                            <span> Validées </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('admin_observation_refused') }}">
+                                        <a
+                                                class="{% if app.request.attributes.get('_route') == "admin_observation_refused" %}selected{% endif %}"
+                                                href="{{ path('admin_observation_refused') }}"
+                                        >
                                            <span> Refusées </span>
                                         </a>
                                     </li>

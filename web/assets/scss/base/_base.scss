@@ -70,6 +70,10 @@ li {
 }
 // End Clearfix hack
 
+a.selected > span {
+  font-weight: bolder;
+}
+
 // Custom styles front part by Justine
 .gotop {
   color: #ffffff;

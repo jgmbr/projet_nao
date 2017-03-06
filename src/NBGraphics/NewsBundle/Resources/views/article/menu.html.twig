@@ -5,12 +5,18 @@
     </a>
     <ul class="dropdown-menu forAnimate" role="menu">
         <li>
-            <a href="{{ path('admin_article_index') }}">
+            <a
+                    class="{% if app.request.attributes.get('_route') == "admin_article_index" %}selected{% endif %}"
+                    href="{{ path('admin_article_index') }}"
+            >
                 <span> Liste </span>
             </a>
         </li>
         <li>
-            <a href="{{ path('admin_article_new') }}">
+            <a
+                    class="{% if app.request.attributes.get('_route') == "admin_article_new" %}selected{% endif %}"
+                    href="{{ path('admin_article_new') }}"
+            >
                 <span> Ajouter </span>
             </a>
         </li>
