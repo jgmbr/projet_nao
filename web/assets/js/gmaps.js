@@ -47,7 +47,7 @@ function getLocationByLocalizeBtn(position) {
     });
 
 
-    var url = 'http://api-adresse.data.gouv.fr/reverse/';
+    var url = window.location.protocol + '//api-adresse.data.gouv.fr/reverse/';
     params = "lon=" + lon + "&lat=" + lat;
     var http = new XMLHttpRequest();
 

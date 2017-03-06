@@ -215,7 +215,7 @@
                             map.setZoom(8);
                         }
                     };
-                    xhr.open('GET', 'http://api-adresse.data.gouv.fr/search/?q=postcode=' + value);
+                    xhr.open('GET', window.location.protocol + '//api-adresse.data.gouv.fr/search/?q=postcode=' + value);
                     xhr.send();
                 };
 

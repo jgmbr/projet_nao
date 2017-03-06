@@ -8,7 +8,7 @@ $localizeBtn = $('#localize');
 
 // Functions
 $addressInput.focusout(function() {
-    var addressDataGouvAPI = 'http://api-adresse.data.gouv.fr/search/?';
+    var addressDataGouvAPI = window.location.protocol + '//api-adresse.data.gouv.fr/search/?';
     var address = $addressInput.val();
     var APIOptions = {
         q: address,
@@ -38,7 +38,7 @@ $addressInput.focusout(function() {
 /*
 $localizeBtn.click(function () {
 
-    var reverseAddressDataGouvAPI = 'http://api-adresse.data.gouv.fr/reverse/?';
+    var reverseAddressDataGouvAPI = window.location.protocol + '//api-adresse.data.gouv.fr/reverse/?';
     lattitude = $('#observation_form_latitude').val();
     longitude = $('#observation_form_longitude').val();
     var APIOptions = {
