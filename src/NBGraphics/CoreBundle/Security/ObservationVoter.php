@@ -48,7 +48,6 @@ class ObservationVoter extends Voter
 
         // ROLE_ADMIN can do anything on Observation! The power!
         if ($this->decisionManager->decide($token, array('ROLE_ADMIN'))) {
-            var_dump('admin power = ROLE ADMIN');
             return true;
         }
 
