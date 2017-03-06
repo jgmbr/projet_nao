@@ -5,7 +5,7 @@
     <div class="container interactive-web-map">
 
         <h2 class="text-center">
-            Bienvenue sur notre onglet de recherche intéractif.
+            Bienvenue sur notre onglet de recherche interactif.
         </h2>
 
         <h3>Rechercher un oiseau</h3>
@@ -27,6 +27,15 @@
 
         {{ form_end(searchForm) }}
         </section>
+
+        {% if not resultsPerBird and not resultsPerFamily %}
+            <hr>
+            <h3>Nos dernières observations</h3>
+
+            <div class="form-group map-container">
+                <div id="map"></div>
+            </div>
+        {% endif %}
 
         {% if resultsPerBird %}
 
@@ -66,7 +75,7 @@
             </div>
 
             <hr>
-            <h3>Affiner la carte intéractive</h3>
+            <h3>Affiner la carte interactive</h3>
             <section id="criteria">
                 <div class="searchMap">
                     {{ form_start(criteriaMapsForm) }}
@@ -119,7 +128,7 @@
             </div>
 
             <hr>
-            <h3>Affiner la carte intéractive</h3>
+            <h3>Affiner la carte interactive</h3>
             <section id="criteria">
             <div class="searchMap">
                 {{ form_start(criteriaMapsForm) }}
@@ -139,6 +148,64 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    {#
+    When the page is loaded and not results have been asked, display the original map
+    #}
+    {% if not resultsPerBird and not resultsPerFamily %}
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 48.866667, lng: 2.333333},
+                    zoom: 4,
+                    scrollwheel: false,
+                    {% if is_granted('ROLE_ADMIN') %}
+                    maxZoom: 18,
+                    {% else %}
+                    maxZoom: 10
+                    {% endif %}
+                });
+
+                {% for bird in resultsByDefault %}
+                var marker{{ loop.index }} = new google.maps.Marker({
+                    position: {
+                        lat: {{ bird.latitude }},
+                        lng: {{ bird.longitude }}
+                    },
+                    map: map,
+                    title: "Voir l'observation"
+                });
+
+                // Create the strings
+                var contentString{{ loop.index }} = '';
+                contentString{{ loop.index }} += '<div id="content">';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    'birdObs': bird.id
+                }) }}">';
+                contentString{{ loop.index }} += 'Voir l\'observation';
+                contentString{{ loop.index }} += '</a>';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '</div>';
+
+                // Creathe info windows
+                var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                    content: contentString{{ loop.index }}
+                });
+                // Add click event
+                marker{{ loop.index }}.addListener('click', function() {
+                    infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
+                });
+                {% endfor %}
+            }
+
+        </script>
+    {% endif %}
+
+    {#
+    Then, when a result is present, display the map with the results selected
+    #}
     {% if (resultsPerBird or resultsPerFamily) %}
 
         <script>
@@ -166,7 +233,6 @@
                     {% endif %}
 
                 });
-
 
 
 
@@ -299,8 +365,8 @@
                 {% endif %}
             };
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     {% endif %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     <script type="text/javascript">
         $(function () {
             $('#results').DataTable({
