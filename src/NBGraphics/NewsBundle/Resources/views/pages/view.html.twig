@@ -20,7 +20,7 @@
         <div class="news-details-article">
             <h2> {{ article.title }} </h2>
             <p> {{ article.createdAt|date('d/m/Y') }} </p>
-            <p> {{ article.content|nl2br }} </p>
+            {{ article.content|raw }}
         </div>
 
         <div class="actions">

@@ -32,7 +32,7 @@
                     {% endif %}
 
                     <div class="news-paragraph">
-                        <p> {{ article.content|truncate(300) }} </p>
+                        <p> {{ article.content|striptags|truncate(300) }} </p>
                         <br>
                         <a class="btn btn-primary pull-right" href="{{ path('article_view',{'slug': article.slug}) }}"> Lire la suite </a>
                     </div>

@@ -51,9 +51,9 @@ class ArticleType extends AbstractType
                     ))
                 )
             ))
-            ->add('content', TextareaType::class, array(
+            ->add('content', null, array(
                 'label'                 => 'Contenu de l\'article *',
-                'required'              => true,
+                'required'              => false,
                 'translation_domain'    => false,
                 'attr'                  => array(
                     'rows' => 10
