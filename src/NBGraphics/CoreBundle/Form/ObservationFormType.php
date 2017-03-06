@@ -144,6 +144,9 @@ class ObservationFormType extends AbstractType
             ->add('latitude', TextType::class, [
                 'label' => 'Votre latitude *',
                 'required' => true,
+                'attr' => [
+                  'placeholder' => '48.856614'
+                ],
                 'translation_domain' => false,
                 'constraints' => [
                     new NotBlank([
@@ -157,6 +160,9 @@ class ObservationFormType extends AbstractType
             ->add('longitude', TextType::class, [
                 'label' => 'Votre longitude *',
                 'required' => true,
+                'attr' => [
+                    'placeholder' => '2.3522219'
+                ],
                 'translation_domain' => false,
                 'constraints' => [
                     new NotBlank([
