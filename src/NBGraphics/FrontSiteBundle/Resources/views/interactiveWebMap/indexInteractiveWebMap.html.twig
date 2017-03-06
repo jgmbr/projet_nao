@@ -166,7 +166,40 @@
                     maxZoom: 10
                     {% endif %}
                 });
+
+                {% for bird in resultsByDefault %}
+                var marker{{ loop.index }} = new google.maps.Marker({
+                    position: {
+                        lat: {{ bird.latitude }},
+                        lng: {{ bird.longitude }}
+                    },
+                    map: map,
+                    title: "Voir l'observation"
+                });
+
+                // Create the strings
+                var contentString{{ loop.index }} = '';
+                contentString{{ loop.index }} += '<div id="content">';
+                contentString{{ loop.index }} += '<p>';
+                contentString{{ loop.index }} += '<a class="btn btn-default" href="{{ path('nbgraphics_frontsite_interactivewebmap_displaybirddetail', {
+                    'birdObs': bird.id
+                }) }}">';
+                contentString{{ loop.index }} += 'Voir l\'observation';
+                contentString{{ loop.index }} += '</a>';
+                contentString{{ loop.index }} += '</p>';
+                contentString{{ loop.index }} += '</div>';
+
+                // Creathe info windows
+                var infowindow{{ loop.index }} = new google.maps.InfoWindow({
+                    content: contentString{{ loop.index }}
+                });
+                // Add click event
+                marker{{ loop.index }}.addListener('click', function() {
+                    infowindow{{ loop.index }}.open(map, marker{{ loop.index }});
+                });
+                {% endfor %}
             }
+
         </script>
     {% endif %}
 
@@ -200,7 +233,6 @@
                     {% endif %}
 
                 });
-
 
 
 

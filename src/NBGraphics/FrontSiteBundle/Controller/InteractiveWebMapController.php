@@ -39,6 +39,8 @@ class InteractiveWebMapController extends Controller
 
         // However, there are the latest results in order to display them inside the map
         $resultsByDefault = $em->getRepository(Observation::class)->findLatestObservations($status);
+        dump($resultsByDefault);
+
 
         // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
