@@ -5,6 +5,31 @@
 {% block keywords %}oiseau, {{ bird.taxref.nomVern }}, maturité {{ bird.matureStage }}, plumage {{ bird.plumage }}, {% if bird.nidification > 0 %}nidification{% else %}pas de nidifcation{% endif %}, {{ bird.quantity }}{% endblock %}
 {% block robots %}index{% endblock %}
 
+{% block meta %}
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="{{ absolute_url(path('nbgraphics_frontsite_interactivewebmap_displaybirddetail',{'birdObs': bird.id})) }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Nos Amis les Oiseaux - {{ bird.taxref.nomVern }} - {{ bird.taxref.nomComplet }}" />
+    <meta property="og:description"   content="{{ bird.comment }}" />
+    {% if bird.image %}
+        <meta property="og:image"     content="{{ absolute_url(asset('/uploads/img/'~ bird.image.url))}}" />
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+    #btn-rs {
+        text-align: center;
+    }
+    .btn-rs {
+        display: inline-flex;
+        vertical-align: top;
+        padding: 0 2px;
+    }
+    </style>
+{% endblock %}
+
 {% block body %}
 
     <div class="container display-bird">
@@ -19,7 +44,6 @@
                 Revenir à la carte
             </a>
         </header>
-
 
         <div class="show-results">
             {% if bird.image %}
@@ -40,6 +64,53 @@
         </div>
 
         <hr>
+
+        <div id="btn-rs">
+
+            <div id="rs-fb" class="btn-rs">
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+
+                <div class="fb-share-button"
+                     data-href="{{ absolute_url(path('nbgraphics_frontsite_interactivewebmap_displaybirddetail',{'birdObs': bird.id})) }}"
+                     data-layout="button_count"
+                     data-size="large"
+                     data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('nbgraphics_frontsite_interactivewebmap_displaybirddetail',{'birdObs': bird.id}))|url_encode }}">Partager</a></div>
+
+            </div>
+            <div id="rs-tw" class="btn-rs">
+                <script>window.twttr = (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0],
+                                t = window.twttr || {};
+                        if (d.getElementById(id)) return t;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+
+                        t._e = [];
+                        t.ready = function(f) {
+                            t._e.push(f);
+                        };
+
+                        return t;
+                    }(document, "script", "twitter-wjs"));</script>
+
+                <a class="twitter-share-button"
+                   href="https://twitter.com/intent/tweet?text=Nos Amis les Oiseaux - Venez découvrir l'observation"
+                   data-size="large">
+                    Tweet</a>
+            </div>
+
+        </div>
+
+        <hr />
 
 
         <div class="table-responsive">

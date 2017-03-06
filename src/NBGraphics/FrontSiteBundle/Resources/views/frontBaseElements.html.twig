@@ -18,6 +18,7 @@
         <meta name="keywords" content="{% block keywords %}{% endblock %}" />
         <meta name="robots" content="{% block robots %}{% endblock %}">
     {% endif %}
+    {% block meta %}{% endblock %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -214,6 +215,7 @@
     <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
     <script src="{{ asset('assets/vendor/cookieconsent/build/cookieconsent.min.js') }}"></script>
+
     <script>
         $(document).ready(function(){
             {% for msgSuccess in app.session.flashbag.get('success') %}
