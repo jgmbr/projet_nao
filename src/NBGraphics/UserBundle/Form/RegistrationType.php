@@ -26,12 +26,14 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('email',EmailType::class, array(
-                'label' => 'form.email',
+                //'label' => 'form.email',
+                'label' => 'Votre adresse e-mail *',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => true,
             ))
             ->add('username', null, array(
-                'label' => 'form.username',
+                //'label' => 'form.username',
+                'label' => 'Votre nom d\'utilisateur *',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => true,
                 'constraints' => [
@@ -49,8 +51,10 @@ class RegistrationType extends AbstractType
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
+                //'first_options' => array('label' => 'form.password'),
+                'first_options' => array('label' => 'Votre mot de passe *'),
+                //'second_options' => array('label' => 'form.password_confirmation'),
+                'second_options' => array('label' => 'Confirmer votre mot de passe *'),
                 'invalid_message' => 'fos_user.password.mismatch',
                 'required' => true,
                 'constraints' => [
@@ -63,7 +67,8 @@ class RegistrationType extends AbstractType
                 ]
             ))
             ->add('firstname', TextType::class, array(
-                'label' => 'form.firstname',
+                //'label' => 'form.firstname',
+                'label' => 'Votre prénom *',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
                 'constraints' => [
@@ -79,7 +84,8 @@ class RegistrationType extends AbstractType
                 ]
             ))
             ->add('lastname', TextType::class, array(
-                'label' => 'form.lastname',
+                //'label' => 'form.lastname',
+                'label' => 'Votre nom *',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
                 'constraints' => [
@@ -95,7 +101,8 @@ class RegistrationType extends AbstractType
                 ]
             ))
             ->add('phone', TextType::class, array(
-                'label' => 'form.phone',
+                //'label' => 'form.phone',
+                'label' => 'Votre numéro de mobile',
                 'translation_domain' => 'FOSUserBundle',
                 'required' => false,
                 'constraints' => array(
