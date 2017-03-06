@@ -55,11 +55,17 @@ class PagesController extends Controller
     /**
      * Finds and displays a article entity.
      *
-     * @Route("/actualite/{id}-{slug}", name="article_view")
+     * @Route("/actualite/{slug}", name="article_view")
      * @Method("GET")
      */
     public function showAction(Article $article)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($article->getState() == $em->getRepository(State::class)->findOneByRole('DEFAULT')) {
+            throw $this->createNotFoundException("Article indisponible");
+        }
+
         return $this->render('NBGraphicsNewsBundle:pages:view.html.twig', array(
             'article' => $article
         ));

@@ -110,9 +110,11 @@
                 <li class="{% if app.request.attributes.get('_route') == "nb_graphics_front_site_interactivewebmap" %}active{% endif %}">
                     <a href="{{ path('nb_graphics_front_site_interactivewebmap') }}">Notre carte interactive</a>
                 </li>
-                <li class="{% if app.request.attributes.get('_route') == "nb_graphics_front_site_submitobservation" %}active{% endif %}">
-                    <a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a>
-                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="{% if app.request.attributes.get('_route') == "nb_graphics_front_site_submitobservation" %}active{% endif %}">
+                        <a href="{{ path('nb_graphics_front_site_submitobservation') }}">Soumettre une observation</a>
+                    </li>
+                {% endif %}
                 <li class="{% if app.request.attributes.get('_route') == "nb_graphics_front_site_researchprogramm" %}active{% endif %}">
                     <a href="{{ path('nb_graphics_front_site_researchprogramm') }}">Notre programme de recherche</a>
                 </li>

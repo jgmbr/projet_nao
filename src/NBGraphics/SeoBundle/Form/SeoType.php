@@ -35,7 +35,7 @@ class SeoType extends AbstractType
                 )
             ))
             ->add('title', TextType::class, array(
-                'label'                 => 'Titre *',
+                'label'                 => 'Titre',
                 'required'              => false,
                 'translation_domain'    => false,
                 'constraints'           => array(
@@ -48,7 +48,7 @@ class SeoType extends AbstractType
                 )
             ))
             ->add('metaDescription', TextareaType::class, array(
-                'label'                 => 'Description *',
+                'label'                 => 'Description',
                 'required'              => false,
                 'translation_domain'    => false,
                 'constraints'           => array(
@@ -59,7 +59,7 @@ class SeoType extends AbstractType
                 )
             ))
             ->add('metaKeywords', TextareaType::class, array(
-                'label'                 => 'Mots clés *',
+                'label'                 => 'Mots clés',
                 'required'              => false,
                 'translation_domain'    => false,
                 'constraints'           => array(
@@ -70,7 +70,7 @@ class SeoType extends AbstractType
                 )
             ))
             ->add('metaRobots', ChoiceType::class, array(
-                'label'                 => 'Robots *',
+                'label'                 => 'Robots',
                 'required'              => false,
                 'translation_domain'    => false,
                 'choices'           => array(

@@ -31,6 +31,10 @@ class SubmitObservationController extends Controller
      */
     public function submitObservationAction(Request $request)
     {
+        if ($this->getUser()->hasRole('ROLE_COLLABORATOR')) {
+            throw $this->createNotFoundException("Soumission observation non autorisée");
+        }
+
         $observation = new Observation();
         $observationForm = $this->createForm(ObservationFormType::class, $observation);
         $observationForm->handleRequest($request);
@@ -43,7 +47,7 @@ class SubmitObservationController extends Controller
 
             if ($createObservation) {
                 $this->addFlash('success', 'Observation ajoutée avec succès !');
-                return $this->redirectToRoute('nb_graphics_user_homepage');
+                return $this->redirectToRoute('admin_page');
             } else {
                 $this->addFlash('error', 'Erreur lors de la soumission de l\'observation');
                 return $this->redirectToRoute('nb_graphics_front_site_submitobservation');

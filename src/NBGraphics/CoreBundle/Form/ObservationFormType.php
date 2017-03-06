@@ -81,7 +81,7 @@ class ObservationFormType extends AbstractType
             ->add('plumage', ChoiceType::class, [
                 'label' => "Quel était le plumage de l'oiseau observé ? *",
                 'choices' => [
-                    'Plumage possible' => null,
+                    'Type de plumage' => null,
                     'Plumage nuptial' => 'nuptial',
                     'Plumage normal' => 'normal',
                 ],

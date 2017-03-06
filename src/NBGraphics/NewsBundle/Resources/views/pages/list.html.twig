@@ -16,7 +16,7 @@
                 <section class="news-container clearfix">
                     <div class="news-title">
                         <h2>
-                            <a href="{{ path('article_view',{'id': article.id, 'slug': article.slug}) }}">
+                            <a href="{{ path('article_view',{'slug': article.slug}) }}">
                                 {{ article.title }}
                             </a>
                         </h2>
@@ -24,7 +24,7 @@
                     </div>
 
                     {% if article.image is not null %}
-                        <a class="news-image" href="{{ path('article_view',{'id': article.id, 'slug': article.slug}) }}">
+                        <a class="news-image" href="{{ path('article_view',{'slug': article.slug}) }}">
                             <img src="{{ asset('uploads/img_article/' ~ article.image.url) | imagine_filter('my_thumb') }}" alt="Image" />
                         </a>
                     {% else %}
@@ -34,7 +34,7 @@
                     <div class="news-paragraph">
                         <p> {{ article.content|truncate(300) }} </p>
                         <br>
-                        <a class="btn btn-primary pull-right" href="{{ path('article_view',{'id': article.id, 'slug': article.slug}) }}"> Lire la suite </a>
+                        <a class="btn btn-primary pull-right" href="{{ path('article_view',{'slug': article.slug}) }}"> Lire la suite </a>
                     </div>
                 </section>
             {% endfor %}

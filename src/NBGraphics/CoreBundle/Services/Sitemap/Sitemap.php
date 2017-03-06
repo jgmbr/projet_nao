@@ -83,7 +83,7 @@ class Sitemap
         foreach ($articles as $article)
         {
             $urls[] = array(
-                'loc' => $this->router->generate('article_view',array('id' => $article->getId(), 'slug' => $article->getSlug())),
+                'loc' => $this->router->generate('article_view',array('slug' => $article->getSlug())),
                 'changefreq' => 'monthly',
                 'priority' => '0.5'
             );
