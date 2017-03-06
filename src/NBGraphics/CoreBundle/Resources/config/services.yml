@@ -28,3 +28,9 @@ services:
     app.sitemap:
         class: NBGraphics\CoreBundle\Services\Sitemap\Sitemap
         arguments: ['@doctrine.orm.entity_manager','@router']
+    app.observation_voter:
+        class: NBGraphics\CoreBundle\Security\ObservationVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }

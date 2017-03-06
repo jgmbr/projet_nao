@@ -132,6 +132,8 @@ class ObservationController extends Controller
         if (!$observation instanceof Observation)
             throw $this->createNotFoundException("Observation non reconnue");
 
+        $this->denyAccessUnlessGranted('moderate', $observation);
+
         $deleteForm = $this->createDeleteForm($observation);
 
         $moderation = new Moderation();
@@ -174,6 +176,8 @@ class ObservationController extends Controller
         if (!$observation instanceof Observation)
             throw $this->createNotFoundException("Observation non reconnue");
 
+        $this->denyAccessUnlessGranted('show', $observation);
+
         $deleteForm = $this->createDeleteForm($observation);
 
         return $this->render('NBGraphicsAdminBundle:Admin/observation:show.html.twig', array(
@@ -192,6 +196,8 @@ class ObservationController extends Controller
     {
         if (!$observation instanceof Observation)
             throw $this->createNotFoundException("Observation non reconnue");
+
+        $this->denyAccessUnlessGranted('edit', $observation);
 
         $deleteForm = $this->createDeleteForm($observation);
         $editForm = $this->createForm(ObservationFormType::class, $observation);
@@ -227,6 +233,8 @@ class ObservationController extends Controller
     {
         if (!$observation instanceof Observation)
             throw $this->createNotFoundException("Observation non reconnue");
+
+        $this->denyAccessUnlessGranted('delete', $observation);
 
         $form = $this->createDeleteForm($observation);
         $form->handleRequest($request);
