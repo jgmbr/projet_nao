@@ -32,9 +32,15 @@ class InteractiveWebMapController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        // By default, $results is null
+        // By default, $resultsPerFamily OR $resultsPerBird are null
         $resultsPerFamily = null;
         $resultsPerBird = null;
+        $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
+
+        // However, there are the latest results in order to display them inside the map
+        $resultsByDefault = $em->getRepository(Observation::class)->findLatestObservations($status);
+        dump($resultsByDefault);
+
 
         // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
@@ -50,13 +56,12 @@ class InteractiveWebMapController extends Controller
             $bird = $data['oiseau'];
             $family = $data['famille'];
 
-            // Faire contrainte personnalisée à partir du formulaire
+            // If there is no result, show message
             if (!$bird && !$family) {
                 $request->getSession()->getFlashBag()->add('error', 'Merci de saisir des critères de recherche !');
                 return $this->redirectToRoute('nb_graphics_front_site_interactivewebmap');
             }
 
-            $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
 
             if ($bird !== null) {
 
@@ -92,6 +97,7 @@ class InteractiveWebMapController extends Controller
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
             'searchForm' => $searchForm->createView(),
+            'resultsByDefault' => $resultsByDefault,
             'resultsPerBird' => $resultsPerBird,
             'resultsPerFamily' => $resultsPerFamily,
         ));
