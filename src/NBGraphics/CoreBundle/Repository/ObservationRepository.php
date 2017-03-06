@@ -30,13 +30,14 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this
             ->createQueryBuilder('o')
+            ->leftJoin('o.taxref', 't')
             ->where('o.status = :status')
             ->setParameter('status', $status)
             ->setFirstResult(0)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     public function findDistinctDepartementQB($sort = 'ASC')
