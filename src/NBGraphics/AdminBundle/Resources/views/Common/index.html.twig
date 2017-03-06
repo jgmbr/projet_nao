@@ -57,6 +57,22 @@
                         </div>
                     </div>
 
+                <div class="col-sm-12">
+                    <p class="description"> Retrouvez dans votre espace d'administration : </p>
+                    <ul class="bird">
+                        <li>Votre profil</li>
+                        <li>La liste des membres</li>
+                        <li>La liste des observations</li>
+                        <li>La liste des actualités</li>
+                        <li>La liste des inscrits à la newsletter</li>
+                        <li>La liste SEO des pages de votre site</li>
+                    </ul>
+                    <hr />
+                    <p class="description">
+                        <a class="btn btn-primary" href="{{ path('nb_graphics_front_site_submitobservation') }}"> Participer à notre programme de recherche </a>
+                    </p>
+                </div>
+
                 {% elseif is_granted('ROLE_ADMIN') %}
                     <div class="info-box-container">
                         <a href="{{ path('admin_observation_index') }}" class="aBox">
@@ -82,6 +98,18 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-12">
+                        <p class="description"> Retrouvez dans votre espace d'administration : </p>
+                        <ul class="bird">
+                            <li>Votre profil</li>
+                            <li>La liste des observations</li>
+                        </ul>
+                        <hr />
+                        <p class="description">
+                            <a class="btn btn-primary" href="{{ path('nb_graphics_front_site_submitobservation') }}"> Participer à notre programme de recherche </a>
+                        </p>
+                    </div>
+
                 {% elseif is_granted('ROLE_COLLABORATOR') %}
 
                     <div class="info-box-container">
@@ -99,6 +127,17 @@
                         </a>
                     </div>
 
+                    <div class="col-sm-12">
+                        <p class="description"> Retrouvez dans votre espace collaborateur : </p>
+                        <ul class="bird">
+                            <li>Votre profil</li>
+                            <li>La liste des actualités</li>
+                        </ul>
+                        <hr />
+                        <p class="description">
+                            <a class="btn btn-primary" href="{{ path('nb_graphics_front_site_submitobservation') }}"> Participer à notre programme de recherche </a>
+                        </p>
+                    </div>
 
                 {% else %}
 
@@ -115,18 +154,20 @@
                     </a>
                 </div>
 
+                <div class="col-sm-12">
+                    <p class="description"> Retrouvez dans votre espace mon compte : </p>
+                    <ul class="bird">
+                        <li>Votre profil</li>
+                        <li>Vos observations</li>
+                    </ul>
+                    <hr />
+                    <p class="description">
+                        <a class="btn btn-primary" href="{{ path('nb_graphics_front_site_submitobservation') }}"> Participer à notre programme de recherche </a>
+                    </p>
+                </div>
+
             </div>
                 {% endif %}
-
-
-
-
-
-                <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu maximus dolor, vel aliquam dui. Donec tincidunt leo ipsum, vulputate pretium ipsum pellentesque eu. Fusce accumsan sem magna, accumsan sodales ante sagittis a. Aliquam dignissim nisi ac tellus scelerisque tempor. Ut vitae pharetra ex. Nam in elementum erat. Suspendisse pellentesque lacus nec lobortis ullamcorper. Integer suscipit lacinia sagittis. Phasellus quis enim magna. Fusce ut dui nec mi pretium pellentesque quis at quam.
-                </p>
-
-
 
         </div>
 
