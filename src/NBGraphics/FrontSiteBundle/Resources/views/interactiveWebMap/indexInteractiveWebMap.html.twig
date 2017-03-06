@@ -28,6 +28,15 @@
         {{ form_end(searchForm) }}
         </section>
 
+        {% if not resultsPerBird and not resultsPerFamily %}
+            <hr>
+            <h3>Nos dernières observations</h3>
+
+            <div class="form-group map-container">
+                <div id="map"></div>
+            </div>
+        {% endif %}
+
         {% if resultsPerBird %}
 
             <div class="dataTables_wrapper table-responsive">
@@ -139,6 +148,27 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    // When the page is loaded and not results have been asked, display the original map
+    {% if not resultsPerBird and not resultsPerFamily %}
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 48.866667, lng: 2.333333},
+                    zoom: 4,
+                    scrollwheel: false,
+                    {% if is_granted('ROLE_ADMIN') %}
+                    maxZoom: 18,
+                    {% else %}
+                    maxZoom: 10
+                    {% endif %}
+                });
+            }
+        </script>
+    {% endif %}
+
+    // Then, when a result is present, display the map with the results selected
     {% if (resultsPerBird or resultsPerFamily) %}
 
         <script>
@@ -299,8 +329,8 @@
                 {% endif %}
             };
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     {% endif %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv4cK5Ln6Z5EEtoY2gT4zf-J6rVgmnqtw&callback=initMap" async defer></script>
     <script type="text/javascript">
         $(function () {
             $('#results').DataTable({
