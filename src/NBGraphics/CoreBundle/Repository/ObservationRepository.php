@@ -26,6 +26,18 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
+    public function findLatestObservations($status)
+    {
+        return $this
+            ->createQueryBuilder('o')
+            ->where('o.status = :status')
+            ->setParameter('status', $status)
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findDistinctDepartementQB($sort = 'ASC')
     {
         return $this

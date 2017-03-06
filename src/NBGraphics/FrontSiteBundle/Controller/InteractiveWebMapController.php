@@ -38,7 +38,7 @@ class InteractiveWebMapController extends Controller
         $status = $em->getRepository('NBGraphicsCoreBundle:Status')->findOneByRole('VALIDED');
 
         // However, there are the latest results in order to display them inside the map
-        
+        $resultsByDefault = $em->getRepository(Observation::class)->findLatestObservations($status);
 
         // Search form
         $searchForm = $this->createForm(SearchFormType::class, array());
@@ -95,6 +95,7 @@ class InteractiveWebMapController extends Controller
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/indexInteractiveWebMap.html.twig', array(
             'searchForm' => $searchForm->createView(),
+            'resultsByDefault' => $resultsByDefault,
             'resultsPerBird' => $resultsPerBird,
             'resultsPerFamily' => $resultsPerFamily,
         ));

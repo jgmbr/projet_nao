@@ -149,7 +149,9 @@
 {% block javascripts %}
     {{ parent() }}
 
-    // When the page is loaded and not results have been asked, display the original map
+    {#
+    When the page is loaded and not results have been asked, display the original map
+    #}
     {% if not resultsPerBird and not resultsPerFamily %}
         <script>
             var map;
@@ -168,7 +170,9 @@
         </script>
     {% endif %}
 
-    // Then, when a result is present, display the map with the results selected
+    {#
+    Then, when a result is present, display the map with the results selected
+    #}
     {% if (resultsPerBird or resultsPerFamily) %}
 
         <script>
