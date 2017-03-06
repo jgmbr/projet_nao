@@ -1,7 +1,7 @@
 // General style
 .main-sidebar {
   @media #{$desktop} {
-    width: 30%;
+    width: 45%;
   }
 }
 
@@ -29,7 +29,8 @@
 
 
 // Custom style
-/*
+
+
 nav.sidebar {
   -webkit-transition: margin 200ms ease-out;
   -moz-transition: margin 200ms ease-out;
@@ -45,7 +46,7 @@ nav.sidebar {
 
   .main{
     position: absolute;
-    width: calc(100% - 40px);
+    //width: calc(100% - 40px);
     margin-left: 40px;
     float: right;
   }
@@ -97,8 +98,8 @@ nav.sidebar {
 
   nav.sidebar{
     height: 100%;
-    margin-left: -160px;
-    float: left;
+    //margin-left: -160px;
+    //float: left;
     margin-bottom: 0px;
   }
 
@@ -124,7 +125,8 @@ nav.sidebar {
 
   nav.sidebar{
     margin-left: 0px;
-    float: left;
+    //float: left;
+    width: 100%;
   }
 
   nav.sidebar .forAnimate{
@@ -140,4 +142,4 @@ nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav
 nav:hover .forAnimate{
   opacity: 1;
 }
-*/
+

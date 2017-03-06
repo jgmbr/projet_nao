@@ -39,7 +39,7 @@
                             </li>
 
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
-                                <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_user" %}active{% endif %}">
+                                <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_user" %}active extended open{% endif %}">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Membres <span class="caret"></span>
                                         <i class="fa fa-users pull-right hidden-xs showopacity" aria-hidden="true"></i>
                                     </a>
@@ -58,7 +58,7 @@
                                 </li>
                             {% endif %}
 
-                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_observation" %}active{% endif %}">
+                            <li class="dropdown {% if app.request.attributes.get('_route') starts with "admin_observation" %}active extended open{% endif %}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     Observations <span class="caret"></span>
                                     <i class="fa fa-camera pull-right hidden-xs showopacity" aria-hidden="true"></i>
