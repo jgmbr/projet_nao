@@ -160,11 +160,7 @@
                     center: {lat: 48.866667, lng: 2.333333},
                     zoom: 4,
                     scrollwheel: false,
-                    {% if is_granted('ROLE_ADMIN') %}
-                    maxZoom: 18,
-                    {% else %}
                     maxZoom: 10
-                    {% endif %}
                 });
 
                 {% for bird in resultsByDefault %}
