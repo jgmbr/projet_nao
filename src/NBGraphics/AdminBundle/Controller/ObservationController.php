@@ -147,7 +147,7 @@ class ObservationController extends Controller
             $response = $this->get('app.crud.update')->moderateObservation($observation, $user, $moderation, $moderationForm->getData()->getStatus());
 
             if ($response) {
-                $this->addFlash('success','Observation modéré avec succès !');
+                $this->addFlash('success','Observation modérée avec succès !');
                 return $this->redirectToRoute('admin_observation_show', array('id' => $observation->getId()));
             } else {
                 $this->addFlash('error','Erreur lors de la modération de l\'observation');
