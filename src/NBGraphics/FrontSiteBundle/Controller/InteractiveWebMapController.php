@@ -9,6 +9,7 @@
 namespace NBGraphics\FrontSiteBundle\Controller;
 
 use NBGraphics\CoreBundle\Entity\Observation;
+use NBGraphics\CoreBundle\Entity\Status;
 use NBGraphics\CoreBundle\Entity\TAXREF;
 use NBGraphics\CoreBundle\Form\CriteriaMapsFormType;
 use NBGraphics\CoreBundle\Form\SearchFormType;
@@ -119,6 +120,9 @@ class InteractiveWebMapController extends Controller
 
         if (!is_object($bird))
             throw $this->createNotFoundException("Aucun oiseau trouvé à l'id " . $birdObs . " !");
+
+        if ($bird->getStatus() !== $em->getRepository(Status::class)->findOneByRole('VALIDED'))
+            throw $this->createNotFoundException("Observation indisponible");
 
         return $this->render('@NBGraphicsFrontSite/interactiveWebMap/displayBird.html.twig', [
             'bird' => $bird,
