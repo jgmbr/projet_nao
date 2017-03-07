@@ -106,9 +106,9 @@
                             </li>
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
                                 {% if app.request.attributes.get('_route') starts with "admin_article" %}
-                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true} )) }}
+                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':true, 'route': app.request.attributes.get('_route')} )) }}
                                 {% else %}
-                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false} )) }}
+                                    {{ render(controller('NBGraphicsNewsBundle:Article:menu', {'active':false, 'route': app.request.attributes.get('_route')} )) }}
                                 {% endif %}
                                 <li class="{% if app.request.attributes.get('_route') == "admin_newsletter_index" %}active{% endif %}">
                                     <a href="{{ path('admin_newsletter_index') }}">

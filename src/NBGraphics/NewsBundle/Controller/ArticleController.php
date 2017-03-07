@@ -166,10 +166,11 @@ class ArticleController extends Controller
         ;
     }
 
-    public function menuAction(Request $request, $active)
+    public function menuAction($active, $route)
     {
         return $this->render('NBGraphicsNewsBundle:article:menu.html.twig', array(
-            'active' => ($active ? 'active' : '')
+            'active' => ($active ? 'active' : ''),
+            'route' => $route
         ));
     }
 }

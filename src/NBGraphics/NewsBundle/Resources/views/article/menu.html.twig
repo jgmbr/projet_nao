@@ -6,7 +6,7 @@
     <ul class="dropdown-menu forAnimate" role="menu">
         <li>
             <a
-                    class="{% if app.request.attributes.get('_route') == "admin_article_index" %}selected{% endif %}"
+                    class="{% if route == "admin_article_index" %}selected{% endif %}"
                     href="{{ path('admin_article_index') }}"
             >
                 <span> Liste </span>
@@ -14,7 +14,7 @@
         </li>
         <li>
             <a
-                    class="{% if app.request.attributes.get('_route') == "admin_article_new" %}selected{% endif %}"
+                    class="{% if route == "admin_article_new" %}selected{% endif %}"
                     href="{{ path('admin_article_new') }}"
             >
                 <span> Ajouter </span>
