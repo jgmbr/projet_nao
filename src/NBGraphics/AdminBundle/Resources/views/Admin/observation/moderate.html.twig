@@ -50,6 +50,26 @@
                         <td>{{ observation.quantity }}</td>
                     </tr>
                     <tr>
+                        <th>Maturité</th>
+                        <td>{{ observation.matureStage }}</td>
+                    </tr>
+                    <tr>
+                        <th>Plumage</th>
+                        <td>{{ observation.plumage }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nidification</th>
+                        <td>
+                            {% if observation.nidification < 0 %}
+                                ne sais pas
+                            {% elseif observation.nidification > 0 %}
+                                oui
+                            {% else %}
+                                non
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Espèce</th>
                         <td>
                             {{ observation.taxref.famille }} › {{ observation.taxref.nomValide }}

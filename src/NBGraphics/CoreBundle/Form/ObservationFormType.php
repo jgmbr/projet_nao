@@ -96,8 +96,9 @@ class ObservationFormType extends AbstractType
             ->add('nidification', ChoiceType::class, [
                 'label' => 'Nidification *',
                 'choices' => [
-                    'Oui' => true,
-                    'Non' => false,
+                    'Oui' => 1,
+                    'Non' => 0,
+                    'Ne sais pas' => -1
                 ],
                 'constraints' => [
                     new NotNull([

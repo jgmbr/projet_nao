@@ -150,10 +150,12 @@
                 <tr>
                     <td>Nidification</td>
                     <td>
-                      {% if bird.nidification %}
-                      oui
+                      {% if bird.nidification < 0 %}
+                        ne sais pas
+                      {% elseif bird.nidification > 0 %}
+                        oui
                       {% else %}
-                      non
+                          non
                       {% endif %}
                     </td>
                 </tr>

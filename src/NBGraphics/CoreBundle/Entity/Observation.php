@@ -40,7 +40,7 @@ class Observation implements ExportInterface
 
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
     private $nidification;
 
