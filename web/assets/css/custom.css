@@ -5,3 +5,7 @@ ul.bird li {
     background-size: 25px;
     background-repeat: no-repeat;
 }
+
+.moderate-observation-admin .actions {
+    border-top: none !important;
+}
