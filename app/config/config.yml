@@ -82,6 +82,8 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: NBGraphics\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
     from_email:
         address:        nao@boudetnature.com
         sender_name:    Nos Amis les Oiseaux
@@ -89,26 +91,17 @@ fos_user:
         form:
             type: NBGraphics\UserBundle\Form\ChangePasswordType
     registration:
+        confirmation:
+            enabled:    true
+            template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type: NBGraphics\UserBundle\Form\RegistrationType
     profile:
         form:
             type: NBGraphics\UserBundle\Form\ProfileType
-    service:
-        mailer: fos_user.mailer.twig_swift
     resetting:
         email:
             template:   FOSUserBundle:Resetting:email.txt.twig
-            from_email:
-                address:        nao@boudetnature.com
-                sender_name:    Nos Amis les Oiseaux
-    registration:
-        confirmation:
-            enabled:            false
-            template:   FOSUserBundle:Registration:email.txt.twig
-            from_email:
-                address:        nao@boudetnature.com
-                sender_name:    Nos Amis les Oiseaux
 
 # Stof\DoctrineExtensionsBundle configuration
 stof_doctrine_extensions:
