@@ -1,1 +1,137 @@
-landing page A
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Landing Page - Nos Amis les oiseaux</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="landing-page-a">
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path('nb_graphics_front_site_homepage') }}">
+                <img src="{{ asset('images/logo2.svg') }}" alt="Logo du site" width="80">
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ path('nb_graphics_front_site_homepage') }}" class="title">Nos Amis les Oiseaux</a>
+                </li>
+                <li class="icon">
+                    <a href="#"><img src="{{ asset('images/facebook_gray.png') }}"  alt="facebook" /></a>
+                </li>
+                <li class="icon">
+                    <a href="#"><img src="{{ asset('images/twitter_gray.png') }}" alt="twitter" /></a>
+                </li>
+            </ul>
+        
+        <!-- /.navbar-collapse -->
+
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Heading Row -->
+    <div class="row">
+        <div class="col-md-8">
+            <img class="img-responsive img-rounded" src="{{ asset('images/smartphone_tablet_computer.gif') }}" alt="Image d'envol d'oiseaux">
+        </div>
+        <!-- /.col-md-8 -->
+        <div class="col-md-4">
+            <h1><strong>Aidez les oiseaux, où que vous soyez...</strong></h1>
+            <p>Observez, sauvegardez, partagez et protégez de nombreuses espèce d'oiseaux avec l'association <strong>Nos Amis les Oiseaux, </strong>vous offre l'outil idéal pour toutes vos observations. Que vous soyez simple amateur ou ornithologue chevronné, inscrivez-vous gratuitement à notre service, c'est rapide et facile !</p>
+            <a class="btn btn-primary btn-lg" href="#">Inscrivez-vous </a></div>
+        <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Call to Action Well -->
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="well text-center">
+                <img src="{{ asset('images/quote.png') }}" width="48" height="48" alt="Ouverture de guillements"/>L'année dernière,
+                <strong>200.000 observations </strong>ont été réalisées par la communauté. <strong>
+                    <em>- Votre aide nous est précieuse, merci.</em>
+                </strong><img src="{{ asset('images/unquote.png') }}" width="48" height="48" alt="Fermeture de guillements"/>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h2>Carte Intéractive</h2>
+            <img src="{{ asset('images/maps64.png') }}" class=picto width="64" height="64" alt="Image de carte"/>
+            <p>Partez à la découverte de nouvelles espèces près de chez vous grâce à notre carte intéractive. Le filtre par espèce vous sera un précieux allié pour observer les oiseaux de manière optimale.</p>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 text-center">
+            <h2>Observations contrôlées</h2>
+            <img src="{{ asset('images/bar-chart.png') }}" class=picto width="64" height="64" alt="Image de graphique"/>
+            <p>Que ce soit sur smartphone, sur tablette ou sur votre ordinateur, vous pouvez sauvegarder toutes vos observations. Et grâce aux photos vos observations seront contrôlées au préalable par un expert avant d'être affichées.</p>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 text-center">
+            <h2>Programme de recherche</h2>
+            <img src="{{ asset('images/searcher.png') }}" class=picto width="64" height="64" alt="Image de loupe"/>
+            <p>En utilisant notre outil vous collaborerez, de manière ludique - à notre programme de recherche sur la sauvegarde des oiseaux. Ces données sont indispensables pour suivre le déplacement des espèces et les protéger.</p>
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <hr>
+            <div class="col-lg-12">
+                <p>Nos Amis les Oiseaux &copy; 2017</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>
