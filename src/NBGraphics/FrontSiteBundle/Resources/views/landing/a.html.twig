@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -41,7 +43,7 @@
 
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{ path('nb_graphics_front_site_homepage') }}" class="title">Nos Amis les Oiseaux</a>
+                    <a href="{{ path('nb_graphics_front_site_homepage') }}" class="text-center title">Nos Amis les Oiseaux</a>
                 </li>
                 <li class="icon">
                     <a href="#"><img src="{{ asset('images/facebook_gray.png') }}"  alt="facebook" /></a>
@@ -50,7 +52,7 @@
                     <a href="#"><img src="{{ asset('images/twitter_gray.png') }}" alt="twitter" /></a>
                 </li>
             </ul>
-        
+
         <!-- /.navbar-collapse -->
 
     </div>
@@ -68,7 +70,7 @@
         <div class="col-md-4">
             <h1><strong>Aidez les oiseaux, où que vous soyez...</strong></h1>
             <p>Observez, sauvegardez, partagez et protégez de nombreuses espèce d'oiseaux avec l'association <strong>Nos Amis les Oiseaux, </strong>vous offre l'outil idéal pour toutes vos observations. Que vous soyez simple amateur ou ornithologue chevronné, inscrivez-vous gratuitement à notre service, c'est rapide et facile !</p>
-            <a class="btn btn-primary btn-lg" href="#">Inscrivez-vous </a></div>
+            <a class="btn btn-primary btn-lg" href="{{ path('fos_user_registration_register') }}">Inscrivez-vous </a></div>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
@@ -93,20 +95,20 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-md-4 text-center">
-            <h2>Carte Intéractive</h2>
-            <img src="{{ asset('images/maps64.png') }}" class=picto width="64" height="64" alt="Image de carte"/>
+            <h2>Carte Interactive</h2>
+            <img src="{{ asset('images/beautiful-1867092_640.jpg') }}" class=picto width="64" height="64" alt="Image de carte"/>
             <p>Partez à la découverte de nouvelles espèces près de chez vous grâce à notre carte intéractive. Le filtre par espèce vous sera un précieux allié pour observer les oiseaux de manière optimale.</p>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-4 text-center">
             <h2>Observations contrôlées</h2>
-            <img src="{{ asset('images/bar-chart.png') }}" class=picto width="64" height="64" alt="Image de graphique"/>
+            <img src="{{ asset('images/girl-1683380_640.jpg') }}" class=picto width="64" height="64" alt="Image de graphique"/>
             <p>Que ce soit sur smartphone, sur tablette ou sur votre ordinateur, vous pouvez sauvegarder toutes vos observations. Et grâce aux photos vos observations seront contrôlées au préalable par un expert avant d'être affichées.</p>
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-4 text-center">
             <h2>Programme de recherche</h2>
-            <img src="{{ asset('images/searcher.png') }}" class=picto width="64" height="64" alt="Image de loupe"/>
+            <img src="{{ asset('images/person-1670247_640.jpg') }}" class=picto width="64" height="64" alt="Image de loupe"/>
             <p>En utilisant notre outil vous collaborerez, de manière ludique - à notre programme de recherche sur la sauvegarde des oiseaux. Ces données sont indispensables pour suivre le déplacement des espèces et les protéger.</p>
         </div>
         <!-- /.col-md-4 -->
