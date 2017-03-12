@@ -6,12 +6,12 @@
         <title>
             Nos Amis les Oiseaux
             {% if getSEO(app.request.attributes.get('_route')) %}
-                - {{ getSEO(app.request.attributes.get('_route')).title }}
+                - {{ getSEO(app.request.attributes.get('_route')).title|raw }}
             {% endif %}
         </title>
-        <meta name="description" content="{{ getSEO(app.request.attributes.get('_route')).metaDescription }}" />
-        <meta name="keywords" content="{{ getSEO(app.request.attributes.get('_route')).metaKeywords }}" />
-        <meta name="robots" content="{{ getSEO(app.request.attributes.get('_route')).metaRobots }}">
+        <meta name="description" content="{{ getSEO(app.request.attributes.get('_route')).metaDescription|raw }}" />
+        <meta name="keywords" content="{{ getSEO(app.request.attributes.get('_route')).metaKeywords|raw }}" />
+        <meta name="robots" content="{{ getSEO(app.request.attributes.get('_route')).metaRobots|raw }}">
     {% else %}
         <title> Nos Amis les Oiseaux - {% block title %}{% endblock %} </title>
         <meta name="description" content="{% block description %}{% endblock %}" />
