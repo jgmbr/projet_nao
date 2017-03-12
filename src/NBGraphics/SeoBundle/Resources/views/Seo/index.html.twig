@@ -33,6 +33,9 @@
                                     <a class="btn btn-warning btn-xs" title="Modifier la fiche SEO" href="{{ path('admin_seo_edit', { 'id': page.id }) }}" >
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
+                                    <a class="btn btn-success btn-xs" title="Voir la page" href="{{ path(page.route) }}" target="_blank">
+                                        <i class="fa fa-share" aria-hidden="true"></i>
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor %}
