@@ -32,3 +32,12 @@
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('.news-details-article a').addClass('btn btn-warning');
+        });
+    </script>
+{% endblock %}
