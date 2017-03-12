@@ -4,14 +4,30 @@
 <head>
 
     <meta charset="utf-8">
+
+    {% if getSEO(app.request.attributes.get('_route')) %}
+        <title>
+            Nos Amis les Oiseaux
+            {% if getSEO(app.request.attributes.get('_route')) %}
+                - {{ getSEO(app.request.attributes.get('_route')).title }}
+            {% endif %}
+        </title>
+        <meta name="description" content="{{ getSEO(app.request.attributes.get('_route')).metaDescription }}" />
+        <meta name="keywords" content="{{ getSEO(app.request.attributes.get('_route')).metaKeywords }}" />
+        <meta name="robots" content="{{ getSEO(app.request.attributes.get('_route')).metaRobots }}">
+    {% else %}
+        <title> Nos Amis les Oiseaux - {% block title %}{% endblock %} </title>
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+        <meta name="robots" content="{% block robots %}{% endblock %}">
+    {% endif %}
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Landing Page - Nos Amis les oiseaux</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">

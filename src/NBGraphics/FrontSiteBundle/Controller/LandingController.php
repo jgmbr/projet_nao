@@ -17,7 +17,7 @@ class LandingController extends Controller
      *     name="nb_graphics_front_site_landing_a",
      *     defaults={
      *          "seo": true,
-     *          "page": "Page Landing A"
+     *          "page": "Page Landing Observation des Oiseaux"
      *     }
      *  )
      */
@@ -31,7 +31,7 @@ class LandingController extends Controller
      *     name="nb_graphics_front_site_landing_b",
      *     defaults={
      *          "seo": true,
-     *          "page": "Page Landing B"
+     *          "page": "Page Landing Observer des Oiseaux"
      *     }
      *  )
      */
